@@ -76,13 +76,13 @@ rdfs:isDefinedBy <http://ddialliance.org/ontologies/skosclass> .
 # Properties linking concepts to concepts associations
 
 skosclass:hasDomainConcept a rdf:Property, owl:ObjectProperty ;
-rdfs:domain skos:Concept ;
-rdfs:range skos:ConceptAssociation ;
+rdfs:domain skos:ConceptAssociation ;
+rdfs:range skos:Concept ;
 rdfs:isDefinedBy <http://ddialliance.org/ontologies/skosclass> .
 
 skosclass:hasRangeConcept a rdf:Property, owl:ObjectProperty ;
-rdfs:domain skos:Concept ;
-rdfs:range skos:ConceptAssociation ;
+rdfs:domain skos:ConceptAssociation ;
+rdfs:range skos:Concept ;
 rdfs:isDefinedBy <http://ddialliance.org/ontologies/skosclass> .
 
 # Name (or nature, or type) of the items that constitute the level
