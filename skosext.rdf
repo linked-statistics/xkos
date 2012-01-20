@@ -15,7 +15,7 @@
 dc:title "SKOS extension for the representation of classifications"@en , "Extension de SKOS pour la représentation des nomenclatures"@fr ;
 dc:contributor "Wendy Thomas", "Daniel Gillman", "Jannik Jensen", "Thomas Bosch", "Richard Cyganiak", "Franck Cotton" ;
 dc:creator "Franck Cotton" ;
-owl:versionInfo "Version 0.9.1 - 2012-01-19" .
+owl:versionInfo "Version 0.9.2 - 2012-01-20" .
 
 #################################################################
 # Classes
@@ -87,8 +87,8 @@ rdfs:isDefinedBy <http://ddialliance.org/ontologies/skosclass> .
 
 # Name (or nature, or type) of the items that constitute the level
 
-skosclass:contains a rdf:Property, owl:ObjectProperty ;
-rdfs:label "contains"@en, "contient"@fr ;
+skosclass:organizedBy a rdf:Property, owl:ObjectProperty ;
+rdfs:label "organized by"@en, "organisé en"@fr ;
 rdfs:domain skos:ConceptScheme ;
 rdfs:range skos:Concept ;
 rdfs:isDefinedBy <http://ddialliance.org/ontologies/skosclass> .
