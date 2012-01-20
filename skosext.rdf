@@ -15,7 +15,7 @@
 dc:title "SKOS extension for the representation of classifications"@en , "Extension de SKOS pour la représentation des nomenclatures"@fr ;
 dc:contributor "Wendy Thomas", "Daniel Gillman", "Jannik Jensen", "Thomas Bosch", "Richard Cyganiak", "Franck Cotton" ;
 dc:creator "Franck Cotton" ;
-owl:versionInfo "Version 0.9.2 - 2012-01-20" .
+owl:versionInfo "Version 0.9.3 - 2012-01-20" .
 
 #################################################################
 # Classes
@@ -93,11 +93,11 @@ rdfs:domain skos:ConceptScheme ;
 rdfs:range skos:Concept ;
 rdfs:isDefinedBy <http://ddialliance.org/ontologies/skosclass> .
 
-# Domain covered by the classification (eg. activities, products, etc.)
+# Domain covered by the classification or its levels (eg. activities, products, etc.)
 
 skosclass:covers a rdf:Property, owl:ObjectProperty ;
 rdfs:label "covers"@en, "couvre"@fr ;
-rdfs:domain skos:ConceptScheme ;
+rdfs:domain [ owl:unionOf (skos:ConceptScheme skosclass:ClassificationLevel)] ;
 rdfs:range skos:Concept ;
 rdfs:isDefinedBy <http://ddialliance.org/ontologies/skosclass> .
 
