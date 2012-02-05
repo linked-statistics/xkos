@@ -89,7 +89,7 @@ rdfs:isDefinedBy <http://ddialliance.org/ontologies/skosclass> .
 
 skosclass:organizedBy a rdf:Property, owl:ObjectProperty ;
 rdfs:label "organized by"@en, "organisé en"@fr ;
-rdfs:domain skos:ConceptScheme ;
+rdfs:domain skos:ClassificationLevel ;
 rdfs:range skos:Concept ;
 rdfs:isDefinedBy <http://ddialliance.org/ontologies/skosclass> .
 
@@ -184,7 +184,7 @@ rdfs:subPropertyOf skos:semanticRelation ;
 rdfs:isDefinedBy <http://ddialliance.org/ontologies/skosclass> .
 
 # Types of relations for comparison purposes
-# subOrdinate, superOrdinate are in fact generic/specific or part-of
+# NB : subOrdinate, superOrdinate are in fact generic/specific or hasPart/isPartOf
 
 skosclass:disjoint a rdf:Property, owl:ObjectProperty ;
 rdfs:label "disjoint from"@en, "disjoint de"@fr ;
