@@ -13,9 +13,10 @@
 
 <http://ddialliance.org/ontologies/skosclass> a owl:Ontology ;
 dc:title "SKOS extension for the representation of classifications"@en , "Extension de SKOS pour la représentation des nomenclatures"@fr ;
+rdfs:comment "This ontology is based on work initiated at Dagstuhl Schloss in September 2011"@en ;
 dc:contributor "Wendy Thomas", "Daniel Gillman", "Jannik Jensen", "Thomas Bosch", "Richard Cyganiak", "Franck Cotton" ;
 dc:creator "Franck Cotton" ;
-owl:versionInfo "Version 0.9.5 - 2012-02-05" .
+owl:versionInfo "Version 0.9.6 - 2012-02-05" .
 
 #################################################################
 # Classes
