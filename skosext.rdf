@@ -25,8 +25,8 @@ vann:preferredNamespaceUri <http://purl.org/linked-data/xkos#> ;
 dc:rights "Copyright © 2012 The DDI Alliance" ; 
 cc:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
 voaf:classNumber "3"^^xsd:integer ;
-voaf:propertyNumber "21"^^xsd:integer ;
-owl:versionInfo "Version 0.9.7 - 2012-07-14" .
+voaf:propertyNumber "22"^^xsd:integer ;
+owl:versionInfo "Version 0.9.7.1 - 2012-07-24" .
 
 #################################################################
 # Classes
@@ -124,6 +124,13 @@ rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
 xkos:coversMutuallyExclusively a rdf:Property, owl:ObjectProperty ;
 rdfs:label "covers mutually exclusively"@en, "couvre sans recouvrement"@fr ;
 rdfs:subPropertyOf skos:covers ;
+rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
+
+# Property linking a resource to a classification item it is classified under
+
+xkos:classifiedUnder a rdf:Property, owl:ObjectProperty ;
+rdfs:label "classified under"@en, "classé sous"@fr ;
+rdfs:range skos:Concept ;
 rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
 
 # Types of semantic relations from ISO 1087 : associative relations
