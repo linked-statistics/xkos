@@ -148,28 +148,28 @@ rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
 xkos:previous a rdf:Property, owl:ObjectProperty ;
 rdfs:label "previous"@en, "précédent"@fr ;
 rdfs:comment "immediate predecessor in the sequence"@en, "prédécesseur immédiat dans la séquence"@fr ;
-rdfs:subPropertyOf skos:sequential ;
+rdfs:subPropertyOf xkos:sequential ;
 rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
 
 xkos:next a rdf:Property, owl:ObjectProperty ;
 rdfs:label "next"@en, "suivant"@fr ;
 rdfs:comment "immediate successor in the sequence"@en, "successeur immédiat dans la séquence" ;
-rdfs:subPropertyOf skos:sequential ;
+rdfs:subPropertyOf xkos:sequential ;
 rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
 
 xkos:temporal a rdf:Property, owl:ObjectProperty ;
 rdfs:label "has temporal"@en, "en relation temporelle"@fr ;
-rdfs:subPropertyOf skos:sequential ;
+rdfs:subPropertyOf xkos:sequential ;
 rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
 
 xkos:before a rdf:Property, owl:ObjectProperty ;
 rdfs:label "before"@en, "avant"@fr ;
-rdfs:subPropertyOf skos:temporal ;
+rdfs:subPropertyOf xkos:temporal ;
 rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
 
 xkos:after a rdf:Property, owl:ObjectProperty ;
 rdfs:label "after"@en, "après"@fr ;
-rdfs:subPropertyOf skos:temporal ;
+rdfs:subPropertyOf xkos:temporal ;
 rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
 
 # Types of semantic relations from ISO 1087 : hierarchical relations
