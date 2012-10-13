@@ -26,7 +26,7 @@ dc:rights "Copyright © 2012 The DDI Alliance" ;
 cc:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
 voaf:classNumber "3"^^xsd:integer ;
 voaf:propertyNumber "22"^^xsd:integer ;
-owl:versionInfo "Version 0.9.7.1 - 2012-07-24" .
+owl:versionInfo "Version 0.9.7.2 - 2012-10-13" .
 
 #################################################################
 # Classes
@@ -87,12 +87,14 @@ rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
 # Properties linking concepts to concepts associations
 
 xkos:hasSourceConcept a rdf:Property, owl:ObjectProperty ;
-rdfs:domain skos:ConceptAssociation ;
+rdfs:label "has source concept"@en, "a pour concept source"@fr ;
+rdfs:domain xkos:ConceptAssociation ;
 rdfs:range skos:Concept ;
 rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
 
 xkos:hasTargetConcept a rdf:Property, owl:ObjectProperty ;
-rdfs:domain skos:ConceptAssociation ;
+rdfs:label "has target concept"@en, "a pour concept cible"@fr ;
+rdfs:domain xkos:ConceptAssociation ;
 rdfs:range skos:Concept ;
 rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
 
@@ -100,7 +102,7 @@ rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
 
 xkos:organizedBy a rdf:Property, owl:ObjectProperty ;
 rdfs:label "organized by"@en, "organisé en"@fr ;
-rdfs:domain skos:ClassificationLevel ;
+rdfs:domain xkos:ClassificationLevel ;
 rdfs:range skos:Concept ;
 rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
 
@@ -116,14 +118,14 @@ rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
 
 xkos:coversExhaustively a rdf:Property, owl:ObjectProperty ;
 rdfs:label "covers exhaustively"@en, "couvre exhaustivement"@fr ;
-rdfs:subPropertyOf skos:covers ;
+rdfs:subPropertyOf xkos:covers ;
 rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
 
 # Domain covered by the classification (mutually exclusive coverage)
 
 xkos:coversMutuallyExclusively a rdf:Property, owl:ObjectProperty ;
 rdfs:label "covers mutually exclusively"@en, "couvre sans recouvrement"@fr ;
-rdfs:subPropertyOf skos:covers ;
+rdfs:subPropertyOf xkos:covers ;
 rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
 
 # Property linking a resource to a classification item it is classified under
