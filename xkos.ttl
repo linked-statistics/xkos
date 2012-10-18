@@ -26,7 +26,7 @@ dc:rights "Copyright © 2012 The DDI Alliance" ;
 cc:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
 voaf:classNumber "3"^^xsd:integer ;
 voaf:propertyNumber "26"^^xsd:integer ;
-owl:versionInfo "Version 0.9.7.5 - 2012-10-18" .
+owl:versionInfo "Version 0.9.7.6 - 2012-10-18" .
 
 #################################################################
 # Classes
@@ -186,12 +186,12 @@ rdfs:label "has temporal"@en, "en relation temporelle"@fr ;
 rdfs:subPropertyOf xkos:sequential ;
 rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
 
-xkos:before a rdf:Property, owl:ObjectProperty ;
+xkos:before a rdf:Property, owl:TransitiveProperty ;
 rdfs:label "before"@en, "avant"@fr ;
 rdfs:subPropertyOf xkos:temporal ;
 rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
 
-xkos:after a rdf:Property, owl:ObjectProperty ;
+xkos:after a rdf:Property, owl:TransitiveProperty ;
 rdfs:label "after"@en, "après"@fr ;
 rdfs:subPropertyOf xkos:temporal ;
 rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
