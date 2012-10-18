@@ -26,7 +26,7 @@ dc:rights "Copyright © 2012 The DDI Alliance" ;
 cc:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
 voaf:classNumber "3"^^xsd:integer ;
 voaf:propertyNumber "22"^^xsd:integer ;
-owl:versionInfo "Version 0.9.7.2 - 2012-10-13" .
+owl:versionInfo "Version 0.9.7.3 - 2012-10-18" .
 
 #################################################################
 # Classes
@@ -182,25 +182,25 @@ rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
 xkos:isPartOf a rdf:Property, owl:ObjectProperty ;
 rdfs:label "is a part of"@en, "est une partie de"@fr ;
 owl:inverseOf xkos:hasPart ;
-rdfs:subPropertyOf skos:semanticRelation ;
+rdfs:subPropertyOf skos:narrower ;
 rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
 
 xkos:hasPart a rdf:Property, owl:ObjectProperty ;
 rdfs:label "has part"@en, "a pour partie"@fr ;
 owl:inverseOf xkos:isPartOf ;
-rdfs:subPropertyOf skos:semanticRelation ;
+rdfs:subPropertyOf skos:broader ;
 rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
 
 xkos:specializes a rdf:Property, owl:ObjectProperty ;
 rdfs:label "specializes"@en, "spécialise"@fr ;
 owl:inverseOf xkos:generalizes ;
-rdfs:subPropertyOf skos:semanticRelation ;
+rdfs:subPropertyOf skos:narrower ;
 rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
 
 xkos:generalizes a rdf:Property, owl:ObjectProperty ;
 rdfs:label "generalizes"@en , "généralise"@fr ;
 owl:inverseOf xkos:specializes ;
-rdfs:subPropertyOf skos:semanticRelation ;
+rdfs:subPropertyOf skos:broader ;
 rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
 
 # Types of relations for comparison purposes
