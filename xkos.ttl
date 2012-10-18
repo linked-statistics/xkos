@@ -5,6 +5,7 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix skosxl: <http://www.w3.org/2008/05/skos-xl#> .
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix voaf: <http://purl.org/vocommons/voaf#> .
 @prefix vann: <http://purl.org/vocab/vann/> .
@@ -25,8 +26,8 @@ vann:preferredNamespaceUri <http://purl.org/linked-data/xkos#> ;
 dc:rights "Copyright © 2012 The DDI Alliance" ; 
 cc:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
 voaf:classNumber "3"^^xsd:integer ;
-voaf:propertyNumber "26"^^xsd:integer ;
-owl:versionInfo "Version 0.9.7.6 - 2012-10-18" .
+voaf:propertyNumber "27"^^xsd:integer ;
+owl:versionInfo "Version 0.9.7.7 - 2012-10-18" .
 
 #################################################################
 # Classes
@@ -69,6 +70,14 @@ rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
 xkos:depth a rdf:Property, owl:DatatypeProperty ;
 rdfs:label "depth"@en, "profondeur"@fr ;
 rdfs:domain xkos:ClassificationLevel ;
+rdfs:range xsd:positiveInteger ;
+rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
+
+# Maximum number of characters for a label that is constrained in length
+
+xkos:maxLength a rdf:Property, owl:DatatypeProperty ;
+rdfs:label "maximum length"@en, "longueur maximale"@fr ;
+rdfs:domain xkosxl:Label ;
 rdfs:range xsd:positiveInteger ;
 rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
 
