@@ -26,8 +26,9 @@ vann:preferredNamespaceUri <http://purl.org/linked-data/xkos#> ;
 dc:rights "Copyright © 2012 The DDI Alliance" ; 
 cc:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
 voaf:classNumber "3"^^xsd:integer ;
-voaf:propertyNumber "27"^^xsd:integer ;
-owl:versionInfo "Version 0.9.7.7 - 2012-10-18" .
+voaf:propertyNumber "31"^^xsd:integer ;
+owl:versionInfo "Version 0.9.8 - 2012-10-18" .
+
 
 #################################################################
 # Classes
@@ -52,6 +53,34 @@ rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
 xkos:ConceptAssociationCollection a rdfs:Class, owl:Class ;
 rdfs:label "Concept association collection"@en , "Collection d'associations de concepts"@fr ;
 rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
+
+
+#################################################################
+# Annotation properties
+#################################################################
+
+# Sub-properties of skos:scopeNote used for explanatory notes of classifications
+
+xkos:inclusionNote a rdf:Property, owl:AnnotationProperty ;
+rdfs:label "inclusions"@en, "inclusions"@fr ;
+rdfs:subPropertyOf skos:scopeNote ;
+rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
+
+xkos:coreContentNote a rdf:Property, owl:AnnotationProperty ;
+rdfs:label "core content"@en, "contenu central"@fr ;
+rdfs:subPropertyOf xkos:inclusionNote ;
+rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
+
+xkos:additionalContentNote a rdf:Property, owl:AnnotationProperty ;
+rdfs:label "additional content"@en, "contenu limite"@fr ;
+rdfs:subPropertyOf xkos:inclusionNote ;
+rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
+
+xkos:exclusionNote a rdf:Property, owl:AnnotationProperty ;
+rdfs:label "exclusions"@en, "exclusions"@fr ;
+rdfs:subPropertyOf skos:scopeNote ;
+rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
+
 
 #################################################################
 # Data properties
@@ -80,6 +109,7 @@ rdfs:label "maximum length"@en, "longueur maximale"@fr ;
 rdfs:domain xkosxl:Label ;
 rdfs:range xsd:positiveInteger ;
 rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
+
 
 #################################################################
 # Object properties
