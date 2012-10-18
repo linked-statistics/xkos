@@ -26,8 +26,8 @@ vann:preferredNamespaceUri <http://purl.org/linked-data/xkos#> ;
 dc:rights "Copyright © 2012 The DDI Alliance" ; 
 cc:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
 voaf:classNumber "3"^^xsd:integer ;
-voaf:propertyNumber "31"^^xsd:integer ;
-owl:versionInfo "Version 0.9.8 - 2012-10-18" .
+voaf:propertyNumber "32"^^xsd:integer ;
+owl:versionInfo "Version 0.9.8.1 - 2012-10-18" .
 
 
 #################################################################
@@ -48,10 +48,10 @@ xkos:ConceptAssociation a rdfs:Class, owl:Class ;
 rdfs:label "Concept association"@en , "Association de concepts"@fr ;
 rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
 
-# The ConceptAssociationCollection can be used to group concept associations in a meaningful way (eg : correspondance tables)
+# The Correspondence is used to group concept associations between two classifications (concordances, correspondence tables...)
 
-xkos:ConceptAssociationCollection a rdfs:Class, owl:Class ;
-rdfs:label "Concept association collection"@en , "Collection d'associations de concepts"@fr ;
+xkos:Correspondence a rdfs:Class, owl:Class ;
+rdfs:label "Correspondence"@en , "Correspondance"@fr ;
 rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
 
 
@@ -121,6 +121,14 @@ xkos:hasLevels a rdf:Property, owl:ObjectProperty ;
 rdfs:label "level list"@en, "liste des niveaux"@fr ;
 rdfs:domain skos:ConceptScheme ;
 rdfs:range rdf:List ;
+rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
+
+# Property used to group concept associations in correspondences
+
+xkos:madeOf a rdf:Property, owl:ObjectProperty ;
+rdfs:label "made of"@en, "comprend"@fr ;
+rdfs:domain xkos:Correspondence ;
+rdfs:range xkos:ConceptAssociation ;
 rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
 
 # Properties linking concepts to concepts associations
