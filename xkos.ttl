@@ -25,8 +25,8 @@ vann:preferredNamespaceUri <http://purl.org/linked-data/xkos#> ;
 dc:rights "Copyright © 2012 The DDI Alliance" ; 
 cc:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
 voaf:classNumber "3"^^xsd:integer ;
-voaf:propertyNumber "22"^^xsd:integer ;
-owl:versionInfo "Version 0.9.7.4 - 2012-10-18" .
+voaf:propertyNumber "26"^^xsd:integer ;
+owl:versionInfo "Version 0.9.7.5 - 2012-10-18" .
 
 #################################################################
 # Classes
@@ -157,16 +157,28 @@ rdfs:label "has sequential"@en, "en relation séquentielle"@fr ;
 rdfs:subPropertyOf skos:related ;
 rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
 
+xkos:precedes a rdf:Property, owl:TransitiveProperty ;
+rdfs:label "precedes"@en, "précède"@fr ;
+rdfs:comment "predecessor in the sequence"@en, "prédécesseur dans la séquence"@fr ;
+rdfs:subPropertyOf xkos:sequential ;
+rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
+
 xkos:previous a rdf:Property, owl:ObjectProperty ;
 rdfs:label "previous"@en, "précédent"@fr ;
 rdfs:comment "immediate predecessor in the sequence"@en, "prédécesseur immédiat dans la séquence"@fr ;
+rdfs:subPropertyOf xkos:precedes ;
+rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
+
+xkos:follows a rdf:Property, owl:TransitiveProperty ;
+rdfs:label "follows"@en, "suit"@fr ;
+rdfs:comment "successor in the sequence"@en, "successeur dans la séquence" ;
 rdfs:subPropertyOf xkos:sequential ;
 rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
 
 xkos:next a rdf:Property, owl:ObjectProperty ;
 rdfs:label "next"@en, "suivant"@fr ;
 rdfs:comment "immediate successor in the sequence"@en, "successeur immédiat dans la séquence" ;
-rdfs:subPropertyOf xkos:sequential ;
+rdfs:subPropertyOf xkos:follows ;
 rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
 
 xkos:temporal a rdf:Property, owl:ObjectProperty ;
