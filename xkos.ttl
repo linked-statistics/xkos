@@ -26,7 +26,7 @@ dc:rights "Copyright © 2012 The DDI Alliance" ;
 cc:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
 voaf:classNumber "3"^^xsd:integer ;
 voaf:propertyNumber "22"^^xsd:integer ;
-owl:versionInfo "Version 0.9.7.3 - 2012-10-18" .
+owl:versionInfo "Version 0.9.7.4 - 2012-10-18" .
 
 #################################################################
 # Classes
@@ -138,8 +138,18 @@ rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
 # Types of semantic relations from ISO 1087 : associative relations
 
 xkos:causal a rdf:Property, owl:ObjectProperty ;
-rdfs:label "causes"@en, "cause"@fr ;
+rdfs:label "has causal"@en, "en relation causale"@fr ;
 rdfs:subPropertyOf skos:related ;
+rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
+
+xkos:causes a rdf:Property, owl:ObjectProperty ;
+rdfs:label "causes"@en, "est la cause de"@fr ;
+rdfs:subPropertyOf skos:causal ;
+rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
+
+xkos:causedBy a rdf:Property, owl:ObjectProperty ;
+rdfs:label "caused by"@en, "est causé par"@fr ;
+rdfs:subPropertyOf skos:causal ;
 rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
 
 xkos:sequential a rdf:Property, owl:ObjectProperty ;
