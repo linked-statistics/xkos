@@ -27,7 +27,7 @@ dc:rights "Copyright © 2012 The DDI Alliance" ;
 cc:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
 voaf:classNumber "3"^^xsd:integer ;
 voaf:propertyNumber "35"^^xsd:integer ;
-owl:versionInfo "Version 0.9.8.3 - 2012-10-18" .
+owl:versionInfo "Version 0.9.8.5 - 2012-10-18" .
 
 
 #################################################################
@@ -117,7 +117,7 @@ rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
 
 # List of the classification levels represented as an RDF list of ordered levels (instances of ClassificationLevel)
 
-xkos:hasLevels a rdf:Property, owl:ObjectProperty ;
+xkos:levels a rdf:Property, owl:ObjectProperty ;
 rdfs:label "level list"@en, "liste des niveaux"@fr ;
 rdfs:domain skos:ConceptScheme ;
 rdfs:range rdf:List ;
@@ -133,14 +133,14 @@ rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
 
 # Properties linking concepts to concepts associations
 
-xkos:hasSourceConcept a rdf:Property, owl:ObjectProperty ;
-rdfs:label "has source concept"@en, "a pour concept source"@fr ;
+xkos:sourceConcept a rdf:Property, owl:ObjectProperty ;
+rdfs:label "source concept"@en, "concept source"@fr ;
 rdfs:domain xkos:ConceptAssociation ;
 rdfs:range skos:Concept ;
 rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
 
-xkos:hasTargetConcept a rdf:Property, owl:ObjectProperty ;
-rdfs:label "has target concept"@en, "a pour concept cible"@fr ;
+xkos:targetConcept a rdf:Property, owl:ObjectProperty ;
+rdfs:label "target concept"@en, "concept cible"@fr ;
 rdfs:domain xkos:ConceptAssociation ;
 rdfs:range skos:Concept ;
 rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
