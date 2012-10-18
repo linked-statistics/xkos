@@ -27,7 +27,7 @@ dc:rights "Copyright © 2012 The DDI Alliance" ;
 cc:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
 voaf:classNumber "3"^^xsd:integer ;
 voaf:propertyNumber "35"^^xsd:integer ;
-owl:versionInfo "Version 0.9.8.5 - 2012-10-18" .
+owl:versionInfo "Version 0.9.8.6 - 2012-10-18" .
 
 
 #################################################################
@@ -39,8 +39,8 @@ owl:versionInfo "Version 0.9.8.5 - 2012-10-18" .
 
 xkos:ClassificationLevel a rdfs:Class, owl:Class ;
 rdfs:label "Classification level"@en, "Niveau de nomenclature"@fr ;
-rdfs:isDefinedBy <http://purl.org/linked-data/xkos> ;
-rdfs:subClassOf skos:Collection .
+rdfs:subClassOf skos:Collection ;
+rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
 
 # The ConceptAssociation class generalizes the semantic relations modelled as properties in SKOS
 
@@ -106,7 +106,7 @@ rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
 
 xkos:maxLength a rdf:Property, owl:DatatypeProperty ;
 rdfs:label "maximum length"@en, "longueur maximale"@fr ;
-rdfs:domain xkosxl:Label ;
+rdfs:domain skosxl:Label ;
 rdfs:range xsd:positiveInteger ;
 rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
 
