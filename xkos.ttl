@@ -26,16 +26,16 @@ vann:preferredNamespaceUri <http://purl.org/linked-data/xkos#> ;
 dc:rights "Copyright © 2012 The DDI Alliance" ; 
 cc:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
 voaf:classNumber "3"^^xsd:integer ;
-voaf:propertyNumber "32"^^xsd:integer ;
-owl:versionInfo "Version 0.9.8.1 - 2012-10-18" .
+voaf:propertyNumber "35"^^xsd:integer ;
+owl:versionInfo "Version 0.9.8.3 - 2012-10-18" .
 
 
 #################################################################
 # Classes
 #################################################################
 
-# A classification is a skos:ConceptScheme and a classification level is a subclasse of skos:Collection
-# If the order of the items in the specific level is important, this level can also be declared as an instance of skos:OrderedCollection
+# A classification is a skos:ConceptScheme and a classification level is a skos:Collection
+# If the order of the items in the specific level is significant, this level can also be declared as an instance of skos:OrderedCollection
 
 xkos:ClassificationLevel a rdfs:Class, owl:Class ;
 rdfs:label "Classification level"@en, "Niveau de nomenclature"@fr ;
@@ -142,6 +142,27 @@ rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
 xkos:hasTargetConcept a rdf:Property, owl:ObjectProperty ;
 rdfs:label "has target concept"@en, "a pour concept cible"@fr ;
 rdfs:domain xkos:ConceptAssociation ;
+rdfs:range skos:Concept ;
+rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
+
+# Properties linking major versions of classifications (succeeds subsumes supercedes)
+
+xkos:succeeds a rdf:Property, owl:ObjectProperty ;
+rdfs:label "succeeds"@en, "succède à"@fr ;
+rdfs:domain skos:ConceptScheme ;
+rdfs:range skos:ConceptScheme ;
+rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
+
+xkos:supercedes a rdf:Property, owl:ObjectProperty ;
+rdfs:label "supercedes"@en, "remplace"@fr ;
+rdfs:subPropertyOf xkos:succeeds;
+rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
+
+# Property connecting a major version of a classification to a concept representing the overall classification
+
+xkos:belongsTo a rdf:Property, owl:ObjectProperty ;
+rdfs:label "belongs to"@en, "appartient à"@fr ;
+rdfs:domain skos:ConceptScheme ;
 rdfs:range skos:Concept ;
 rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
 
