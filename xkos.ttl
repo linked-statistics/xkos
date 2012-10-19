@@ -27,7 +27,7 @@ dc:rights "Copyright © 2012 The DDI Alliance" ;
 cc:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
 voaf:classNumber "3"^^xsd:integer ;
 voaf:propertyNumber "35"^^xsd:integer ;
-owl:versionInfo "Version 0.9.8.6 - 2012-10-18" .
+owl:versionInfo "Version 0.9.8.7 - 2012-10-19" .
 
 
 #################################################################
@@ -145,7 +145,7 @@ rdfs:domain xkos:ConceptAssociation ;
 rdfs:range skos:Concept ;
 rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
 
-# Properties linking major versions of classifications (succeeds subsumes supercedes)
+# Properties linking major versions of classifications (succeeds subsumes supersedes)
 
 xkos:succeeds a rdf:Property, owl:ObjectProperty ;
 rdfs:label "succeeds"@en, "succède à"@fr ;
@@ -153,8 +153,8 @@ rdfs:domain skos:ConceptScheme ;
 rdfs:range skos:ConceptScheme ;
 rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
 
-xkos:supercedes a rdf:Property, owl:ObjectProperty ;
-rdfs:label "supercedes"@en, "remplace"@fr ;
+xkos:supersedes a rdf:Property, owl:ObjectProperty ;
+rdfs:label "supersedes"@en, "remplace"@fr ;
 rdfs:subPropertyOf xkos:succeeds;
 rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
 
