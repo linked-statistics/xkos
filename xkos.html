@@ -1,10 +1,10 @@
 ﻿<!DOCTYPE html>
 <html>
-  <head>
-    <title>XKOS</title>
-    <meta http-equiv='Content-Type' content='text/html;charset=utf-8'/>
-    <script src='http://www.w3.org/Tools/respec/respec-w3c-common' class='remove'></script>
-    <script class='remove'>
+	<head>
+		<title>XKOS</title>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+		<script src="http://www.w3.org/Tools/respec/respec-w3c-common" class="remove"></script>
+		<script class="remove">
       var respecConfig = {
           // specification status (e.g. WD, LCWD, NOTE, etc.). If in doubt use ED.
           specStatus:           "ED",
@@ -42,19 +42,17 @@
           // only "name" is required
           editors:  [
               { name: "Franck Cotton", company: "INSEE", companyURL: "http://www.insee.fr/" },
-			  { name: "Richard Cyganiak", company: "DERI", companyURL: "http://www.deri.ie/" },
-			  { name: "Daniel Gillman", company: "Bureau of Labor Statistics", companyURL: "http://www.bls.gov/" },
-			  { name: "Wendy Thomas", company: "Minnesota Population Center", companyURL: "http://www.pop.umn.edu/" },
           ],
 
           // authors, add as many as you like. 
           // This is optional, uncomment if you have authors as well as editors.
           // only "name" is required. Same format as editors.
 
-          //authors:  [
-          //    { name: "Your Name", url: "http://example.org/",
-          //      company: "Your Company", companyURL: "http://example.com/" },
-          //],
+          authors:  [
+			  { name: "Richard Cyganiak", company: "DERI", companyURL: "http://www.deri.ie/" },
+			  { name: "Daniel Gillman", company: "Bureau of Labor Statistics", companyURL: "http://www.bls.gov/" },
+			  { name: "Wendy Thomas", company: "Minnesota Population Center", companyURL: "http://www.pop.umn.edu/" },
+          ],
           
           // name of the WG
           wg:           "Dagstuhl Group on Semantic Statistics",
@@ -73,276 +71,383 @@
           wgPatentURI:  "",
       };
     </script>
-  </head>
-  <body>
-    <section id='abstract'>
-		<p>Semantic technology associated with Linked Open Data (LOD) is gaining much broader use and acceptance.  Marrying LOD techniques to those of the international statistical community is the goal.  Specifically, the use of the Simple Knowledge Organization System (SKOS) for managing statistical classifications and concept management systems is addressed, since SKOS is widely used.  LOD is used to create Web artifacts that machines can interpret, so publishing machine readable statistical classifications and other concept management systems as SKOS instances is desired.  We found that SKOS is insufficient for the problem.  No aspect of SKOS was found to be wrong, just incomplete.  Therefore, we propose an extension to SKOS, which we call XKOS.</p>
-    </section>
-
-	<section>
-		<h2>Background and Motivation</h2>
-		<p>Semantic technology associated with developments of the Semantic Web and particularly Linked Open Data (LOD) is gaining much wider use and acceptance.  The purpose of current efforts is to marry LOD techniques with needs of the international statistical community.  Specifically, we address the use of the Simple Knowledge Organization System (SKOS), a LOD specification, to satisfy the requirements of classification systems and concept management in general for the statistical community.</p>
-
-<p>The specifics will be described below, but we found that SKOS is insufficient to represent the needs of statistical classifications and concept management.  No aspect of SKOS was found to be wrong, just incomplete.  Therefore, we propose an extension to SKOS, which we call XKOS.</p>
-
-<p>SKOS concept schemes are defined from the point of view of thesauri, which rely on the loosely defined notions of broader than, narrower than, and related to relationships.  Statistical classifications on the other hand rely on the hierarchical relations, which are called generic (generic-specific) and partitive (whole-part).  Further, statistical classifications, through their hierarchies, are structured according to levels.  Levels correspond to all those concepts that are same distance from the top of the hierarchy, and levels are used as a means to identify concepts within a classification used to classify instances at the same specificity.  Finally, concept management requires the use of associations that are more specific than related to.  Causal, sequential, and temporal relations are defined.</p>
-
-<p>The proposed extensions to SKOS were not only guided by the needs of the statistical community but by requirements laid out in ISO standards on terminology, such as ISO 704:2000 and ISO 1087-1:2000.  These standards describe and define the constructs and relations necessary for concept management and a more complete description of statistical classifications.  These documents describe concepts, the terms and codes that designate them, relations that may exist among them, the structure of concepts, and the relationship between concepts and objects in the world they classify.</p>
-
-<p>The result is a more unified approach.  This approach is incorporated into the new XKOS.</p>
-	</section>
-    <section>
-      <h2>Overview of XKOS</h2>
-      <p>
-        There are basically two parts : semantic properties that refine SKOS properties and come mostly from ISO 704 and ISO 1087-1, and properties and class that extend SKOS to allow the description of statistical classifications.
-      </p>
-    </section>
-
-	<section id="nsvoc">
-		<h2>XKOS Namespace and Vocabulary</h2>
-		<p>The XKOS namespace URI is:</p>
-		<ul>
-		  <li><strong>http://purl.org/linked-data/xkos#</strong></li>
-		</ul>
-		<p>The XKOS vocabulary is a set of URIs, given in the left-hand column in the table below.</p>
-		<table border="0" class="simple">
-		  <caption>Table 1. XKOS Vocabulary</caption>
-		  <tbody>
-			<tr>
-			  <th>URI</th>
-			  <th>Definition</th>
-			</tr>
-<tr>
-	<td>xkos:belongsTo</td>
-	<td><a href="#classifications">Section 4. Classifications</a></td>
-</tr>
-
-<tr>
-	<td>xkos:covers</td>
-	<td><a href="#classifications">Section 4. Classifications</a></td>
-</tr>
-
-<tr>
-	<td>xkos:coversExhaustively</td>
-	<td><a href="#classifications">Section 4. Classifications</a></td>
-</tr>
-
-<tr>
-	<td>xkos:coversMutuallyExclusively
-	<td><a href="#classifications">Section 4. Classifications</a></td>
-
-<tr>
-	<td>xkos:succeeds</td>
-	<td><a href="#classifications">Section 4. Classifications</a></td>
-</tr>
-
-<tr>
-	<td>xkos:supercedes</td>
-	<td><a href="#classifications">Section 4. Classifications</a></td>
-</tr>
-
-<tr>
-	<td>xkos:classifiedUnder</td>
-	<td><a href="#classifications">Section 4. Classifications</a></td>
-</tr>
-<tr>
-	<td>xkos:ClassificationLevel</td>
-	<td><a href="#levels">Section 5. Classification levels</a></td>
-</tr>
-<tr>
-	<td>xkos:levels</td>
-	<td><a href="#levels">Section 5. Classification levels</a></td>
-</tr>
-<tr>
-	<td>xkos:numberOfLevels</td>
-	<td><a href="#levels">Section 5. Classification levels</a></td>
-</tr>
-<tr>
-	<td>xkos:depth</td>
-	<td><a href="#levels">Section 5. Classification levels</a></td>
-</tr>
-<tr>
-	<td>xkos:organizedBy</td>
-	<td><a href="#levels">Section 5. Classification levels</a></td>
-</tr>
-<tr>
-	<td>xkos:ConceptAssociation</td>
-	<td><a href="#correspondences">Section 6. Correspondences and concept associations</a></td>
-</tr>
-<tr>
-	<td>xkos:sourceConcept</td>
-	<td><a href="#correspondences">Section 6. Correspondences and concept associations</a></td>
-</tr>
-<tr>
-	<td>xkos:targetConcept</td>
-	<td><a href="#correspondences">Section 6. Correspondences and concept associations</a></td>
-</tr>
-<tr>
-	<td>xkos:Correspondence</td>
-	<td><a href="#correspondences">Section 6. Correspondences and concept associations</a></td>
-</tr>
-<tr>
-	<td>xkos:madeOf</td>
-	<td><a href="#correspondences">Section 6. Correspondences and concept associations</a></td>
-</tr>
-
-<tr>
-	<td>xkos:maxLength</td>
-	<td><a href="#doc-props">Section 7. Documentation properties</a></td>
-</tr>
-<tr>
-	<td>xkos:inclusionNote</td>
-	<td><a href="#doc-props">Section 7. Documentation properties</a></td>
-</tr>
-<tr>
-	<td>xkos:coreContentNote</td>
-	<td><a href="#doc-props">Section 7. Documentation properties</a></td>
-</tr>
-<tr>
-	<td>xkos:additionalContentNote</td>
-	<td><a href="#doc-props">Section 7. Documentation properties</a></td>
-</tr>
-<tr>
-	<td>xkos:exclusionNote</td>
-	<td><a href="#doc-props">Section 7. Documentation properties</a></td>
-</tr>
-<tr>
-	<td>xkos:isPartOf</td>
-	<td><a href="#sem-props">Section 8. Semantic properties</a></td>
-</tr>
-
-<tr>
-	<td>xkos:hasPart</td>
-	<td><a href="#sem-props">Section 8. Semantic properties</a></td>
-</tr>
-<tr>
-	<td>xkos:specializes</td>
-	<td><a href="#sem-props">Section 8. Semantic properties</a></td>
-</tr>
-<tr>
-	<td>xkos:generalizes</td>
-	<td><a href="#sem-props">Section 8. Semantic properties</a></td>
-</tr>
-<tr>
-	<td>xkos:causal</td>
-	<td><a href="#sem-props">Section 8. Semantic properties</a></td>
-</tr>
-<tr>
-	<td>xkos:causes</td>
-	<td><a href="#sem-props">Section 8. Semantic properties</a></td>
-</tr>
-<tr>
-	<td>xkos:causedBy</td>
-	<td><a href="#sem-props">Section 8. Semantic properties</a></td>
-</tr>
-<tr>
-	<td>xkos:sequential</td>
-	<td><a href="#sem-props">Section 8. Semantic properties</a></td>
-</tr>
-<tr>
-	<td>xkos:precedes</td>
-	<td><a href="#sem-props">Section 8. Semantic properties</a></td>
-</tr>
-<tr>
-	<td>xkos:previous</td>
-	<td><a href="#sem-props">Section 8. Semantic properties</a></td>
-</tr>
-<tr>
-	<td>xkos:follows</td>
-	<td><a href="#sem-props">Section 8. Semantic properties</a></td>
-</tr>
-<tr>
-	<td>xkos:next</td>
-	<td><a href="#sem-props">Section 8. Semantic properties</a></td>
-</tr>
-<tr>
-	<td>xkos:temporal</td>
-	<td><a href="#sem-props">Section 8. Semantic properties</a></td>
-</tr>
-<tr>
-	<td>xkos:before</td>
-	<td><a href="#sem-props">Section 8. Semantic properties</a></td>
-</tr>
-<tr>
-	<td>xkos:after</td>
-	<td><a href="#sem-props">Section 8. Semantic properties</a></td>
-</tr>
-<tr>
-	<td>xkos:disjoint</td>
-	<td><a href="#sem-props">Section 8. Semantic properties</a></td>
-</tr>
-
-		  </tbody>
-		</table>
-	</section>
-
-	<section id="classifications">
-		<h2>Classifications</h2>
-		<p>A classification (scheme) is just a skos:ConceptScheme, we don't create a specific XKOS class, but we add a bunch of properties</p>
-		<p>classifiedUnder should probably go here, with an explanation saying that it is just an umbrella</p>
-		<p>We have to describe somewhere the "foaf:focus" trick.</p>
-		<p>And of course we want to write somewhere that succeeds subsumes supercedes.</p>
-<p>The properties in this section describe SKOS Concept Schemes in several ways:</p>
-<ul>
-	<li><p>Relate a given Concept Scheme to others, due to</p></li>
-	<ul>
-		<li><p>Related family (e.g., industrial classifications)</p>
-		<li><p>Versions of single classification (e.g., North American Industrial Classification)</p>
-	</ul>
-	<li><p>All versions <u>succeed</u> previous ones, some <u>supersede</u> as well</p>
-	<li><p>Express coverage</p>
-	<ul>
-		<li><p>Concepts are exhaustive</p>
-		<li><p>Concepts are mutually exclusive</p>
-		<li><p>Both</p>
-	</ul>
-</ul>
-	</section>
-	<section id="levels">
-		<h2>Classification levels</h2>
-		<p>Classifications are usually organized in nested levels of increasing detail.</p>
-		<p>Even when there are no levels, we have conventionnally one level.</p>
-<p>The properties in this section describe the levels that may be in a SKOS Concept Scheme. Every level is organized by some over-arching concept, for instance the sector level of the NAICS.  A classification level is a level
-that is applied to a classification scheme.  A SKOS Concept Scheme has affixed number of levels, and each level may be referenced by its depth, the distance that level is from the root node of the hierarchy.</p>
-	</section>
-	<section id="correspondences">
-		<h2>Correspondences and concept associations</h2>
-		<p>Associations between concepts.</p>
-		<p>Correspondences between classifications or classification schemes.</p>
-		<p>Correspondences and concept associations map the concepts in one SKOS Concept Scheme with those in another SKOS Concept Scheme.  Each concept association has an input or source concept and an output or target concept.  The collection of all such associations for the concepts in two SKOS Concept Schemes comprises a correspondence.</p>
-
-	</section>
-	<section id="doc-props">
-		<h2>Documentation properties</h2>
-		<p>For additional labels, we just have the maxLength property and we must explain the use of prefLabel altLabel with xl:Label instances.</p>
-		<p>Then we have the annotation properties for explanatory notes.</p>
-<p>Each concept in a SKOS concept scheme has related auxiliary information that helps define, use, and differentiate it from the other concepts in the scheme.  Inclusions and exclusions refer to conditions that must be considered
-when determining if some object should be classified to a given concept.  The maximum length for terms or codes can be specified, and notes on content may or may not be included.</p>
-	</section>
-	<section id="sem-props">
-		<h2>Semantic properties</h2>
-<p>The semantic properties extend the possible relations that can be applied between pairs of concepts.  SKOS allows the following relations: <i>broader than</i>, <i>narrower than,</i> and <i>related to</i>. The first wo are hierarchical relations, one in each direction.  However, terminologists recognize two main kinds of hierarchical relations: <i>generic</i> and <i>partitive</i>.  IsPartof and hasPart are <i>partitive</i>; and specializes and generalizes are <i>generic</i>.  In addition, several detailed associations, the <i>related to</i>
-relations, are provided: <i>causal</i> and <i>sequential</i>.  <i>Causal</i> has two directions: <i>causes</i> and <i>causedBy</i>, and sequential has two directions: <i>precedes</i> or <i>previous</i>, and <i>follows</i>
-or <i>next</i>.  <i>Previous</i> and <i>next</i> have the additional criterion that they are <u>transitive</u> relations.  In addition, <i>temporal</i> is a kind of <i>sequential</i> relation, which is subdivided into <i>before</i> and <i>after</i>, in addition which are <u>transitive</u>.  Two concepts are <i>disjoint</i> if no objects
-correspond to both concepts at once.</p>
-	</section>
-	<section id="examples">
-		<h2>Examples and use cases</h2>
-		<section id="nace-example">
-			<h3>NACE example</h3>
-			<p>Take an example with the NACE, adapting the figure made by Thomas</p>
+	</head>
+	<body>
+		<section id="abstract">
+			<p>Semantic technology associated with Linked Open Data (LOD) is gaining much broader use and acceptance. Marrying LOD techniques to those
+				of the international statistical community is the goal. Specifically, the use of the Simple Knowledge Organization System (SKOS) for
+				managing statistical classifications and concept management systems is addressed, since SKOS is widely used. LOD is used to create Web
+				artifacts that machines can interpret, so publishing machine readable statistical classifications and other concept management systems
+				as SKOS instances is desired. We found that SKOS is insufficient for the problem. No aspect of SKOS was found to be wrong, just
+				incomplete. Therefore, we propose an extension to SKOS, which we call XKOS.</p>
 		</section>
-		<section id="fish-example">
-			<h3>Fishery</h3>
-			<p>Fish taxonomists are deviant</p>
+		<section>
+			<h2>Background and Motivation</h2>
+			<p>Semantic technology associated with developments of the Semantic Web and particularly Linked Open Data (LOD) is gaining much wider use
+				and acceptance. The purpose of current efforts is to marry LOD techniques with needs of the international statistical community.
+				Specifically, we address the use of the Simple Knowledge Organization System (SKOS), a LOD specification, to satisfy the requirements
+				of classification systems and concept management in general for the statistical community.</p>
+			<p>The specifics will be described below, but we found that SKOS is insufficient to represent the needs of statistical classifications and
+				concept management. No aspect of SKOS was found to be wrong, just incomplete. Therefore, we propose an extension to SKOS, which we
+				call XKOS.</p>
+			<p>SKOS concept schemes are defined from the point of view of thesauri, which rely on the loosely defined notions of broader than,
+				narrower than, and related to relationships. Statistical classifications on the other hand rely on the hierarchical relations, which
+				are called generic (generic-specific) and partitive (whole-part). Further, statistical classifications, through their hierarchies, are
+				structured according to levels. Levels correspond to all those concepts that are same distance from the top of the hierarchy, and
+				levels are used as a means to identify concepts within a classification used to classify instances at the same specificity. Finally,
+				concept management requires the use of associations that are more specific than related to. Causal, sequential, and temporal relations
+				are defined.</p>
+			<p>The proposed extensions to SKOS were not only guided by the needs of the statistical community but by requirements laid out in ISO
+				standards on terminology, such as ISO 704:2000 and ISO 1087-1:2000. These standards describe and define the constructs and relations
+				necessary for concept management and a more complete description of statistical classifications. These documents describe concepts,
+				the terms and codes that designate them, relations that may exist among them, the structure of concepts, and the relationship between
+				concepts and objects in the world they classify.</p>
+			<p>The result is a more unified approach. This approach is incorporated into the new XKOS.</p>
 		</section>
-	</section>
+		<section>
+			<h2>Overview of XKOS</h2>
+			<p> There are basically two parts : semantic properties that refine SKOS properties and come mostly from ISO 704 and ISO 1087-1, and
+				properties and class that extend SKOS to allow the description of statistical classifications. </p>
+		</section>
+		<section id="nsvoc">
+			<h2>XKOS Namespace and Vocabulary</h2>
+			<p>The XKOS namespace URI is:</p>
+			<ul>
+				<li>
+					<strong>http://purl.org/linked-data/xkos#</strong>
+				</li>
+			</ul>
+			<p>The XKOS vocabulary is a set of URIs, given in the left-hand column in the table below.</p>
+			<table border="0" class="simple">
+				<caption>Table 1. XKOS Vocabulary</caption>
+				<tbody>
+					<tr>
+						<th>URI</th>
+						<th>Definition</th>
+					</tr>
+					<tr>
+						<td>xkos:belongsTo</td>
+						<td>
+							<a href="#classifications">Section 4. Classifications</a>
+						</td>
+					</tr>
+					<tr>
+						<td>xkos:covers</td>
+						<td>
+							<a href="#classifications">Section 4. Classifications</a>
+						</td>
+					</tr>
+					<tr>
+						<td>xkos:coversExhaustively</td>
+						<td>
+							<a href="#classifications">Section 4. Classifications</a>
+						</td>
+					</tr>
+					<tr>
+						<td>xkos:coversMutuallyExclusively</td>
+						<td>
+							<a href="#classifications">Section 4. Classifications</a>
+						</td>
+					</tr>
+					<tr>
+						<td>xkos:succeeds</td>
+						<td>
+							<a href="#classifications">Section 4. Classifications</a>
+						</td>
+					</tr>
+					<tr>
+						<td>xkos:supercedes</td>
+						<td>
+							<a href="#classifications">Section 4. Classifications</a>
+						</td>
+					</tr>
+					<tr>
+						<td>xkos:classifiedUnder</td>
+						<td>
+							<a href="#classifications">Section 4. Classifications</a>
+						</td>
+					</tr>
+					<tr>
+						<td>xkos:ClassificationLevel</td>
+						<td>
+							<a href="#levels">Section 5. Classification levels</a>
+						</td>
+					</tr>
+					<tr>
+						<td>xkos:levels</td>
+						<td>
+							<a href="#levels">Section 5. Classification levels</a>
+						</td>
+					</tr>
+					<tr>
+						<td>xkos:numberOfLevels</td>
+						<td>
+							<a href="#levels">Section 5. Classification levels</a>
+						</td>
+					</tr>
+					<tr>
+						<td>xkos:depth</td>
+						<td>
+							<a href="#levels">Section 5. Classification levels</a>
+						</td>
+					</tr>
+					<tr>
+						<td>xkos:organizedBy</td>
+						<td>
+							<a href="#levels">Section 5. Classification levels</a>
+						</td>
+					</tr>
+					<tr>
+						<td>xkos:ConceptAssociation</td>
+						<td>
+							<a href="#correspondences">Section 6. Correspondences and concept associations</a>
+						</td>
+					</tr>
+					<tr>
+						<td>xkos:sourceConcept</td>
+						<td>
+							<a href="#correspondences">Section 6. Correspondences and concept associations</a>
+						</td>
+					</tr>
+					<tr>
+						<td>xkos:targetConcept</td>
+						<td>
+							<a href="#correspondences">Section 6. Correspondences and concept associations</a>
+						</td>
+					</tr>
+					<tr>
+						<td>xkos:Correspondence</td>
+						<td>
+							<a href="#correspondences">Section 6. Correspondences and concept associations</a>
+						</td>
+					</tr>
+					<tr>
+						<td>xkos:madeOf</td>
+						<td>
+							<a href="#correspondences">Section 6. Correspondences and concept associations</a>
+						</td>
+					</tr>
+					<tr>
+						<td>xkos:maxLength</td>
+						<td>
+							<a href="#doc-props">Section 7. Documentation properties</a>
+						</td>
+					</tr>
+					<tr>
+						<td>xkos:inclusionNote</td>
+						<td>
+							<a href="#doc-props">Section 7. Documentation properties</a>
+						</td>
+					</tr>
+					<tr>
+						<td>xkos:coreContentNote</td>
+						<td>
+							<a href="#doc-props">Section 7. Documentation properties</a>
+						</td>
+					</tr>
+					<tr>
+						<td>xkos:additionalContentNote</td>
+						<td>
+							<a href="#doc-props">Section 7. Documentation properties</a>
+						</td>
+					</tr>
+					<tr>
+						<td>xkos:exclusionNote</td>
+						<td>
+							<a href="#doc-props">Section 7. Documentation properties</a>
+						</td>
+					</tr>
+					<tr>
+						<td>xkos:isPartOf</td>
+						<td>
+							<a href="#sem-props">Section 8. Semantic properties</a>
+						</td>
+					</tr>
+					<tr>
+						<td>xkos:hasPart</td>
+						<td>
+							<a href="#sem-props">Section 8. Semantic properties</a>
+						</td>
+					</tr>
+					<tr>
+						<td>xkos:specializes</td>
+						<td>
+							<a href="#sem-props">Section 8. Semantic properties</a>
+						</td>
+					</tr>
+					<tr>
+						<td>xkos:generalizes</td>
+						<td>
+							<a href="#sem-props">Section 8. Semantic properties</a>
+						</td>
+					</tr>
+					<tr>
+						<td>xkos:causal</td>
+						<td>
+							<a href="#sem-props">Section 8. Semantic properties</a>
+						</td>
+					</tr>
+					<tr>
+						<td>xkos:causes</td>
+						<td>
+							<a href="#sem-props">Section 8. Semantic properties</a>
+						</td>
+					</tr>
+					<tr>
+						<td>xkos:causedBy</td>
+						<td>
+							<a href="#sem-props">Section 8. Semantic properties</a>
+						</td>
+					</tr>
+					<tr>
+						<td>xkos:sequential</td>
+						<td>
+							<a href="#sem-props">Section 8. Semantic properties</a>
+						</td>
+					</tr>
+					<tr>
+						<td>xkos:precedes</td>
+						<td>
+							<a href="#sem-props">Section 8. Semantic properties</a>
+						</td>
+					</tr>
+					<tr>
+						<td>xkos:previous</td>
+						<td>
+							<a href="#sem-props">Section 8. Semantic properties</a>
+						</td>
+					</tr>
+					<tr>
+						<td>xkos:follows</td>
+						<td>
+							<a href="#sem-props">Section 8. Semantic properties</a>
+						</td>
+					</tr>
+					<tr>
+						<td>xkos:next</td>
+						<td>
+							<a href="#sem-props">Section 8. Semantic properties</a>
+						</td>
+					</tr>
+					<tr>
+						<td>xkos:temporal</td>
+						<td>
+							<a href="#sem-props">Section 8. Semantic properties</a>
+						</td>
+					</tr>
+					<tr>
+						<td>xkos:before</td>
+						<td>
+							<a href="#sem-props">Section 8. Semantic properties</a>
+						</td>
+					</tr>
+					<tr>
+						<td>xkos:after</td>
+						<td>
+							<a href="#sem-props">Section 8. Semantic properties</a>
+						</td>
+					</tr>
+					<tr>
+						<td>xkos:disjoint</td>
+						<td>
+							<a href="#sem-props">Section 8. Semantic properties</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
 
-    <section class='appendix'>
-      <h2>Acknowledgements</h2>
-      <p>
-        Many thanks to Robin Berjon for making our lives so much easier with his cool tool.
-      </p>
-    </section>
-  </body>
+		<section id="classifications">
+			<h2>Classifications</h2>
+			<p>A classification (scheme) is just a skos:ConceptScheme, we don't create a specific XKOS class, but we add a bunch of properties</p>
+			<p>classifiedUnder should probably go here, with an explanation saying that it is just an umbrella</p>
+			<p>We have to describe somewhere the "foaf:focus" trick.</p>
+			<p>And of course we want to write somewhere that succeeds subsumes supercedes.</p>
+			<p>The properties in this section describe SKOS Concept Schemes in several ways:</p>
+			<ul>
+				<li>
+					<p>Relate a given Concept Scheme to others, due to</p>
+				</li>
+				<ul>
+					<li>
+						<p>Related family (e.g., industrial classifications)</p>
+					</li>
+					<li>
+						<p>Versions of single classification (e.g., North American Industrial Classification)</p>
+					</li>
+				</ul>
+				<li>
+					<p>All versions <u>succeed</u> previous ones, some <u>supersede</u> as well</p>
+				</li>
+				<li>
+					<p>Express coverage</p>
+				</li>
+				<ul>
+					<li>
+						<p>Concepts are exhaustive</p>
+					</li>
+					<li>
+						<p>Concepts are mutually exclusive</p>
+					</li>
+					<li>
+						<p>Both</p>
+					</li>
+				</ul>
+			</ul>
+		</section>
+		<section id="levels">
+			<h2>Classification levels</h2>
+			<p>Classifications are usually organized in nested levels of increasing detail.</p>
+			<p>Even when there are no levels, we have conventionnally one level.</p>
+			<p>The properties in this section describe the levels that may be in a SKOS Concept Scheme. Every level is organized by some over-arching
+				concept, for instance the sector level of the NAICS. A classification level is a level that is applied to a classification scheme. A
+				SKOS Concept Scheme has affixed number of levels, and each level may be referenced by its depth, the distance that level is from the
+				root node of the hierarchy.</p>
+		</section>
+		<section id="correspondences">
+			<h2>Correspondences and concept associations</h2>
+			<p>Associations between concepts.</p>
+			<p>Correspondences between classifications or classification schemes.</p>
+			<p>Correspondences and concept associations map the concepts in one SKOS Concept Scheme with those in another SKOS Concept Scheme. Each
+				concept association has an input or source concept and an output or target concept. The collection of all such associations for the
+				concepts in two SKOS Concept Schemes comprises a correspondence.</p>
+		</section>
+		<section id="doc-props">
+			<h2>Documentation properties</h2>
+			<p>For additional labels, we just have the maxLength property and we must explain the use of prefLabel altLabel with xl:Label
+				instances.</p>
+			<p>Then we have the annotation properties for explanatory notes.</p>
+			<p>Each concept in a SKOS concept scheme has related auxiliary information that helps define, use, and differentiate it from the other
+				concepts in the scheme. Inclusions and exclusions refer to conditions that must be considered when determining if some object should
+				be classified to a given concept. The maximum length for terms or codes can be specified, and notes on content may or may not be
+				included.</p>
+		</section>
+		<section id="sem-props">
+			<h2>Semantic properties</h2>
+			<p>The semantic properties extend the possible relations that can be applied between pairs of concepts. SKOS allows the following
+				relations: <i>broader than</i>, <i>narrower than,</i> and <i>related to</i>. The first wo are hierarchical relations, one in each
+				direction. However, terminologists recognize two main kinds of hierarchical relations: <i>generic</i> and <i>partitive</i>. IsPartof
+				and hasPart are <i>partitive</i>; and specializes and generalizes are <i>generic</i>. In addition, several detailed associations, the
+					<i>related to</i> relations, are provided: <i>causal</i> and <i>sequential</i>. <i>Causal</i> has two directions: <i>causes</i>
+				and <i>causedBy</i>, and sequential has two directions: <i>precedes</i> or <i>previous</i>, and <i>follows</i> or <i>next</i>.
+					<i>Previous</i> and <i>next</i> have the additional criterion that they are <u>transitive</u> relations. In addition,
+					<i>temporal</i> is a kind of <i>sequential</i> relation, which is subdivided into <i>before</i> and <i>after</i>, in addition
+				which are <u>transitive</u>. Two concepts are <i>disjoint</i> if no objects correspond to both concepts at once.</p>
+		</section>
+		<section id="examples">
+			<h2>Examples and use cases</h2>
+			<section id="nace-example">
+				<h3>NACE example</h3>
+				<p>Take an example with the NACE, adapting the figure made by Thomas</p>
+			</section>
+			<section id="fish-example">
+				<h3>Fishery</h3>
+				<p>Fish taxonomists are deviant</p>
+			</section>
+		</section>
+		<section class="appendix">
+			<h2>Acknowledgements</h2>
+			<p> Many thanks to Robin Berjon for making our lives so much easier with his cool tool. </p>
+		</section>
+	</body>
 </html>
