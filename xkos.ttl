@@ -27,7 +27,7 @@ dc:rights "Copyright © 2012-2013 The DDI Alliance" ;
 cc:license <http://creativecommons.org/licenses/by-nc-sa/3.0/us/> ;
 voaf:classNumber "3"^^xsd:integer ;
 voaf:propertyNumber "35"^^xsd:integer ;
-owl:versionInfo "Version 0.9.9.1 - 2012-10-21" .
+owl:versionInfo "Version 0.9.9.2 - 2012-10-21" .
 
 
 #################################################################
@@ -200,6 +200,7 @@ rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
 
 xkos:classifiedUnder a rdf:Property, owl:ObjectProperty ;
 rdfs:label "classified under"@en, "classé sous"@fr ;
+rdfs:domain rdfs:Resource ;
 rdfs:range skos:Concept ;
 rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
 
