@@ -18,7 +18,7 @@
 <http://purl.org/linked-data/xkos> a owl:Ontology, voaf:Vocabulary ;
 dc:title "XKOS: "@en , "Extension de SKOS pour la représentation des nomenclatures"@fr ;
 rdfs:comment "This ontology is based on work initiated at Dagstuhl Schloss in September 2011"@en ;
-dc:contributor "Wendy L. Thomas", "Daniel Gillman", "Jannik Jensen", "Thomas Bosch", "Richard Cyganiak", "R.T.A.M. Grim", "Yves Jaques" ;
+dc:contributor "Daniel Gillman", "Wendy L. Thomas", "Richard Cyganiak", "Jannik Jensen", "Thomas Bosch", "R.T.A.M. Grim", "Yves Jaques" ;
 dc:creator "Franck Cotton" ;
 voaf:extends <http://www.w3.org/2004/02/skos/core> ;
 vann:preferredNamespacePrefix "xkos" ;
@@ -27,7 +27,7 @@ dc:rights "Copyright © 2012-2013 The DDI Alliance" ;
 cc:license <http://creativecommons.org/licenses/by-nc-sa/3.0/us/> ;
 voaf:classNumber "3"^^xsd:integer ;
 voaf:propertyNumber "35"^^xsd:integer ;
-owl:versionInfo "Version 0.9.9 - 2012-10-19" .
+owl:versionInfo "Version 0.9.9.1 - 2012-10-21" .
 
 
 #################################################################
@@ -212,12 +212,12 @@ rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
 
 xkos:causes a rdf:Property, owl:ObjectProperty ;
 rdfs:label "causes"@en, "est la cause de"@fr ;
-rdfs:subPropertyOf skos:causal ;
+rdfs:subPropertyOf xkos:causal ;
 rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
 
 xkos:causedBy a rdf:Property, owl:ObjectProperty ;
 rdfs:label "caused by"@en, "est causé par"@fr ;
-rdfs:subPropertyOf skos:causal ;
+rdfs:subPropertyOf xkos:causal ;
 rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
 
 xkos:sequential a rdf:Property, owl:ObjectProperty ;
