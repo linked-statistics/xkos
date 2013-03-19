@@ -2,452 +2,903 @@
 <html>
 	<head>
 		<title>XKOS</title>
-		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-		<script src="http://www.w3.org/Tools/respec/respec-w3c-common" class="remove"></script>
-		<script class="remove">
-      var respecConfig = {
-          // specification status (e.g. WD, LCWD, NOTE, etc.). If in doubt use ED.
-          specStatus:           "ED",
-          
-          // the specification's short name, as in http://www.w3.org/TR/short-name/
-          shortName:            "xkos",
+		<meta http-equiv='Content-Type' content='text/html;charset=utf-8'/>
 
-          // if your specification has a subtitle that goes below the main
-          // formal title, define it here
-          subtitle   :  "An SKOS Extension for Statistics",
+		<script src='http://www.w3.org/Tools/respec/respec-w3c-common' class='remove'></script>
+		<script class='remove'>
+			var respecConfig = {
+			  // specification status (e.g. WD, LCWD, NOTE, etc.). If in doubt use ED.
+			  specStatus:           "unofficial",
+			  
+			  // the specification's short name, as in http://www.w3.org/TR/short-name/
+			  shortName:            "xkos",
 
-          // if you wish the publication date to be other than today, set this
-          // publishDate:  "2009-08-06",
+			  // if your specification has a subtitle that goes below the main
+			  // formal title, define it here
+			  subtitle   :  "An SKOS Extension for Statistics",
 
-          // if the specification's copyright date is a range of years, specify
-          // the start date here:
-          // copyrightStart: "2005"
+			  // if you wish the publication date to be other than today, set this
+			  // publishDate:  "2009-08-06",
 
-          // if there is a previously published draft, uncomment this and set its YYYY-MM-DD date
-          // and its maturity status
-          // previousPublishDate:  "1977-03-15",
-          // previousMaturity:  "WD",
+			  // if the specification's copyright date is a range of years, specify
+			  // the start date here:
+			  // copyrightStart: "2005"
 
-          // if there a publicly available Editor's Draft, this is the link
-          edDraftURI:           "http://dev.w3.org/2009/dap/ReSpec.js/documentation.html",
+			  // if there is a previously published draft, uncomment this and set its YYYY-MM-DD date
+			  // and its maturity status
+			  // previousPublishDate:  "1977-03-15",
+			  // previousMaturity:  "WD",
 
-          // if this is a LCWD, uncomment and set the end of its review period
-          // lcEnd: "2009-08-05",
+			  // if there a publicly available Editor's Draft, this is the link
+			  // edDraftURI:           "http://dev.w3.org/2009/dap/ReSpec.js/documentation.html",
 
-          // if you want to have extra CSS, append them to this list
-          // it is recommended that the respec.css stylesheet be kept
-          extraCSS:             ["http://dev.w3.org/2009/dap/ReSpec.js/css/respec.css"],
+			  // if this is a LCWD, uncomment and set the end of its review period
+			  // lcEnd: "2009-08-05",
 
-          // editors, add as many as you like
-          // only "name" is required
-          editors:  [
-              { name: "Franck Cotton", company: "INSEE", companyURL: "http://www.insee.fr/" },
-          ],
+			  // if you want to have extra CSS, append them to this list
+			  // it is recommended that the respec.css stylesheet be kept
+			  extraCSS:             ["http://dev.w3.org/2009/dap/ReSpec.js/css/respec.css"],
 
-          // authors, add as many as you like. 
-          // This is optional, uncomment if you have authors as well as editors.
-          // only "name" is required. Same format as editors.
+			  // editors, add as many as you like
+			  // only "name" is required
+			  editors:  [
+				  { name: "Franck Cotton", company: "INSEE", companyURL: "http://www.insee.fr/" },
+			  ],
 
-          authors:  [
-			  { name: "Richard Cyganiak", company: "DERI", companyURL: "http://www.deri.ie/" },
-			  { name: "Daniel Gillman", company: "Bureau of Labor Statistics", companyURL: "http://www.bls.gov/" },
-			  { name: "Wendy Thomas", company: "Minnesota Population Center", companyURL: "http://www.pop.umn.edu/" },
-          ],
-          
-          // name of the WG
-          wg:           "Dagstuhl Group on Semantic Statistics",
-          
-          // URI of the public WG page
-          wgURI:        "http://example.org/really-cool-wg",
-          
-          // name (without the @w3c.org) of the public mailing to which comments are due
-          wgPublicList: "public-vocabs",
-          
-          // URI of the patent status for this WG, for Rec-track documents
-          // !!!! IMPORTANT !!!!
-          // This is important for Rec-track documents, do not copy a patent URI from a random
-          // document unless you know what you're doing. If in doubt ask your friendly neighbourhood
-          // Team Contact.
-          wgPatentURI:  "",
-      };
-    </script>
+			  // authors, add as many as you like. 
+			  // This is optional, uncomment if you have authors as well as editors.
+			  // only "name" is required. Same format as editors.
+
+			  authors:  [
+				  { name: "Richard Cyganiak", company: "DERI", companyURL: "http://www.deri.ie/" },
+				  { name: "Daniel Gillman", company: "Bureau of Labor Statistics", companyURL: "http://www.bls.gov/" },
+				  { name: "R.T.A.M. Grim", company: "Tilburg University", companyURL: "http://www.tilburguniversity.edu/" },
+				  { name: "Yves Jaques", company: "Food and Agriculture Organization", companyURL: "http://www.fao.org/" },
+				  { name: "Wendy Thomas", company: "Minnesota Population Center", companyURL: "http://www.pop.umn.edu/" },
+			  ],
+			  
+			  // name of the WG
+			  wg:           "Dagstuhl Group on Semantic Statistics",
+			  
+			  // URI of the public WG page
+			  wgURI:        "http://example.org/really-cool-wg",
+			  
+			  // name (without the @w3c.org) of the public mailing to which comments are due
+			  wgPublicList: "public-vocabs",
+			  
+			  // URI of the patent status for this WG, for Rec-track documents
+			  // !!!! IMPORTANT !!!!
+			  // This is important for Rec-track documents, do not copy a patent URI from a random
+			  // document unless you know what you're doing. If in doubt ask your friendly neighbourhood
+			  // Team Contact.
+			  wgPatentURI:  "http://creativecommons.org/licenses/by-nc-sa/3.0/us/",
+
+			  // addition (see bug #44)
+			  localBiblio: {
+			  ANZSIC: "<cite>Australian and New Zealand Standard Industrial Classification (ANZSIC)</cite>, 2006. URL:&#160;<a href=\"http://www.stats.govt.nz/surveys_and_methods/methods/classifications-and-standards/classification-related-stats-standards/industrial-classification.aspx\">http://www.stats.govt.nz/surveys_and_methods/methods/classifications-and-standards/classification-related-stats-standards/industrial-classification.aspx</a>.",
+			  EUROVOC: "<cite>EuroVoc, Multilingual Thesaurus of the European Union</cite>. URL:&#160;<a href=\"http://eurovoc.europa.eu/\">http://eurovoc.europa.eu/</a>.",
+			  ISCED: "<cite>International Standard Classification of Education</cite>. URL:&#160;<a href=\"http://www.uis.unesco.org/Education/Pages/international-standard-classification-of-education.aspx\">http://www.uis.unesco.org/Education/Pages/international-standard-classification-of-education.aspx</a>.",
+			  ISCO: "<cite>International Standard Classification of Occupations</cite>. URL:&#160;<a href=\"http://www.ilo.org/public/english/bureau/stat/isco/index.htm\">http://www.ilo.org/public/english/bureau/stat/isco/index.htm</a>.",
+			  ISIC: "<cite>International Standard Industrial Classification of All Economic Activities</cite>. URL:&#160;<a href=\"http://unstats.un.org/unsd/cr/registry/regcst.asp?Cl=17\">http://unstats.un.org/unsd/cr/registry/regcst.asp?Cl=17</a>.",
+			  ISO1087: "<cite>ISO 1087-1:2000 &#8211; Terminology work &#8211; Vocabulary &#8211; Part 1: Theory and application</cite>. URL:&#160;<a href=\"http://www.iso.org/iso/catalogue_detail.htm?csnumber=20057\">http://www.iso.org/iso/catalogue_detail.htm?csnumber=20057</a>.",
+			  ISO704: "<cite>ISO 704:2009 &#8211; Terminology work &#8211; Principles and methods</cite>. URL:&#160;<a href=\"http://www.iso.org/iso/catalogue_detail.htm?csnumber=38109\">http://www.iso.org/iso/catalogue_detail.htm?csnumber=38109</a>.",
+			  LOCSH: "<cite>Library of Congress Subject Headings</cite>. URL:&#160;<a href=\"http://id.loc.gov/authorities/subjects.html\">http://id.loc.gov/authorities/subjects.html</a>.",
+			  NACE: "<cite>Statistical Classification of Economic Activities in the European Community (Nomenclature statistique des activités économiques dans la Communauté européenne)</cite>. URL:&#160;<a href=\"http://en.wikipedia.org/wiki/Statistical_Classification_of_Economic_Activities_in_the_European_Community\">http://en.wikipedia.org/wiki/Statistical_Classification_of_Economic_Activities_in_the_European_Community</a>.",
+			  NAICS: "<cite>NAICS, North American Industry Classification System</cite>. URL:&#160;<a href=\"http://www.census.gov/eos/www/naics/index.html\">http://www.census.gov/eos/www/naics/index.html</a>.",
+			  NEUCHATEL: "<cite>Neuchâtel Terminology Model for classifications (version 2.1)</cite>. URL:&#160;<a href=\"http://www1.unece.org/stat/platform/pages/viewpage.action?pageId=14319930\">http://www1.unece.org/stat/platform/pages/viewpage.action?pageId=14319930</a>.",
+			  OECD: "<cite>OECD glossary of statistical terms</cite>. URL:&#160;<a href=\"http://stats.oecd.org/glossary/detail.asp?ID=350\">http://stats.oecd.org/glossary/detail.asp?ID=350</a>.",
+			  RAMON: "<cite>Eurostat's metadata server</cite>. URL:&#160;<a href=\"http://ec.europa.eu/eurostat/ramon/index.cfm?TargetUrl=DSP_PUB_WELC\">http://ec.europa.eu/eurostat/ramon/index.cfm?TargetUrl=DSP_PUB_WELC</a>.",
+			  SIC: "<cite>Standard Industrial Classification</cite>. URL:&#160;<a href=\"http://www.census.gov/epcd/www/sic.html\">http://www.census.gov/epcd/www/sic.html</a>.",
+			  SKOS: "<cite>Simple Knowledge Organization System</cite>. URL:&#160;<a href=\"http://www.w3.org/2004/02/skos/\">http://www.w3.org/2004/02/skos/</a>.",
+			  SKOSXL: "<cite>SKOS eXtension for Labels (SKOS-XL)</cite>. URL:&#160;<a href=\"http://www.w3.org/TR/skos-reference/#xl\">http://www.w3.org/TR/skos-reference/#xl</a>.",
+			  TURTLE: "<cite>Turtle, Terse RDF Triple Language, W3C Working Draft</cite>. URL:&#160;<a href=\"http://www.w3.org/TR/turtle/\">http://www.w3.org/TR/turtle/</a>.",
+			  }
+			};
+		</script>
 	</head>
 	<body>
-		<section id="abstract">
-			<p>Semantic technology associated with Linked Open Data (LOD) is gaining much broader use and acceptance. Marrying LOD techniques to those
-				of the international statistical community is the goal. Specifically, the use of the Simple Knowledge Organization System (SKOS) for
-				managing statistical classifications and concept management systems is addressed, since SKOS is widely used. LOD is used to create Web
-				artifacts that machines can interpret, so publishing machine readable statistical classifications and other concept management systems
-				as SKOS instances is desired. We found that SKOS is insufficient for the problem. No aspect of SKOS was found to be wrong, just
-				incomplete. Therefore, we propose an extension to SKOS, which we call XKOS.</p>
+		<section id='abstract'>
+		<p>Semantic technology associated with Linked Open Data (LOD) is gaining much broader use and acceptance. Marrying LOD techniques to those of the international statistical community is the goal. Specifically, the use of the Simple Knowledge Organization System ([[!SKOS]]) for managing statistical classifications and concept management systems is addressed, since SKOS is widely used. LOD is used to create Web artifacts that machines can interpret, so publishing machine readable statistical classifications and other concept management systems as SKOS instances is desired. We found that SKOS is insufficient for the problem.  No aspect of SKOS was found to be wrong, just incomplete. Therefore, we propose an extension to SKOS, which we call XKOS.</p>
+    </section>
+
+	<section>
+		<h2>Background and Motivation</h2>
+		<p>Semantic technology associated with developments of the Semantic Web and particularly Linked Open Data (LOD) is gaining much wider use and acceptance.  The purpose of current efforts is to marry LOD techniques with needs of the international statistical community. Specifically, we address the use of the Simple Knowledge Organization System (SKOS), a LOD specification, to satisfy the requirements of classification systems and concept management in general for the statistical community.</p>
+
+		<p>The specifics will be described below, but we found that SKOS is insufficient to represent the needs of statistical classifications and concept management. No aspect of SKOS was found to be wrong, just incomplete. Therefore, we propose an extension to SKOS, which we call XKOS.</p>
+
+		<p>SKOS concept schemes are defined from the point of view of thesauri, which rely on the loosely defined notions of broader than, narrower than, and related to relationships. Statistical classifications on the other hand rely on the hierarchical relations, which are called generic (generic-specific) and partitive (whole-part). Further, statistical classifications, through their hierarchies, are structured according to levels. Levels correspond to all those concepts that are same distance from the top of the hierarchy, and levels are used as a means to identify concepts within a classification used to classify instances at the same specificity. Finally, concept management requires the use of associations that are more specific than related to. Causal, sequential, and temporal relations are defined.</p>
+
+		<p>The proposed extensions to SKOS were not only guided by the needs of the statistical community but by requirements laid out in ISO standards on terminology, such as ISO 704:2000 ([[!ISO704]]) and ISO 1087-1:2000 ([[!ISO1087]]). These standards describe and define the constructs and relations necessary for concept management and a more complete description of statistical classifications. These documents describe concepts, the terms and codes that designate them, relations that may exist among them, the structure of concepts, and the relationship between concepts and objects in the world they classify.</p>
+
+		<div class="issue">
+			<p>Decide the version of ISO 704 to refer to and the URI.</p>
+			<p>Dan: <cite>Prefer the 2000 versions of ISO 704 and ISO 1087-1 since the newer editions contain some changes I (and the US TAG to TC 37) do not agree with.</cite>
+			<p>Yves: <cite>Some prefer 2000, but 2009 being the most recent I would think is the way to go. Shouldn't we point to the ISO page? http://www.iso.org/iso/catalogue_detail.htm?csnumber=38109</cite></p>
+		</div>
+
+		<p>The result is a more unified approach. This approach is incorporated into the new XKOS.</p>
+	</section>
+
+	<section id="intro">
+		<h2>Introduction</h2>
+		<section id="intro-class">
+			<h3>Understanding statistical classifications</h3>
+			<p class="note">This section draws heavily from the statistical glossary of the OECD ([[OECD]]). Additional references are provided.</p>
+			<p>This section provides a brief introduction to the terminology relevant to the understanding of statistical classifications – classification schemes, statistical classification levels and statistical correspondence tables. The world of statistics is inextricably linked to the statistical production processes and the terminologies used in statistical offices. Some understanding of the production processes and the terminologies used in a statistical office is central to the topics that are discussed below.</p>
+			<p>National statistical organizations and international organizations collect numerous volumes of data on a variety of topics. All these statistical data pertain to statistical units, such as individuals, households, companies or establishments. Statistical organizations can either collect these data directly from the statistical units of interest &#8211; i.e. persons, households, etc. &#8211; or they can define specific criteria for statistical units to gather data on for example regions or economic sectors.</p>
+			<section id="intro-class-def">
+				<h4>What is a statistical classification?</h4>
+				<p>A statistical classification is a set of discrete, exhaustive and mutually exclusive observations, which can be assigned to one or more variables to be measured in the collation and/or presentation of data.</p>
+				<p>The structure of a classification can be either hierarchical or flat. This distinction between a flat vs. a hierarchical classification is explained in detail below. Examples of statistical classifications that are used in European Union are the ISCED for education, ISCO for occupations and NACE for economic activities ([[!ISCED]], [[!ISCO]], [[!ISIC]], [[NACE]]). A complete overview of the statistical classifications that are used in the European Union is available at RAMON ([[RAMON]]).</p>
+			</section>
+			<section id="intro-scheme-def">
+				<h4>What is a statistical classification scheme?</h4>
+				<p>A classification scheme contains descriptive information for an arrangement or division of <i>objects</i> into groups based on characteristics, which the objects have in common. Note that the term <i>object</i> in a statistical classification refers to one or more characteristics (attributes, properties) of a statistical unit. In the same way, the term <i>objects</i> refers to one or more characteristics that are common to a group of statistical units.</p>
+				<p>An example of a set of characteristics that could be shared among objects in a classification scheme, are all the fishery companies that use trawlers with a maximum capacity of 1500 kilograms. Note also that the set of shared characteristics can also be more generically defined. An example would be an aggregate statistic denoting the total amount of fish caught in 2012 across all oceans.</p>
+			</section>
+			<section id="intro-corresp-def">
+				<h4>What is a statistical correspondence table?</h4>
+				<p>A correspondence or concordance table comprises a conceptual mapping between classifications. In a statistical office a correspondence table is used as a tool for linking statistical classifications. A correspondence table systematically explains where, and to what extent categories in one classification are also contained in other classifications, or in earlier versions of the same classification. Methodologically, correspondence tables describe how value sets of classifications are related. An example of a value set would be a detailed description of the industrial activities that can be used as criteria for classifying the statistical units. Describing how the statistical units classified to the groups defined for one classification are classified in other classifications is the objective of the correspondence table.</p>
+				<p>Note that a one-to-one link between versions is not always possible. In practice for example only a limited number of codes of a classification might map to the classification codes of a new version. It is also possible that a specific number of codes in one classification need to be collated under one code in a new classification. The reference list provides an example of a set of concordance tables for the North American Industry Classification System (NAICS, [[NAICS]]).</p>
+			</section>
+			<section id="intro-levels-def">
+				<h4>What are statistical classification levels?</h4>
+				<p>Statistical classifications can be hierarchical or flat. A simple example of a flat classification is a distinction between male and female. Another example of a flat statistical classification is NACE, the classification system used for economic activities of companies in Europe. The first digit is this classification denotes a specific sector of economic activity. For example one stands for agriculture, two for mining, etc. As the first digit in this statistical classification for economic activity only denotes the sector of economic activity, this sector code does not contain any useful information on the order or level. This is different for hierarchical classifications such as ISCED and ISCO, which are respectively used for the classification of educational and occupational attainment. For example the ISCO contains five levels. The lowest level – level 1 –  comprises information on occupations, activities and tasks that require little or no formal education (level 1). Occupations classified at level five comprise complex tasks and activities that require a degree of higher education and usually a number of years of experience in a specific position.</p>
+			</section>
+			<p class="note">To do: Explain distinction between direction and level at digit 3 for ISCED</p>
 		</section>
-		<section>
-			<h2>Background and Motivation</h2>
-			<p>Semantic technology associated with developments of the Semantic Web and particularly Linked Open Data (LOD) is gaining much wider use
-				and acceptance. The purpose of current efforts is to marry LOD techniques with needs of the international statistical community.
-				Specifically, we address the use of the Simple Knowledge Organization System (SKOS), a LOD specification, to satisfy the requirements
-				of classification systems and concept management in general for the statistical community.</p>
-			<p>The specifics will be described below, but we found that SKOS is insufficient to represent the needs of statistical classifications and
-				concept management. No aspect of SKOS was found to be wrong, just incomplete. Therefore, we propose an extension to SKOS, which we
-				call XKOS.</p>
-			<p>SKOS concept schemes are defined from the point of view of thesauri, which rely on the loosely defined notions of broader than,
-				narrower than, and related to relationships. Statistical classifications on the other hand rely on the hierarchical relations, which
-				are called generic (generic-specific) and partitive (whole-part). Further, statistical classifications, through their hierarchies, are
-				structured according to levels. Levels correspond to all those concepts that are same distance from the top of the hierarchy, and
-				levels are used as a means to identify concepts within a classification used to classify instances at the same specificity. Finally,
-				concept management requires the use of associations that are more specific than related to. Causal, sequential, and temporal relations
-				are defined.</p>
-			<p>The proposed extensions to SKOS were not only guided by the needs of the statistical community but by requirements laid out in ISO
-				standards on terminology, such as ISO 704:2000 and ISO 1087-1:2000. These standards describe and define the constructs and relations
-				necessary for concept management and a more complete description of statistical classifications. These documents describe concepts,
-				the terms and codes that designate them, relations that may exist among them, the structure of concepts, and the relationship between
-				concepts and objects in the world they classify.</p>
-			<p>The result is a more unified approach. This approach is incorporated into the new XKOS.</p>
-		</section>
-		<section>
-			<h2>Overview of XKOS</h2>
-			<p> There are basically two parts : semantic properties that refine SKOS properties and come mostly from ISO 704 and ISO 1087-1, and
-				properties and class that extend SKOS to allow the description of statistical classifications. </p>
-		</section>
-		<section id="nsvoc">
-			<h2>XKOS Namespace and Vocabulary</h2>
-			<p>The XKOS namespace URI is:</p>
+		<section id="term-features">
+			<h3>Managing terminological features of classification schemes</h3>
+			<p>In terminology, concepts are said to be designated by signs which denote them. Signs are associated with concepts much as we do in natural language, and these are called designations. Designations are use to communicate concepts much as words do in natural language.</p>
+			<p>Designations come in several kinds: terms are linguistic expressions (i.e., words in natural language); codes are non-linguistic alpha-numeric strings of a specified length; and symbols are pictures, sound waves, etc. Other kinds of designations are possible as well.</p>
+			<p>In classification schemes for statistics, the concepts in the scheme are designated in several ways in practice. There are codes, short "labels", long "labels", and possibly others. Concepts also have definitions, relationships to other concepts, and explanatory text associated with them.</p>
+			<p>When classification schemes are updated, which occurs on a regular basis often, some concepts and designations stay the same with the exception of the code. For many classification schemes, especially ones of a thousand concepts or more, this happens regularly.</p>
+			<p>In SKOS, there are many properties that allow one to record the various designations of a concept: prefLabel; altLabel; hiddenLabel. All are repeatable for different languages.  None can be tied back to a specific <code>skos:ConceptScheme</code>.  That is, a concept scheme cannot know which designations it has without also knowing its concepts.</p>
+			<p>This presents a problem for statistical classifications, since if all that changes from one version of a classification scheme to another is the code, an entirely new concept with associated designations must be created in SKOS.  But, this is entirely inefficient; it weakly supports some kinds of management queries, and doesn’t support the creation of correspondences between classification schemes – an important function in statistics.</p>
+			<p>We recommend a particular solution. Create a common <code>skos:ConceptScheme</code> that contains:</p>
 			<ul>
-				<li>
-					<strong>http://purl.org/linked-data/xkos#</strong>
-				</li>
+				<li>Each concept contained in any version, including definition</li>
+				<li>Each term designation</li>
+				<li>Common explanatory text</li>
+				<li>Other repeated information</li>
 			</ul>
-			<p>The XKOS vocabulary is a set of URIs, given in the left-hand column in the table below.</p>
-			<table border="0" class="simple">
-				<caption>Table 1. XKOS Vocabulary</caption>
-				<tbody>
-					<tr>
-						<th>URI</th>
-						<th>Definition</th>
-					</tr>
-					<tr>
-						<td>xkos:belongsTo</td>
-						<td>
-							<a href="#classifications">Section 4. Classifications</a>
-						</td>
-					</tr>
-					<tr>
-						<td>xkos:covers</td>
-						<td>
-							<a href="#classifications">Section 4. Classifications</a>
-						</td>
-					</tr>
-					<tr>
-						<td>xkos:coversExhaustively</td>
-						<td>
-							<a href="#classifications">Section 4. Classifications</a>
-						</td>
-					</tr>
-					<tr>
-						<td>xkos:coversMutuallyExclusively</td>
-						<td>
-							<a href="#classifications">Section 4. Classifications</a>
-						</td>
-					</tr>
-					<tr>
-						<td>xkos:succeeds</td>
-						<td>
-							<a href="#classifications">Section 4. Classifications</a>
-						</td>
-					</tr>
-					<tr>
-						<td>xkos:supercedes</td>
-						<td>
-							<a href="#classifications">Section 4. Classifications</a>
-						</td>
-					</tr>
-					<tr>
-						<td>xkos:classifiedUnder</td>
-						<td>
-							<a href="#classifications">Section 4. Classifications</a>
-						</td>
-					</tr>
-					<tr>
-						<td>xkos:ClassificationLevel</td>
-						<td>
-							<a href="#levels">Section 5. Classification levels</a>
-						</td>
-					</tr>
-					<tr>
-						<td>xkos:levels</td>
-						<td>
-							<a href="#levels">Section 5. Classification levels</a>
-						</td>
-					</tr>
-					<tr>
-						<td>xkos:numberOfLevels</td>
-						<td>
-							<a href="#levels">Section 5. Classification levels</a>
-						</td>
-					</tr>
-					<tr>
-						<td>xkos:depth</td>
-						<td>
-							<a href="#levels">Section 5. Classification levels</a>
-						</td>
-					</tr>
-					<tr>
-						<td>xkos:organizedBy</td>
-						<td>
-							<a href="#levels">Section 5. Classification levels</a>
-						</td>
-					</tr>
-					<tr>
-						<td>xkos:ConceptAssociation</td>
-						<td>
-							<a href="#correspondences">Section 6. Correspondences and concept associations</a>
-						</td>
-					</tr>
-					<tr>
-						<td>xkos:sourceConcept</td>
-						<td>
-							<a href="#correspondences">Section 6. Correspondences and concept associations</a>
-						</td>
-					</tr>
-					<tr>
-						<td>xkos:targetConcept</td>
-						<td>
-							<a href="#correspondences">Section 6. Correspondences and concept associations</a>
-						</td>
-					</tr>
-					<tr>
-						<td>xkos:Correspondence</td>
-						<td>
-							<a href="#correspondences">Section 6. Correspondences and concept associations</a>
-						</td>
-					</tr>
-					<tr>
-						<td>xkos:madeOf</td>
-						<td>
-							<a href="#correspondences">Section 6. Correspondences and concept associations</a>
-						</td>
-					</tr>
-					<tr>
-						<td>xkos:maxLength</td>
-						<td>
-							<a href="#doc-props">Section 7. Documentation properties</a>
-						</td>
-					</tr>
-					<tr>
-						<td>xkos:inclusionNote</td>
-						<td>
-							<a href="#doc-props">Section 7. Documentation properties</a>
-						</td>
-					</tr>
-					<tr>
-						<td>xkos:coreContentNote</td>
-						<td>
-							<a href="#doc-props">Section 7. Documentation properties</a>
-						</td>
-					</tr>
-					<tr>
-						<td>xkos:additionalContentNote</td>
-						<td>
-							<a href="#doc-props">Section 7. Documentation properties</a>
-						</td>
-					</tr>
-					<tr>
-						<td>xkos:exclusionNote</td>
-						<td>
-							<a href="#doc-props">Section 7. Documentation properties</a>
-						</td>
-					</tr>
-					<tr>
-						<td>xkos:isPartOf</td>
-						<td>
-							<a href="#sem-props">Section 8. Semantic properties</a>
-						</td>
-					</tr>
-					<tr>
-						<td>xkos:hasPart</td>
-						<td>
-							<a href="#sem-props">Section 8. Semantic properties</a>
-						</td>
-					</tr>
-					<tr>
-						<td>xkos:specializes</td>
-						<td>
-							<a href="#sem-props">Section 8. Semantic properties</a>
-						</td>
-					</tr>
-					<tr>
-						<td>xkos:generalizes</td>
-						<td>
-							<a href="#sem-props">Section 8. Semantic properties</a>
-						</td>
-					</tr>
-					<tr>
-						<td>xkos:causal</td>
-						<td>
-							<a href="#sem-props">Section 8. Semantic properties</a>
-						</td>
-					</tr>
-					<tr>
-						<td>xkos:causes</td>
-						<td>
-							<a href="#sem-props">Section 8. Semantic properties</a>
-						</td>
-					</tr>
-					<tr>
-						<td>xkos:causedBy</td>
-						<td>
-							<a href="#sem-props">Section 8. Semantic properties</a>
-						</td>
-					</tr>
-					<tr>
-						<td>xkos:sequential</td>
-						<td>
-							<a href="#sem-props">Section 8. Semantic properties</a>
-						</td>
-					</tr>
-					<tr>
-						<td>xkos:precedes</td>
-						<td>
-							<a href="#sem-props">Section 8. Semantic properties</a>
-						</td>
-					</tr>
-					<tr>
-						<td>xkos:previous</td>
-						<td>
-							<a href="#sem-props">Section 8. Semantic properties</a>
-						</td>
-					</tr>
-					<tr>
-						<td>xkos:follows</td>
-						<td>
-							<a href="#sem-props">Section 8. Semantic properties</a>
-						</td>
-					</tr>
-					<tr>
-						<td>xkos:next</td>
-						<td>
-							<a href="#sem-props">Section 8. Semantic properties</a>
-						</td>
-					</tr>
-					<tr>
-						<td>xkos:temporal</td>
-						<td>
-							<a href="#sem-props">Section 8. Semantic properties</a>
-						</td>
-					</tr>
-					<tr>
-						<td>xkos:before</td>
-						<td>
-							<a href="#sem-props">Section 8. Semantic properties</a>
-						</td>
-					</tr>
-					<tr>
-						<td>xkos:after</td>
-						<td>
-							<a href="#sem-props">Section 8. Semantic properties</a>
-						</td>
-					</tr>
-					<tr>
-						<td>xkos:disjoint</td>
-						<td>
-							<a href="#sem-props">Section 8. Semantic properties</a>
-						</td>
-					</tr>
-				</tbody>
+			<p>Each version of a classification scheme will contain</p>
+			<ul>
+				<li>a new record of each concept, including use of relation foaf:Focus back to its common concept</li>
+				<li>code</li>
+				<li>appropriate relationships to parent and child concepts</li>
+				<li>other one time information</li>
+			</ul>
+
+			<div class="issue">
+				<p>The foaf:focus trick should be explained in more detail. Note that the Lexvo ontology also defines an inverse lvont:isFocusOf property (http://lexvo.org/ontology#isFocusOf).</p>
+				<p>Dan: <cite>Never felt comfortable with the problem nor the solution.</cite></p>
+				<p>Yves: <cite>I've looked a little longer at foaf:focus and I'm concerned that it's not appropriate and that we may need to coin one or two more terms for this. Its intended use is to link concepts to the real world entities they represent, when we instead are simply dealing with versioning issues. TBD.</cite></p>
+			</div>
+			<p>There are drawbacks to this approach, but we feel that this is the most economical solution to a management problem that the statistical community cannot use straight SKOS to address.</p>
+			</section>
+	</section>
+
+    <section id="overview">
+		<h2>Overview of XKOS</h2>
+		<p>XKOS extends SKOS with two main objectives: the first one is to allow the description of statistical classifications, the second one is to introduce refinements of the semantic properties defined in SKOS.</p>
+		<p>In order to describe classifications, XKOS draws from the Neuchâtel model [[NEUCHATEL]], which is a well known standard in the statistical community: the notions of classification levels (<a href="#levels">Section 6</a>) or correspondence tables (<a href="#correspondences">Section 7</a>) are directly taken from this model. Some aspects of the model are rendered in XKOS differently (e.g. classification families by the 'covers' property) or in a more general way (concepts associations, for example). Other aspects (e.g. indexes and variants) are not covered by XKOS. XKOS also defines a few new additional properties that are not present in the Neuchâtel model.</p>
+		<p>The figure below gives an overview of the SKOS/XKOS model for representing classifications and their components. This model will be described in sections 5 to 7.</p>
+		<table class="image">
+			<caption align="bottom">Figure 1 &#8211; Overview of the SKOS/XKOS model for classifications</caption>
+			<tr><td><img src="img/overview.png" alt="SKOS/XKOS model for classifications" title="SKOS/XKOS model for classifications"></td></tr>
+		</table>
+		<p>XKOS also defines documentary properties for classifications (<a href="#doc-props">Section 8</a>). In particular, specializations of the SKOS scope note property are proposed in order to represent the different types of explanatory notes that usually come with statistical classifications.</p>
+		<p>The other objective of XKOS is to make available to concept or classification schemes designers the semantic properties defined by ISO 704 and ISO 1087-1. Those properties are defined in <a href="#doc-props">Section 9</a>, and their articulation with SKOS semantic properties is described. An overall view of the SKOS and XKOS property structure can be found in Annex B.</p>
+    </section>
+
+	<section id="nsvoc">
+		<h2>XKOS Namespace and Vocabulary</h2>
+		<p>The XKOS namespace URI is:</p>
+		<ul>
+			<li><strong>http://purl.org/linked-data/xkos#</strong></li>
+		</ul>
+		<p>The prefix <code>xkos</code> will be associated to this namespace in all this specification.</p>
+		<p>The XKOS vocabulary is a set of URIs, given in the left-hand column in the table below. The right hand column indicates in which section below the corresponding term is explained in more detail.</p>
+		<table border="0" class="simple">
+			<caption>Table 1. XKOS Vocabulary</caption>
+			<thead>
+				<tr>
+					<th>URI</th>
+					<th>Definition</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>xkos:belongsTo</td>
+					<td><a href="#classifications">Section 5. Classifications and classification schemes</a></td>
+				</tr>
+				<tr>
+					<td>xkos:succeeds</td>
+					<td><a href="#classifications">Section 5. Classifications and classification schemes</a></td>
+				</tr>
+				<tr>
+					<td>xkos:supersedes</td>
+					<td><a href="#classifications">Section 5. Classifications and classification schemes</a></td>
+				</tr>
+				<tr>
+					<td>xkos:covers</td>
+					<td><a href="#classifications">Section 5. Classifications and classification schemes</a></td>
+				</tr>
+				<tr>
+					<td>xkos:coversExhaustively</td>
+					<td><a href="#classifications">Section 5. Classifications and classification schemes</a></td>
+				</tr>
+				<tr>
+					<td>xkos:coversMutuallyExclusively</td>
+					<td><a href="#classifications">Section 5. Classifications and classification schemes</a></td>
+				</tr>
+				<tr>
+					<td>xkos:classifiedUnder</td>
+					<td><a href="#classifications">Section 5. Classifications and classification schemes</a></td>
+				</tr>
+				<tr>
+					<td>xkos:ClassificationLevel</td>
+					<td><a href="#levels">Section 6. Classification levels</a></td>
+				</tr>
+				<tr>
+					<td>xkos:depth</td>
+					<td><a href="#levels">Section 6. Classification levels</a></td>
+				</tr>
+				<tr>
+					<td>xkos:numberOfLevels</td>
+					<td><a href="#levels">Section 6. Classification levels</a></td>
+				</tr>
+				<tr>
+					<td>xkos:levels</td>
+					<td><a href="#levels">Section 6. Classification levels</a></td>
+				</tr>
+				<tr>
+					<td>xkos:organizedBy</td>
+					<td><a href="#levels">Section 6. Classification levels</a></td>
+				</tr>
+				<tr>
+					<td>xkos:ConceptAssociation</td>
+					<td><a href="#correspondences">Section 7. Correspondences and concept associations</a></td>
+				</tr>
+				<tr>
+					<td>xkos:sourceConcept</td>
+					<td><a href="#correspondences">Section 7. Correspondences and concept associations</a></td>
+				</tr>
+				<tr>
+					<td>xkos:targetConcept</td>
+					<td><a href="#correspondences">Section 7. Correspondences and concept associations</a></td>
+				</tr>
+				<tr>
+					<td>xkos:Correspondence</td>
+					<td><a href="#correspondences">Section 7. Correspondences and concept associations</a></td>
+				</tr>
+				<tr>
+					<td>xkos:madeOf</td>
+					<td><a href="#correspondences">Section 7. Correspondences and concept associations</a></td>
+				</tr>
+				<tr>
+					<td>xkos:maxLength</td>
+					<td><a href="#doc-props">Section 8. Documentation properties</a></td>
+				</tr>
+				<tr>
+					<td>xkos:inclusionNote</td>
+					<td><a href="#doc-props">Section 8. Documentation properties</a></td>
+				</tr>
+				<tr>
+					<td>xkos:coreContentNote</td>
+					<td><a href="#doc-props">Section 8. Documentation properties</a></td>
+				</tr>
+				<tr>
+					<td>xkos:additionalContentNote</td>
+					<td><a href="#doc-props">Section 8. Documentation properties</a></td>
+				</tr>
+				<tr>
+					<td>xkos:exclusionNote</td>
+					<td><a href="#doc-props">Section 8. Documentation properties</a></td>
+				</tr>
+				<tr>
+					<td>xkos:isPartOf</td>
+					<td><a href="#sem-props">Section 9. Semantic properties</a></td>
+				</tr>
+				<tr>
+					<td>xkos:hasPart</td>
+					<td><a href="#sem-props">Section 9. Semantic properties</a></td>
+				</tr>
+				<tr>
+					<td>xkos:specializes</td>
+					<td><a href="#sem-props">Section 9. Semantic properties</a></td>
+				</tr>
+				<tr>
+					<td>xkos:generalizes</td>
+					<td><a href="#sem-props">Section 9. Semantic properties</a></td>
+				</tr>
+				<tr>
+					<td>xkos:causal</td>
+					<td><a href="#sem-props">Section 9. Semantic properties</a></td>
+				</tr>
+				<tr>
+					<td>xkos:causes</td>
+					<td><a href="#sem-props">Section 9. Semantic properties</a></td>
+				</tr>
+				<tr>
+					<td>xkos:causedBy</td>
+					<td><a href="#sem-props">Section 9. Semantic properties</a></td>
+				</tr>
+				<tr>
+					<td>xkos:sequential</td>
+					<td><a href="#sem-props">Section 9. Semantic properties</a></td>
+				</tr>
+				<tr>
+					<td>xkos:precedes</td>
+					<td><a href="#sem-props">Section 9. Semantic properties</a></td>
+				</tr>
+				<tr>
+					<td>xkos:previous</td>
+					<td><a href="#sem-props">Section 9. Semantic properties</a></td>
+				</tr>
+				<tr>
+					<td>xkos:follows</td>
+					<td><a href="#sem-props">Section 9. Semantic properties</a></td>
+				</tr>
+				<tr>
+					<td>xkos:next</td>
+					<td><a href="#sem-props">Section 9. Semantic properties</a></td>
+				</tr>
+				<tr>
+					<td>xkos:temporal</td>
+					<td><a href="#sem-props">Section 9. Semantic properties</a></td>
+				</tr>
+				<tr>
+					<td>xkos:before</td>
+					<td><a href="#sem-props">Section 9. Semantic properties</a></td>
+				</tr>
+				<tr>
+					<td>xkos:after</td>
+					<td><a href="#sem-props">Section 9. Semantic properties</a></td>
+				</tr>
+				<tr>
+					<td>xkos:disjoint</td>
+					<td><a href="#sem-props">Section 9. Semantic properties</a></td>
+				</tr>
+			</tbody>
+		</table>
+		<p>Other vocabularies used in this document are listed in the table below, with their namespaces and associated prefixes.</p>
+		<table class="simple">
+			<caption>Table 2. Other vocabularies used in this document</caption>
+			<thead>
+				<tr>
+					<th>Prefix</th>
+					<th>URI</th>
+					<th>Description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>dcterms</td>
+					<td>http://purl.org/dc/terms/</td>
+					<td>Dublin Core Metadata Initiative Metadata Terms ([[!DC-TERMS]])</a></td>
+				</tr>
+				<tr>
+					<td>foaf</td>
+					<td>http://xmlns.com/foaf/0.1/</td>
+					<td>FOAF Vocabulary Specification 0.98 ([[FOAF]])</a></td>
+				</tr>
+				<tr>
+					<td>skos</td>
+					<td>http://www.w3.org/2004/02/skos/core#</td>
+					<td>Simple Knowledge Organization System</a></td>
+				</tr>
+				<tr>
+					<td>skosxl</td>
+					<td>http://www.w3.org/2008/05/skos-xl#</td>
+					<td>SKOS eXtension for Labels (SKOS-XL) ([[!SKOSXL]])</a></td>
+				</tr>
+			</tbody>
+		</table>
+		<p>RDF, RDFS and OWL vocabularies are also used, with their usual URIs and prefixes. Information on these standards can be found <a href="http://www.w3.org/standards/semanticweb/ontology">on the W3C web site</a>.</p>
+		<p>The RDF examples are expressed with the Terse RDF Triple language (Turtle) [[!TURTLE]]. Unless otherwise specified, these examples use http://example.org/ns/ as a base namespace; resource names between angle brackets represent URIs in this namespace. Note however that individual resource names used as examples are entirely fictious.</p>
+	</section>
+
+	<section id="classifications">
+		<h2>Classifications and classification schemes</h2>
+		<section id="class-representation">
+			<h3>Representation</h3>
+			<p>In order to represent classifications and classification schemes, XKOS does not define specific classes but uses directly SKOS classes, adding to them different properties that specifically apply to classifications or classification schemes.</p>
+			<p>A classification will be represented as an instance of <code>skos:Concept</code>, and each classification scheme belonging to this classification (e.g. each major version) will be represented by a <code>skos:ConceptScheme</code> and attached to the classification by the <code>xkos:belongsTo</code> property. For example, the european Statistical Classification of Economic Activities (NACE) will be a <code>skos:Concept</code>, and each version of the NACE (the original 1970 version, the 1990 NACE rev. 1, the 2003 NACE Rev. 1.1 and the 2008 NACE Rev. 2) will be <code>skos:ConceptScheme</code>s linking to the NACE by the <code>xkos:belongsTo</code> property.</p>
+
+			<table class="image">
+				<caption align="bottom">Figure 2 &#8211; The NACE classification and the classification schemes that belong to it</caption>
+				<tr><td><img src="img/nace-example.png" alt="The NACE classification" title="The NACE classification"></td></tr>
 			</table>
 		</section>
 
-		<section id="classifications">
-			<h2>Classifications</h2>
-			<p>A classification (scheme) is just a skos:ConceptScheme, we don't create a specific XKOS class, but we add a bunch of properties</p>
-			<p>classifiedUnder should probably go here, with an explanation saying that it is just an umbrella</p>
-			<p>We have to describe somewhere the "foaf:focus" trick.</p>
-			<p>And of course we want to write somewhere that succeeds subsumes supercedes.</p>
-			<p>The properties in this section describe SKOS Concept Schemes in several ways:</p>
+		<section id="class-versioning">
+			<h3>Versioning &#8211; managing information over time</h3>
+			<p>The precise definition of what constitutes a version of a <code>skos:ConceptScheme</code>, <code>skos:Collection</code> or <code>skos:Concept</code> is out of scope for this model, but validity and version information can be represented in simple ways.</p>
+			<p>The property <code>dcterms:valid</code> can express the temporal validity of a concept, classification scheme, etc. In the case of classification, the major versioning activity takes place at the classification scheme level, so that is where the property will normally be attached. When no validity information is attached to a <code>skos:Concept</code> representing a classification item, it is usual to assume that the validity of the item is the same as the validity of the classification scheme it belongs to.</p>
+
+			<div class="issue">
+				<p>Do we agree with the preceding sentence?</p>
+				<p>Dan: <cite>Not sure I agree with this. It is possible a concept could be part of several classification schemes, yet those schemes have different validity periods assigned. I think it will be better to assume indefinite validity unless otherwise specified.</cite></p>
+				<p>Yves: <cite>I agree with it.</cite></p>
+			</div>
+
+			<p>The succession in time of classifications and classification schemes is expressed by the <code>xkos:succeeds</code> property, which is defined at the <code>skos:ConceptScheme</code> level. For example, NACE rev. 2 succeeded to NACE rev. 1.1. In this particular case, the new revision also obsoleted the previous one: the <code>xkos:supersedes</code> property conveys this additional meaning. <code>xkos:supersedes</code> is a sub-property of <code>xkos:succeeds</code> (succeeds subsumes supersedes).</p>
+
+			<div class="issue">
+				<p>I would find more logical to use 'follows' here, and to use 'succeeds' as the subproperty of 'sequential' (where we have 'precedes'). Of course, we would have to renounce to 'succeeds subsumes supersedes', which would break my heart.</p>
+				<p>Dan: <cite>&#9785; &#9785; &#9785;  Yes, I reluctantly agree completely.</cite></p>
+				<p>Yves: <cite>Agree completely. My heart is broken :-).</cite></p>
+			</div>
+
+			<p>When a major version of a classification succeeds to another, the statistical agencies usually have to know how the items of the previous version have evolved under the new version: this is important for the continuity of times series, indexes, national accounts, etc., to give a few example. Thus, it is very common that the agency responsible for the classification establishes a list of correspondences between the items of the two versions: this is a particular example of a correspondence (cf. <a href="#correspondences">Section 7</a>).</p>
+
+		</section>
+
+		<section id="class-coverage">
+			<h3>Coverage</h3>
+			<p>A classification covers a defined field: economic activity, occupations, living organisms, etc. XKOS specifies the <code>xkos:covers</code> property to express this relation. The field covered should be represented by a <code>skos:Concept</code>, for example a term from a well-knowned thesaurus like EuroVoc ([[EUROVOC]]) or the Library of Congress Subject Headings ([[LOCSH]]). If the coverage of the given field is complete (i.e. all notions in the field can potentially be classified under the classification), we say that the coverage is exhaustive. If there is no overlap between the classification items at a given level of the classification, we say that the <code>skos:Concept</code>s representing the items are mutually exclusive. The <code>xkos:coversExhaustively</code> and <code>xkos:coversMutuallyExclusively</code> sub-properties of <code>xkos:covers</code> are introduced to represent these notions. Well-defined classifications usually cover their field in a exhaustive and mutually exclusive way (they form a partition of the field): in this case, <code>xkos:coversExhaustively</code> and <code>xkos:coversMutuallyExclusively</code> will be used together.</p>
+
+			<div class="issue">
+				<p>Shouldn't we also authorize the 'covers' properties at the skos:Concept (classification) level, in addition to the skos:ConceptScheme (classification scheme) and xkos:ClassificationLevel levels?</p>
+				<p>Dan: <cite>Covers refers to situation where several concepts are considered at one, and that is why it is at the CS level.  This doesn’t make sense for one at a time, but maybe I misunderstand.</cite></p>
+				<p>Yves: <cite>I can’t think of a use case for it, but if someone can I would not be opposed.</cite></p>
+			</div>
+
+			<div class="issue">
+				<p>Can we find examples of classification or concept schemes which cover a domain in a not exhaustive or mutually exclusive way?</p>
+				<p>Yves: <cite>Not exhaustive: ASFIS, which covers only “commercially important” aquatic species, not all aquatic species. Not Mutually exclusive: I can’t think of any, would seem to be an undesirable characteristic of a classification scheme!</cite></p>
+				<p>Dan: <cite>For Classification Schemes, it seems to me that ME&E is necessary.  However, for any Concept Scheme, it might be true.  Consider the following: Marital Status Categories = {single, married, widowed, divorced}  These seem to cover all cases, but people who are separated are in a limbo with respect to this, being neither married nor divorced. Personal Electronic Media Products = {stereo, home theater, tv, computer, laptop, mobile device, …}  In this set, it is possible to own several at once.</cite></p>
+			</div>
+
+		</section>
+
+		<section id="class-classifying">
+			<h3>Classifying resources</h3>
+			<p>The main purpose of a classification is to classify the entities that belong to or operate in the field that it covers. In linked data terms, classifying results in the creation of a RDF statement where the resource representing the entity is the subject and the concept representing the classification item is the object. XKOS defines a generic property, <code>xkos:classifiedUnder</code>, that can be used in such statements, but classification criteria are often quite complex: for example, a same enterprise could be classified in different items of a classification of activities, depending on the rules that are used to measure its main economic activity. Thus, it is expected that <code>xkos:classifiedUnder</code> will be specialized for different classification systems.</p>
+		</section>
+
+		<div class="issue">
+			<p>We could create a xkos:variant property.</p>
+			<p>Yves: <cite>Not clear to me. Can you elaborate?</cite></p>
+			<p>Dan: <cite>Agree with Yves.</cite></p>
+			<p>Elaboration: Classification Variant is an object class in the Neuchâtel model, it refers to a classification that has been adapted in some way for a specific usage (for example test a different structure to prepare a new version). A Variant is just another SKOS Concept Scheme, but we could create a <code>xkos:variant</code> property with domain and range <code>skos:ConceptScheme</code> to represent the link between a classification and its variant(s)</p>
+		</div>
+
+		<div class="issue">
+			<p>We are starting to put a lot of specifics on the SKOS Concept Scheme. Shouldn't we create a xkos:Classification?</p>
+			<p>Yves: <cite>Not clear to me. Can you elaborate?</cite></p>
+			<p>Dan: <cite>Why? ME&E are properties that tell you a Concept Scheme is appropriate for classification. In my mind, the structural thing is a Concept Scheme. If the CS is also a classification scheme, that is based on its use, not its structure. In SKOS or XKOS, we can't tell how a CS will be used.</cite></p>
+		</div>
+
+	</section>
+
+	<section id="levels">
+		<h2>Classification levels</h2>
+		<p>Classification schemes are frequently organized in nested levels of increasing detail. ISCO-08, for example, has four levels: at the top level are ten major groups, each of which contain sub-major groups, which in turn are subdivided in minor groups, which contain unit groups. Even when a classification is not structured in levels ("flat classification"), the usual convention, which is adopted here, is to consider that it contains one unique level.</p>
+
+		<p>In XKOS, a classification level is defined as a specialization of <code>skos:Collection</code> named <code>xkos:ClassificationLevel</code>. A classification level can bear an integer property, <code>xkos:depth</code>, that indicates its distance from the (abstract) root node of the hierarchy. In the ISCO case, the level of sub-major groups will have a <code>xkos:depth</code> of 2, whereas the level of unit groups  will have a <code>xkos:depth</code> of 4. The unique level of a flat classification would have a <code>xkos:depth</code> of 1. In addition, a <code>xkos:numberOfLevels</code> property is defined for the classification schemes to document the number of levels they include: ISCO-08 would have an <code>xkos:numberOfLevels</code> of 4.</p>
+
+		<p>The levels of a classification scheme are organized as an <code>rdf:List</code> (implying order), starting with the most aggregated level. The <code>skos:ConceptScheme</code> representing the classification scheme points to the <code>rdf:List</code> of its <code>xkos:ClassificationLevel</code>s with the <code>xkos:levels</code> property.
+		<a href="#anzsic-example">Example 10.1</a> below gives a good representation of this construction.</p>
+		
+		<p>Individual <code>skos:Concept</code> objects are related to the <code>xkos:ClassificationLevel</code> to which they belong by the usual <code>skos:member</code> property (going from the level to the classification item).</p>
+
+		<p>A classification level is often characterized by a generic name for the classification items that it regroups. The ISCO names "major groups" the items of the first level, "sub-major groups" the items of the second level, etc. The NACE uses the terms "sections", "divisions", "groups" and "classes"; the NAICS has "sectors", "subsectors", "groups", etc. This information can be rendered in XKOS by the property <code>xkos:organizedBy</code> that links the <code>xkos:ClassificationLevel</code> object to a <code>skos:Concept</code> representing the generic item for this level (<i>e.g.</i> the concept of an ISCO major group, of a NACE section, etc.).</p>
+
+		<div class="issue">
+			<p>We have define the domain of 'covers' as the union of ConceptScheme and ClassificationLevel, but I don't remember why. I can't find an example where the field covered by a classification level would be different from the one covered by the classification or another level of the classification.</p>
+			<p>Yves: <cite>I have a vague memory of the discussion but not why we reached that conclusion. Also to me it seem that the domain would simply be ConceptScheme.</cite></p>
+			<p>Dan: <cite>Our guiding example was an industrial classification system. The entire CS covers all industries in the national economy. Each level in the CS covers some manner of detail, for instance in NAICS there are sectors, sub-sectors, industry groups, and industries. Each has its own meaning a scope regarding detail, and none is the same as the overall concepts for the NAICS CS.</cite></p>
+		</div>
+
+	</section>
+
+	<section id="correspondences">
+		<h2>Correspondences and concept associations</h2>
+		<p>Different classification schemes can cover the same field, or fields that are semantically related. This induces semantic relations between the classification items that belong to these schemes. A simple example of this is given by two successive major versions of a classification: some items may remain unchanged in the new version, but others will disappear, merge, be created, etc. More complicated n to m correspondences between items of the two versions are frequent.</p>
+
+		<p>A much more complex example of relations between classifications or classification schemes is given by the international system of economic classifications maintained by the United Nations Statistical Division. The European view of this system is well described in the <a href="http://epp.eurostat.ec.europa.eu/cache/ITY_OFFPUB/KS-RA-07-015/EN/KS-RA-07-015-EN.PDF">online publication of the NACE Rev. 2</a> (chapter 1.1). The economic classifications forming this system are linked either by a common structure which is more and more detailed from the international to the European then national levels, or by semantic correspondences between the economic fields covered: activities, products and goods (<i>e.g.</i> activities create products). Here again, the high-level links established between classifications result in more fine-grained correspondances between items: one defined activity will create one or more specific products.</p>
+
+		<p>Since classification items are represented as SKOS Concepts, we could use the usual SKOS associative properties to represent correspondences between them. However, this simple approach has some limitations:</p>
+		<ul>
+			<li>As mentioned above, relations between items in correspondences are often m to n, whereas SKOS properties relate one unique concept to another unique concept. It is always possible to decompose an m to n relation into several 1 to 1 relations, but it is better to have a global vision of a given correspondence. We also want to be able to represent 0 to n relations, for example when an item is created or disappears in a new version of a classification.</li>
+			<li>More globally, we want to be able to group all the fine-grained item associations that compose a given high-level relation between two classification schemes, such as the ones that exist in the international system of economic classifications. Such a collection of item associations is called a correspondance or conversion table, or sometimes a concordance.</li>
+			<li>Lastly, it is often useful to be able to attach additional information (for example notes) to items associations, for example to describe what proportion of the different items are linked in the association.</li>
+		</ul>
+
+		<p>For these reasons, XKOS defines the <code>xkos:ConceptAssociation</code> class that can be used to represent correspondences between classification items when the SKOS properties are not sufficient. Each <code>xkos:ConceptAssociation</code> may have input or source <code>skos:Concept</code>(s) and output or target <code>skos:Concept</code>(s). The complete collection of such associations for all the concepts in two SKOS Concept Schemes forms a correspondence and is expressed as an instance of the <code>xkos:Correspondence</code> class. The <code>xkos:madeOf</code> property is used to link the <code>xkos:Correspondence</code> to its <code>xkos:ConceptAssociation</code> components.</p>
+
+		<p>The following figures illustrate two examples of concept associations between classification items. <a href="#concept-association-example">Example 10.3</a> below gives a more complex real-life example.</p>
+		<table class="image">
+			<caption align="bottom">Figure 3.1 &#8211; Association example &#8211; Item with no correspondence</caption>
+			<tr><td><img src="img/association-1.png" alt="Item with no correspondence" title="Item with no correspondence"></td></tr>
+		</table>
+		<p>&nbsp;</p>
+		<table class="image">
+			<caption align="bottom">Figure 3.2 &#8211; Association example &#8211; m-n correspondence</caption>
+			<tr><td><img src="img/association-2.png" alt="m-n correspondence" title="m-n correspondence"></td></tr>
+		</table>
+
+		<p>The <code>xkos:ConceptAssociation</code> is similar to the Correspondence Item of the Neuchâtel model. However, the <code>xkos:ConceptAssociation</code> can describe the relationship of any number of source concepts to any number of target concepts rather than expressing the association through a set of pair-wise associations.</p>
+
+		<p>As already mentioned, there are different ypes of correspondences between classifications, classification schemes or classification items:</p>
+		<ul>
+			<li>Between classification on the same field, for example North American and European activities classifications</li>
+			<li>Between different linked fields, for example classifications of activities and products</li>
+			<li>Historical correspondence, for example SIC ([[SIC]]) to NAICS</li>
+			<li>Versioning of items over time within a given classification scheme</li>
+		</ul>
+
+		<p>In this version, XKOS does not define any properties or sub-classes for <code>xkos:Correspondence</code> and <code>xkos:ConceptAssociation</code> in order to model these different types of correspondences. This may be added in a future version.</p>
+	</section>
+
+	<section id="doc-props">
+		<h2>Documentation properties</h2>
+		<p>Statistical classifications usually come with textual material that describe in detail the structure and use of the classification, the content of the different items, the past decisions taken on classifying field entities, etc. This material is organized in notes attached to the various objects described above. XKOS defines a set of sub-properties of <code>skos:scopeNote</code> that correspond to a typology of explanatory notes which is widely used for statistical classifications.</p>
+
+		<p>For additional labels, we just have the maxLength property and we must explain the use of prefLabel altLabel with xl:Label instances.</p>
+		<p>Then we have the annotation properties for explanatory notes.</p>
+		<p>Each concept in a SKOS concept scheme has related auxiliary information that helps define, use, and differentiate it from the other concepts in the scheme.  Inclusions and exclusions refer to conditions that must be considered when determining if some object should be classified to a given concept.  The maximum length for terms or codes can be specified, and notes on content may or may not be included.</p>
+		<section id="add-labels">
+			<h3>Additional labels</h3>
+			<p>The use of labels in classification systems can be complex. A concept may have multiple labels of varying lengths provided for different purposes. In addition, a concept may have a notation or code that is specific to the use of the concept within a specific classification scheme. XKOS supports the ability to assign multiple labels to a concept, use the concept within a specific classification scheme using foaf:focus and then to separately attach the notation or code to the concept within the specific classification scheme.</p>
+
+			<p>When defining labels for a concept by length, i.e., full label, labels of maximum length (65 characters and  40 characters), a number of scenarios might arise.</p>
 			<ul>
-				<li>
-					<p>Relate a given Concept Scheme to others, due to</p>
-				</li>
-				<ul>
-					<li>
-						<p>Related family (e.g., industrial classifications)</p>
-					</li>
-					<li>
-						<p>Versions of single classification (e.g., North American Industrial Classification)</p>
-					</li>
-				</ul>
-				<li>
-					<p>All versions <u>succeed</u> previous ones, some <u>supersede</u> as well</p>
-				</li>
-				<li>
-					<p>Express coverage</p>
-				</li>
-				<ul>
-					<li>
-						<p>Concepts are exhaustive</p>
-					</li>
-					<li>
-						<p>Concepts are mutually exclusive</p>
-					</li>
-					<li>
-						<p>Both</p>
-					</li>
-				</ul>
+				<li>The full label is less than 40 characters (no additional labels required)</li>
+				<li>The full label is more than 40 characters but less than or equal to 65 characters (one additional label required)</li>
+				<li>The full label is more than 65 characters (two additional labels required)</li>
 			</ul>
+			<p>In all cases the <code>xkos:prefLabel</code> is used to relate the Full label. If additional labels are required an <code>skosxl:Label</code> is related using <code>xkos:prefLabel</code>. The content of that label is associated using <code>rdfs:label</code> and an additional association to the maximum allowed length of the label is provided using <code>xkos:maxLength</code>.</p>
+
+			<table class="image">
+				<caption align="bottom">Figure 4 &#8211; Labels of maximum length</caption>
+				<tr><td><img src="img/labels-1.png" alt="Labels of maximum length" title="Labels of maximum length"></td></tr>
+				<tr><td><img src="img/labels-2.png" alt="Labels of maximum length" title="Labels of maximum length"></td></tr>
+			</table>
+
+			<div class="issue">
+				<p>Does this mechanism work when you want to create several additional labels of different lengths (eg 40 and 65)? In this case you have several skosxl:prefLabel resources, with the same literal value but different properties. Keep only one and give it two values for maxLength?</p>
+				<p>Yves: <cite>I’m still wondering here if the length value, which is basically an input mask really belongs in a classification. I mean, where are the semantics in that? I see two choices really, a) exclude such support (frankly I have not seen a classification scheme that formally includes input masks as part of the scheme – aren’t we mixing internal data serialization needs and classifications?); b) they could be considered notations instead of labels, thus being typed literals one could define datatypes to constrain their length. Our current technique is I think not at all good and I don’t like either solution that Franck is offering in his example.</cite></p>
+				<p>Dan: <cite>Think I agree with Yves that we just take length out.  Who cares?  As Yves says, there’re no CS semantics attached to it.  If someone thinks they need it, they can extend XKOS and add it in.</cite></p>
+			</div>
+
 		</section>
-		<section id="levels">
-			<h2>Classification levels</h2>
-			<p>Classifications are usually organized in nested levels of increasing detail.</p>
-			<p>Even when there are no levels, we have conventionnally one level.</p>
-			<p>The properties in this section describe the levels that may be in a SKOS Concept Scheme. Every level is organized by some over-arching
-				concept, for instance the sector level of the NAICS. A classification level is a level that is applied to a classification scheme. A
-				SKOS Concept Scheme has affixed number of levels, and each level may be referenced by its depth, the distance that level is from the
-				root node of the hierarchy.</p>
+
+		<section id="note-ext">
+			<h3>Explanatory notes</h3>
+			<p>Classifications require a range of specialized note that indicate various types of descriptive properties used in defining the concept. Definitions have three forms of content. Central content is a description of those things known specifically to be included in a concept. Limit content expresses those things that were either identified at a later point to be included, clarify decisions based on specific cases, or are otherwise clarifications of “gray” areas. Notes containing any arbitrary decisions fall into this type of limit content. Finally, concepts are defined as a set of things they exclude. These are things that might appear to be included but have been associated with other concepts in the classification. Exclusion statements provide both the list of items and their appropriate concepts.</p>
+
+			<p>SKOS contains the property <code>skos:scopeNote</code> which is a sub-property of <code>skos:note</code> which itself is a type of <code>owl:annotationProperty</code>. XKOS extends the property <code>skos:scopeNote</code> to define additional sub-properties needed to support the model described abover. The sub-properties added to <code>skos:scopeNote</code> include an <code>xkos:inclusionNote</code> and <code>xkos:exclusionNote</code>. Additional sub-properties were added to <code>xkos:inclusionNote</code> to further define the type of inclusion specification using the sub-properties <code>xkos:coreContentNote</code> (to identify central content) and <code>xkos:additionalContentNote</code> (to identify limit content).</p>
+			<table class="image">
+				<caption align="bottom">Figure 5 &#8211; XKOS annotations</caption>
+				<tr><td><img src="img/annotations.png" alt="XKOS annotations" title="XKOS annotations"></td></tr>
+			</table>
+
 		</section>
-		<section id="correspondences">
-			<h2>Correspondences and concept associations</h2>
-			<p>Associations between concepts.</p>
-			<p>Correspondences between classifications or classification schemes.</p>
-			<p>Correspondences and concept associations map the concepts in one SKOS Concept Scheme with those in another SKOS Concept Scheme. Each
-				concept association has an input or source concept and an output or target concept. The collection of all such associations for the
-				concepts in two SKOS Concept Schemes comprises a correspondence.</p>
+	</section>
+
+	<section id="sem-props">
+		<h2>Semantic properties</h2>
+		<p>The semantic properties extend the possible relations that can be applied between pairs of concepts.  SKOS allows the following relations: <i>broader than</i>, <i>narrower than,</i> and <i>related to</i>. The first wo are hierarchical relations, one in each direction.  However, terminologists recognize two main kinds of hierarchical relations: <i>generic</i> and <i>partitive</i>.  IsPartof and hasPart are <i>partitive</i>; and specializes and generalizes are <i>generic</i>.  In addition, several detailed associations, the <i>related to</i> relations, are provided: <i>causal</i> and <i>sequential</i>.  <i>Causal</i> has two directions: <i>causes</i> and <i>causedBy</i>, and sequential has two directions: <i>precedes</i> or <i>previous</i>, and <i>follows</i> or <i>next</i>.  <i>Previous</i> and <i>next</i> have the additional criterion that they are <u>transitive</u> relations.  In addition, <i>temporal</i> is a kind of <i>sequential</i> relation, which is subdivided into <i>before</i> and <i>after</i>, in addition which are <u>transitive</u>.  Two concepts are <i>disjoint</i> if no objects correspond to both concepts at once.</p>
+
+		<p>The management of classification structures requires further specification of a number of SKOS terms in order to describe very specific relationships. XKOS has chosen to address these as refinements of existing SKOS terms whenever possible in order to facilitate understanding among users of related domain areas:</p>
+		<ul>
+			<li>skos:broader and its inverse skos:narrower</li>
+			<li>skos:related a refinement of several associative properties</li>
+		</ul>
+
+		<p>The refinements of skos:broader and skos:narrower focus on the differentiating between the ideas of a generic relationship (generalized/specialized) and a partitive relationship (whole/part). These are important distinctions in many classification structures.</p>
+
+		<p>XKOS defines the following sub-type for skos:broader and skos:narrower</p>
+		<ul>
+			<li><code>xkos:generalizes</code> is a sub-type of <code>skos:broader</code></li>
+			<li><code>xkos:specializes</code> is a sub-type of <code>skos:narrower</code></li>
+		</ul>
+		<pre class='example'>
+			<p>The term Vehicle is a generalized description of which Car is a specialized type of Vehicle.</p>
+		</pre>
+		<ul>
+			<li><code>xkos:hasPart</code> is a sub-type of <code>skos:broader</code></li>
+			<li><code>xkos:isPartOf</code> is a sub-type of <code>skos:narrower</code></li>
+		</ul>
+		<pre class='example'>
+			<p>The term Car has a part with the term SteeringWheel.</p>
+		</pre>
+
+		<div class="issue">
+			<p>The OIICS classification was identified as a use case for both partitive relations and generic/specific relations. Dan, could you elaborate?</p>
+			<p>Dan: OIICS = Occupational Injury and Illness Classification System. This has 4 facets called<br/>Nature<br/>Body part<br/>Source<br/>Event</p>
+			<p>The idea is to classify each work related injury or illness which causes missed time at work with the 4 facets.</p>
+			<p>The Body Part facet classification uses partitive relationships throughout:<br/>1&#8195;Head<br/>1.3&#8195;Face<br/>1.3.3&#8195;Nose<br/>1.3.3.4&#8195;Sinus(es)</p>
+			<p>These features are related through the part-whole relation.</p>
+			<p>The Nature facet classification uses generic relationships throughout:<br/>2&#8195;Diseases and Disorders of Body Systems<br/>2.3&#8195;Circulatory System Diseases<br/>2.3.3&#8195;Ischemic Heart Disease, including heart attack<br/>2.3.3.1&#8195;Myocardial Infarction (heart attack)</p>
+			<p>These features are related through the specific-generic relation.</p>
+
+		</div>
+
+		<p>XKOS provides several refinements to <code>skos:related</code> which define causal and sequential relationships. These are initially separated into causal and sequential relationship types which are then further defined as shown in the diagram.</p>
+
+		<p>Causal relationships are either <code>xkos:caused</code> or <code>xkos:causedBy</code>.</p>
+
+		<p>Sequential relationships may be transitive or intransitive. When transitive the relationship is expressed by the pair <code>xkos:precedes</code> and <code>xkos:follows</code>. When not transitive the relationship is expressed by the pair <code>xkos:previous</code> and <code>xkos:next</code>.</p>
+
+		<h6>Example of transitive and non-transitive sequential relationships</h6>
+		<p>Consider the following sequence going left to right:</p> 
+
+		<p>A &#8594; B &#8594; C &#8594; D &#8594; E</p>
+
+		<p>If a transitive relationship to C is being described, C precedes D and E (which follow C) and follows A and B (which precede C). The relation implied by <code>xkos:precedes</code> is n-m and <code>xkos:follows</code> is n+m where m is an number >= 1.</p>
+		<p>If a non-transitive relationship needs to be expressed between C and D then C is previous in order to D and D is next in order C. The relation implied by <code>xkos:previous</code> is n-1 and <code>xkos:next</code> is n+1.</p> 
+
+		<p>Temporal relationships are a specific type of sequential where one event or object is before or after another in terms of time. Temporal relationships are transitive and are expressed as <code>xkos:before</code> and <code>xkos:after</code>.</p> 
+
+		<p>Note that a concept may have a temporal aspect that is not sequential in nature but simply an expression of the period for which it is applicable. This is expressed using <code>dcterms:valid</code> which provides the date range of validity.</p> 
+	</section>
+
+	<section id="examples">
+		<h2>Examples</h2>
+		<section id="anzsic-example">
+			<h3>Statistical classification (ANZSIC)</h3>
+			<p>The following figure gives an example inspired by the ANZSIC (Australian and New Zealand Industry Classification [[ANZSIC]]), which is a classification covering the field of economic activity. A small excerpt is shown here, limited to the classification object itself and its levels, as well as one item of the most detailed level (Class 6720 &#8211; Real Estate Services) and its parent items. Note that the URI employed in this example are entirely fictitious, since the ANZSIC has not yet been published as RDF.</p>
+			<table class="image">
+				<caption align="bottom">Figure 6 &#8211; Statistical classification &#8211; ANZSIC</caption>
+				<tr><td><img src="img/anzsic.png" alt="Classification example - ANZSIC" title="Classification example - ANZSIC"></td></tr>
+			</table>
+			<p>On the left of the figure is the <code>skos:ConceptScheme</code> instance that corresponds to the ANZIC 2006 classification scheme, with its various SKOS and Dublin Core properties. Additionnal XKOS properties indicate that the classification has four levels and covers the field of economic activity, represented here as a concept from the EuroVoc thesaurus. In this case, the coverage is intended to be exhaustive and without overlap, so <code>xkos:coversExhaustively</code> and <code>xkos:coversMutuallyExclusively</code> could have been used together instead of <code>xkos:covers</code>.</p>
+			<p>The four levels are instances of <code>xkos:ClassificationLevel</code>; they are organized as a <code>rdf:List</code> which is attached to the classification by the <code>xkos:levels</code> property. Some level information has been represented on the top level, for example its depth in the classification (<code>xkos:depth</code>) and the concept that characterizes the items it is composed of (<code>xkos:organizedBy</code>). In the same fashion, concepts of subdivision, group and class could be created to describe the items of the lower levels.</p>
+			<p>The usual SKOS properties are used to connect the classification items to their respective level (<code>skos:member</code>) and to the classification (<code>skos:inScheme</code> or its specialization <code>skos:topConceptOf</code>) for the items of the first level). Similarly, <code>skos:narrower</code> is used to express the hierarchical relations between the items, but the subproperties defined in this specification could also be used. For example, <code>xkos:hasPart</code> could express the partitive relation between subdivision 67 ("Property Operators and Real Estate Services") and group 672 ("Real Estate Services").</p>
+			<p>For clarity, the properties of the classification items (code, labels, notes) have not been included in the figure.</p>
 		</section>
-		<section id="doc-props">
-			<h2>Documentation properties</h2>
-			<p>For additional labels, we just have the maxLength property and we must explain the use of prefLabel altLabel with xl:Label
-				instances.</p>
-			<p>Then we have the annotation properties for explanatory notes.</p>
-			<p>Each concept in a SKOS concept scheme has related auxiliary information that helps define, use, and differentiate it from the other
-				concepts in the scheme. Inclusions and exclusions refer to conditions that must be considered when determining if some object should
-				be classified to a given concept. The maximum length for terms or codes can be specified, and notes on content may or may not be
-				included.</p>
+		<section id="fish-hierarchy-example">
+			<h3>Fisheries &#8211; Simple hierarchy</h3>
+			<p>This example shows the encoding of a simple set of three classification items found within the International Standard Statistical Classification of Aquatic Animals and Plants (ISSCAAP). A number of declarations are included for completeness that in reality would likely be grouped in a second common scheme to improve reusability, e.g. custom datatypes and classification families.</p>
+			<table class="image">
+				<caption align="bottom">Figure 7 &#8211; Fisheries example &#8211; Simple hierarchy</caption>
+				<tr><td><img src="img/XKOS_9.2_Fisheries.png" alt="Fisheries example - Simple hierarchy" title="Fisheries example - Simple hierarchy"></td></tr>
+			</table>
+				
+			<pre class='example'>
+				<p>@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+				@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+				@prefix skos: &lt;http://www.w3.org/2004/02/skos/core#&gt; .
+				@prefix owl: &lt;http://www.w3.org/2002/07/owl#&gt; .
+				@prefix xkos: &lt;http://purl.org/linked-data/xkos#&gt; .
+				@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+				@prefix fi: &lt;http://www.fao.org/fishery/ns#&gt; .
+
+				#datatypes, used to type notations which are used for codes
+				fi:ISSCAAPGroupCode a rdfs:Datatype;
+					rdfs:comment "ISSCAAP Group code" ;
+					owl:onDatatype xsd:string;
+					owl:withRestrictions (
+						[
+							xsd:pattern "[0-9]{2,}"
+						]
+					) .
+
+				fi:ISSCAAPDivisionCode a rdfs:Datatype;
+					rdfs:comment "ISSCAAP Division code" ;
+					owl:onDatatype xsd:string;
+					owl:withRestrictions (
+						[
+							xsd:pattern "[0-9]{1,}"
+						]
+					) .
+
+				fi:FAO3Alpha a rdfs:Datatype;
+					rdfs:comment "FAO 3-Alpha code" ;
+					owl:onDatatype xsd:string;
+					owl:withRestrictions (
+						[
+							xsd:pattern "[A-Z]{3,}"
+						]
+					) .
+
+				fi:FAOTaxonomicCode a rdfs:Datatype;
+					rdfs:comment "FAO Taxonomic code" ;
+					owl:onDatatype xsd:string;
+					owl:withRestrictions (
+						[
+							xsd:pattern "[0-9]{10,}"
+						]
+					) .
+
+				#This could probably be done using standards from Darwin Core	
+				fi:FAOScientificName a rdfs:Datatype;
+					rdfs:comment "FAO Scientific name" ;
+					owl:onDatatype xsd:string.
+
+				#create a concept for the family of classifications
+				fi:AquaticAnimalsAndPlants rdf:type skos:Concept;
+					skos:prefLabel "Aquatic Animals and Plants Family of Classifications"@en.
+
+				#create a concept for the classification that is independent of the set of versions	
+				fi:ISSCAAP rdf:type skos:Concept;
+					skos:prefLabel "International Standard Statistical Classification of Aquatic Animals and Plants 2005"@en.
+
+				#generic classification levels that can be reused
+				fi:ISSCAAP_Division rdf:type skos:Concept;
+					skos:prefLabel "ISSCAAP Division"@en.
+
+				fi:ISSCAAP_Group rdf:type skos:Concept;
+					skos:prefLabel "ISSCAAP Group"@en.
+
+				fi:ASFIS rdf:type skos:Concept;
+					skos:prefLabel "ASFIS"@en.
+
+				#classification levels for this particular classification scheme
+				fi:ISSCAAP_1 rdf:type xkos:ClassificationLevel;
+					xkos:organizedBy fi:ISSCAAP_division;
+					xkos:coversMutuallyExclusively fi:AquaticAnimalsAndPlants;
+					xkos:depth 1;
+					skos:member fi:ISSCAAP_3.	
+
+				fi:ISSCAAP_2 rdf:type xkos:ClassificationLevel;
+					xkos:organizedBy fi:ISSCAAP_group;
+					xkos:coversMutuallyExclusively fi:AquaticAnimalsAndPlants;
+					xkos:depth 2;
+					skos:member fi:ISSCAAP_3.	
+
+				fi:ISSCAAP_3 rdf:type xkos:ClassificationLevel;
+					xkos:organizedBy fi:ASFIS;
+					xkos:coversMutuallyExclusively fi:AquaticAnimalsAndPlants;
+					xkos:depth 3;
+					skos:member fi:ASFIS_COD.	
+
+				#the classification scheme
+				fi:ISSCAAP_2005 rdf:type skos:ConceptScheme;
+					skos:prefLabel "International Standard Statistical Classification of Aquatic Animals and Plants 2005"@en;
+					xkos:belongsTo fi:ISSCAAP;
+					xkos:coversMutuallyExclusively fi:AquaticAnimalsAndPlants;
+					xkos:numberOfLevels 3;
+					xkos:levels fi:ISSCAAP_division, fi:ISSCAAP_group, fi:ASFIS;
+					xkos:succeeds &lt;http://www.fao.org/fishery/ns#ISSCAAP_2001&gt;.
+
+				fi:ASFIS_COD rdf:type skos:Concept;
+					skos:inScheme fi:ISSCAAP;
+					skos:prefLabel "Atlantic Cod"@en;
+					skos:prefLabel "Morue de l'Atlantique"@fr;
+					skos:prefLabel "Bacalao del Atl‡ntico"@es;
+					skos:altLabel "Cod"@en;
+					skos:altLabel "Morue"@fr;
+					skos:altLabel "Bacalao"@es;
+					skos:notation "COD"^^fi:FAO3Alpha;
+					skos:notation "1480400202"^^fi:FAOTaxonomicCode;
+					skos:notation "Gadus morhua, Linnaeus 1758"^^fi:FAOScientificName;
+					xkos:specializes fi:ISSCAAP_32.
+
+				fi:ISSCAAP_32 rdf:type skos:Concept;
+					skos:inScheme fi:ISSCAAP;
+					skos:prefLabel "Cods, Hakes, Haddocks"@en;
+					skos:notation "32"^^fi:ISSCAAPGroupCode;
+					xkos:generalizes fi:ASFIS_COD.
+
+				fi:ISSCAAP_3 rdf:type skos:Concept;
+					skos:inScheme fi:ISSCAAP;
+					skos:prefLabel "Marine Fishes"@en;
+					skos:notation "3"^^fi:ISSCAAPDivisionCode;
+					xkos:generalizes fi:ISSCAAP_32.
+				</p>
+			</pre>
 		</section>
-		<section id="sem-props">
-			<h2>Semantic properties</h2>
-			<p>The semantic properties extend the possible relations that can be applied between pairs of concepts. SKOS allows the following
-				relations: <i>broader than</i>, <i>narrower than,</i> and <i>related to</i>. The first wo are hierarchical relations, one in each
-				direction. However, terminologists recognize two main kinds of hierarchical relations: <i>generic</i> and <i>partitive</i>. IsPartof
-				and hasPart are <i>partitive</i>; and specializes and generalizes are <i>generic</i>. In addition, several detailed associations, the
-					<i>related to</i> relations, are provided: <i>causal</i> and <i>sequential</i>. <i>Causal</i> has two directions: <i>causes</i>
-				and <i>causedBy</i>, and sequential has two directions: <i>precedes</i> or <i>previous</i>, and <i>follows</i> or <i>next</i>.
-					<i>Previous</i> and <i>next</i> have the additional criterion that they are <u>transitive</u> relations. In addition,
-					<i>temporal</i> is a kind of <i>sequential</i> relation, which is subdivided into <i>before</i> and <i>after</i>, in addition
-				which are <u>transitive</u>. Two concepts are <i>disjoint</i> if no objects correspond to both concepts at once.</p>
+		<section id="concept-association-example">
+			<h3>Concept association</h3>
+			<p>This example shows the use of the Correspondence and ConceptAssociation classes to create correspondences across two classification schemes; these might be different versions of one classification or two different classifications from the same family of classifications. in this example FAO Commodity List and the Central Product Classification V2.1 are used. It is only a fragment, and the actual classifications are not fleshed out as concepts. To see an example of that go to case 1.</p>
+			<table class="image">
+				<caption align="bottom">Figure 8 &#8211; Concept association example</caption>
+				<tr><td><img src="img/concept-association-example.png" alt="Concept association example" title="Concept association example"></td></tr>
+			</table>
+			<pre class='example'>
+				<p>@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+				@prefix owl: &lt;http://www.w3.org/2002/07/owl#&gt; .
+				@prefix xkos: &lt;http://purl.org/linked-data/xkos#&gt; .
+				@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+				@prefix skos: &lt;http://www.w3.org/2004/02/skos/core#&gt; .
+				@prefix ess: &lt;http://www.fao.org/ess/ns#&gt; .
+				@prefix cpc: &lt;http://unstats.un.org/ns#&gt; .
+
+				#A Correspondence is madeOf a set of ConceptAssociations
+				ess:FCL2012_CPC2 rdf:type xkos:Correspondence;
+					skos:prefLabel "Correspondence from FAO Commodity list to Central Product Classification"@en;
+					xkos:madeOf ess:FCL2012_CPC2_1, ess:FCL2012_CPC2_2, ess:FCL2012_CPC2_3.
+
+				#Each ConceptAssociation represents a mapping across two items
+				#note that this association is 1:n
+				ess:FCL2012_CPC2_1 rdf:type xkos:ConceptAssociation;
+					rdfs:comment "ipsum lorum";
+					xkos:sourceConcept ess:FCL0015;
+					xkos:targetConcept cpc:CPC01111;
+					xkos:targetConcept cpc:CPC01112.
+
+				#note that this association is n:m
+				ess:FCL2012_CPC2_2 rdf:type xkos:ConceptAssociation;
+					xkos:sourceConcept ess:FCL0056;
+					xkos:sourceConcept ess:FCL0067;
+					xkos:sourceConcept ess:FCL0068;
+					xkos:targetConcept cpc:CPC01121;
+					xkos:targetConcept cpc:CPC01122.
+
+				ess:FCL2012_CPC2_3 rdf:type xkos:ConceptAssociation;
+					xkos:sourceConcept ess:FCL0027;
+					xkos:targetConcept cpc:CPC01131;
+					xkos:targetConcept cpc:CPC01131.
+				</p>
+			</pre>
 		</section>
-		<section id="examples">
-			<h2>Examples and use cases</h2>
-			<section id="nace-example">
-				<h3>NACE example</h3>
-				<p>Take an example with the NACE, adapting the figure made by Thomas</p>
-			</section>
-			<section id="fish-example">
-				<h3>Fishery</h3>
-				<p>Fish taxonomists are deviant</p>
-			</section>
-		</section>
-		<section class="appendix">
-			<h2>Acknowledgements</h2>
-			<p> Many thanks to Robin Berjon for making our lives so much easier with his cool tool. </p>
-		</section>
-	</body>
+	</section>
+
+	<section class="appendix">
+		<h2>Overview of SKOS and XKOS semantic properties</h2>
+		<p>The figure below gives a panoptical view of the semantic properties defined in SKOS and XKOS. Solid lines represent subsumption links, and dashed lines represent disjunction links.</p>
+		<table class="image">
+			<caption align="bottom">Figure 9 &#8211; SKOS and XKOS properties</caption>
+			<tr><td><img src="img/skos-xkos-properties.png" alt="SKOS and XKOS properties" title="SKOS and XKOS properties"></td></tr>
+		</table>
+	</section>
+
+    <section class='appendix'>
+		<h2>Acknowledgements</h2>
+		<p>The authors would like to give special thanks to:</p>
+		<ul>
+			<li>Thomas Bosch (GESIS, Leibniz Institute for the Social Sciences, Germany), who did all the UML modelization work and realized the ANZSIC figure.</li>
+			<li>Jannik Jensen (Danish Data Archive, Odense, Denmark), who participated to the first reflexions on the XKOS vocabulary.</li>
+		</ul>
+		<p>Most of the work on XKOS was done during two workshops titled "Semantic Statistics for Social, Behavioural, and Economic Sciences: Leveraging the DDI Model for the Linked Data Web" and held at Schloss Dagstuhl - Leibniz Center for Informatics in Wadern, Germany, <a href="http://www.dagstuhl.de/11372">September 11-16, 2011</a> and <a href="http://www.dagstuhl.de/12422">October 14-19, 2012</a>.</p>
+		<p>The workshops were organized by:</p>
+		<ul>
+			<li>Richard Cyganiak (DERI, National University of Ireland, Galway, Ireland)</li>
+			<li>Arofan Gregory (Open Data Foundation, Tucson, USA)</li>
+			<li>Wendy Thomas (Population Center, University of Minnesota, USA)</li>
+			<li>Joachim Wackerow (GESIS, Leibniz Institute for the Social Sciences, Germany)</li>
+		</ul>
+		<p>The authors of the paper would like to acknowledge the other participants to this workshop:</p>
+		<ul>
+			<li>Archana Bidargaddi (Norwegian Social Science Data Services, Bergen, Norway)</li>
+			<li>Hebing Hebing (German Institute for Economic Research, Berlin, Germany)</li>
+			<li>Benedikt Kämpgen (Karlsruhe Institute of Technology, Germany)</li>
+			<li>Stefan Kramer (Cornell Institute for Social and Economic Research, Ithaca, USA)</li>
+			<li>Amber Leahey (Ontario Council of University Libraries, University of Toronto, Canada)</li>
+			<li>Olof Olsson (Swedish National Data Service, Göteborg, Sweden)</li>
+			<li>Heiko Paulheim (Darmstadt Technical University, Germany)</li>
+			<li>Abdul Rahim (Metadata Technology Inc., Washington, USA)</li>
+			<li>John Shepherdson (UK Data Archive, University of Essex, United Kingdom)</li>
+			<li>Humphrey Southall (Great Britain Historical Geographical Information System, University of Portsmouth, United Kingdom)</li>
+			<li>Johanna Vompras (Bielefeld University Library, Germany)</li>
+			<li>Benjamin Zapilko (GESIS, Leibniz Institute for the Social Sciences, Germany)</li>
+			<li>Matthäus Zloch (GESIS, Leibniz Institute for the Social Sciences, Germany))</li>
+		</ul>
+		<p class="issue">Check that nobody is missing and that the titles are good.</p>
+	</section>
+
+	<section class="appendix">
+		<h2>Full copyright</h2>
+		<p>Copyright © DDI Alliance 2013, <i>All Rights Reserved</i><br/><a href="http://www.ddialliance.org/">http://www.ddialliance.org/</a></p>
+		<p>Content of this document is licensed under a Creative Commons License:<br/>Attribution-Noncommercial-Share Alike 3.0 United States</p>
+		<p>This is a human-readable summary of the Legal Code (the full license).<br/><a href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/">http://creativecommons.org/licenses/by-nc-sa/3.0/us/</a></p>
+		<p>You are free:</p>
+		<ul>
+			<li>to Share - to copy, distribute, display, and perform the work</li>
+			<li>to Remix - to make derivative works</li>
+		</ul>
+		<p>Under the following conditions:</p>
+		<ul>
+			<li>Attribution. You must attribute the work in the manner specified by the author or licensor (but not in any way that suggests that they endorse you or your use of the work).</li>
+			<li>Noncommercial. You may not use this work for commercial purposes.</li>
+			<li>Share Alike. If you alter, transform, or build upon this work, you may distribute the resulting work only under the same or similar license to this one. For any reuse or distribution, you must make clear to others the license terms of this work. The best way to do this is with a link to this Web page.</li>
+			<li>Any of the above conditions can be waived if you get permission from the copyright holder.</li>
+			<li>Apart from the remix rights granted under this license, nothing in this license impairs or restricts the author’s moral rights.</li>
+		</ul>
+		<div style="font-size:80%; margin-top:40px; margin-bottom:40px">
+		<p>Disclaimer<p>
+		<p>The Commons Deed is not a license. It is simply a handy reference for understanding the Legal Code (the full license) — it is a human-readable expression of some of its key terms. Think of it as the user-friendly interface to the Legal Code beneath. This Deed itself has no legal value, and its contents do not appear in the actual license.</p>
+		<p>Creative Commons is not a law firm and does not provide legal services. Distributing of, displaying of, or linking to this Commons Deed does not create an attorney-client relationship.</p>
+		<p>Your fair use and other rights are in no way affected by the above.</p>
+		</div>
+		<p>Legal Code:<br/><a href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/legalcode">http://creativecommons.org/licenses/by-nc-sa/3.0/us/legalcode</a></p>
+	</section>
+  </body>
 </html>
