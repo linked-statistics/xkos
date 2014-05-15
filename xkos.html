@@ -89,6 +89,7 @@
 			  OECD: "<cite>OECD glossary of statistical terms</cite>. URL:&#160;<a href=\"http://stats.oecd.org/glossary/detail.asp?ID=350\">http://stats.oecd.org/glossary/detail.asp?ID=350</a>.",
 			  RAMON: "<cite>Eurostat's metadata server</cite>. URL:&#160;<a href=\"http://ec.europa.eu/eurostat/ramon/index.cfm?TargetUrl=DSP_PUB_WELC\">http://ec.europa.eu/eurostat/ramon/index.cfm?TargetUrl=DSP_PUB_WELC</a>.",
 			  SIC: "<cite>Standard Industrial Classification</cite>. URL:&#160;<a href=\"http://www.census.gov/epcd/www/sic.html\">http://www.census.gov/epcd/www/sic.html</a>.",
+			  SOC: "<cite>Standard Occupational Classification</cite>. URL:&#160;<a href=\"http://www.bls.gov/soc\">http://www.bls.gov/soc</a>.",
 			  SKOS: "<cite>Simple Knowledge Organization System</cite>. URL:&#160;<a href=\"http://www.w3.org/2004/02/skos/\">http://www.w3.org/2004/02/skos/</a>.",
 			  SKOSXL: "<cite>SKOS eXtension for Labels (SKOS-XL)</cite>. URL:&#160;<a href=\"http://www.w3.org/TR/skos-reference/#xl\">http://www.w3.org/TR/skos-reference/#xl</a>.",
 			  TURTLE: "<cite>Turtle, Terse RDF Triple Language, W3C Working Draft</cite>. URL:&#160;<a href=\"http://www.w3.org/TR/turtle/\">http://www.w3.org/TR/turtle/</a>.",
@@ -103,7 +104,7 @@
 
 	<section>
 		<h2>Background and Motivation</h2>
-		<p>Semantic technology associated with developments of the Semantic Web and particularly Linked Open Data (LOD) is gaining much wider use and acceptance.  The purpose of current efforts is to marry LOD techniques with needs of the international statistical community. Specifically, we address the use of the Simple Knowledge Organization System (SKOS), a LOD specification, to satisfy the requirements of classification systems and concept management in general for the statistical community.</p>
+		<p>Semantic technology associated with developments of the Semantic Web and particularly Linked Open Data (LOD) is gaining much wider use and acceptance. The purpose of current efforts is to marry LOD techniques with needs of the international statistical community. Specifically, we address the use of the Simple Knowledge Organization System (SKOS), a LOD specification, to satisfy the requirements of classification systems and concept management in general for the statistical community.</p>
 
 		<p>The specifics will be described below, but we found that SKOS is insufficient to represent the needs of statistical classifications and concept management. No aspect of SKOS was found to be wrong, just incomplete. Therefore, we propose an extension to SKOS, which we call XKOS.</p>
 
@@ -118,29 +119,17 @@
 		<h2>Introduction</h2>
 		<section id="intro-class">
 			<h3>Understanding statistical classifications</h3>
-			<p class="note">This section draws heavily from the statistical glossary of the OECD ([[OECD]]). Additional references are provided.</p>
-			<p>This section provides a brief introduction to the terminology relevant to the understanding of statistical classifications – classification schemes, statistical classification levels and statistical correspondence tables. The world of statistics is inextricably linked to the statistical production processes and the terminologies used in statistical offices. Some understanding of the production processes and the terminologies used in a statistical office is central to the topics that are discussed below.</p>
-			<p>National statistical organizations and international organizations collect numerous volumes of data on a variety of topics. All these statistical data pertain to statistical units, such as individuals, households, companies or establishments. Statistical organizations can either collect these data directly from the statistical units of interest &#8211; i.e. persons, households, etc. &#8211; or they can define specific criteria for statistical units to gather data on for example regions or economic sectors.</p>
-			<section id="intro-class-def">
-				<h4>What is a statistical classification?</h4>
-				<p>A statistical classification is a set of discrete, exhaustive and mutually exclusive observations, which can be assigned to one or more variables to be measured in the collation and/or presentation of data.</p>
-				<p>The structure of a classification can be either hierarchical or flat. This distinction between a flat vs. a hierarchical classification is explained in detail below. Examples of statistical classifications that are used in European Union are the ISCED for education, ISCO for occupations and NACE for economic activities ([[!ISCED]], [[!ISCO]], [[!ISIC]], [[NACE]]). A complete overview of the statistical classifications that are used in the European Union is available at RAMON ([[RAMON]]).</p>
-			</section>
-			<section id="intro-scheme-def">
-				<h4>What is a statistical classification scheme?</h4>
-				<p>A classification scheme contains descriptive information for an arrangement or division of <i>objects</i> into groups based on characteristics, which the objects have in common. Note that the term <i>object</i> in a statistical classification refers to one or more characteristics (attributes, properties) of a statistical unit. In the same way, the term <i>objects</i> refers to one or more characteristics that are common to a group of statistical units.</p>
-				<p>An example of a set of characteristics that could be shared among objects in a classification scheme, are all the fishery companies that use trawlers with a maximum capacity of 1500 kilograms. Note also that the set of shared characteristics can also be more generically defined. An example would be an aggregate statistic denoting the total amount of fish caught in 2012 across all oceans.</p>
-			</section>
-			<section id="intro-corresp-def">
-				<h4>What is a statistical correspondence table?</h4>
-				<p>A correspondence or concordance table comprises a conceptual mapping between classifications. In a statistical office a correspondence table is used as a tool for linking statistical classifications. A correspondence table systematically explains where, and to what extent categories in one classification are also contained in other classifications, or in earlier versions of the same classification. Methodologically, correspondence tables describe how value sets of classifications are related. An example of a value set would be a detailed description of the industrial activities that can be used as criteria for classifying the statistical units. Describing how the statistical units classified to the groups defined for one classification are classified in other classifications is the objective of the correspondence table.</p>
-				<p>Note that a one-to-one link between versions is not always possible. In practice for example only a limited number of codes of a classification might map to the classification codes of a new version. It is also possible that a specific number of codes in one classification need to be collated under one code in a new classification. The reference list provides an example of a set of concordance tables for the North American Industry Classification System (NAICS, [[NAICS]]).</p>
-			</section>
-			<section id="intro-levels-def">
-				<h4>What are statistical classification levels?</h4>
-				<p>Statistical classifications can be hierarchical or flat. A simple example of a flat classification is a distinction between male and female. Another example of a flat statistical classification is NACE, the classification system used for economic activities of companies in Europe. The first digit is this classification denotes a specific sector of economic activity. For example one stands for agriculture, two for mining, etc. As the first digit in this statistical classification for economic activity only denotes the sector of economic activity, this sector code does not contain any useful information on the order or level. This is different for hierarchical classifications such as ISCED and ISCO, which are respectively used for the classification of educational and occupational attainment. For example the ISCO contains five levels. The lowest level – level 1 –  comprises information on occupations, activities and tasks that require little or no formal education (level 1). Occupations classified at level five comprise complex tasks and activities that require a degree of higher education and usually a number of years of experience in a specific position.</p>
-			</section>
-			<p class="note">To do: Explain distinction between direction and level at digit 3 for ISCED</p>
+			<p>This section provides a brief introduction to the terminology relevant to the understanding of statistical classifications.</p>
+			<p>A statistical classification scheme (SCS) is a hierarchical concept scheme which includes concepts associated codes (numeric string labels), short textual names (also labels), definitions, and longer descriptions that include rules for their use.</p>
+			<p>By a hierarchy, we mean a system of concepts where each has zero or one parents and zero or more children. The root, or top concept, has no parent; the leaves, or bottom concepts, have no children; and the rest have one parent and one or more children.</p>
+			<p>An SCS may be a flat list (i.e., one level) or a hierarchy, and if it is a hierarchy then it is with the added proviso that all its concepts are grouped into levels. In every SCS, the root concept is implicit and is often referred to as the defining concept for the SCS. All the concepts in one level are the same number of relationships away from the root, and this number is known as the depth of the level. All the concepts at each level are mutually exclusive and exhaustive, meaning each unit can be classified to one and only one concept per level. For example:</p>
+			<p>From the perspective of SKOS, the relation between a concept and its parent is one of the <i>broader than</i> and <i>narrower than</i> kinds, depending which direction one is looking. A parent is a broader concept, whereas a child is narrower.</p>
+			<p>Each level is defined by its own concept, as the collection of concepts at a particular level have a common overall meaning. For instance, the first level below the root in the North American Standard Industrial Classification ([[!NAICS]]) is known as Sectors, and Government is one of the sectors; these sectors are the broadest industry categories.</p>
+			<p>The most important use of a classification scheme is to classify and organize units within some domain, for example business establishments by industry. NAICS is used for this in the US, but due to limitations in coverage for some geographic areas, establishment sizes, or NAICS concepts, not enough data might be available to report meaningfully at all levels. So, the lowest level with meaningful data in most of the concepts is used. However, what determines “meaningful” is a statistical consideration and out of scope for this specification.</p>
+			<p>Practically speaking, the rows in tables and the dimensions used to specify measures in a time series are major uses of SCSs in data dissemination. Aggregated data in tables and series are classified by given levels of SCSs. If the data are sparse at that level, then there is a danger that data about individuals (people or businesses) is recoverable. In this case, the next higher level is used, and the data are aggregated some more into the broader categories. This is an important reason for the hierarchical design of SCSs.</p>
+			<p>Another use of SCSs is in data collection. The possible answers to questions on a form or in a questionnaire are the categories in SCSs. Another way SCSs are used in data collection is through classifying textual responses. For instance, the US American Community Survey asks respondents to briefly describe their jobs, and these descriptions are classified to NAICS and the Standard Occupational Classification ([[!SOC]]).</p>
+			<p>Statistical agencies that manage SCSs sometimes make versions to reflect changes in the subject matter domain, and these versions are separate SCSs. However, they belong to the same family, and that is known as a classification. For instance, NAICS is updated every five years, and each version (a separate SCS) is known by its year.</p>
+			<p>Other notions linked to classifications, for example correspondence tables, are introduced in the next sections. A model for describing and managing classifications developed by the international statistical community can be found in the Neuchâtel model [[NEUCHATEL]]. Further examples of statistical classifications are the ISCED for education, ISCO for occupations and NACE for economic activities ([[!ISCED]], [[!ISCO]], [[!ISIC]], [[!NACE]]). A complete overview of the statistical classifications that are used in the European Union is available at RAMON ([[RAMON]]).</p>
 		</section>
 		<section id="term-features">
 			<h3>Managing terminological features of classification schemes</h3>
@@ -148,8 +137,8 @@
 			<p>Designations come in several kinds: terms are linguistic expressions (i.e., words in natural language); codes are non-linguistic alpha-numeric strings of a specified length; and symbols are pictures, sound waves, etc. Other kinds of designations are possible as well.</p>
 			<p>In classification schemes for statistics, the concepts in the scheme are designated in several ways in practice. There are codes, short "labels", long "labels", and possibly others. Concepts also have definitions, relationships to other concepts, and explanatory text associated with them.</p>
 			<p>When classification schemes are updated, which occurs on a regular basis often, some concepts and designations stay the same with the exception of the code. For many classification schemes, especially ones of a thousand concepts or more, this happens regularly.</p>
-			<p>In SKOS, there are many properties that allow one to record the various designations of a concept: prefLabel; altLabel; hiddenLabel. All are repeatable for different languages.  None can be tied back to a specific <code>skos:ConceptScheme</code>.  That is, a concept scheme cannot know which designations it has without also knowing its concepts.</p>
-			<p>This presents a problem for statistical classifications, since if all that changes from one version of a classification scheme to another is the code, an entirely new concept with associated designations must be created in SKOS.  But, this is entirely inefficient; it weakly supports some kinds of management queries, and doesn’t support the creation of correspondences between classification schemes – an important function in statistics.</p>
+			<p>In SKOS, there are many properties that allow one to record the various designations of a concept: prefLabel; altLabel; hiddenLabel. All are repeatable for different languages. None can be tied back to a specific <code>skos:ConceptScheme</code>. That is, a concept scheme cannot know which designations it has without also knowing its concepts.</p>
+			<p>This presents a problem for statistical classifications, since if all that changes from one version of a classification scheme to another is the code, an entirely new concept with associated designations must be created in SKOS. But, this is entirely inefficient; it weakly supports some kinds of management queries, and doesn’t support the creation of correspondences between classification schemes – an important function in statistics.</p>
 			<p>We recommend a particular solution. Create a common <code>skos:ConceptScheme</code> that contains:</p>
 			<ul>
 				<li>Each concept contained in any version, including definition</li>
@@ -437,14 +426,14 @@
 
 			<div class="issue">
 				<p>Shouldn't we also authorize the 'covers' properties at the skos:Concept (classification) level, in addition to the skos:ConceptScheme (classification scheme) and xkos:ClassificationLevel levels?</p>
-				<p>Dan: <cite>Covers refers to situation where several concepts are considered at one, and that is why it is at the CS level.  This doesn’t make sense for one at a time, but maybe I misunderstand.</cite></p>
+				<p>Dan: <cite>Covers refers to situation where several concepts are considered at one, and that is why it is at the CS level. This doesn’t make sense for one at a time, but maybe I misunderstand.</cite></p>
 				<p>Yves: <cite>I can’t think of a use case for it, but if someone can I would not be opposed.</cite></p>
 			</div>
 
 			<div class="issue">
 				<p>Can we find examples of classification or concept schemes which cover a domain in a not exhaustive or mutually exclusive way?</p>
 				<p>Yves: <cite>Not exhaustive: ASFIS, which covers only “commercially important” aquatic species, not all aquatic species. Not Mutually exclusive: I can’t think of any, would seem to be an undesirable characteristic of a classification scheme!</cite></p>
-				<p>Dan: <cite>For Classification Schemes, it seems to me that ME&E is necessary.  However, for any Concept Scheme, it might be true.  Consider the following: Marital Status Categories = {single, married, widowed, divorced}  These seem to cover all cases, but people who are separated are in a limbo with respect to this, being neither married nor divorced. Personal Electronic Media Products = {stereo, home theater, tv, computer, laptop, mobile device, …}  In this set, it is possible to own several at once.</cite></p>
+				<p>Dan: <cite>For Classification Schemes, it seems to me that ME&E is necessary. However, for any Concept Scheme, it might be true. Consider the following: Marital Status Categories = {single, married, widowed, divorced}  These seem to cover all cases, but people who are separated are in a limbo with respect to this, being neither married nor divorced. Personal Electronic Media Products = {stereo, home theater, tv, computer, laptop, mobile device, …}  In this set, it is possible to own several at once.</cite></p>
 			</div>
 
 		</section>
@@ -473,7 +462,7 @@
 		<h2>Classification levels</h2>
 		<p>Classification schemes are frequently organized in nested levels of increasing detail. ISCO-08, for example, has four levels: at the top level are ten major groups, each of which contain sub-major groups, which in turn are subdivided in minor groups, which contain unit groups. Even when a classification is not structured in levels ("flat classification"), the usual convention, which is adopted here, is to consider that it contains one unique level.</p>
 
-		<p>In XKOS, a classification level is defined as a specialization of <code>skos:Collection</code> named <code>xkos:ClassificationLevel</code>. A classification level can bear an integer property, <code>xkos:depth</code>, that indicates its distance from the (abstract) root node of the hierarchy. In the ISCO case, the level of sub-major groups will have a <code>xkos:depth</code> of 2, whereas the level of unit groups  will have a <code>xkos:depth</code> of 4. The unique level of a flat classification would have a <code>xkos:depth</code> of 1. In addition, a <code>xkos:numberOfLevels</code> property is defined for the classification schemes to document the number of levels they include: ISCO-08 would have an <code>xkos:numberOfLevels</code> of 4.</p>
+		<p>In XKOS, a classification level is defined as a specialization of <code>skos:Collection</code> named <code>xkos:ClassificationLevel</code>. A classification level can bear an integer property, <code>xkos:depth</code>, that indicates its distance from the (abstract) root node of the hierarchy. In the ISCO case, the level of sub-major groups will have a <code>xkos:depth</code> of 2, whereas the level of unit groups will have a <code>xkos:depth</code> of 4. The unique level of a flat classification would have a <code>xkos:depth</code> of 1. In addition, a <code>xkos:numberOfLevels</code> property is defined for the classification schemes to document the number of levels they include: ISCO-08 would have an <code>xkos:numberOfLevels</code> of 4.</p>
 
 		<p>The levels of a classification scheme are organized as an <code>rdf:List</code> (implying order), starting with the most aggregated level. The <code>skos:ConceptScheme</code> representing the classification scheme points to the <code>rdf:List</code> of its <code>xkos:ClassificationLevel</code>s with the <code>xkos:levels</code> property.
 		<a href="#anzsic-example">Example 10.1</a> below gives a good representation of this construction.</p>
@@ -522,7 +511,7 @@
 		<ul>
 			<li>Between classification on the same field, for example North American and European activities classifications</li>
 			<li>Between different linked fields, for example classifications of activities and products</li>
-			<li>Historical correspondence, for example SIC ([[SIC]]) to NAICS</li>
+			<li>Historical correspondence, for example SIC ([[!SIC]]) to NAICS</li>
 			<li>Versioning of items over time within a given classification scheme</li>
 		</ul>
 
@@ -535,12 +524,12 @@
 
 		<p>For additional labels, we just have the maxLength property and we must explain the use of prefLabel altLabel with xl:Label instances.</p>
 		<p>Then we have the annotation properties for explanatory notes.</p>
-		<p>Each concept in a SKOS concept scheme has related auxiliary information that helps define, use, and differentiate it from the other concepts in the scheme.  Inclusions and exclusions refer to conditions that must be considered when determining if some object should be classified to a given concept.  The maximum length for terms or codes can be specified, and notes on content may or may not be included.</p>
+		<p>Each concept in a SKOS concept scheme has related auxiliary information that helps define, use, and differentiate it from the other concepts in the scheme. Inclusions and exclusions refer to conditions that must be considered when determining if some object should be classified to a given concept. The maximum length for terms or codes can be specified, and notes on content may or may not be included.</p>
 		<section id="add-labels">
 			<h3>Additional labels</h3>
 			<p>The use of labels in classification systems can be complex. A concept may have multiple labels of varying lengths provided for different purposes. In addition, a concept may have a notation or code that is specific to the use of the concept within a specific classification scheme. XKOS supports the ability to assign multiple labels to a concept, use the concept within a specific classification scheme using foaf:focus and then to separately attach the notation or code to the concept within the specific classification scheme.</p>
 
-			<p>When defining labels for a concept by length, i.e., full label, labels of maximum length (65 characters and  40 characters), a number of scenarios might arise.</p>
+			<p>When defining labels for a concept by length, i.e., full label, labels of maximum length (65 characters and 40 characters), a number of scenarios might arise.</p>
 			<ul>
 				<li>The full label is less than 40 characters (no additional labels required)</li>
 				<li>The full label is more than 40 characters but less than or equal to 65 characters (one additional label required)</li>
@@ -577,7 +566,7 @@
 
 	<section id="sem-props">
 		<h2>Semantic properties</h2>
-		<p>The semantic properties extend the possible relations that can be applied between pairs of concepts.  SKOS allows the following relations: <i>broader than</i>, <i>narrower than,</i> and <i>related to</i>. The first wo are hierarchical relations, one in each direction.  However, terminologists recognize two main kinds of hierarchical relations: <i>generic</i> and <i>partitive</i>.  IsPartof and hasPart are <i>partitive</i>; and specializes and generalizes are <i>generic</i>.  In addition, several detailed associations, the <i>related to</i> relations, are provided: <i>causal</i> and <i>sequential</i>.  <i>Causal</i> has two directions: <i>causes</i> and <i>causedBy</i>, and sequential has two directions: <i>precedes</i> or <i>previous</i>, and <i>follows</i> or <i>next</i>.  <i>Previous</i> and <i>next</i> have the additional criterion that they are <u>transitive</u> relations.  In addition, <i>temporal</i> is a kind of <i>sequential</i> relation, which is subdivided into <i>before</i> and <i>after</i>, in addition which are <u>transitive</u>.  Two concepts are <i>disjoint</i> if no objects correspond to both concepts at once.</p>
+		<p>The semantic properties extend the possible relations that can be applied between pairs of concepts. SKOS allows the following relations: <i>broader than</i>, <i>narrower than,</i> and <i>related to</i>. The first two are hierarchical relations, one in each direction. However, terminologists recognize two main kinds of hierarchical relations: <i>generic</i> and <i>partitive</i>. IsPartof and hasPart are <i>partitive</i>; and specializes and generalizes are <i>generic</i>. In addition, several detailed associations, the <i>related to</i> relations, are provided: <i>causal</i> and <i>sequential</i>. <i>Causal</i> has two directions: <i>causes</i> and <i>causedBy</i>, and sequential has two directions: <i>precedes</i> or <i>previous</i>, and <i>follows</i> or <i>next</i>. <i>Previous</i> and <i>next</i> have the additional criterion that they are <u>transitive</u> relations. In addition, <i>temporal</i> is a kind of <i>sequential</i> relation, which is subdivided into <i>before</i> and <i>after</i>, in addition which are <u>transitive</u>. Two concepts are <i>disjoint</i> if no objects correspond to both concepts at once.</p>
 
 		<p>The management of classification structures requires further specification of a number of SKOS terms in order to describe very specific relationships. XKOS has chosen to address these as refinements of existing SKOS terms whenever possible in order to facilitate understanding among users of related domain areas:</p>
 		<ul>
@@ -637,7 +626,7 @@
 		<h2>Examples</h2>
 		<section id="anzsic-example">
 			<h3>Statistical classification (ANZSIC)</h3>
-			<p>The following figure gives an example inspired by the ANZSIC (Australian and New Zealand Industry Classification [[ANZSIC]]), which is a classification covering the field of economic activity. A small excerpt is shown here, limited to the classification object itself and its levels, as well as one item of the most detailed level (Class 6720 &#8211; Real Estate Services) and its parent items. Note that the URI employed in this example are entirely fictitious, since the ANZSIC has not yet been published as RDF.</p>
+			<p>The following figure gives an example inspired by the ANZSIC (Australian and New Zealand Industry Classification [[!ANZSIC]]), which is a classification covering the field of economic activity. A small excerpt is shown here, limited to the classification object itself and its levels, as well as one item of the most detailed level (Class 6720 &#8211; Real Estate Services) and its parent items. Note that the URI employed in this example are entirely fictitious, since the ANZSIC has not yet been published as RDF.</p>
 			<table class="image">
 				<caption align="bottom">Figure 6 &#8211; Statistical classification &#8211; ANZSIC</caption>
 				<tr><td><img src="img/anzsic.png" alt="Classification example - ANZSIC" title="Classification example - ANZSIC"></td></tr>
