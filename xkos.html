@@ -458,12 +458,6 @@
 
 		<p>A classification level is often characterized by a generic name for the classification items that it regroups. The ISCO names "major groups" the items of the first level, "sub-major groups" the items of the second level, etc. The NACE uses the terms "sections", "divisions", "groups" and "classes"; the NAICS has "sectors", "subsectors", "groups", etc. This information can be rendered in XKOS by the property <code>xkos:organizedBy</code> that links the <code>xkos:ClassificationLevel</code> object to a <code>skos:Concept</code> representing the generic item for this level (<i>e.g.</i> the concept of an ISCO major group, of a NACE section, etc.).</p>
 
-		<div class="issue">
-			<p>We have define the domain of 'covers' as the union of ConceptScheme and ClassificationLevel, but I don't remember why. I can't find an example where the field covered by a classification level would be different from the one covered by the classification or another level of the classification.</p>
-			<p>Yves: <cite>I have a vague memory of the discussion but not why we reached that conclusion. Also to me it seem that the domain would simply be ConceptScheme.</cite></p>
-			<p>Dan: <cite>Our guiding example was an industrial classification system. The entire CS covers all industries in the national economy. Each level in the CS covers some manner of detail, for instance in NAICS there are sectors, sub-sectors, industry groups, and industries. Each has its own meaning a scope regarding detail, and none is the same as the overall concepts for the NAICS CS.</cite></p>
-		</div>
-
 	</section>
 
 	<section id="correspondences">
