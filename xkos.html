@@ -133,34 +133,18 @@
 		</section>
 		<section id="term-features">
 			<h3>Managing terminological features of classification schemes</h3>
-			<p>In terminology, concepts are said to be designated by signs which denote them. Signs are associated with concepts much as we do in natural language, and these are called designations. Designations are use to communicate concepts much as words do in natural language.</p>
-			<p>Designations come in several kinds: terms are linguistic expressions (i.e., words in natural language); codes are non-linguistic alpha-numeric strings of a specified length; and symbols are pictures, sound waves, etc. Other kinds of designations are possible as well.</p>
-			<p>In classification schemes for statistics, the concepts in the scheme are designated in several ways in practice. There are codes, short "labels", long "labels", and possibly others. Concepts also have definitions, relationships to other concepts, and explanatory text associated with them.</p>
-			<p>When classification schemes are updated, which occurs on a regular basis often, some concepts and designations stay the same with the exception of the code. For many classification schemes, especially ones of a thousand concepts or more, this happens regularly.</p>
-			<p>In SKOS, there are many properties that allow one to record the various designations of a concept: prefLabel; altLabel; hiddenLabel. All are repeatable for different languages. None can be tied back to a specific <code>skos:ConceptScheme</code>. That is, a concept scheme cannot know which designations it has without also knowing its concepts.</p>
-			<p>This presents a problem for statistical classifications, since if all that changes from one version of a classification scheme to another is the code, an entirely new concept with associated designations must be created in SKOS. But, this is entirely inefficient; it weakly supports some kinds of management queries, and doesn’t support the creation of correspondences between classification schemes – an important function in statistics.</p>
-			<p>We recommend a particular solution. Create a common <code>skos:ConceptScheme</code> that contains:</p>
-			<ul>
-				<li>Each concept contained in any version, including definition</li>
-				<li>Each term designation</li>
-				<li>Common explanatory text</li>
-				<li>Other repeated information</li>
-			</ul>
-			<p>Each version of a classification scheme will contain</p>
-			<ul>
-				<li>a new record of each concept, including use of relation foaf:Focus back to its common concept</li>
-				<li>code</li>
-				<li>appropriate relationships to parent and child concepts</li>
-				<li>other one time information</li>
-			</ul>
+			<p>In terminology, concepts are designated by signifiers which denote them. A signifier is typically an alphanumeric string, symbol, or some physical phenomenon such as voltage. Signifiers are assigned to denote concepts and are used to communicate concepts much as words, which are alphanumeric strings, do in natural language.</p>
 
-			<div class="issue">
-				<p>The foaf:focus trick should be explained in more detail. Note that the Lexvo ontology also defines an inverse lvont:isFocusOf property (http://lexvo.org/ontology#isFocusOf).</p>
-				<p>Dan: <cite>Never felt comfortable with the problem nor the solution.</cite></p>
-				<p>Yves: <cite>I've looked a little longer at foaf:focus and I'm concerned that it's not appropriate and that we may need to coin one or two more terms for this. Its intended use is to link concepts to the real world entities they represent, when we instead are simply dealing with versioning issues. TBD.</cite></p>
-			</div>
-			<p>There are drawbacks to this approach, but we feel that this is the most economical solution to a management problem that the statistical community cannot use straight SKOS to address.</p>
-			</section>
+			<p>Designations come in several kinds: terms are linguistic expressions (i.e., words in natural language); codes are non-linguistic alpha-numeric strings of a specified length; and symbols are pictures, sound waves, etc. Other kinds of designations are possible as well.</p>
+
+			<p>In classification schemes for statistics, the concepts in the scheme, referred to as categories, are designated in several ways in practice. There are codes, short "labels", long "labels", and possibly others. Concepts also have definitions, relationships to other concepts, and explanatory text associated with them.</p>
+
+			<p>In SKOS, there are many properties that allow one to record the various designations of a concept: prefLabel; altLabel; hiddenLabel. All are repeatable for different languages. One drawback is the insistence on a preferred label. For statistical classifications, the preference for some designation depends on the context of its use. Codes are used for classification, data representation, and data interoperability. Short labels, a kind of term, are used in reports and the stubs of tables. Long labels, another kind of term, which are intended to convey much of the meaning of the designated cateory, are used in semantic interoperability. Each is “preferred” in its main areas of use.</p>
+
+			<p>Relationships between concepts, along with the definitions of the concepts, are the main way semantics are captured. The semantics of each relationship are based on the related concepts and the meaning of the linkage itself, called a relation. For instance, the various authors of this paper are related both as professional colleagues and as friends. Each friendship, for instance, is described by the use of the “friend” relation and by the people themselves. Each friend linkage has the same semantics, so “friend” is a relation. Likewise, “professional colleague” is a relation. SKOS provides only a limited set of relations.</p>
+
+			<p>Some relations are important enough to define in advance because their use is pervasive. Two in particular are the hierarchical relations: generic and partitive. These relations are regularly employed in statistical classifications. The generic relation refers to type – sub-type, or “kind of”, relationships. A person is a kind of mammal. Partitive relations are used to describe part – whole relationships. An engine is part of a car.</p>
+		</section>
 	</section>
 
     <section id="overview">
