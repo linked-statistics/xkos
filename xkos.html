@@ -404,13 +404,6 @@
 		<section id="class-coverage">
 			<h3>Coverage</h3>
 			<p>A classification covers a defined field: economic activity, occupations, living organisms, etc. XKOS specifies the <code>xkos:covers</code> property to express this relation. The field covered should be represented by a <code>skos:Concept</code>, for example a term from a well-knowned thesaurus like EuroVoc ([[EUROVOC]]) or the Library of Congress Subject Headings ([[LOCSH]]). If the coverage of the given field is complete (i.e. all notions in the field can potentially be classified under the classification), we say that the coverage is exhaustive. If there is no overlap between the classification items at a given level of the classification, we say that the <code>skos:Concept</code>s representing the items are mutually exclusive. The <code>xkos:coversExhaustively</code> and <code>xkos:coversMutuallyExclusively</code> sub-properties of <code>xkos:covers</code> are introduced to represent these notions. Well-defined classifications usually cover their field in a exhaustive and mutually exclusive way (they form a partition of the field): in this case, <code>xkos:coversExhaustively</code> and <code>xkos:coversMutuallyExclusively</code> will be used together.</p>
-
-			<div class="issue">
-				<p>Can we find examples of classification or concept schemes which cover a domain in a not exhaustive or mutually exclusive way?</p>
-				<p>Yves: <cite>Not exhaustive: ASFIS, which covers only “commercially important” aquatic species, not all aquatic species. Not Mutually exclusive: I can’t think of any, would seem to be an undesirable characteristic of a classification scheme!</cite></p>
-				<p>Dan: <cite>For Classification Schemes, it seems to me that ME&E is necessary. However, for any Concept Scheme, it might be true. Consider the following: Marital Status Categories = {single, married, widowed, divorced}  These seem to cover all cases, but people who are separated are in a limbo with respect to this, being neither married nor divorced. Personal Electronic Media Products = {stereo, home theater, tv, computer, laptop, mobile device, …}  In this set, it is possible to own several at once.</cite></p>
-			</div>
-
 		</section>
 
 		<section id="class-classifying">
