@@ -183,7 +183,7 @@
 					<td><a href="#classifications">Section 5. Classifications and classification schemes</a></td>
 				</tr>
 				<tr>
-					<td>xkos:succeeds</td>
+					<td>xkos:follows</td>
 					<td><a href="#classifications">Section 5. Classifications and classification schemes</a></td>
 				</tr>
 				<tr>
@@ -307,7 +307,7 @@
 					<td><a href="#sem-props">Section 9. Semantic properties</a></td>
 				</tr>
 				<tr>
-					<td>xkos:follows</td>
+					<td>xkos:succeeds</td>
 					<td><a href="#sem-props">Section 9. Semantic properties</a></td>
 				</tr>
 				<tr>
@@ -387,16 +387,9 @@
 			<p>The precise definition of what constitutes a version of a <code>skos:ConceptScheme</code>, <code>skos:Collection</code> or <code>skos:Concept</code> is out of scope for this model, but validity and version information can be represented in simple ways.</p>
 			<p>The property <code>dcterms:valid</code> can express the temporal validity of a concept, classification scheme, etc. In the case of classification, the major versioning activity takes place at the classification scheme level, so that is where the property will normally be attached. When no validity information is attached to a <code>skos:Concept</code> representing a classification item, it is usual to assume that the validity of the item is the same as the validity of the classification scheme it belongs to.</p>
 
-			<p>The succession in time of classifications and classification schemes is expressed by the <code>xkos:succeeds</code> property, which is defined at the <code>skos:ConceptScheme</code> level. For example, NACE rev. 2 succeeded to NACE rev. 1.1. In this particular case, the new revision also obsoleted the previous one: the <code>xkos:supersedes</code> property conveys this additional meaning. <code>xkos:supersedes</code> is a sub-property of <code>xkos:succeeds</code> (succeeds subsumes supersedes).</p>
+			<p>The succession in time of classifications and classification schemes is expressed by the <code>xkos:follows</code> property, which is defined at the <code>skos:ConceptScheme</code> level. For example, NACE rev. 2 followed NACE rev. 1.1. In this particular case, the new revision also obsoleted the previous one: the <code>xkos:supersedes</code> property conveys this additional meaning. <code>xkos:supersedes</code> is a sub-property of <code>xkos:follows</code>.</p>
 
-			<div class="issue">
-				<p>I would find more logical to use 'follows' here, and to use 'succeeds' as the subproperty of 'sequential' (where we have 'precedes'). Of course, we would have to renounce to 'succeeds subsumes supersedes', which would break my heart.</p>
-				<p>Dan: <cite>&#9785; &#9785; &#9785;  Yes, I reluctantly agree completely.</cite></p>
-				<p>Yves: <cite>Agree completely. My heart is broken :-).</cite></p>
-			</div>
-
-			<p>When a major version of a classification succeeds to another, the statistical agencies usually have to know how the items of the previous version have evolved under the new version: this is important for the continuity of times series, indexes, national accounts, etc., to give a few example. Thus, it is very common that the agency responsible for the classification establishes a list of correspondences between the items of the two versions: this is a particular example of a correspondence (cf. <a href="#correspondences">Section 7</a>).</p>
-
+			<p>When a major version of a classification follows another, the statistical agencies usually have to know how the items of the previous version have evolved under the new version: this is important for the continuity of times series, indexes, national accounts, etc., to give a few example. Thus, it is very common that the agency responsible for the classification establishes a list of correspondences between the items of the two versions: this is a particular example of a correspondence (cf. <a href="#correspondences">Section 7</a>).</p>
 		</section>
 
 		<section id="class-coverage">
@@ -526,7 +519,7 @@
 
 	<section id="sem-props">
 		<h2>Semantic properties</h2>
-		<p>The semantic properties extend the possible relations that can be applied between pairs of concepts. SKOS allows the following relations: <i>broader than</i>, <i>narrower than,</i> and <i>related to</i>. The first two are hierarchical relations, one in each direction. However, terminologists recognize two main kinds of hierarchical relations: <i>generic</i> and <i>partitive</i>. IsPartof and hasPart are <i>partitive</i>; and specializes and generalizes are <i>generic</i>. In addition, several detailed associations, the <i>related to</i> relations, are provided: <i>causal</i> and <i>sequential</i>. <i>Causal</i> has two directions: <i>causes</i> and <i>causedBy</i>, and sequential has two directions: <i>precedes</i> or <i>previous</i>, and <i>follows</i> or <i>next</i>. <i>Previous</i> and <i>next</i> have the additional criterion that they are <u>transitive</u> relations. In addition, <i>temporal</i> is a kind of <i>sequential</i> relation, which is subdivided into <i>before</i> and <i>after</i>, in addition which are <u>transitive</u>. Two concepts are <i>disjoint</i> if no objects correspond to both concepts at once.</p>
+		<p>The semantic properties extend the possible relations that can be applied between pairs of concepts. SKOS allows the following relations: <i>broader than</i>, <i>narrower than,</i> and <i>related to</i>. The first two are hierarchical relations, one in each direction. However, terminologists recognize two main kinds of hierarchical relations: <i>generic</i> and <i>partitive</i>. IsPartof and hasPart are <i>partitive</i>; and specializes and generalizes are <i>generic</i>. In addition, several detailed associations, the <i>related to</i> relations, are provided: <i>causal</i> and <i>sequential</i>. <i>Causal</i> has two directions: <i>causes</i> and <i>causedBy</i>, and sequential has two directions: <i>precedes</i> or <i>previous</i>, and <i>succeeds</i> or <i>next</i>. <i>Previous</i> and <i>next</i> have the additional criterion that they are <u>transitive</u> relations. In addition, <i>temporal</i> is a kind of <i>sequential</i> relation, which is subdivided into <i>before</i> and <i>after</i>, in addition which are <u>transitive</u>. Two concepts are <i>disjoint</i> if no objects correspond to both concepts at once.</p>
 
 		<p>The management of classification structures requires further specification of a number of SKOS terms in order to describe very specific relationships. XKOS has chosen to address these as refinements of existing SKOS terms whenever possible in order to facilitate understanding among users of related domain areas:</p>
 		<ul>
@@ -567,14 +560,14 @@
 
 		<p>Causal relationships are either <code>xkos:caused</code> or <code>xkos:causedBy</code>.</p>
 
-		<p>Sequential relationships may be transitive or intransitive. When transitive the relationship is expressed by the pair <code>xkos:precedes</code> and <code>xkos:follows</code>. When not transitive the relationship is expressed by the pair <code>xkos:previous</code> and <code>xkos:next</code>.</p>
+		<p>Sequential relationships may be transitive or intransitive. When transitive the relationship is expressed by the pair <code>xkos:precedes</code> and <code>xkos:succeeds</code>. When not transitive the relationship is expressed by the pair <code>xkos:previous</code> and <code>xkos:next</code>.</p>
 
 		<h6>Example of transitive and non-transitive sequential relationships</h6>
 		<p>Consider the following sequence going left to right:</p> 
 
 		<p>A &#8594; B &#8594; C &#8594; D &#8594; E</p>
 
-		<p>If a transitive relationship to C is being described, C precedes D and E (which follow C) and follows A and B (which precede C). The relation implied by <code>xkos:precedes</code> is n-m and <code>xkos:follows</code> is n+m where m is an number >= 1.</p>
+		<p>If a transitive relationship to C is being described, C precedes D and E (which succeed C) and succeeds A and B (which precede C). The relation implied by <code>xkos:precedes</code> is n-m and <code>xkos:succeeds</code> is n+m where m is an number >= 1.</p>
 		<p>If a non-transitive relationship needs to be expressed between C and D then C is previous in order to D and D is next in order C. The relation implied by <code>xkos:previous</code> is n-1 and <code>xkos:next</code> is n+1.</p> 
 
 		<p>Temporal relationships are a specific type of sequential where one event or object is before or after another in terms of time. Temporal relationships are transitive and are expressed as <code>xkos:before</code> and <code>xkos:after</code>.</p> 
@@ -699,7 +692,7 @@
 					xkos:coversMutuallyExclusively fi:AquaticAnimalsAndPlants;
 					xkos:numberOfLevels 3;
 					xkos:levels fi:ISSCAAP_division, fi:ISSCAAP_group, fi:ASFIS;
-					xkos:succeeds &lt;http://www.fao.org/fishery/ns#ISSCAAP_2001&gt;.
+					xkos:follows &lt;http://www.fao.org/fishery/ns#ISSCAAP_2001&gt;.
 
 				fi:ASFIS_COD rdf:type skos:Concept;
 					skos:inScheme fi:ISSCAAP;
