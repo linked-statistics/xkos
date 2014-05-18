@@ -26,8 +26,8 @@ vann:preferredNamespaceUri <http://purl.org/linked-data/xkos#> ;
 dc:rights "Copyright © 2012-2013 The DDI Alliance" ;
 cc:license <http://creativecommons.org/licenses/by-nc-sa/3.0/us/> ;
 voaf:classNumber "3"^^xsd:integer ;
-voaf:propertyNumber "35"^^xsd:integer ;
-owl:versionInfo "Version 0.9.9.2 - 2012-10-21" .
+voaf:propertyNumber "36"^^xsd:integer ;
+owl:versionInfo "Version 0.9.9.3 - 2014-05-17" .
 
 
 #################################################################
@@ -145,17 +145,25 @@ rdfs:domain xkos:ConceptAssociation ;
 rdfs:range skos:Concept ;
 rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
 
-# Properties linking major versions of classifications (succeeds subsumes supersedes)
+# Properties linking major versions of classifications
 
-xkos:succeeds a rdf:Property, owl:ObjectProperty ;
-rdfs:label "succeeds"@en, "succède à"@fr ;
+xkos:follows a rdf:Property, owl:ObjectProperty ;
+rdfs:label "follows"@en, "suit"@fr ;
 rdfs:domain skos:ConceptScheme ;
 rdfs:range skos:ConceptScheme ;
 rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
 
 xkos:supersedes a rdf:Property, owl:ObjectProperty ;
 rdfs:label "supersedes"@en, "remplace"@fr ;
-rdfs:subPropertyOf xkos:succeeds;
+rdfs:subPropertyOf xkos:follows;
+rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
+
+# Property connecting a classification scheme to its variant(s)
+
+xkos:variant a rdf:Property, owl:ObjectProperty ;
+rdfs:label "variant"@en, "variante"@fr ;
+rdfs:domain skos:ConceptScheme ;
+rdfs:range skos:ConceptScheme ;
 rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
 
 # Property connecting a major version of a classification to a concept representing the overall classification
@@ -238,8 +246,8 @@ rdfs:comment "immediate predecessor in the sequence"@en, "prédécesseur immédi
 rdfs:subPropertyOf xkos:precedes ;
 rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
 
-xkos:follows a rdf:Property, owl:TransitiveProperty ;
-rdfs:label "follows"@en, "suit"@fr ;
+xkos:succeeds a rdf:Property, owl:TransitiveProperty ;
+rdfs:label "succeeds"@en, "succède à"@fr ;
 rdfs:comment "successor in the sequence"@en, "successeur dans la séquence" ;
 rdfs:subPropertyOf xkos:sequential ;
 rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
@@ -247,7 +255,7 @@ rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
 xkos:next a rdf:Property, owl:ObjectProperty ;
 rdfs:label "next"@en, "suivant"@fr ;
 rdfs:comment "immediate successor in the sequence"@en, "successeur immédiat dans la séquence" ;
-rdfs:subPropertyOf xkos:follows ;
+rdfs:subPropertyOf xkos:succeeds ;
 rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
 
 xkos:temporal a rdf:Property, owl:ObjectProperty ;
