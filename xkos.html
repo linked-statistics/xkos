@@ -151,7 +151,7 @@
     <section id="overview">
 		<h2>Overview of XKOS</h2>
 		<p>XKOS extends SKOS with two main objectives: the first one is to allow the description of statistical classifications, the second one is to introduce refinements of the semantic properties defined in SKOS.</p>
-		<p>In order to describe classifications, XKOS draws from the Neuchâtel model [[NEUCHATEL]], which is a well known standard in the statistical community: the notions of classification levels (<a href="#levels">Section 6</a>) or correspondence tables (<a href="#correspondences">Section 7</a>) are directly taken from this model. Some aspects of the model are rendered in XKOS differently (e.g. classification families by the 'covers' property) or in a more general way (concepts associations, for example). Other aspects (e.g. indexes and variants) are not covered by XKOS. XKOS also defines a few new additional properties that are not present in the Neuchâtel model. A new version of the Neuchâtel model has recently been created and included in the General Statistical Information Model ([[GSIMSCM]]).</p>
+		<p>In order to describe classifications, XKOS draws from the Neuchâtel model [[NEUCHATEL]], which is a well known standard in the statistical community: the notions of classification levels (<a href="#levels">Section 6</a>) or correspondence tables (<a href="#correspondences">Section 7</a>) are directly taken from this model. Some aspects of the model are rendered in XKOS differently (e.g. classification families by the 'covers' property) or in a more general way (concepts associations, for example). Other aspects (e.g. indexes) are not covered by XKOS. XKOS also defines a few new additional properties that are not present in the Neuchâtel model. A new version of the Neuchâtel model has recently been created and included in the General Statistical Information Model ([[GSIMSCM]]).</p>
 		<p>The figure below gives an overview of the SKOS/XKOS model for representing classifications and their components. This model will be described in sections 5 to 7.</p>
 		<table class="image">
 			<caption align="bottom">Figure 1 &#8211; Overview of the SKOS/XKOS model for classifications</caption>
@@ -188,6 +188,10 @@
 				</tr>
 				<tr>
 					<td>xkos:supersedes</td>
+					<td><a href="#classifications">Section 5. Classifications and classification schemes</a></td>
+				</tr>
+				<tr>
+					<td>xkos:variant</td>
 					<td><a href="#classifications">Section 5. Classifications and classification schemes</a></td>
 				</tr>
 				<tr>
@@ -392,6 +396,11 @@
 			<p>When a major version of a classification follows another, the statistical agencies usually have to know how the items of the previous version have evolved under the new version: this is important for the continuity of times series, indexes, national accounts, etc., to give a few example. Thus, it is very common that the agency responsible for the classification establishes a list of correspondences between the items of the two versions: this is a particular example of a correspondence (cf. <a href="#correspondences">Section 7</a>).</p>
 		</section>
 
+		<section id="class-variants">
+			<h3>Variants</h3>
+			<p>In certain circumstances, statisticians need to "customize" a classification scheme for a specific use, by restricting the coverage, merging or splitting certain items at a given level, etc. In particular, when a new version of a classification scheme is being elaborated, it is useful to test different variants. The <code>xkos:variant</code> property can be used to represent the relation between the base classification scheme and its variant(s). <code>skos:ConceptScheme</code> is the domain and range of this property.</p>
+		</section>
+
 		<section id="class-coverage">
 			<h3>Coverage</h3>
 			<p>A classification covers a defined field: economic activity, occupations, living organisms, etc. XKOS specifies the <code>xkos:covers</code> property to express this relation. The field covered should be represented by a <code>skos:Concept</code>, for example a term from a well-knowned thesaurus like EuroVoc ([[EUROVOC]]) or the Library of Congress Subject Headings ([[LOCSH]]). If the coverage of the given field is complete (i.e. all notions in the field can potentially be classified under the classification), we say that the coverage is exhaustive. If there is no overlap between the classification items at a given level of the classification, we say that the <code>skos:Concept</code>s representing the items are mutually exclusive. The <code>xkos:coversExhaustively</code> and <code>xkos:coversMutuallyExclusively</code> sub-properties of <code>xkos:covers</code> are introduced to represent these notions. Well-defined classifications usually cover their field in a exhaustive and mutually exclusive way (they form a partition of the field): in this case, <code>xkos:coversExhaustively</code> and <code>xkos:coversMutuallyExclusively</code> will be used together.</p>
@@ -408,13 +417,6 @@
 			<h3>Classifying resources</h3>
 			<p>The main purpose of a classification is to classify the entities that belong to or operate in the field that it covers. In linked data terms, classifying results in the creation of a RDF statement where the resource representing the entity is the subject and the concept representing the classification item is the object. XKOS defines a generic property, <code>xkos:classifiedUnder</code>, that can be used in such statements, but classification criteria are often quite complex: for example, a same enterprise could be classified in different items of a classification of activities, depending on the rules that are used to measure its main economic activity. Thus, it is expected that <code>xkos:classifiedUnder</code> will be specialized for different classification systems.</p>
 		</section>
-
-		<div class="issue">
-			<p>We could create a xkos:variant property.</p>
-			<p>Yves: <cite>Not clear to me. Can you elaborate?</cite></p>
-			<p>Dan: <cite>Agree with Yves.</cite></p>
-			<p>Elaboration: Classification Variant is an object class in the Neuchâtel model, it refers to a classification that has been adapted in some way for a specific usage (for example test a different structure to prepare a new version). A Variant is just another SKOS Concept Scheme, but we could create a <code>xkos:variant</code> property with domain and range <code>skos:ConceptScheme</code> to represent the link between a classification and its variant(s)</p>
-		</div>
 	</section>
 
 	<section id="levels">
