@@ -386,12 +386,6 @@
 			<p>The precise definition of what constitutes a version of a <code>skos:ConceptScheme</code>, <code>skos:Collection</code> or <code>skos:Concept</code> is out of scope for this model, but validity and version information can be represented in simple ways.</p>
 			<p>The property <code>dcterms:valid</code> can express the temporal validity of a concept, classification scheme, etc. In the case of classification, the major versioning activity takes place at the classification scheme level, so that is where the property will normally be attached. When no validity information is attached to a <code>skos:Concept</code> representing a classification item, it is usual to assume that the validity of the item is the same as the validity of the classification scheme it belongs to.</p>
 
-			<div class="issue">
-				<p>Do we agree with the preceding sentence?</p>
-				<p>Dan: <cite>Not sure I agree with this. It is possible a concept could be part of several classification schemes, yet those schemes have different validity periods assigned. I think it will be better to assume indefinite validity unless otherwise specified.</cite></p>
-				<p>Yves: <cite>I agree with it.</cite></p>
-			</div>
-
 			<p>The succession in time of classifications and classification schemes is expressed by the <code>xkos:succeeds</code> property, which is defined at the <code>skos:ConceptScheme</code> level. For example, NACE rev. 2 succeeded to NACE rev. 1.1. In this particular case, the new revision also obsoleted the previous one: the <code>xkos:supersedes</code> property conveys this additional meaning. <code>xkos:supersedes</code> is a sub-property of <code>xkos:succeeds</code> (succeeds subsumes supersedes).</p>
 
 			<div class="issue">
