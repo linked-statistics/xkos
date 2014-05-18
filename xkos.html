@@ -497,13 +497,6 @@
 				<tr><td><img src="img/labels-1.png" alt="Labels of maximum length" title="Labels of maximum length"></td></tr>
 				<tr><td><img src="img/labels-2.png" alt="Labels of maximum length" title="Labels of maximum length"></td></tr>
 			</table>
-
-			<div class="issue">
-				<p>Does this mechanism work when you want to create several additional labels of different lengths (eg 40 and 65)? In this case you have several skosxl:prefLabel resources, with the same literal value but different properties. Keep only one and give it two values for maxLength?</p>
-				<p>Yves: <cite>I’m still wondering here if the length value, which is basically an input mask really belongs in a classification. I mean, where are the semantics in that? I see two choices really, a) exclude such support (frankly I have not seen a classification scheme that formally includes input masks as part of the scheme – aren’t we mixing internal data serialization needs and classifications?); b) they could be considered notations instead of labels, thus being typed literals one could define datatypes to constrain their length. Our current technique is I think not at all good and I don’t like either solution that Franck is offering in his example.</cite></p>
-				<p>Dan: <cite>Think I agree with Yves that we just take length out.  Who cares?  As Yves says, there’re no CS semantics attached to it.  If someone thinks they need it, they can extend XKOS and add it in.</cite></p>
-			</div>
-
 		</section>
 
 		<section id="note-ext">
