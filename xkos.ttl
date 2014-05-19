@@ -1,6 +1,6 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix xkos: <http://purl.org/linked-data/xkos#> .
+@prefix xkos: <http://rdf-vocabulary.ddialliance.org/xkos#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -15,7 +15,7 @@
 # Ontology
 #################################################################
 
-<http://purl.org/linked-data/xkos> a owl:Ontology, voaf:Vocabulary ;
+<http://rdf-vocabulary.ddialliance.org/xkos> a owl:Ontology, voaf:Vocabulary ;
 dc:title "XKOS: an SKOS extension for representing statistical classifications"@en , "XKOS : une extension de SKOS pour la représentation des nomenclatures statistiques"@fr ;
 rdfs:comment "This ontology is based on work initiated at Dagstuhl Schloss in September 2011"@en ;
 rdfs:comment "Cette ontologie est basée sur le travail commencé à Dagstuhl Schloss en septembre 2011"@en ;
@@ -23,7 +23,7 @@ dc:contributor "Daniel Gillman", "Wendy L. Thomas", "Richard Cyganiak", "Jannik 
 dc:creator "Franck Cotton" ;
 voaf:extends <http://www.w3.org/2004/02/skos/core> ;
 vann:preferredNamespacePrefix "xkos" ;
-vann:preferredNamespaceUri <http://purl.org/linked-data/xkos#> ;
+vann:preferredNamespaceUri <http://rdf-vocabulary.ddialliance.org/xkos#> ;
 dc:rights "Copyright © 2012-2013 The DDI Alliance" ;
 cc:license <http://creativecommons.org/licenses/by-nc-sa/3.0/us/> ;
 voaf:classNumber "3"^^xsd:integer ;
@@ -41,19 +41,19 @@ owl:versionInfo "Version 0.9.9.3 - 2014-05-17" .
 xkos:ClassificationLevel a rdfs:Class, owl:Class ;
 rdfs:label "Classification level"@en, "Niveau de nomenclature"@fr ;
 rdfs:subClassOf skos:Collection ;
-rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
+rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 
 # The ConceptAssociation class generalizes the semantic relations modelled as properties in SKOS
 
 xkos:ConceptAssociation a rdfs:Class, owl:Class ;
 rdfs:label "Concept association"@en , "Association de concepts"@fr ;
-rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
+rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 
 # The Correspondence is used to group concept associations between two classifications (concordances, correspondence tables...)
 
 xkos:Correspondence a rdfs:Class, owl:Class ;
 rdfs:label "Correspondence"@en , "Correspondance"@fr ;
-rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
+rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 
 
 #################################################################
@@ -65,22 +65,22 @@ rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
 xkos:inclusionNote a rdf:Property, owl:AnnotationProperty ;
 rdfs:label "inclusions"@en, "inclusions"@fr ;
 rdfs:subPropertyOf skos:scopeNote ;
-rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
+rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 
 xkos:coreContentNote a rdf:Property, owl:AnnotationProperty ;
 rdfs:label "core content"@en, "contenu central"@fr ;
 rdfs:subPropertyOf xkos:inclusionNote ;
-rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
+rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 
 xkos:additionalContentNote a rdf:Property, owl:AnnotationProperty ;
 rdfs:label "additional content"@en, "contenu limite"@fr ;
 rdfs:subPropertyOf xkos:inclusionNote ;
-rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
+rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 
 xkos:exclusionNote a rdf:Property, owl:AnnotationProperty ;
 rdfs:label "exclusions"@en, "exclusions"@fr ;
 rdfs:subPropertyOf skos:scopeNote ;
-rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
+rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 
 
 #################################################################
@@ -93,7 +93,7 @@ xkos:numberOfLevels a rdf:Property, owl:DatatypeProperty ;
 rdfs:label "number of levels"@en, "nombre de niveaux"@fr ;
 rdfs:domain skos:ConceptScheme ;
 rdfs:range xsd:positiveInteger ;
-rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
+rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 
 # Depth of a level inside a classification (1 for the highest level)
 
@@ -101,7 +101,7 @@ xkos:depth a rdf:Property, owl:DatatypeProperty ;
 rdfs:label "depth"@en, "profondeur"@fr ;
 rdfs:domain xkos:ClassificationLevel ;
 rdfs:range xsd:positiveInteger ;
-rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
+rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 
 # Maximum number of characters for a label that is constrained in length
 
@@ -109,7 +109,7 @@ xkos:maxLength a rdf:Property, owl:DatatypeProperty ;
 rdfs:label "maximum length"@en, "longueur maximale"@fr ;
 rdfs:domain skosxl:Label ;
 rdfs:range xsd:positiveInteger ;
-rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
+rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 
 
 #################################################################
@@ -122,7 +122,7 @@ xkos:levels a rdf:Property, owl:ObjectProperty ;
 rdfs:label "level list"@en, "liste des niveaux"@fr ;
 rdfs:domain skos:ConceptScheme ;
 rdfs:range rdf:List ;
-rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
+rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 
 # Property used to group concept associations in correspondences
 
@@ -130,7 +130,7 @@ xkos:madeOf a rdf:Property, owl:ObjectProperty ;
 rdfs:label "made of"@en, "comprend"@fr ;
 rdfs:domain xkos:Correspondence ;
 rdfs:range xkos:ConceptAssociation ;
-rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
+rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 
 # Properties linking concepts to concepts associations
 
@@ -138,13 +138,13 @@ xkos:sourceConcept a rdf:Property, owl:ObjectProperty ;
 rdfs:label "source concept"@en, "concept source"@fr ;
 rdfs:domain xkos:ConceptAssociation ;
 rdfs:range skos:Concept ;
-rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
+rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 
 xkos:targetConcept a rdf:Property, owl:ObjectProperty ;
 rdfs:label "target concept"@en, "concept cible"@fr ;
 rdfs:domain xkos:ConceptAssociation ;
 rdfs:range skos:Concept ;
-rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
+rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 
 # Properties linking major versions of classifications
 
@@ -152,12 +152,12 @@ xkos:follows a rdf:Property, owl:ObjectProperty ;
 rdfs:label "follows"@en, "suit"@fr ;
 rdfs:domain skos:ConceptScheme ;
 rdfs:range skos:ConceptScheme ;
-rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
+rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 
 xkos:supersedes a rdf:Property, owl:ObjectProperty ;
 rdfs:label "supersedes"@en, "remplace"@fr ;
 rdfs:subPropertyOf xkos:follows;
-rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
+rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 
 # Property connecting a classification scheme to its variant(s)
 
@@ -165,7 +165,7 @@ xkos:variant a rdf:Property, owl:ObjectProperty ;
 rdfs:label "variant"@en, "variante"@fr ;
 rdfs:domain skos:ConceptScheme ;
 rdfs:range skos:ConceptScheme ;
-rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
+rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 
 # Property connecting a major version of a classification to a concept representing the overall classification
 
@@ -173,7 +173,7 @@ xkos:belongsTo a rdf:Property, owl:ObjectProperty ;
 rdfs:label "belongs to"@en, "appartient à"@fr ;
 rdfs:domain skos:ConceptScheme ;
 rdfs:range skos:Concept ;
-rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
+rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 
 # Name (or nature, or type) of the items that constitute the level
 
@@ -181,7 +181,7 @@ xkos:organizedBy a rdf:Property, owl:ObjectProperty ;
 rdfs:label "organized by"@en, "organisé en"@fr ;
 rdfs:domain xkos:ClassificationLevel ;
 rdfs:range skos:Concept ;
-rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
+rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 
 # Domain covered by the classification or its levels (eg. activities, products, etc.)
 
@@ -189,21 +189,21 @@ xkos:covers a rdf:Property, owl:ObjectProperty ;
 rdfs:label "covers"@en, "couvre"@fr ;
 rdfs:domain [ owl:unionOf (skos:ConceptScheme xkos:ClassificationLevel)] ;
 rdfs:range skos:Concept ;
-rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
+rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 
 # Domain covered by the classification (exhaustive coverage)
 
 xkos:coversExhaustively a rdf:Property, owl:ObjectProperty ;
 rdfs:label "covers exhaustively"@en, "couvre exhaustivement"@fr ;
 rdfs:subPropertyOf xkos:covers ;
-rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
+rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 
 # Domain covered by the classification (mutually exclusive coverage)
 
 xkos:coversMutuallyExclusively a rdf:Property, owl:ObjectProperty ;
 rdfs:label "covers mutually exclusively"@en, "couvre sans recouvrement"@fr ;
 rdfs:subPropertyOf xkos:covers ;
-rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
+rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 
 # Property linking a resource to a classification item it is classified under
 
@@ -211,68 +211,68 @@ xkos:classifiedUnder a rdf:Property, owl:ObjectProperty ;
 rdfs:label "classified under"@en, "classé sous"@fr ;
 rdfs:domain rdfs:Resource ;
 rdfs:range skos:Concept ;
-rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
+rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 
 # Types of semantic relations from ISO 1087 : associative relations
 
 xkos:causal a rdf:Property, owl:ObjectProperty ;
 rdfs:label "has causal"@en, "en relation causale"@fr ;
 rdfs:subPropertyOf skos:related ;
-rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
+rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 
 xkos:causes a rdf:Property, owl:ObjectProperty ;
 rdfs:label "causes"@en, "est la cause de"@fr ;
 rdfs:subPropertyOf xkos:causal ;
-rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
+rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 
 xkos:causedBy a rdf:Property, owl:ObjectProperty ;
 rdfs:label "caused by"@en, "est causé par"@fr ;
 rdfs:subPropertyOf xkos:causal ;
-rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
+rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 
 xkos:sequential a rdf:Property, owl:ObjectProperty ;
 rdfs:label "has sequential"@en, "en relation séquentielle"@fr ;
 rdfs:subPropertyOf skos:related ;
-rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
+rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 
 xkos:precedes a rdf:Property, owl:TransitiveProperty ;
 rdfs:label "precedes"@en, "précède"@fr ;
 rdfs:comment "predecessor in the sequence"@en, "prédécesseur dans la séquence"@fr ;
 rdfs:subPropertyOf xkos:sequential ;
-rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
+rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 
 xkos:previous a rdf:Property, owl:ObjectProperty ;
 rdfs:label "previous"@en, "précédent"@fr ;
 rdfs:comment "immediate predecessor in the sequence"@en, "prédécesseur immédiat dans la séquence"@fr ;
 rdfs:subPropertyOf xkos:precedes ;
-rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
+rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 
 xkos:succeeds a rdf:Property, owl:TransitiveProperty ;
 rdfs:label "succeeds"@en, "succède à"@fr ;
 rdfs:comment "successor in the sequence"@en, "successeur dans la séquence" ;
 rdfs:subPropertyOf xkos:sequential ;
-rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
+rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 
 xkos:next a rdf:Property, owl:ObjectProperty ;
 rdfs:label "next"@en, "suivant"@fr ;
 rdfs:comment "immediate successor in the sequence"@en, "successeur immédiat dans la séquence" ;
 rdfs:subPropertyOf xkos:succeeds ;
-rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
+rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 
 xkos:temporal a rdf:Property, owl:ObjectProperty ;
 rdfs:label "has temporal"@en, "en relation temporelle"@fr ;
 rdfs:subPropertyOf xkos:sequential ;
-rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
+rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 
 xkos:before a rdf:Property, owl:TransitiveProperty ;
 rdfs:label "before"@en, "avant"@fr ;
 rdfs:subPropertyOf xkos:temporal ;
-rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
+rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 
 xkos:after a rdf:Property, owl:TransitiveProperty ;
 rdfs:label "after"@en, "après"@fr ;
 rdfs:subPropertyOf xkos:temporal ;
-rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
+rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 
 # Types of semantic relations from ISO 1087 : hierarchical relations
 
@@ -283,25 +283,25 @@ xkos:isPartOf a rdf:Property, owl:ObjectProperty ;
 rdfs:label "is a part of"@en, "est une partie de"@fr ;
 owl:inverseOf xkos:hasPart ;
 rdfs:subPropertyOf skos:narrower ;
-rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
+rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 
 xkos:hasPart a rdf:Property, owl:ObjectProperty ;
 rdfs:label "has part"@en, "a pour partie"@fr ;
 owl:inverseOf xkos:isPartOf ;
 rdfs:subPropertyOf skos:broader ;
-rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
+rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 
 xkos:specializes a rdf:Property, owl:ObjectProperty ;
 rdfs:label "specializes"@en, "spécialise"@fr ;
 owl:inverseOf xkos:generalizes ;
 rdfs:subPropertyOf skos:narrower ;
-rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
+rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 
 xkos:generalizes a rdf:Property, owl:ObjectProperty ;
 rdfs:label "generalizes"@en , "généralise"@fr ;
 owl:inverseOf xkos:specializes ;
 rdfs:subPropertyOf skos:broader ;
-rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
+rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 
 # Types of relations for comparison purposes
 # NB : subOrdinate, superOrdinate are in fact generic/specific or hasPart/isPartOf
@@ -309,4 +309,4 @@ rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
 xkos:disjoint a rdf:Property, owl:ObjectProperty ;
 rdfs:label "disjoint from"@en, "disjoint de"@fr ;
 rdfs:subPropertyOf skos:related ;
-rdfs:isDefinedBy <http://purl.org/linked-data/xkos> .
+rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
