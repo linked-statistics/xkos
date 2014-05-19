@@ -88,6 +88,7 @@
 			  NAICS: "<cite>NAICS, North American Industry Classification System</cite>. URL:&#160;<a href=\"http://www.census.gov/eos/www/naics/index.html\">http://www.census.gov/eos/www/naics/index.html</a>.",
 			  NEUCHATEL: "<cite>Neuchâtel Terminology Model for classifications (version 2.1)</cite>. URL:&#160;<a href=\"http://www1.unece.org/stat/platform/pages/viewpage.action?pageId=14319930\">http://www1.unece.org/stat/platform/pages/viewpage.action?pageId=14319930</a>.",
 			  OECD: "<cite>OECD glossary of statistical terms</cite>. URL:&#160;<a href=\"http://stats.oecd.org/glossary/detail.asp?ID=350\">http://stats.oecd.org/glossary/detail.asp?ID=350</a>.",
+			  OIICS: "<cite>Occupational Injury and Illness Classification</cite>. URL:&#160;<a href=\"http://www.bls.gov/iif/oshoiics.htm\">http://www.bls.gov/iif/oshoiics.htm</a>.",
 			  RAMON: "<cite>Eurostat's metadata server</cite>. URL:&#160;<a href=\"http://ec.europa.eu/eurostat/ramon/index.cfm?TargetUrl=DSP_PUB_WELC\">http://ec.europa.eu/eurostat/ramon/index.cfm?TargetUrl=DSP_PUB_WELC</a>.",
 			  SIC: "<cite>Standard Industrial Classification</cite>. URL:&#160;<a href=\"http://www.census.gov/epcd/www/sic.html\">http://www.census.gov/epcd/www/sic.html</a>.",
 			  SOC: "<cite>Standard Occupational Classification</cite>. URL:&#160;<a href=\"http://www.bls.gov/soc\">http://www.bls.gov/soc</a>.",
@@ -533,16 +534,18 @@
 			<p>The term Car has a part with the term SteeringWheel.</p>
 		</pre>
 
-		<div class="issue">
-			<p>The OIICS classification was identified as a use case for both partitive relations and generic/specific relations. Dan, could you elaborate?</p>
-			<p>Dan: OIICS = Occupational Injury and Illness Classification System. This has 4 facets called<br/>Nature<br/>Body part<br/>Source<br/>Event</p>
-			<p>The idea is to classify each work related injury or illness which causes missed time at work with the 4 facets.</p>
-			<p>The Body Part facet classification uses partitive relationships throughout:<br/>1&#8195;Head<br/>1.3&#8195;Face<br/>1.3.3&#8195;Nose<br/>1.3.3.4&#8195;Sinus(es)</p>
-			<p>These features are related through the part-whole relation.</p>
-			<p>The Nature facet classification uses generic relationships throughout:<br/>2&#8195;Diseases and Disorders of Body Systems<br/>2.3&#8195;Circulatory System Diseases<br/>2.3.3&#8195;Ischemic Heart Disease, including heart attack<br/>2.3.3.1&#8195;Myocardial Infarction (heart attack)</p>
-			<p>These features are related through the specific-generic relation.</p>
-
-		</div>
+		<p>The Occupational Injury and Illness Classification System ([[!OIICS]]) offers more realistic examples. This classification defines four different schemes called <i>Nature</i>, <i>Body part</i>, <i>Source</i> and <i>Event</i>.</p>
+		<p>The idea is to classify each work related injury or illness which causes missed time at work with these four facets.</p>
+		<p>The <i>Body Part</i> facet scheme uses partitive relationships throughout:</p>
+		<pre class='example'>
+			<p>1&#8195;Head<br/>1.3&#8195;Face<br/>1.3.3&#8195;Nose<br/>1.3.3.4&#8195;Sinus(es)</p>
+		</pre>
+		<p>These features are related through the part-whole relation.</p>
+		<p>The <i>Nature</i> facet scheme uses generic relationships throughout:</p>
+		<pre class='example'>
+			<p>2&#8195;Diseases and Disorders of Body Systems<br/>2.3&#8195;Circulatory System Diseases<br/>2.3.3&#8195;Ischemic Heart Disease, including heart attack<br/>2.3.3.1&#8195;Myocardial Infarction (heart attack)</p>
+		</pre>
+		<p>These features are related through the specific-generic relation.</p>
 
 		<p>XKOS provides several refinements to <code>skos:related</code> which define causal and sequential relationships. These are initially separated into causal and sequential relationship types which are then further defined as shown in the diagram.</p>
 
