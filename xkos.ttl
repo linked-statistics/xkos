@@ -24,11 +24,11 @@ dc:creator "Franck Cotton" ;
 voaf:extends <http://www.w3.org/2004/02/skos/core> ;
 vann:preferredNamespacePrefix "xkos" ;
 vann:preferredNamespaceUri <http://rdf-vocabulary.ddialliance.org/xkos#> ;
-dc:rights "Copyright © 2012-2013 The DDI Alliance" ;
+dc:rights "Copyright © 2012-2014 The DDI Alliance" ;
 cc:license <http://creativecommons.org/licenses/by-nc-sa/3.0/us/> ;
 voaf:classNumber "3"^^xsd:integer ;
 voaf:propertyNumber "36"^^xsd:integer ;
-owl:versionInfo "Version 0.9.9.3 - 2014-05-17" .
+owl:versionInfo "Version 1.0 - 2014-05-20" .
 
 
 #################################################################
@@ -275,9 +275,7 @@ rdfs:subPropertyOf xkos:temporal ;
 rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 
 # Types of semantic relations from ISO 1087 : hierarchical relations
-
 # Partitive relations and generic/specific relations
-# Use case identified : OIICS classification
 
 xkos:isPartOf a rdf:Property, owl:ObjectProperty ;
 rdfs:label "is a part of"@en, "est une partie de"@fr ;
@@ -304,7 +302,6 @@ rdfs:subPropertyOf skos:broader ;
 rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 
 # Types of relations for comparison purposes
-# NB : subOrdinate, superOrdinate are in fact generic/specific or hasPart/isPartOf
 
 xkos:disjoint a rdf:Property, owl:ObjectProperty ;
 rdfs:label "disjoint from"@en, "disjoint de"@fr ;

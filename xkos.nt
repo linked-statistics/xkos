@@ -1,0 +1,284 @@
+<http://rdf-vocabulary.ddialliance.org/xkos> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Ontology> .
+<http://rdf-vocabulary.ddialliance.org/xkos> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.org/vocommons/voaf#Vocabulary> .
+<http://rdf-vocabulary.ddialliance.org/xkos> <http://purl.org/dc/elements/1.1/title> "XKOS: an SKOS extension for representing statistical classifications"@en .
+<http://rdf-vocabulary.ddialliance.org/xkos> <http://purl.org/dc/elements/1.1/title> "XKOS : une extension de SKOS pour la repr\u00E9sentation des nomenclatures statistiques"@fr .
+<http://rdf-vocabulary.ddialliance.org/xkos> <http://www.w3.org/2000/01/rdf-schema#comment> "This ontology is based on work initiated at Dagstuhl Schloss in September 2011"@en .
+<http://rdf-vocabulary.ddialliance.org/xkos> <http://www.w3.org/2000/01/rdf-schema#comment> "Cette ontologie est bas\u00E9e sur le travail commenc\u00E9 \u00E0 Dagstuhl Schloss en septembre 2011"@en .
+<http://rdf-vocabulary.ddialliance.org/xkos> <http://purl.org/dc/elements/1.1/contributor> "Daniel Gillman" .
+<http://rdf-vocabulary.ddialliance.org/xkos> <http://purl.org/dc/elements/1.1/contributor> "Wendy L. Thomas" .
+<http://rdf-vocabulary.ddialliance.org/xkos> <http://purl.org/dc/elements/1.1/contributor> "Richard Cyganiak" .
+<http://rdf-vocabulary.ddialliance.org/xkos> <http://purl.org/dc/elements/1.1/contributor> "Jannik Jensen" .
+<http://rdf-vocabulary.ddialliance.org/xkos> <http://purl.org/dc/elements/1.1/contributor> "Thomas Bosch" .
+<http://rdf-vocabulary.ddialliance.org/xkos> <http://purl.org/dc/elements/1.1/contributor> "R.T.A.M. Grim" .
+<http://rdf-vocabulary.ddialliance.org/xkos> <http://purl.org/dc/elements/1.1/contributor> "Yves Jaques" .
+<http://rdf-vocabulary.ddialliance.org/xkos> <http://purl.org/dc/elements/1.1/creator> "Franck Cotton" .
+<http://rdf-vocabulary.ddialliance.org/xkos> <http://purl.org/vocommons/voaf#extends> <http://www.w3.org/2004/02/skos/core> .
+<http://rdf-vocabulary.ddialliance.org/xkos> <http://purl.org/vocab/vann/preferredNamespacePrefix> "xkos" .
+<http://rdf-vocabulary.ddialliance.org/xkos> <http://purl.org/vocab/vann/preferredNamespaceUri> <http://rdf-vocabulary.ddialliance.org/xkos#> .
+<http://rdf-vocabulary.ddialliance.org/xkos> <http://purl.org/dc/elements/1.1/rights> "Copyright \u00A9 2012-2014 The DDI Alliance" .
+<http://rdf-vocabulary.ddialliance.org/xkos> <http://creativecommons.org/ns#license> <http://creativecommons.org/licenses/by-nc-sa/3.0/us/> .
+<http://rdf-vocabulary.ddialliance.org/xkos> <http://purl.org/vocommons/voaf#classNumber> "3"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<http://rdf-vocabulary.ddialliance.org/xkos> <http://purl.org/vocommons/voaf#propertyNumber> "36"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<http://rdf-vocabulary.ddialliance.org/xkos> <http://www.w3.org/2002/07/owl#versionInfo> "Version 1.0 - 2014-05-20" .
+<http://rdf-vocabulary.ddialliance.org/xkos#ClassificationLevel> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2000/01/rdf-schema#Class> .
+<http://rdf-vocabulary.ddialliance.org/xkos#ClassificationLevel> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://rdf-vocabulary.ddialliance.org/xkos#ClassificationLevel> <http://www.w3.org/2000/01/rdf-schema#label> "Classification level"@en .
+<http://rdf-vocabulary.ddialliance.org/xkos#ClassificationLevel> <http://www.w3.org/2000/01/rdf-schema#label> "Niveau de nomenclature"@fr .
+<http://rdf-vocabulary.ddialliance.org/xkos#ClassificationLevel> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/2004/02/skos/core#Collection> .
+<http://rdf-vocabulary.ddialliance.org/xkos#ClassificationLevel> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://rdf-vocabulary.ddialliance.org/xkos> .
+<http://rdf-vocabulary.ddialliance.org/xkos#ConceptAssociation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2000/01/rdf-schema#Class> .
+<http://rdf-vocabulary.ddialliance.org/xkos#ConceptAssociation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://rdf-vocabulary.ddialliance.org/xkos#ConceptAssociation> <http://www.w3.org/2000/01/rdf-schema#label> "Concept association"@en .
+<http://rdf-vocabulary.ddialliance.org/xkos#ConceptAssociation> <http://www.w3.org/2000/01/rdf-schema#label> "Association de concepts"@fr .
+<http://rdf-vocabulary.ddialliance.org/xkos#ConceptAssociation> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://rdf-vocabulary.ddialliance.org/xkos> .
+<http://rdf-vocabulary.ddialliance.org/xkos#Correspondence> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2000/01/rdf-schema#Class> .
+<http://rdf-vocabulary.ddialliance.org/xkos#Correspondence> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://rdf-vocabulary.ddialliance.org/xkos#Correspondence> <http://www.w3.org/2000/01/rdf-schema#label> "Correspondence"@en .
+<http://rdf-vocabulary.ddialliance.org/xkos#Correspondence> <http://www.w3.org/2000/01/rdf-schema#label> "Correspondance"@fr .
+<http://rdf-vocabulary.ddialliance.org/xkos#Correspondence> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://rdf-vocabulary.ddialliance.org/xkos> .
+<http://rdf-vocabulary.ddialliance.org/xkos#inclusionNote> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<http://rdf-vocabulary.ddialliance.org/xkos#inclusionNote> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+<http://rdf-vocabulary.ddialliance.org/xkos#inclusionNote> <http://www.w3.org/2000/01/rdf-schema#label> "inclusions"@en .
+<http://rdf-vocabulary.ddialliance.org/xkos#inclusionNote> <http://www.w3.org/2000/01/rdf-schema#label> "inclusions"@fr .
+<http://rdf-vocabulary.ddialliance.org/xkos#inclusionNote> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2004/02/skos/core#scopeNote> .
+<http://rdf-vocabulary.ddialliance.org/xkos#inclusionNote> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://rdf-vocabulary.ddialliance.org/xkos> .
+<http://rdf-vocabulary.ddialliance.org/xkos#coreContentNote> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<http://rdf-vocabulary.ddialliance.org/xkos#coreContentNote> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+<http://rdf-vocabulary.ddialliance.org/xkos#coreContentNote> <http://www.w3.org/2000/01/rdf-schema#label> "core content"@en .
+<http://rdf-vocabulary.ddialliance.org/xkos#coreContentNote> <http://www.w3.org/2000/01/rdf-schema#label> "contenu central"@fr .
+<http://rdf-vocabulary.ddialliance.org/xkos#coreContentNote> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://rdf-vocabulary.ddialliance.org/xkos#inclusionNote> .
+<http://rdf-vocabulary.ddialliance.org/xkos#coreContentNote> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://rdf-vocabulary.ddialliance.org/xkos> .
+<http://rdf-vocabulary.ddialliance.org/xkos#additionalContentNote> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<http://rdf-vocabulary.ddialliance.org/xkos#additionalContentNote> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+<http://rdf-vocabulary.ddialliance.org/xkos#additionalContentNote> <http://www.w3.org/2000/01/rdf-schema#label> "additional content"@en .
+<http://rdf-vocabulary.ddialliance.org/xkos#additionalContentNote> <http://www.w3.org/2000/01/rdf-schema#label> "contenu limite"@fr .
+<http://rdf-vocabulary.ddialliance.org/xkos#additionalContentNote> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://rdf-vocabulary.ddialliance.org/xkos#inclusionNote> .
+<http://rdf-vocabulary.ddialliance.org/xkos#additionalContentNote> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://rdf-vocabulary.ddialliance.org/xkos> .
+<http://rdf-vocabulary.ddialliance.org/xkos#exclusionNote> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<http://rdf-vocabulary.ddialliance.org/xkos#exclusionNote> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+<http://rdf-vocabulary.ddialliance.org/xkos#exclusionNote> <http://www.w3.org/2000/01/rdf-schema#label> "exclusions"@en .
+<http://rdf-vocabulary.ddialliance.org/xkos#exclusionNote> <http://www.w3.org/2000/01/rdf-schema#label> "exclusions"@fr .
+<http://rdf-vocabulary.ddialliance.org/xkos#exclusionNote> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2004/02/skos/core#scopeNote> .
+<http://rdf-vocabulary.ddialliance.org/xkos#exclusionNote> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://rdf-vocabulary.ddialliance.org/xkos> .
+<http://rdf-vocabulary.ddialliance.org/xkos#numberOfLevels> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<http://rdf-vocabulary.ddialliance.org/xkos#numberOfLevels> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://rdf-vocabulary.ddialliance.org/xkos#numberOfLevels> <http://www.w3.org/2000/01/rdf-schema#label> "number of levels"@en .
+<http://rdf-vocabulary.ddialliance.org/xkos#numberOfLevels> <http://www.w3.org/2000/01/rdf-schema#label> "nombre de niveaux"@fr .
+<http://rdf-vocabulary.ddialliance.org/xkos#numberOfLevels> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.w3.org/2004/02/skos/core#ConceptScheme> .
+<http://rdf-vocabulary.ddialliance.org/xkos#numberOfLevels> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#positiveInteger> .
+<http://rdf-vocabulary.ddialliance.org/xkos#numberOfLevels> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://rdf-vocabulary.ddialliance.org/xkos> .
+<http://rdf-vocabulary.ddialliance.org/xkos#depth> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<http://rdf-vocabulary.ddialliance.org/xkos#depth> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://rdf-vocabulary.ddialliance.org/xkos#depth> <http://www.w3.org/2000/01/rdf-schema#label> "depth"@en .
+<http://rdf-vocabulary.ddialliance.org/xkos#depth> <http://www.w3.org/2000/01/rdf-schema#label> "profondeur"@fr .
+<http://rdf-vocabulary.ddialliance.org/xkos#depth> <http://www.w3.org/2000/01/rdf-schema#domain> <http://rdf-vocabulary.ddialliance.org/xkos#ClassificationLevel> .
+<http://rdf-vocabulary.ddialliance.org/xkos#depth> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#positiveInteger> .
+<http://rdf-vocabulary.ddialliance.org/xkos#depth> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://rdf-vocabulary.ddialliance.org/xkos> .
+<http://rdf-vocabulary.ddialliance.org/xkos#maxLength> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<http://rdf-vocabulary.ddialliance.org/xkos#maxLength> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://rdf-vocabulary.ddialliance.org/xkos#maxLength> <http://www.w3.org/2000/01/rdf-schema#label> "maximum length"@en .
+<http://rdf-vocabulary.ddialliance.org/xkos#maxLength> <http://www.w3.org/2000/01/rdf-schema#label> "longueur maximale"@fr .
+<http://rdf-vocabulary.ddialliance.org/xkos#maxLength> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.w3.org/2008/05/skos-xl#Label> .
+<http://rdf-vocabulary.ddialliance.org/xkos#maxLength> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#positiveInteger> .
+<http://rdf-vocabulary.ddialliance.org/xkos#maxLength> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://rdf-vocabulary.ddialliance.org/xkos> .
+<http://rdf-vocabulary.ddialliance.org/xkos#levels> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<http://rdf-vocabulary.ddialliance.org/xkos#levels> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://rdf-vocabulary.ddialliance.org/xkos#levels> <http://www.w3.org/2000/01/rdf-schema#label> "level list"@en .
+<http://rdf-vocabulary.ddialliance.org/xkos#levels> <http://www.w3.org/2000/01/rdf-schema#label> "liste des niveaux"@fr .
+<http://rdf-vocabulary.ddialliance.org/xkos#levels> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.w3.org/2004/02/skos/core#ConceptScheme> .
+<http://rdf-vocabulary.ddialliance.org/xkos#levels> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+<http://rdf-vocabulary.ddialliance.org/xkos#levels> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://rdf-vocabulary.ddialliance.org/xkos> .
+<http://rdf-vocabulary.ddialliance.org/xkos#madeOf> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<http://rdf-vocabulary.ddialliance.org/xkos#madeOf> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://rdf-vocabulary.ddialliance.org/xkos#madeOf> <http://www.w3.org/2000/01/rdf-schema#label> "made of"@en .
+<http://rdf-vocabulary.ddialliance.org/xkos#madeOf> <http://www.w3.org/2000/01/rdf-schema#label> "comprend"@fr .
+<http://rdf-vocabulary.ddialliance.org/xkos#madeOf> <http://www.w3.org/2000/01/rdf-schema#domain> <http://rdf-vocabulary.ddialliance.org/xkos#Correspondence> .
+<http://rdf-vocabulary.ddialliance.org/xkos#madeOf> <http://www.w3.org/2000/01/rdf-schema#range> <http://rdf-vocabulary.ddialliance.org/xkos#ConceptAssociation> .
+<http://rdf-vocabulary.ddialliance.org/xkos#madeOf> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://rdf-vocabulary.ddialliance.org/xkos> .
+<http://rdf-vocabulary.ddialliance.org/xkos#sourceConcept> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<http://rdf-vocabulary.ddialliance.org/xkos#sourceConcept> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://rdf-vocabulary.ddialliance.org/xkos#sourceConcept> <http://www.w3.org/2000/01/rdf-schema#label> "source concept"@en .
+<http://rdf-vocabulary.ddialliance.org/xkos#sourceConcept> <http://www.w3.org/2000/01/rdf-schema#label> "concept source"@fr .
+<http://rdf-vocabulary.ddialliance.org/xkos#sourceConcept> <http://www.w3.org/2000/01/rdf-schema#domain> <http://rdf-vocabulary.ddialliance.org/xkos#ConceptAssociation> .
+<http://rdf-vocabulary.ddialliance.org/xkos#sourceConcept> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://rdf-vocabulary.ddialliance.org/xkos#sourceConcept> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://rdf-vocabulary.ddialliance.org/xkos> .
+<http://rdf-vocabulary.ddialliance.org/xkos#targetConcept> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<http://rdf-vocabulary.ddialliance.org/xkos#targetConcept> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://rdf-vocabulary.ddialliance.org/xkos#targetConcept> <http://www.w3.org/2000/01/rdf-schema#label> "target concept"@en .
+<http://rdf-vocabulary.ddialliance.org/xkos#targetConcept> <http://www.w3.org/2000/01/rdf-schema#label> "concept cible"@fr .
+<http://rdf-vocabulary.ddialliance.org/xkos#targetConcept> <http://www.w3.org/2000/01/rdf-schema#domain> <http://rdf-vocabulary.ddialliance.org/xkos#ConceptAssociation> .
+<http://rdf-vocabulary.ddialliance.org/xkos#targetConcept> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://rdf-vocabulary.ddialliance.org/xkos#targetConcept> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://rdf-vocabulary.ddialliance.org/xkos> .
+<http://rdf-vocabulary.ddialliance.org/xkos#follows> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<http://rdf-vocabulary.ddialliance.org/xkos#follows> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://rdf-vocabulary.ddialliance.org/xkos#follows> <http://www.w3.org/2000/01/rdf-schema#label> "follows"@en .
+<http://rdf-vocabulary.ddialliance.org/xkos#follows> <http://www.w3.org/2000/01/rdf-schema#label> "suit"@fr .
+<http://rdf-vocabulary.ddialliance.org/xkos#follows> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.w3.org/2004/02/skos/core#ConceptScheme> .
+<http://rdf-vocabulary.ddialliance.org/xkos#follows> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2004/02/skos/core#ConceptScheme> .
+<http://rdf-vocabulary.ddialliance.org/xkos#follows> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://rdf-vocabulary.ddialliance.org/xkos> .
+<http://rdf-vocabulary.ddialliance.org/xkos#supersedes> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<http://rdf-vocabulary.ddialliance.org/xkos#supersedes> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://rdf-vocabulary.ddialliance.org/xkos#supersedes> <http://www.w3.org/2000/01/rdf-schema#label> "supersedes"@en .
+<http://rdf-vocabulary.ddialliance.org/xkos#supersedes> <http://www.w3.org/2000/01/rdf-schema#label> "remplace"@fr .
+<http://rdf-vocabulary.ddialliance.org/xkos#supersedes> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://rdf-vocabulary.ddialliance.org/xkos#follows> .
+<http://rdf-vocabulary.ddialliance.org/xkos#supersedes> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://rdf-vocabulary.ddialliance.org/xkos> .
+<http://rdf-vocabulary.ddialliance.org/xkos#variant> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<http://rdf-vocabulary.ddialliance.org/xkos#variant> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://rdf-vocabulary.ddialliance.org/xkos#variant> <http://www.w3.org/2000/01/rdf-schema#label> "variant"@en .
+<http://rdf-vocabulary.ddialliance.org/xkos#variant> <http://www.w3.org/2000/01/rdf-schema#label> "variante"@fr .
+<http://rdf-vocabulary.ddialliance.org/xkos#variant> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.w3.org/2004/02/skos/core#ConceptScheme> .
+<http://rdf-vocabulary.ddialliance.org/xkos#variant> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2004/02/skos/core#ConceptScheme> .
+<http://rdf-vocabulary.ddialliance.org/xkos#variant> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://rdf-vocabulary.ddialliance.org/xkos> .
+<http://rdf-vocabulary.ddialliance.org/xkos#belongsTo> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<http://rdf-vocabulary.ddialliance.org/xkos#belongsTo> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://rdf-vocabulary.ddialliance.org/xkos#belongsTo> <http://www.w3.org/2000/01/rdf-schema#label> "belongs to"@en .
+<http://rdf-vocabulary.ddialliance.org/xkos#belongsTo> <http://www.w3.org/2000/01/rdf-schema#label> "appartient \u00E0"@fr .
+<http://rdf-vocabulary.ddialliance.org/xkos#belongsTo> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.w3.org/2004/02/skos/core#ConceptScheme> .
+<http://rdf-vocabulary.ddialliance.org/xkos#belongsTo> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://rdf-vocabulary.ddialliance.org/xkos#belongsTo> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://rdf-vocabulary.ddialliance.org/xkos> .
+<http://rdf-vocabulary.ddialliance.org/xkos#organizedBy> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<http://rdf-vocabulary.ddialliance.org/xkos#organizedBy> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://rdf-vocabulary.ddialliance.org/xkos#organizedBy> <http://www.w3.org/2000/01/rdf-schema#label> "organized by"@en .
+<http://rdf-vocabulary.ddialliance.org/xkos#organizedBy> <http://www.w3.org/2000/01/rdf-schema#label> "organis\u00E9 en"@fr .
+<http://rdf-vocabulary.ddialliance.org/xkos#organizedBy> <http://www.w3.org/2000/01/rdf-schema#domain> <http://rdf-vocabulary.ddialliance.org/xkos#ClassificationLevel> .
+<http://rdf-vocabulary.ddialliance.org/xkos#organizedBy> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://rdf-vocabulary.ddialliance.org/xkos#organizedBy> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://rdf-vocabulary.ddialliance.org/xkos> .
+<http://rdf-vocabulary.ddialliance.org/xkos#covers> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<http://rdf-vocabulary.ddialliance.org/xkos#covers> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://rdf-vocabulary.ddialliance.org/xkos#covers> <http://www.w3.org/2000/01/rdf-schema#label> "covers"@en .
+<http://rdf-vocabulary.ddialliance.org/xkos#covers> <http://www.w3.org/2000/01/rdf-schema#label> "couvre"@fr .
+_:node18o8vi0ecx494601 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.w3.org/2004/02/skos/core#ConceptScheme> .
+_:node18o8vi0ecx494601 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:node18o8vi0ecx494602 .
+_:node18o8vi0ecx494602 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://rdf-vocabulary.ddialliance.org/xkos#ClassificationLevel> .
+_:node18o8vi0ecx494602 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:node18o8vi0ecx494600 <http://www.w3.org/2002/07/owl#unionOf> _:node18o8vi0ecx494601 .
+<http://rdf-vocabulary.ddialliance.org/xkos#covers> <http://www.w3.org/2000/01/rdf-schema#domain> _:node18o8vi0ecx494600 .
+<http://rdf-vocabulary.ddialliance.org/xkos#covers> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://rdf-vocabulary.ddialliance.org/xkos#covers> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://rdf-vocabulary.ddialliance.org/xkos> .
+<http://rdf-vocabulary.ddialliance.org/xkos#coversExhaustively> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<http://rdf-vocabulary.ddialliance.org/xkos#coversExhaustively> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://rdf-vocabulary.ddialliance.org/xkos#coversExhaustively> <http://www.w3.org/2000/01/rdf-schema#label> "covers exhaustively"@en .
+<http://rdf-vocabulary.ddialliance.org/xkos#coversExhaustively> <http://www.w3.org/2000/01/rdf-schema#label> "couvre exhaustivement"@fr .
+<http://rdf-vocabulary.ddialliance.org/xkos#coversExhaustively> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://rdf-vocabulary.ddialliance.org/xkos#covers> .
+<http://rdf-vocabulary.ddialliance.org/xkos#coversExhaustively> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://rdf-vocabulary.ddialliance.org/xkos> .
+<http://rdf-vocabulary.ddialliance.org/xkos#coversMutuallyExclusively> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<http://rdf-vocabulary.ddialliance.org/xkos#coversMutuallyExclusively> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://rdf-vocabulary.ddialliance.org/xkos#coversMutuallyExclusively> <http://www.w3.org/2000/01/rdf-schema#label> "covers mutually exclusively"@en .
+<http://rdf-vocabulary.ddialliance.org/xkos#coversMutuallyExclusively> <http://www.w3.org/2000/01/rdf-schema#label> "couvre sans recouvrement"@fr .
+<http://rdf-vocabulary.ddialliance.org/xkos#coversMutuallyExclusively> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://rdf-vocabulary.ddialliance.org/xkos#covers> .
+<http://rdf-vocabulary.ddialliance.org/xkos#coversMutuallyExclusively> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://rdf-vocabulary.ddialliance.org/xkos> .
+<http://rdf-vocabulary.ddialliance.org/xkos#classifiedUnder> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<http://rdf-vocabulary.ddialliance.org/xkos#classifiedUnder> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://rdf-vocabulary.ddialliance.org/xkos#classifiedUnder> <http://www.w3.org/2000/01/rdf-schema#label> "classified under"@en .
+<http://rdf-vocabulary.ddialliance.org/xkos#classifiedUnder> <http://www.w3.org/2000/01/rdf-schema#label> "class\u00E9 sous"@fr .
+<http://rdf-vocabulary.ddialliance.org/xkos#classifiedUnder> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.w3.org/2000/01/rdf-schema#Resource> .
+<http://rdf-vocabulary.ddialliance.org/xkos#classifiedUnder> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://rdf-vocabulary.ddialliance.org/xkos#classifiedUnder> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://rdf-vocabulary.ddialliance.org/xkos> .
+<http://rdf-vocabulary.ddialliance.org/xkos#causal> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<http://rdf-vocabulary.ddialliance.org/xkos#causal> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://rdf-vocabulary.ddialliance.org/xkos#causal> <http://www.w3.org/2000/01/rdf-schema#label> "has causal"@en .
+<http://rdf-vocabulary.ddialliance.org/xkos#causal> <http://www.w3.org/2000/01/rdf-schema#label> "en relation causale"@fr .
+<http://rdf-vocabulary.ddialliance.org/xkos#causal> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2004/02/skos/core#related> .
+<http://rdf-vocabulary.ddialliance.org/xkos#causal> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://rdf-vocabulary.ddialliance.org/xkos> .
+<http://rdf-vocabulary.ddialliance.org/xkos#causes> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<http://rdf-vocabulary.ddialliance.org/xkos#causes> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://rdf-vocabulary.ddialliance.org/xkos#causes> <http://www.w3.org/2000/01/rdf-schema#label> "causes"@en .
+<http://rdf-vocabulary.ddialliance.org/xkos#causes> <http://www.w3.org/2000/01/rdf-schema#label> "est la cause de"@fr .
+<http://rdf-vocabulary.ddialliance.org/xkos#causes> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://rdf-vocabulary.ddialliance.org/xkos#causal> .
+<http://rdf-vocabulary.ddialliance.org/xkos#causes> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://rdf-vocabulary.ddialliance.org/xkos> .
+<http://rdf-vocabulary.ddialliance.org/xkos#causedBy> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<http://rdf-vocabulary.ddialliance.org/xkos#causedBy> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://rdf-vocabulary.ddialliance.org/xkos#causedBy> <http://www.w3.org/2000/01/rdf-schema#label> "caused by"@en .
+<http://rdf-vocabulary.ddialliance.org/xkos#causedBy> <http://www.w3.org/2000/01/rdf-schema#label> "est caus\u00E9 par"@fr .
+<http://rdf-vocabulary.ddialliance.org/xkos#causedBy> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://rdf-vocabulary.ddialliance.org/xkos#causal> .
+<http://rdf-vocabulary.ddialliance.org/xkos#causedBy> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://rdf-vocabulary.ddialliance.org/xkos> .
+<http://rdf-vocabulary.ddialliance.org/xkos#sequential> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<http://rdf-vocabulary.ddialliance.org/xkos#sequential> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://rdf-vocabulary.ddialliance.org/xkos#sequential> <http://www.w3.org/2000/01/rdf-schema#label> "has sequential"@en .
+<http://rdf-vocabulary.ddialliance.org/xkos#sequential> <http://www.w3.org/2000/01/rdf-schema#label> "en relation s\u00E9quentielle"@fr .
+<http://rdf-vocabulary.ddialliance.org/xkos#sequential> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2004/02/skos/core#related> .
+<http://rdf-vocabulary.ddialliance.org/xkos#sequential> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://rdf-vocabulary.ddialliance.org/xkos> .
+<http://rdf-vocabulary.ddialliance.org/xkos#precedes> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<http://rdf-vocabulary.ddialliance.org/xkos#precedes> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#TransitiveProperty> .
+<http://rdf-vocabulary.ddialliance.org/xkos#precedes> <http://www.w3.org/2000/01/rdf-schema#label> "precedes"@en .
+<http://rdf-vocabulary.ddialliance.org/xkos#precedes> <http://www.w3.org/2000/01/rdf-schema#label> "pr\u00E9c\u00E8de"@fr .
+<http://rdf-vocabulary.ddialliance.org/xkos#precedes> <http://www.w3.org/2000/01/rdf-schema#comment> "predecessor in the sequence"@en .
+<http://rdf-vocabulary.ddialliance.org/xkos#precedes> <http://www.w3.org/2000/01/rdf-schema#comment> "pr\u00E9d\u00E9cesseur dans la s\u00E9quence"@fr .
+<http://rdf-vocabulary.ddialliance.org/xkos#precedes> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://rdf-vocabulary.ddialliance.org/xkos#sequential> .
+<http://rdf-vocabulary.ddialliance.org/xkos#precedes> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://rdf-vocabulary.ddialliance.org/xkos> .
+<http://rdf-vocabulary.ddialliance.org/xkos#previous> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<http://rdf-vocabulary.ddialliance.org/xkos#previous> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://rdf-vocabulary.ddialliance.org/xkos#previous> <http://www.w3.org/2000/01/rdf-schema#label> "previous"@en .
+<http://rdf-vocabulary.ddialliance.org/xkos#previous> <http://www.w3.org/2000/01/rdf-schema#label> "pr\u00E9c\u00E9dent"@fr .
+<http://rdf-vocabulary.ddialliance.org/xkos#previous> <http://www.w3.org/2000/01/rdf-schema#comment> "immediate predecessor in the sequence"@en .
+<http://rdf-vocabulary.ddialliance.org/xkos#previous> <http://www.w3.org/2000/01/rdf-schema#comment> "pr\u00E9d\u00E9cesseur imm\u00E9diat dans la s\u00E9quence"@fr .
+<http://rdf-vocabulary.ddialliance.org/xkos#previous> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://rdf-vocabulary.ddialliance.org/xkos#precedes> .
+<http://rdf-vocabulary.ddialliance.org/xkos#previous> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://rdf-vocabulary.ddialliance.org/xkos> .
+<http://rdf-vocabulary.ddialliance.org/xkos#succeeds> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<http://rdf-vocabulary.ddialliance.org/xkos#succeeds> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#TransitiveProperty> .
+<http://rdf-vocabulary.ddialliance.org/xkos#succeeds> <http://www.w3.org/2000/01/rdf-schema#label> "succeeds"@en .
+<http://rdf-vocabulary.ddialliance.org/xkos#succeeds> <http://www.w3.org/2000/01/rdf-schema#label> "succ\u00E8de \u00E0"@fr .
+<http://rdf-vocabulary.ddialliance.org/xkos#succeeds> <http://www.w3.org/2000/01/rdf-schema#comment> "successor in the sequence"@en .
+<http://rdf-vocabulary.ddialliance.org/xkos#succeeds> <http://www.w3.org/2000/01/rdf-schema#comment> "successeur dans la s\u00E9quence" .
+<http://rdf-vocabulary.ddialliance.org/xkos#succeeds> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://rdf-vocabulary.ddialliance.org/xkos#sequential> .
+<http://rdf-vocabulary.ddialliance.org/xkos#succeeds> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://rdf-vocabulary.ddialliance.org/xkos> .
+<http://rdf-vocabulary.ddialliance.org/xkos#next> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<http://rdf-vocabulary.ddialliance.org/xkos#next> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://rdf-vocabulary.ddialliance.org/xkos#next> <http://www.w3.org/2000/01/rdf-schema#label> "next"@en .
+<http://rdf-vocabulary.ddialliance.org/xkos#next> <http://www.w3.org/2000/01/rdf-schema#label> "suivant"@fr .
+<http://rdf-vocabulary.ddialliance.org/xkos#next> <http://www.w3.org/2000/01/rdf-schema#comment> "immediate successor in the sequence"@en .
+<http://rdf-vocabulary.ddialliance.org/xkos#next> <http://www.w3.org/2000/01/rdf-schema#comment> "successeur imm\u00E9diat dans la s\u00E9quence" .
+<http://rdf-vocabulary.ddialliance.org/xkos#next> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://rdf-vocabulary.ddialliance.org/xkos#succeeds> .
+<http://rdf-vocabulary.ddialliance.org/xkos#next> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://rdf-vocabulary.ddialliance.org/xkos> .
+<http://rdf-vocabulary.ddialliance.org/xkos#temporal> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<http://rdf-vocabulary.ddialliance.org/xkos#temporal> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://rdf-vocabulary.ddialliance.org/xkos#temporal> <http://www.w3.org/2000/01/rdf-schema#label> "has temporal"@en .
+<http://rdf-vocabulary.ddialliance.org/xkos#temporal> <http://www.w3.org/2000/01/rdf-schema#label> "en relation temporelle"@fr .
+<http://rdf-vocabulary.ddialliance.org/xkos#temporal> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://rdf-vocabulary.ddialliance.org/xkos#sequential> .
+<http://rdf-vocabulary.ddialliance.org/xkos#temporal> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://rdf-vocabulary.ddialliance.org/xkos> .
+<http://rdf-vocabulary.ddialliance.org/xkos#before> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<http://rdf-vocabulary.ddialliance.org/xkos#before> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#TransitiveProperty> .
+<http://rdf-vocabulary.ddialliance.org/xkos#before> <http://www.w3.org/2000/01/rdf-schema#label> "before"@en .
+<http://rdf-vocabulary.ddialliance.org/xkos#before> <http://www.w3.org/2000/01/rdf-schema#label> "avant"@fr .
+<http://rdf-vocabulary.ddialliance.org/xkos#before> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://rdf-vocabulary.ddialliance.org/xkos#temporal> .
+<http://rdf-vocabulary.ddialliance.org/xkos#before> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://rdf-vocabulary.ddialliance.org/xkos> .
+<http://rdf-vocabulary.ddialliance.org/xkos#after> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<http://rdf-vocabulary.ddialliance.org/xkos#after> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#TransitiveProperty> .
+<http://rdf-vocabulary.ddialliance.org/xkos#after> <http://www.w3.org/2000/01/rdf-schema#label> "after"@en .
+<http://rdf-vocabulary.ddialliance.org/xkos#after> <http://www.w3.org/2000/01/rdf-schema#label> "apr\u00E8s"@fr .
+<http://rdf-vocabulary.ddialliance.org/xkos#after> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://rdf-vocabulary.ddialliance.org/xkos#temporal> .
+<http://rdf-vocabulary.ddialliance.org/xkos#after> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://rdf-vocabulary.ddialliance.org/xkos> .
+<http://rdf-vocabulary.ddialliance.org/xkos#isPartOf> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<http://rdf-vocabulary.ddialliance.org/xkos#isPartOf> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://rdf-vocabulary.ddialliance.org/xkos#isPartOf> <http://www.w3.org/2000/01/rdf-schema#label> "is a part of"@en .
+<http://rdf-vocabulary.ddialliance.org/xkos#isPartOf> <http://www.w3.org/2000/01/rdf-schema#label> "est une partie de"@fr .
+<http://rdf-vocabulary.ddialliance.org/xkos#isPartOf> <http://www.w3.org/2002/07/owl#inverseOf> <http://rdf-vocabulary.ddialliance.org/xkos#hasPart> .
+<http://rdf-vocabulary.ddialliance.org/xkos#isPartOf> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2004/02/skos/core#narrower> .
+<http://rdf-vocabulary.ddialliance.org/xkos#isPartOf> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://rdf-vocabulary.ddialliance.org/xkos> .
+<http://rdf-vocabulary.ddialliance.org/xkos#hasPart> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<http://rdf-vocabulary.ddialliance.org/xkos#hasPart> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://rdf-vocabulary.ddialliance.org/xkos#hasPart> <http://www.w3.org/2000/01/rdf-schema#label> "has part"@en .
+<http://rdf-vocabulary.ddialliance.org/xkos#hasPart> <http://www.w3.org/2000/01/rdf-schema#label> "a pour partie"@fr .
+<http://rdf-vocabulary.ddialliance.org/xkos#hasPart> <http://www.w3.org/2002/07/owl#inverseOf> <http://rdf-vocabulary.ddialliance.org/xkos#isPartOf> .
+<http://rdf-vocabulary.ddialliance.org/xkos#hasPart> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2004/02/skos/core#broader> .
+<http://rdf-vocabulary.ddialliance.org/xkos#hasPart> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://rdf-vocabulary.ddialliance.org/xkos> .
+<http://rdf-vocabulary.ddialliance.org/xkos#specializes> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<http://rdf-vocabulary.ddialliance.org/xkos#specializes> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://rdf-vocabulary.ddialliance.org/xkos#specializes> <http://www.w3.org/2000/01/rdf-schema#label> "specializes"@en .
+<http://rdf-vocabulary.ddialliance.org/xkos#specializes> <http://www.w3.org/2000/01/rdf-schema#label> "sp\u00E9cialise"@fr .
+<http://rdf-vocabulary.ddialliance.org/xkos#specializes> <http://www.w3.org/2002/07/owl#inverseOf> <http://rdf-vocabulary.ddialliance.org/xkos#generalizes> .
+<http://rdf-vocabulary.ddialliance.org/xkos#specializes> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2004/02/skos/core#narrower> .
+<http://rdf-vocabulary.ddialliance.org/xkos#specializes> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://rdf-vocabulary.ddialliance.org/xkos> .
+<http://rdf-vocabulary.ddialliance.org/xkos#generalizes> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<http://rdf-vocabulary.ddialliance.org/xkos#generalizes> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://rdf-vocabulary.ddialliance.org/xkos#generalizes> <http://www.w3.org/2000/01/rdf-schema#label> "generalizes"@en .
+<http://rdf-vocabulary.ddialliance.org/xkos#generalizes> <http://www.w3.org/2000/01/rdf-schema#label> "g\u00E9n\u00E9ralise"@fr .
+<http://rdf-vocabulary.ddialliance.org/xkos#generalizes> <http://www.w3.org/2002/07/owl#inverseOf> <http://rdf-vocabulary.ddialliance.org/xkos#specializes> .
+<http://rdf-vocabulary.ddialliance.org/xkos#generalizes> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2004/02/skos/core#broader> .
+<http://rdf-vocabulary.ddialliance.org/xkos#generalizes> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://rdf-vocabulary.ddialliance.org/xkos> .
+<http://rdf-vocabulary.ddialliance.org/xkos#disjoint> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<http://rdf-vocabulary.ddialliance.org/xkos#disjoint> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://rdf-vocabulary.ddialliance.org/xkos#disjoint> <http://www.w3.org/2000/01/rdf-schema#label> "disjoint from"@en .
+<http://rdf-vocabulary.ddialliance.org/xkos#disjoint> <http://www.w3.org/2000/01/rdf-schema#label> "disjoint de"@fr .
+<http://rdf-vocabulary.ddialliance.org/xkos#disjoint> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2004/02/skos/core#related> .
+<http://rdf-vocabulary.ddialliance.org/xkos#disjoint> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://rdf-vocabulary.ddialliance.org/xkos> .
