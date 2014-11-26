@@ -16,10 +16,10 @@
 <http://rdf-vocabulary.ddialliance.org/xkos> <http://purl.org/vocab/vann/preferredNamespacePrefix> "xkos" .
 <http://rdf-vocabulary.ddialliance.org/xkos> <http://purl.org/vocab/vann/preferredNamespaceUri> <http://rdf-vocabulary.ddialliance.org/xkos#> .
 <http://rdf-vocabulary.ddialliance.org/xkos> <http://purl.org/dc/elements/1.1/rights> "Copyright \u00A9 2012-2014 The DDI Alliance" .
-<http://rdf-vocabulary.ddialliance.org/xkos> <http://creativecommons.org/ns#license> <http://creativecommons.org/licenses/by-nc-sa/3.0/us/> .
+<http://rdf-vocabulary.ddialliance.org/xkos> <http://creativecommons.org/ns#license> <http://creativecommons.org/licenses/by/4.0/> .
 <http://rdf-vocabulary.ddialliance.org/xkos> <http://purl.org/vocommons/voaf#classNumber> "3"^^<http://www.w3.org/2001/XMLSchema#integer> .
 <http://rdf-vocabulary.ddialliance.org/xkos> <http://purl.org/vocommons/voaf#propertyNumber> "36"^^<http://www.w3.org/2001/XMLSchema#integer> .
-<http://rdf-vocabulary.ddialliance.org/xkos> <http://www.w3.org/2002/07/owl#versionInfo> "Version 1.0 - 2014-05-20" .
+<http://rdf-vocabulary.ddialliance.org/xkos> <http://www.w3.org/2002/07/owl#versionInfo> "Version 1.0.1 - 2014-11-26" .
 <http://rdf-vocabulary.ddialliance.org/xkos#ClassificationLevel> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2000/01/rdf-schema#Class> .
 <http://rdf-vocabulary.ddialliance.org/xkos#ClassificationLevel> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <http://rdf-vocabulary.ddialliance.org/xkos#ClassificationLevel> <http://www.w3.org/2000/01/rdf-schema#label> "Classification level"@en .
