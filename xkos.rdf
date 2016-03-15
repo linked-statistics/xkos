@@ -32,7 +32,7 @@
 	<voaf:extends rdf:resource="http://www.w3.org/2004/02/skos/core"/>
 	<vann:preferredNamespacePrefix>xkos</vann:preferredNamespacePrefix>
 	<vann:preferredNamespaceUri rdf:resource="http://rdf-vocabulary.ddialliance.org/xkos#"/>
-	<dc:rights>Copyright © 2012-2014 The DDI Alliance</dc:rights>
+	<dc:rights>Copyright © 2012-2016 The DDI Alliance</dc:rights>
 	<cc:license rdf:resource="http://creativecommons.org/licenses/by/4.0/"/>
 	<voaf:classNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</voaf:classNumber>
 	<voaf:propertyNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">36</voaf:propertyNumber>
