@@ -38,6 +38,7 @@
 	<voaf:propertyNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">36</voaf:propertyNumber>
 	<owl:versionInfo>Version 1.0.1 - 2014-11-26</owl:versionInfo>
 	<owl:versionInfo>Version 1.0.2 - 2016-03-15</owl:versionInfo>
+	<owl:versionInfo>Version 1.0.3 - 2016-03-15</owl:versionInfo>
 </rdf:Description>
 
 <rdf:Description rdf:about="http://rdf-vocabulary.ddialliance.org/xkos#ClassificationLevel">
@@ -187,6 +188,7 @@
 	<rdfs:label xml:lang="en">supersedes</rdfs:label>
 	<rdfs:label xml:lang="fr">remplace</rdfs:label>
 	<rdfs:subPropertyOf rdf:resource="http://rdf-vocabulary.ddialliance.org/xkos#follows"/>
+	<rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/replaces"/>
 	<rdfs:isDefinedBy rdf:resource="http://rdf-vocabulary.ddialliance.org/xkos"/>
 </rdf:Description>
 

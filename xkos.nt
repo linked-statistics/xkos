@@ -21,6 +21,7 @@
 <http://rdf-vocabulary.ddialliance.org/xkos> <http://purl.org/vocommons/voaf#propertyNumber> "36"^^<http://www.w3.org/2001/XMLSchema#integer> .
 <http://rdf-vocabulary.ddialliance.org/xkos> <http://www.w3.org/2002/07/owl#versionInfo> "Version 1.0.1 - 2014-11-26" .
 <http://rdf-vocabulary.ddialliance.org/xkos> <http://www.w3.org/2002/07/owl#versionInfo> "Version 1.0.2 - 2016-03-15" .
+<http://rdf-vocabulary.ddialliance.org/xkos> <http://www.w3.org/2002/07/owl#versionInfo> "Version 1.0.3 - 2016-03-15" .
 <http://rdf-vocabulary.ddialliance.org/xkos#ClassificationLevel> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2000/01/rdf-schema#Class> .
 <http://rdf-vocabulary.ddialliance.org/xkos#ClassificationLevel> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <http://rdf-vocabulary.ddialliance.org/xkos#ClassificationLevel> <http://www.w3.org/2000/01/rdf-schema#label> "Classification level"@en .
@@ -122,6 +123,7 @@
 <http://rdf-vocabulary.ddialliance.org/xkos#supersedes> <http://www.w3.org/2000/01/rdf-schema#label> "supersedes"@en .
 <http://rdf-vocabulary.ddialliance.org/xkos#supersedes> <http://www.w3.org/2000/01/rdf-schema#label> "remplace"@fr .
 <http://rdf-vocabulary.ddialliance.org/xkos#supersedes> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://rdf-vocabulary.ddialliance.org/xkos#follows> .
+<http://rdf-vocabulary.ddialliance.org/xkos#supersedes> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://purl.org/dc/terms/replaces/> .
 <http://rdf-vocabulary.ddialliance.org/xkos#supersedes> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://rdf-vocabulary.ddialliance.org/xkos> .
 <http://rdf-vocabulary.ddialliance.org/xkos#variant> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
 <http://rdf-vocabulary.ddialliance.org/xkos#variant> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
