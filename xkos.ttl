@@ -7,6 +7,7 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix skosxl: <http://www.w3.org/2008/05/skos-xl#> .
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix voaf: <http://purl.org/vocommons/voaf#> .
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix cc: <http://creativecommons.org/ns#> .
@@ -28,7 +29,7 @@ dc:rights "Copyright © 2012-2014 The DDI Alliance" ;
 cc:license <http://creativecommons.org/licenses/by/4.0/> ;
 voaf:classNumber "3"^^xsd:integer ;
 voaf:propertyNumber "36"^^xsd:integer ;
-owl:versionInfo "Version 1.0.1 - 2014-11-26" .
+owl:versionInfo "Version 1.0.1 - 2014-11-26", "Version 1.0.2 - 2016-03-15".
 
 
 #################################################################
@@ -280,25 +281,25 @@ rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 xkos:isPartOf a rdf:Property, owl:ObjectProperty ;
 rdfs:label "is a part of"@en, "est une partie de"@fr ;
 owl:inverseOf xkos:hasPart ;
-rdfs:subPropertyOf skos:narrower ;
+rdfs:subPropertyOf skos:broader, dcterms:isPartOf ;
 rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 
 xkos:hasPart a rdf:Property, owl:ObjectProperty ;
 rdfs:label "has part"@en, "a pour partie"@fr ;
 owl:inverseOf xkos:isPartOf ;
-rdfs:subPropertyOf skos:broader ;
+rdfs:subPropertyOf skos:narrower, dcterms:hasPart ;
 rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 
 xkos:specializes a rdf:Property, owl:ObjectProperty ;
 rdfs:label "specializes"@en, "spécialise"@fr ;
 owl:inverseOf xkos:generalizes ;
-rdfs:subPropertyOf skos:narrower ;
+rdfs:subPropertyOf skos:broader ;
 rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 
 xkos:generalizes a rdf:Property, owl:ObjectProperty ;
 rdfs:label "generalizes"@en , "généralise"@fr ;
 owl:inverseOf xkos:specializes ;
-rdfs:subPropertyOf skos:broader ;
+rdfs:subPropertyOf skos:narrower ;
 rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 
 # Types of relations for comparison purposes

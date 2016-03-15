@@ -20,6 +20,7 @@
 <http://rdf-vocabulary.ddialliance.org/xkos> <http://purl.org/vocommons/voaf#classNumber> "3"^^<http://www.w3.org/2001/XMLSchema#integer> .
 <http://rdf-vocabulary.ddialliance.org/xkos> <http://purl.org/vocommons/voaf#propertyNumber> "36"^^<http://www.w3.org/2001/XMLSchema#integer> .
 <http://rdf-vocabulary.ddialliance.org/xkos> <http://www.w3.org/2002/07/owl#versionInfo> "Version 1.0.1 - 2014-11-26" .
+<http://rdf-vocabulary.ddialliance.org/xkos> <http://www.w3.org/2002/07/owl#versionInfo> "Version 1.0.2 - 2016-03-15" .
 <http://rdf-vocabulary.ddialliance.org/xkos#ClassificationLevel> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2000/01/rdf-schema#Class> .
 <http://rdf-vocabulary.ddialliance.org/xkos#ClassificationLevel> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <http://rdf-vocabulary.ddialliance.org/xkos#ClassificationLevel> <http://www.w3.org/2000/01/rdf-schema#label> "Classification level"@en .
@@ -253,28 +254,30 @@ _:node18o8vi0ecx494600 <http://www.w3.org/2002/07/owl#unionOf> _:node18o8vi0ecx4
 <http://rdf-vocabulary.ddialliance.org/xkos#isPartOf> <http://www.w3.org/2000/01/rdf-schema#label> "is a part of"@en .
 <http://rdf-vocabulary.ddialliance.org/xkos#isPartOf> <http://www.w3.org/2000/01/rdf-schema#label> "est une partie de"@fr .
 <http://rdf-vocabulary.ddialliance.org/xkos#isPartOf> <http://www.w3.org/2002/07/owl#inverseOf> <http://rdf-vocabulary.ddialliance.org/xkos#hasPart> .
-<http://rdf-vocabulary.ddialliance.org/xkos#isPartOf> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2004/02/skos/core#narrower> .
+<http://rdf-vocabulary.ddialliance.org/xkos#isPartOf> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2004/02/skos/core#broader> .
+<http://rdf-vocabulary.ddialliance.org/xkos#isPartOf> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://purl.org/dc/terms/isPartOf> .
 <http://rdf-vocabulary.ddialliance.org/xkos#isPartOf> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://rdf-vocabulary.ddialliance.org/xkos> .
 <http://rdf-vocabulary.ddialliance.org/xkos#hasPart> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
 <http://rdf-vocabulary.ddialliance.org/xkos#hasPart> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
 <http://rdf-vocabulary.ddialliance.org/xkos#hasPart> <http://www.w3.org/2000/01/rdf-schema#label> "has part"@en .
 <http://rdf-vocabulary.ddialliance.org/xkos#hasPart> <http://www.w3.org/2000/01/rdf-schema#label> "a pour partie"@fr .
 <http://rdf-vocabulary.ddialliance.org/xkos#hasPart> <http://www.w3.org/2002/07/owl#inverseOf> <http://rdf-vocabulary.ddialliance.org/xkos#isPartOf> .
-<http://rdf-vocabulary.ddialliance.org/xkos#hasPart> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2004/02/skos/core#broader> .
+<http://rdf-vocabulary.ddialliance.org/xkos#hasPart> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2004/02/skos/core#narrower> .
+<http://rdf-vocabulary.ddialliance.org/xkos#hasPart> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://purl.org/dc/terms/hasPart> .
 <http://rdf-vocabulary.ddialliance.org/xkos#hasPart> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://rdf-vocabulary.ddialliance.org/xkos> .
 <http://rdf-vocabulary.ddialliance.org/xkos#specializes> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
 <http://rdf-vocabulary.ddialliance.org/xkos#specializes> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
 <http://rdf-vocabulary.ddialliance.org/xkos#specializes> <http://www.w3.org/2000/01/rdf-schema#label> "specializes"@en .
 <http://rdf-vocabulary.ddialliance.org/xkos#specializes> <http://www.w3.org/2000/01/rdf-schema#label> "sp\u00E9cialise"@fr .
 <http://rdf-vocabulary.ddialliance.org/xkos#specializes> <http://www.w3.org/2002/07/owl#inverseOf> <http://rdf-vocabulary.ddialliance.org/xkos#generalizes> .
-<http://rdf-vocabulary.ddialliance.org/xkos#specializes> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2004/02/skos/core#narrower> .
+<http://rdf-vocabulary.ddialliance.org/xkos#specializes> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2004/02/skos/core#broader> .
 <http://rdf-vocabulary.ddialliance.org/xkos#specializes> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://rdf-vocabulary.ddialliance.org/xkos> .
 <http://rdf-vocabulary.ddialliance.org/xkos#generalizes> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
 <http://rdf-vocabulary.ddialliance.org/xkos#generalizes> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
 <http://rdf-vocabulary.ddialliance.org/xkos#generalizes> <http://www.w3.org/2000/01/rdf-schema#label> "generalizes"@en .
 <http://rdf-vocabulary.ddialliance.org/xkos#generalizes> <http://www.w3.org/2000/01/rdf-schema#label> "g\u00E9n\u00E9ralise"@fr .
 <http://rdf-vocabulary.ddialliance.org/xkos#generalizes> <http://www.w3.org/2002/07/owl#inverseOf> <http://rdf-vocabulary.ddialliance.org/xkos#specializes> .
-<http://rdf-vocabulary.ddialliance.org/xkos#generalizes> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2004/02/skos/core#broader> .
+<http://rdf-vocabulary.ddialliance.org/xkos#generalizes> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2004/02/skos/core#narrower> .
 <http://rdf-vocabulary.ddialliance.org/xkos#generalizes> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://rdf-vocabulary.ddialliance.org/xkos> .
 <http://rdf-vocabulary.ddialliance.org/xkos#disjoint> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
 <http://rdf-vocabulary.ddialliance.org/xkos#disjoint> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .

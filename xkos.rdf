@@ -9,6 +9,7 @@
 	xmlns:skos="http://www.w3.org/2004/02/skos/core#"
 	xmlns:skosxl="http://www.w3.org/2008/05/skos-xl#"
 	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:dcterms="http://purl.org/dc/terms/"
 	xmlns:voaf="http://purl.org/vocommons/voaf#"
 	xmlns:vann="http://purl.org/vocab/vann/"
 	xmlns:cc="http://creativecommons.org/ns#">
@@ -36,6 +37,7 @@
 	<voaf:classNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</voaf:classNumber>
 	<voaf:propertyNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">36</voaf:propertyNumber>
 	<owl:versionInfo>Version 1.0.1 - 2014-11-26</owl:versionInfo>
+	<owl:versionInfo>Version 1.0.2 - 2016-03-15</owl:versionInfo>
 </rdf:Description>
 
 <rdf:Description rdf:about="http://rdf-vocabulary.ddialliance.org/xkos#ClassificationLevel">
@@ -386,7 +388,8 @@
 	<rdfs:label xml:lang="en">is a part of</rdfs:label>
 	<rdfs:label xml:lang="fr">est une partie de</rdfs:label>
 	<owl:inverseOf rdf:resource="http://rdf-vocabulary.ddialliance.org/xkos#hasPart"/>
-	<rdfs:subPropertyOf rdf:resource="http://www.w3.org/2004/02/skos/core#narrower"/>
+	<rdfs:subPropertyOf rdf:resource="http://www.w3.org/2004/02/skos/core#broader"/>
+	<rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/isPartOf"/>
 	<rdfs:isDefinedBy rdf:resource="http://rdf-vocabulary.ddialliance.org/xkos"/>
 </rdf:Description>
 
@@ -396,7 +399,8 @@
 	<rdfs:label xml:lang="en">has part</rdfs:label>
 	<rdfs:label xml:lang="fr">a pour partie</rdfs:label>
 	<owl:inverseOf rdf:resource="http://rdf-vocabulary.ddialliance.org/xkos#isPartOf"/>
-	<rdfs:subPropertyOf rdf:resource="http://www.w3.org/2004/02/skos/core#broader"/>
+	<rdfs:subPropertyOf rdf:resource="http://www.w3.org/2004/02/skos/core#narrower"/>
+	<rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/hasPart"/>
 	<rdfs:isDefinedBy rdf:resource="http://rdf-vocabulary.ddialliance.org/xkos"/>
 </rdf:Description>
 
@@ -406,7 +410,7 @@
 	<rdfs:label xml:lang="en">specializes</rdfs:label>
 	<rdfs:label xml:lang="fr">spécialise</rdfs:label>
 	<owl:inverseOf rdf:resource="http://rdf-vocabulary.ddialliance.org/xkos#generalizes"/>
-	<rdfs:subPropertyOf rdf:resource="http://www.w3.org/2004/02/skos/core#narrower"/>
+	<rdfs:subPropertyOf rdf:resource="http://www.w3.org/2004/02/skos/core#broader"/>
 	<rdfs:isDefinedBy rdf:resource="http://rdf-vocabulary.ddialliance.org/xkos"/>
 </rdf:Description>
 
@@ -416,7 +420,7 @@
 	<rdfs:label xml:lang="en">generalizes</rdfs:label>
 	<rdfs:label xml:lang="fr">généralise</rdfs:label>
 	<owl:inverseOf rdf:resource="http://rdf-vocabulary.ddialliance.org/xkos#specializes"/>
-	<rdfs:subPropertyOf rdf:resource="http://www.w3.org/2004/02/skos/core#broader"/>
+	<rdfs:subPropertyOf rdf:resource="http://www.w3.org/2004/02/skos/core#narrower"/>
 	<rdfs:isDefinedBy rdf:resource="http://rdf-vocabulary.ddialliance.org/xkos"/>
 </rdf:Description>
 
