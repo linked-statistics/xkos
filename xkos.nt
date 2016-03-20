@@ -18,7 +18,7 @@
 <http://rdf-vocabulary.ddialliance.org/xkos> <http://purl.org/dc/elements/1.1/rights> "Copyright © 2012-2016 The DDI Alliance" .
 <http://rdf-vocabulary.ddialliance.org/xkos> <http://creativecommons.org/ns#license> <http://creativecommons.org/licenses/by/4.0/> .
 <http://rdf-vocabulary.ddialliance.org/xkos> <http://purl.org/vocommons/voaf#classNumber> "4"^^<http://www.w3.org/2001/XMLSchema#integer> .
-<http://rdf-vocabulary.ddialliance.org/xkos> <http://purl.org/vocommons/voaf#propertyNumber> "37"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<http://rdf-vocabulary.ddialliance.org/xkos> <http://purl.org/vocommons/voaf#propertyNumber> "38"^^<http://www.w3.org/2001/XMLSchema#integer> .
 <http://rdf-vocabulary.ddialliance.org/xkos> <http://www.w3.org/2002/07/owl#versionInfo> "Version 1.0.1 - 2014-11-26" .
 <http://rdf-vocabulary.ddialliance.org/xkos> <http://www.w3.org/2002/07/owl#versionInfo> "Version 1.0.2 - 2016-03-15" .
 <http://rdf-vocabulary.ddialliance.org/xkos> <http://www.w3.org/2002/07/owl#versionInfo> "Version 1.0.3 - 2016-03-15" .
@@ -123,8 +123,15 @@
 <http://rdf-vocabulary.ddialliance.org/xkos#targetConcept> <http://www.w3.org/2000/01/rdf-schema#label> "target concept"@en .
 <http://rdf-vocabulary.ddialliance.org/xkos#targetConcept> <http://www.w3.org/2000/01/rdf-schema#label> "concept cible"@fr .
 <http://rdf-vocabulary.ddialliance.org/xkos#targetConcept> <http://www.w3.org/2000/01/rdf-schema#domain> <http://rdf-vocabulary.ddialliance.org/xkos#ConceptAssociation> .
-<http://rdf-vocabulary.ddialliance.org/xkos#targetConcept> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2004/02/skos/core#Concept> .
-<http://rdf-vocabulary.ddialliance.org/xkos#targetConcept> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://rdf-vocabulary.ddialliance.org/xkos> .
+<http://rdf-vocabulary.ddialliance.org/xkos#compares> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://rdf-vocabulary.ddialliance.org/xkos#compares> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://rdf-vocabulary.ddialliance.org/xkos> .
+<http://rdf-vocabulary.ddialliance.org/xkos#compares> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<http://rdf-vocabulary.ddialliance.org/xkos#compares> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://rdf-vocabulary.ddialliance.org/xkos#compares> <http://www.w3.org/2000/01/rdf-schema#label> "compares"@en .
+<http://rdf-vocabulary.ddialliance.org/xkos#compares> <http://www.w3.org/2000/01/rdf-schema#label> "compare"@fr .
+<http://rdf-vocabulary.ddialliance.org/xkos#compares> <http://www.w3.org/2000/01/rdf-schema#domain> <http://rdf-vocabulary.ddialliance.org/xkos#Correspondence> .
+<http://rdf-vocabulary.ddialliance.org/xkos#compares> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2004/02/skos/core#ConceptScheme> .
+<http://rdf-vocabulary.ddialliance.org/xkos#compares> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://rdf-vocabulary.ddialliance.org/xkos> .
 <http://rdf-vocabulary.ddialliance.org/xkos#follows> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
 <http://rdf-vocabulary.ddialliance.org/xkos#follows> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
 <http://rdf-vocabulary.ddialliance.org/xkos#follows> <http://www.w3.org/2000/01/rdf-schema#label> "follows"@en .
