@@ -34,11 +34,12 @@
 	<vann:preferredNamespaceUri rdf:resource="http://rdf-vocabulary.ddialliance.org/xkos#"/>
 	<dc:rights>Copyright © 2012-2016 The DDI Alliance</dc:rights>
 	<cc:license rdf:resource="http://creativecommons.org/licenses/by/4.0/"/>
-	<voaf:classNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</voaf:classNumber>
+	<voaf:classNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</voaf:classNumber>
 	<voaf:propertyNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">36</voaf:propertyNumber>
 	<owl:versionInfo>Version 1.0.1 - 2014-11-26</owl:versionInfo>
 	<owl:versionInfo>Version 1.0.2 - 2016-03-15</owl:versionInfo>
 	<owl:versionInfo>Version 1.0.3 - 2016-03-15</owl:versionInfo>
+	<owl:versionInfo>Version 1.1 - 2016-03-20</owl:versionInfo>
 </rdf:Description>
 
 <rdf:Description rdf:about="http://rdf-vocabulary.ddialliance.org/xkos#ClassificationLevel">
@@ -63,6 +64,14 @@
 	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
 	<rdfs:label xml:lang="en">Correspondence</rdfs:label>
 	<rdfs:label xml:lang="fr">Correspondance</rdfs:label>
+	<rdfs:isDefinedBy rdf:resource="http://rdf-vocabulary.ddialliance.org/xkos"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://rdf-vocabulary.ddialliance.org/xkos#ExplanatoryNote">
+	<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+	<rdfs:label xml:lang="en">Explanatory note</rdfs:label>
+	<rdfs:label xml:lang="fr">Note explicative</rdfs:label>
 	<rdfs:isDefinedBy rdf:resource="http://rdf-vocabulary.ddialliance.org/xkos"/>
 </rdf:Description>
 
