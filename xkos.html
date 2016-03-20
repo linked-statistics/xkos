@@ -232,6 +232,10 @@
 					<td><a href="#levels">Section 6. Classification levels</a></td>
 				</tr>
 				<tr>
+					<td>xkos:notationPattern</td>
+					<td><a href="#levels">Section 6. Classification levels</a></td>
+				</tr>
+				<tr>
 					<td>xkos:ConceptAssociation</td>
 					<td><a href="#correspondences">Section 7. Correspondences and concept associations</a></td>
 				</tr>
@@ -425,11 +429,12 @@
 
 		<p>The levels of a classification scheme are organized as an <code>rdf:List</code> (implying order), starting with the most aggregated level. The <code>skos:ConceptScheme</code> representing the classification scheme points to the <code>rdf:List</code> of its <code>xkos:ClassificationLevel</code>s with the <code>xkos:levels</code> property.
 		<a href="#anzsic-example">Example 10.1</a> below gives a good representation of this construction.</p>
-		
+
 		<p>Individual <code>skos:Concept</code> objects are related to the <code>xkos:ClassificationLevel</code> to which they belong by the usual <code>skos:member</code> property (going from the level to the classification item).</p>
 
 		<p>A classification level is often characterized by a generic name for the classification items that it regroups. The ISCO names "major groups" the items of the first level, "sub-major groups" the items of the second level, etc. The NACE uses the terms "sections", "divisions", "groups" and "classes"; the NAICS has "sectors", "subsectors", "groups", etc. This information can be rendered in XKOS by the property <code>xkos:organizedBy</code> that links the <code>xkos:ClassificationLevel</code> object to a <code>skos:Concept</code> representing the generic item for this level (<i>e.g.</i> the concept of an ISCO major group, of a NACE section, etc.).</p>
 
+		<p>Also, classification items of a given levels usually have a code (expressed by the <code>skos:notation</code> property) that conforms to a specific structure. For example, the NACE sections are identified by a capital letter between A and U; NACE divisions are identified by two-digits codes, etc. In order to capture this information, XKOS defines the <code>xkos:notationPattern</code> property. This property is attached to a classification level and should contain a regular expression refecting the code structure of the items of this level.</p>
 	</section>
 
 	<section id="correspondences">
