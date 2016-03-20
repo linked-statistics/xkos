@@ -256,6 +256,10 @@
 					<td><a href="#doc-props">Section 8. Documentation properties</a></td>
 				</tr>
 				<tr>
+					<td>xkos:ExplanatoryNote</td>
+					<td><a href="#doc-props">Section 8. Documentation properties</a></td>
+				</tr>
+				<tr>
 					<td>xkos:inclusionNote</td>
 					<td><a href="#doc-props">Section 8. Documentation properties</a></td>
 				</tr>
@@ -469,7 +473,7 @@
 
 	<section id="doc-props">
 		<h2>Documentation properties</h2>
-		<p>Statistical classifications usually come with textual material that describe in detail the structure and use of the classification, the content of the different items, the past decisions taken on classifying field entities, etc. This material is organized in notes attached to the various objects described above. XKOS defines a set of sub-properties of <code>skos:scopeNote</code> that correspond to a typology of explanatory notes which is widely used for statistical classifications.</p>
+		<p>Statistical classifications usually come with textual material that describe in detail the structure and use of the classification, the content of the different items, the past decisions taken on classifying field entities, etc. This material is organized in notes, called explanatory notes, that are attached to the various objects described above. XKOS defines the <code>xkos:ExplanatoryNote</code> class and a set of sub-properties of <code>skos:scopeNote</code> that correspond to a typology of explanatory notes which is widely used for statistical classifications.</p>
 
 		<p>In some circumstances, classification publishers desire to provide, in addition to the official labels, normalized fixed-length labels that can be used in situations where the labels length is constrained, for example in table headers. XKOS defines the <code>xkos:maxLength</code> property that can be used in combination with SKOS-XL <code>xl:Label</code> instances.</p>
 
@@ -494,9 +498,9 @@
 
 		<section id="note-ext">
 			<h3>Explanatory notes</h3>
-			<p>Classifications require a range of specialized note that indicate various types of descriptive properties used in defining the concept. Definitions have three forms of content. Central content is a description of those things known specifically to be included in a concept. Limit content expresses those things that were either identified at a later point to be included, clarify decisions based on specific cases, or are otherwise clarifications of “gray” areas. Notes containing any arbitrary decisions fall into this type of limit content. Finally, concepts are defined as a set of things they exclude. These are things that might appear to be included but have been associated with other concepts in the classification. Exclusion statements provide both the list of items and their appropriate concepts.</p>
+			<p>Classifications require a range of specialized note that indicate various types of descriptive properties used in defining the concept. Definitions have three main forms of content. Central content is a description of those things known specifically to be included in a concept. Limit content expresses those things that were either identified at a later point to be included, clarify decisions based on specific cases, or are otherwise clarifications of “gray” areas. Notes containing any arbitrary decisions fall into this type of limit content. Finally, concepts are defined as a set of things they exclude. These are things that might appear to be included but have been associated with other concepts in the classification. Exclusion statements provide both the list of items and their appropriate concepts.</p>
 
-			<p>SKOS contains the property <code>skos:scopeNote</code> which is a sub-property of <code>skos:note</code> which itself is a type of <code>owl:annotationProperty</code>. XKOS extends the property <code>skos:scopeNote</code> to define additional sub-properties needed to support the model described abover. The sub-properties added to <code>skos:scopeNote</code> include an <code>xkos:inclusionNote</code> and <code>xkos:exclusionNote</code>. Additional sub-properties were added to <code>xkos:inclusionNote</code> to further define the type of inclusion specification using the sub-properties <code>xkos:coreContentNote</code> (to identify central content) and <code>xkos:additionalContentNote</code> (to identify limit content).</p>
+			<p>SKOS contains the property <code>skos:scopeNote</code> which is a sub-property of <code>skos:note</code> which itself is a type of <code>owl:annotationProperty</code>. XKOS extends the property <code>skos:scopeNote</code> to define additional sub-properties needed to support the model described above. The sub-properties added to <code>skos:scopeNote</code> include an <code>xkos:inclusionNote</code> and <code>xkos:exclusionNote</code>. Additional sub-properties were added to <code>xkos:inclusionNote</code> to further define the type of inclusion specification using the sub-properties <code>xkos:coreContentNote</code> (to identify central content) and <code>xkos:additionalContentNote</code> (to identify limit content). Additionally, XKOS defines the <code>xkos:ExplanatoryNote</code> class so that every resource corresponding to explanatory notes can be typed in a standard manner.</p>
 			<table class="image">
 				<caption align="bottom">Figure 5 &#8211; XKOS annotations</caption>
 				<tr><td><img src="img/annotations.png" alt="XKOS annotations" title="XKOS annotations"></td></tr>
