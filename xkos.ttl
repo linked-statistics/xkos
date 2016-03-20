@@ -28,7 +28,7 @@ vann:preferredNamespaceUri <http://rdf-vocabulary.ddialliance.org/xkos#> ;
 dc:rights "Copyright © 2012-2016 The DDI Alliance" ;
 cc:license <http://creativecommons.org/licenses/by/4.0/> ;
 voaf:classNumber "4"^^xsd:integer ;
-voaf:propertyNumber "36"^^xsd:integer ;
+voaf:propertyNumber "37"^^xsd:integer ;
 owl:versionInfo "Version 1.0.1 - 2014-11-26", "Version 1.0.2 - 2016-03-15", "Version 1.0.3 - 2016-03-15", "Version 1.1 - 2016-03-20" .
 
 
@@ -117,6 +117,12 @@ rdfs:domain skosxl:Label ;
 rdfs:range xsd:positiveInteger ;
 rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 
+# Structure (defined as a regular expression) of the item codes at a given level
+
+xkos:notationPattern a rdf:Property, owl:DatatypeProperty ;
+rdfs:label "code pattern"@en, "gabarit de code"@fr ;
+rdfs:domain xkos:ClassificationLevel ;
+rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 
 #################################################################
 # Object properties
