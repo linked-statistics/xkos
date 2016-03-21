@@ -256,6 +256,10 @@
 					<td><a href="#correspondences">Section 7. Correspondences and concept associations</a></td>
 				</tr>
 				<tr>
+					<td>xkos:compares</td>
+					<td><a href="#correspondences">Section 7. Correspondences and concept associations</a></td>
+				</tr>
+				<tr>
 					<td>xkos:maxLength</td>
 					<td><a href="#doc-props">Section 8. Documentation properties</a></td>
 				</tr>
@@ -450,7 +454,7 @@
 			<li>Lastly, it is often useful to be able to attach additional information (for example notes) to items associations, for example to describe what proportion of the different items are linked in the association.</li>
 		</ul>
 
-		<p>For these reasons, XKOS defines the <code>xkos:ConceptAssociation</code> class that can be used to represent correspondences between classification items when the SKOS properties are not sufficient. Each <code>xkos:ConceptAssociation</code> may have input or source <code>skos:Concept</code>(s) and output or target <code>skos:Concept</code>(s). The complete collection of such associations for all the concepts in two SKOS Concept Schemes forms a correspondence and is expressed as an instance of the <code>xkos:Correspondence</code> class. The <code>xkos:madeOf</code> property is used to link the <code>xkos:Correspondence</code> to its <code>xkos:ConceptAssociation</code> components.</p>
+		<p>For these reasons, XKOS defines the <code>xkos:ConceptAssociation</code> class that can be used to represent correspondences between classification items when the SKOS properties are not sufficient. Each <code>xkos:ConceptAssociation</code> may have input or source <code>skos:Concept</code>(s) and output or target <code>skos:Concept</code>(s). The complete collection of such associations for all the concepts in two SKOS Concept Schemes forms a correspondence and is expressed as an instance of the <code>xkos:Correspondence</code> class. The <code>xkos:madeOf</code> property is used to link the <code>xkos:Correspondence</code> to its <code>xkos:ConceptAssociation</code> components. The <code>xkos:compares</code> property may be used to link directly the <code>xkos:Correspondence</code> to the classification schemes that it puts in relation.</p>
 
 		<p>The following figures illustrate two examples of concept associations between classification items. <a href="#concept-association-example">Example 10.3</a> below gives a more complex real-life example.</p>
 		<table class="image">
