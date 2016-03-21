@@ -88,6 +88,13 @@ rdfs:label "exclusions"@en, "exclusions"@fr ;
 rdfs:subPropertyOf skos:scopeNote ;
 rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 
+# Simple text of an explanatory note
+
+xkos:plainText a rdf:Property, owl:AnnotationProperty ;
+rdfs:label "plain text"@en, "texte brut"@fr ;
+rdfs:domain xkos:ExplanatoryNote ;
+rdfs:range rdf:PlainLiteral ;
+rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 
 #################################################################
 # Data properties

@@ -68,6 +68,13 @@
 <http://rdf-vocabulary.ddialliance.org/xkos#exclusionNote> <http://www.w3.org/2000/01/rdf-schema#label> "exclusions"@fr .
 <http://rdf-vocabulary.ddialliance.org/xkos#exclusionNote> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2004/02/skos/core#scopeNote> .
 <http://rdf-vocabulary.ddialliance.org/xkos#exclusionNote> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://rdf-vocabulary.ddialliance.org/xkos> .
+<http://rdf-vocabulary.ddialliance.org/xkos#plainText> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<http://rdf-vocabulary.ddialliance.org/xkos#plainText> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+<http://rdf-vocabulary.ddialliance.org/xkos#plainText> <http://www.w3.org/2000/01/rdf-schema#label> "plain text"@en .
+<http://rdf-vocabulary.ddialliance.org/xkos#plainText> <http://www.w3.org/2000/01/rdf-schema#label> "texte brut"@fr .
+<http://rdf-vocabulary.ddialliance.org/xkos#plainText> <http://www.w3.org/2000/01/rdf-schema#domain> <http://rdf-vocabulary.ddialliance.org/xkos#ExplanatoryNote> .
+<http://rdf-vocabulary.ddialliance.org/xkos#plainText> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral> .
+<http://rdf-vocabulary.ddialliance.org/xkos#plainText> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://rdf-vocabulary.ddialliance.org/xkos> .
 <http://rdf-vocabulary.ddialliance.org/xkos#numberOfLevels> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
 <http://rdf-vocabulary.ddialliance.org/xkos#numberOfLevels> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
 <http://rdf-vocabulary.ddialliance.org/xkos#numberOfLevels> <http://www.w3.org/2000/01/rdf-schema#label> "number of levels"@en .
