@@ -102,14 +102,13 @@
 <http://rdf-vocabulary.ddialliance.org/xkos#maxLength> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.w3.org/2008/05/skos-xl#Label> .
 <http://rdf-vocabulary.ddialliance.org/xkos#maxLength> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#positiveInteger> .
 <http://rdf-vocabulary.ddialliance.org/xkos#maxLength> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://rdf-vocabulary.ddialliance.org/xkos> .
-
 <http://rdf-vocabulary.ddialliance.org/xkos#notationPattern> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
 <http://rdf-vocabulary.ddialliance.org/xkos#notationPattern> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
 <http://rdf-vocabulary.ddialliance.org/xkos#notationPattern> <http://www.w3.org/2000/01/rdf-schema#label> "code pattern"@en .
 <http://rdf-vocabulary.ddialliance.org/xkos#notationPattern> <http://www.w3.org/2000/01/rdf-schema#label> "gabarit de code"@fr .
 <http://rdf-vocabulary.ddialliance.org/xkos#notationPattern> <http://www.w3.org/2000/01/rdf-schema#domain> <http://rdf-vocabulary.ddialliance.org/xkos#ClassificationLevel> .
+<http://rdf-vocabulary.ddialliance.org/xkos#maxLength> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
 <http://rdf-vocabulary.ddialliance.org/xkos#notationPattern> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://rdf-vocabulary.ddialliance.org/xkos> .
-
 <http://rdf-vocabulary.ddialliance.org/xkos#levels> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
 <http://rdf-vocabulary.ddialliance.org/xkos#levels> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
 <http://rdf-vocabulary.ddialliance.org/xkos#levels> <http://www.w3.org/2000/01/rdf-schema#label> "level list"@en .

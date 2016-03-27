@@ -166,6 +166,7 @@
 	<rdfs:label xml:lang="en">code pattern</rdfs:label>
 	<rdfs:label xml:lang="fr">gabarit de code</rdfs:label>
 	<rdfs:domain rdf:resource="http://rdf-vocabulary.ddialliance.org/xkos#ClassificationLevel"/>
+	<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
 	<rdfs:isDefinedBy rdf:resource="http://rdf-vocabulary.ddialliance.org/xkos"/>
 </rdf:Description>
 

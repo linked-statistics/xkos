@@ -134,6 +134,7 @@ rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 xkos:notationPattern a rdf:Property, owl:DatatypeProperty ;
 rdfs:label "code pattern"@en, "gabarit de code"@fr ;
 rdfs:domain xkos:ClassificationLevel ;
+rdfs:range xsd:string ;
 rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 
 #################################################################
