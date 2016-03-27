@@ -28,7 +28,7 @@ vann:preferredNamespaceUri <http://rdf-vocabulary.ddialliance.org/xkos#> ;
 dc:rights "Copyright © 2012-2016 The DDI Alliance" ;
 cc:license <http://creativecommons.org/licenses/by/4.0/> ;
 voaf:classNumber "4"^^xsd:integer ;
-voaf:propertyNumber "38"^^xsd:integer ;
+voaf:propertyNumber "40"^^xsd:integer ;
 owl:versionInfo "Version 1.0.1 - 2014-11-26", "Version 1.0.2 - 2016-03-15", "Version 1.0.3 - 2016-03-15", "Version 1.1 - 2016-03-20" .
 
 
@@ -86,6 +86,11 @@ rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 xkos:exclusionNote a rdf:Property, owl:AnnotationProperty ;
 rdfs:label "exclusions"@en, "exclusions"@fr ;
 rdfs:subPropertyOf skos:scopeNote ;
+rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
+
+xkos:caseLaw a rdf:Property, owl:AnnotationProperty ;
+rdfs:label "case law"@en, "jurisprudence"@fr ;
+rdfs:subPropertyOf skos:note ;
 rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 
 # Simple text of an explanatory note

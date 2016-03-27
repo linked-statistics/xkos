@@ -35,7 +35,7 @@
 	<dc:rights>Copyright © 2012-2016 The DDI Alliance</dc:rights>
 	<cc:license rdf:resource="http://creativecommons.org/licenses/by/4.0/"/>
 	<voaf:classNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</voaf:classNumber>
-	<voaf:propertyNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">38</voaf:propertyNumber>
+	<voaf:propertyNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">40</voaf:propertyNumber>
 	<owl:versionInfo>Version 1.0.1 - 2014-11-26</owl:versionInfo>
 	<owl:versionInfo>Version 1.0.2 - 2016-03-15</owl:versionInfo>
 	<owl:versionInfo>Version 1.0.3 - 2016-03-15</owl:versionInfo>
@@ -108,6 +108,15 @@
 	<rdfs:label xml:lang="en">exclusions</rdfs:label>
 	<rdfs:label xml:lang="fr">exclusions</rdfs:label>
 	<rdfs:subPropertyOf rdf:resource="http://www.w3.org/2004/02/skos/core#scopeNote"/>
+	<rdfs:isDefinedBy rdf:resource="http://rdf-vocabulary.ddialliance.org/xkos"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://rdf-vocabulary.ddialliance.org/xkos#caseLaw">
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+	<rdfs:label xml:lang="en">case law</rdfs:label>
+	<rdfs:label xml:lang="fr">jurisprudence</rdfs:label>
+	<rdfs:subPropertyOf rdf:resource="http://www.w3.org/2004/02/skos/core#note"/>
 	<rdfs:isDefinedBy rdf:resource="http://rdf-vocabulary.ddialliance.org/xkos"/>
 </rdf:Description>
 

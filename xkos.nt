@@ -18,7 +18,7 @@
 <http://rdf-vocabulary.ddialliance.org/xkos> <http://purl.org/dc/elements/1.1/rights> "Copyright © 2012-2016 The DDI Alliance" .
 <http://rdf-vocabulary.ddialliance.org/xkos> <http://creativecommons.org/ns#license> <http://creativecommons.org/licenses/by/4.0/> .
 <http://rdf-vocabulary.ddialliance.org/xkos> <http://purl.org/vocommons/voaf#classNumber> "4"^^<http://www.w3.org/2001/XMLSchema#integer> .
-<http://rdf-vocabulary.ddialliance.org/xkos> <http://purl.org/vocommons/voaf#propertyNumber> "38"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<http://rdf-vocabulary.ddialliance.org/xkos> <http://purl.org/vocommons/voaf#propertyNumber> "40"^^<http://www.w3.org/2001/XMLSchema#integer> .
 <http://rdf-vocabulary.ddialliance.org/xkos> <http://www.w3.org/2002/07/owl#versionInfo> "Version 1.0.1 - 2014-11-26" .
 <http://rdf-vocabulary.ddialliance.org/xkos> <http://www.w3.org/2002/07/owl#versionInfo> "Version 1.0.2 - 2016-03-15" .
 <http://rdf-vocabulary.ddialliance.org/xkos> <http://www.w3.org/2002/07/owl#versionInfo> "Version 1.0.3 - 2016-03-15" .
@@ -68,6 +68,12 @@
 <http://rdf-vocabulary.ddialliance.org/xkos#exclusionNote> <http://www.w3.org/2000/01/rdf-schema#label> "exclusions"@fr .
 <http://rdf-vocabulary.ddialliance.org/xkos#exclusionNote> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2004/02/skos/core#scopeNote> .
 <http://rdf-vocabulary.ddialliance.org/xkos#exclusionNote> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://rdf-vocabulary.ddialliance.org/xkos> .
+<http://rdf-vocabulary.ddialliance.org/xkos#caseLaw> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<http://rdf-vocabulary.ddialliance.org/xkos#caseLaw> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+<http://rdf-vocabulary.ddialliance.org/xkos#caseLaw> <http://www.w3.org/2000/01/rdf-schema#label> "case law"@en .
+<http://rdf-vocabulary.ddialliance.org/xkos#caseLaw> <http://www.w3.org/2000/01/rdf-schema#label> "jurisprudence"@fr .
+<http://rdf-vocabulary.ddialliance.org/xkos#caseLaw> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2004/02/skos/core#note> .
+<http://rdf-vocabulary.ddialliance.org/xkos#caseLaw> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://rdf-vocabulary.ddialliance.org/xkos> .
 <http://rdf-vocabulary.ddialliance.org/xkos#plainText> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
 <http://rdf-vocabulary.ddialliance.org/xkos#plainText> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
 <http://rdf-vocabulary.ddialliance.org/xkos#plainText> <http://www.w3.org/2000/01/rdf-schema#label> "plain text"@en .
