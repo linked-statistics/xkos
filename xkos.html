@@ -622,118 +622,118 @@
 				@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
 				@prefix fi: &lt;http://www.fao.org/fishery/ns#&gt; .
 
-				#datatypes, used to type notations which are used for codes
-				fi:ISSCAAPGroupCode a rdfs:Datatype;
+				# Datatypes, used to type notations which are used for codes
+				fi:ISSCAAPGroupCode a rdfs:Datatype ;
 					rdfs:comment "ISSCAAP Group code" ;
-					owl:onDatatype xsd:string;
+					owl:onDatatype xsd:string ;
 					owl:withRestrictions (
 						[
 							xsd:pattern "[0-9]{2,}"
 						]
 					) .
 
-				fi:ISSCAAPDivisionCode a rdfs:Datatype;
+				fi:ISSCAAPDivisionCode a rdfs:Datatype ;
 					rdfs:comment "ISSCAAP Division code" ;
-					owl:onDatatype xsd:string;
+					owl:onDatatype xsd:string ;
 					owl:withRestrictions (
 						[
 							xsd:pattern "[0-9]{1,}"
 						]
 					) .
 
-				fi:FAO3Alpha a rdfs:Datatype;
+				fi:FAO3Alpha a rdfs:Datatype ;
 					rdfs:comment "FAO 3-Alpha code" ;
-					owl:onDatatype xsd:string;
+					owl:onDatatype xsd:string ;
 					owl:withRestrictions (
 						[
 							xsd:pattern "[A-Z]{3,}"
 						]
 					) .
 
-				fi:FAOTaxonomicCode a rdfs:Datatype;
+				fi:FAOTaxonomicCode a rdfs:Datatype ;
 					rdfs:comment "FAO Taxonomic code" ;
-					owl:onDatatype xsd:string;
+					owl:onDatatype xsd:string ;
 					owl:withRestrictions (
 						[
 							xsd:pattern "[0-9]{10,}"
 						]
 					) .
 
-				#This could probably be done using standards from Darwin Core	
-				fi:FAOScientificName a rdfs:Datatype;
+				# This could probably be done using standards from the Darwin Core
+				fi:FAOScientificName a rdfs:Datatype ;
 					rdfs:comment "FAO Scientific name" ;
-					owl:onDatatype xsd:string.
+					owl:onDatatype xsd:string .
 
-				#create a concept for the family of classifications
-				fi:AquaticAnimalsAndPlants rdf:type skos:Concept;
-					skos:prefLabel "Aquatic Animals and Plants Family of Classifications"@en.
+				# Create a concept for the family of classifications
+				fi:AquaticAnimalsAndPlants a skos:Concept ;
+					skos:prefLabel "Aquatic Animals and Plants Family of Classifications"@en .
 
-				#create a concept for the classification that is independent of the set of versions	
-				fi:ISSCAAP rdf:type skos:Concept;
-					skos:prefLabel "International Standard Statistical Classification of Aquatic Animals and Plants 2005"@en.
+				# Create a concept for the classification that is independent of the set of versions
+				fi:ISSCAAP a skos:Concept ;
+					skos:prefLabel "International Standard Statistical Classification of Aquatic Animals and Plants 2005"@en .
 
-				#generic classification levels that can be reused
-				fi:ISSCAAP_Division rdf:type skos:Concept;
-					skos:prefLabel "ISSCAAP Division"@en.
+				# Generic classification levels that can be reused
+				fi:ISSCAAP_Division a skos:Concept ;
+					skos:prefLabel "ISSCAAP Division"@en .
 
-				fi:ISSCAAP_Group rdf:type skos:Concept;
-					skos:prefLabel "ISSCAAP Group"@en.
+				fi:ISSCAAP_Group a skos:Concept ;
+					skos:prefLabel "ISSCAAP Group"@en .
 
-				fi:ASFIS rdf:type skos:Concept;
-					skos:prefLabel "ASFIS"@en.
+				fi:ASFIS rdf:type skos:Concept ;
+					skos:prefLabel "ASFIS"@en .
 
-				#classification levels for this particular classification scheme
-				fi:ISSCAAP_1 rdf:type xkos:ClassificationLevel;
-					xkos:organizedBy fi:ISSCAAP_division;
-					xkos:coversMutuallyExclusively fi:AquaticAnimalsAndPlants;
-					xkos:depth 1;
-					skos:member fi:ISSCAAP_3.	
+				# Classification levels for this particular classification scheme
+				fi:ISSCAAP_L1 a xkos:ClassificationLevel ;
+					xkos:organizedBy fi:ISSCAAP_Division 
+					xkos:coversMutuallyExclusively fi:AquaticAnimalsAndPlants ;
+					xkos:depth 1 ;
+					skos:member fi:ISSCAAP_3 .
 
-				fi:ISSCAAP_2 rdf:type xkos:ClassificationLevel;
-					xkos:organizedBy fi:ISSCAAP_group;
-					xkos:coversMutuallyExclusively fi:AquaticAnimalsAndPlants;
-					xkos:depth 2;
-					skos:member fi:ISSCAAP_3.	
+				fi:ISSCAAP_L2 a xkos:ClassificationLevel ;
+					xkos:organizedBy fi:ISSCAAP_Group ;
+					xkos:coversMutuallyExclusively fi:AquaticAnimalsAndPlants ;
+					xkos:depth 2 ;
+					skos:member fi:ISSCAAP_32 .
 
-				fi:ISSCAAP_3 rdf:type xkos:ClassificationLevel;
-					xkos:organizedBy fi:ASFIS;
-					xkos:coversMutuallyExclusively fi:AquaticAnimalsAndPlants;
-					xkos:depth 3;
-					skos:member fi:ASFIS_COD.	
+				fi:ISSCAAP_L3 a xkos:ClassificationLevel ;
+					xkos:organizedBy fi:ASFIS ;
+					xkos:coversMutuallyExclusively fi:AquaticAnimalsAndPlants ;
+					xkos:depth 3 ;
+					skos:member fi:ASFIS_COD .
 
-				#the classification scheme
-				fi:ISSCAAP_2005 rdf:type skos:ConceptScheme;
-					skos:prefLabel "International Standard Statistical Classification of Aquatic Animals and Plants 2005"@en;
-					xkos:belongsTo fi:ISSCAAP;
-					xkos:coversMutuallyExclusively fi:AquaticAnimalsAndPlants;
-					xkos:numberOfLevels 3;
-					xkos:levels fi:ISSCAAP_division, fi:ISSCAAP_group, fi:ASFIS;
-					xkos:follows &lt;http://www.fao.org/fishery/ns#ISSCAAP_2001&gt;.
+				# The classification scheme
+				fi:ISSCAAP_2005 a skos:ConceptScheme;
+					skos:prefLabel "International Standard Statistical Classification of Aquatic Animals and Plants 2005"@en ;
+					xkos:belongsTo fi:ISSCAAP ;
+					xkos:coversMutuallyExclusively fi:AquaticAnimalsAndPlants ;
+					xkos:numberOfLevels 3 ;
+					xkos:levels ( fi:ISSCAAP_L1 fi:ISSCAAP_L2 fi:ISSCAAP_L3 ) ;
+					xkos:follows &lt;http://www.fao.org/fishery/ns#ISSCAAP_2001&gt; .
 
-				fi:ASFIS_COD rdf:type skos:Concept;
-					skos:inScheme fi:ISSCAAP;
-					skos:prefLabel "Atlantic Cod"@en;
-					skos:prefLabel "Morue de l'Atlantique"@fr;
-					skos:prefLabel "Bacalao del Atl‡ntico"@es;
-					skos:altLabel "Cod"@en;
-					skos:altLabel "Morue"@fr;
-					skos:altLabel "Bacalao"@es;
-					skos:notation "COD"^^fi:FAO3Alpha;
-					skos:notation "1480400202"^^fi:FAOTaxonomicCode;
-					skos:notation "Gadus morhua, Linnaeus 1758"^^fi:FAOScientificName;
-					xkos:specializes fi:ISSCAAP_32.
+				fi:ASFIS_COD a skos:Concept ;
+					skos:inScheme fi:ISSCAAP ;
+					skos:prefLabel "Atlantic Cod"@en ;
+					skos:prefLabel "Morue de l'Atlantique"@fr ;
+					skos:prefLabel "Bacalao del Atlántico"@es ;
+					skos:altLabel "Cod"@en ;
+					skos:altLabel "Morue"@fr ;
+					skos:altLabel "Bacalao"@es ;
+					skos:notation "COD"^^fi:FAO3Alpha ;
+					skos:notation "1480400202"^^fi:FAOTaxonomicCode ;
+					skos:notation "Gadus morhua, Linnaeus 1758"^^fi:FAOScientificName ;
+					xkos:specializes fi:ISSCAAP_32 .
 
-				fi:ISSCAAP_32 rdf:type skos:Concept;
-					skos:inScheme fi:ISSCAAP;
-					skos:prefLabel "Cods, Hakes, Haddocks"@en;
-					skos:notation "32"^^fi:ISSCAAPGroupCode;
-					xkos:generalizes fi:ASFIS_COD.
+				fi:ISSCAAP_32 a skos:Concept ;
+					skos:inScheme fi:ISSCAAP ;
+					skos:prefLabel "Cods, Hakes, Haddocks"@en ;
+					skos:notation "32"^^fi:ISSCAAPGroupCode ;
+					xkos:generalizes fi:ASFIS_COD .
 
-				fi:ISSCAAP_3 rdf:type skos:Concept;
-					skos:inScheme fi:ISSCAAP;
-					skos:prefLabel "Marine Fishes"@en;
-					skos:notation "3"^^fi:ISSCAAPDivisionCode;
-					xkos:generalizes fi:ISSCAAP_32.
+				fi:ISSCAAP_3 a skos:Concept ;
+					skos:inScheme fi:ISSCAAP ;
+					skos:prefLabel "Marine Fishes"@en ;
+					skos:notation "3"^^fi:ISSCAAPDivisionCode ;
+					xkos:generalizes fi:ISSCAAP_32 .
 				</p>
 			</pre>
 		</section>
