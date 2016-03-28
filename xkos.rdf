@@ -20,7 +20,7 @@
 	<dc:title xml:lang="en">XKOS: an SKOS extension for representing statistical classifications</dc:title>
 	<dc:title xml:lang="fr">XKOS : une extension de SKOS pour la représentation des nomenclatures statistiques</dc:title>
 	<rdfs:comment xml:lang="en">This ontology is based on work initiated at Dagstuhl Schloss in September 2011</rdfs:comment>
-	<rdfs:comment xml:lang="en">Cette ontologie est basée sur le travail commencé à Dagstuhl Schloss en septembre 2011</rdfs:comment>
+	<rdfs:comment xml:lang="fr">Cette ontologie est basée sur le travail commencé à Dagstuhl Schloss en septembre 2011</rdfs:comment>
 	<dc:contributor>Daniel Gillman</dc:contributor>
 	<dc:contributor>Wendy L. Thomas</dc:contributor>
 	<dc:contributor>Richard Cyganiak</dc:contributor>

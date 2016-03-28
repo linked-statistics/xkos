@@ -3,7 +3,7 @@
 <http://rdf-vocabulary.ddialliance.org/xkos> <http://purl.org/dc/elements/1.1/title> "XKOS: an SKOS extension for representing statistical classifications"@en .
 <http://rdf-vocabulary.ddialliance.org/xkos> <http://purl.org/dc/elements/1.1/title> "XKOS : une extension de SKOS pour la représentation des nomenclatures statistiques"@fr .
 <http://rdf-vocabulary.ddialliance.org/xkos> <http://www.w3.org/2000/01/rdf-schema#comment> "This ontology is based on work initiated at Dagstuhl Schloss in September 2011"@en .
-<http://rdf-vocabulary.ddialliance.org/xkos> <http://www.w3.org/2000/01/rdf-schema#comment> "Cette ontologie est basée sur le travail commencé à Dagstuhl Schloss en septembre 2011"@en .
+<http://rdf-vocabulary.ddialliance.org/xkos> <http://www.w3.org/2000/01/rdf-schema#comment> "Cette ontologie est basée sur le travail commencé à Dagstuhl Schloss en septembre 2011"@fr .
 <http://rdf-vocabulary.ddialliance.org/xkos> <http://purl.org/dc/elements/1.1/contributor> "Daniel Gillman" .
 <http://rdf-vocabulary.ddialliance.org/xkos> <http://purl.org/dc/elements/1.1/contributor> "Wendy L. Thomas" .
 <http://rdf-vocabulary.ddialliance.org/xkos> <http://purl.org/dc/elements/1.1/contributor> "Richard Cyganiak" .
