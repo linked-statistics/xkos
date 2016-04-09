@@ -15,7 +15,7 @@
 <http://rdf-vocabulary.ddialliance.org/xkos> <http://purl.org/vocommons/voaf#extends> <http://www.w3.org/2004/02/skos/core> .
 <http://rdf-vocabulary.ddialliance.org/xkos> <http://purl.org/vocab/vann/preferredNamespacePrefix> "xkos" .
 <http://rdf-vocabulary.ddialliance.org/xkos> <http://purl.org/vocab/vann/preferredNamespaceUri> <http://rdf-vocabulary.ddialliance.org/xkos#> .
-<http://rdf-vocabulary.ddialliance.org/xkos> <http://purl.org/dc/elements/1.1/rights> "Copyright © 2012-2016 The DDI Alliance" .
+<http://rdf-vocabulary.ddialliance.org/xkos> <http://purl.org/dc/elements/1.1/rights> "Copyright © 2016 The DDI Alliance" .
 <http://rdf-vocabulary.ddialliance.org/xkos> <http://creativecommons.org/ns#license> <http://creativecommons.org/licenses/by/4.0/> .
 <http://rdf-vocabulary.ddialliance.org/xkos> <http://purl.org/vocommons/voaf#classNumber> "4"^^<http://www.w3.org/2001/XMLSchema#integer> .
 <http://rdf-vocabulary.ddialliance.org/xkos> <http://purl.org/vocommons/voaf#propertyNumber> "40"^^<http://www.w3.org/2001/XMLSchema#integer> .
