@@ -533,7 +533,7 @@
 
 	<section id="sem-props">
 		<h2>Semantic properties</h2>
-		<p>The semantic properties extend the possible relations that can be applied between pairs of concepts. SKOS allows the following relations: <i>broader than</i>, <i>narrower than,</i> and <i>related to</i>. The first two are hierarchical relations, one in each direction. However, terminologists recognize two main kinds of hierarchical relations: <i>generic</i> and <i>partitive</i>. IsPartof and hasPart are <i>partitive</i>; and specializes and generalizes are <i>generic</i>. In addition, several detailed associations, the <i>related to</i> relations, are provided: <i>causal</i> and <i>sequential</i>. <i>Causal</i> has two directions: <i>causes</i> and <i>causedBy</i>, and sequential has two directions: <i>precedes</i> or <i>previous</i>, and <i>succeeds</i> or <i>next</i>. <i>Previous</i> and <i>next</i> have the additional criterion that they are <u>transitive</u> relations. In addition, <i>temporal</i> is a kind of <i>sequential</i> relation, which is subdivided into <i>before</i> and <i>after</i>, in addition which are <u>transitive</u>. Two concepts are <i>disjoint</i> if no objects correspond to both concepts at once.</p>
+		<p>The semantic properties extend the possible relations that can be applied between pairs of concepts. SKOS allows the following relations: <i>has broader</i>, <i>has narrower,</i> and <i>related to</i>. The first two are hierarchical relations, one in each direction. However, terminologists recognize two main kinds of hierarchical relations: <i>generic</i> and <i>partitive</i>. IsPartof and hasPart are <i>partitive</i>; and specializes and generalizes are <i>generic</i>. In addition, several detailed associations, the <i>related to</i> relations, are provided: <i>causal</i> and <i>sequential</i>. <i>Causal</i> has two directions: <i>causes</i> and <i>causedBy</i>, and sequential has two directions: <i>precedes</i> or <i>previous</i>, and <i>succeeds</i> or <i>next</i>. <i>Previous</i> and <i>next</i> have the additional criterion that they are <u>transitive</u> relations. In addition, <i>temporal</i> is a kind of <i>sequential</i> relation, which is subdivided into <i>before</i> and <i>after</i>, in addition which are <u>transitive</u>. Two concepts are <i>disjoint</i> if no objects correspond to both concepts at once.</p>
 
 		<p>The management of classification structures requires further specification of a number of SKOS terms in order to describe very specific relationships. XKOS has chosen to address these as refinements of existing SKOS terms whenever possible in order to facilitate understanding among users of related domain areas:</p>
 		<ul>
@@ -545,15 +545,15 @@
 
 		<p>XKOS defines the following sub-type for skos:broader and skos:narrower</p>
 		<ul>
-			<li><code>xkos:generalizes</code> is a sub-type of <code>skos:broader</code></li>
-			<li><code>xkos:specializes</code> is a sub-type of <code>skos:narrower</code></li>
+			<li><code>xkos:generalizes</code> is a sub-type of <code>skos:narrower</code></li>
+			<li><code>xkos:specializes</code> is a sub-type of <code>skos:broader</code></li>
 		</ul>
 		<pre class='example'>
 			<p>The term Vehicle is a generalized description of which Car is a specialized type of Vehicle.</p>
 		</pre>
 		<ul>
-			<li><code>xkos:hasPart</code> is a sub-type of <code>skos:broader</code></li>
-			<li><code>xkos:isPartOf</code> is a sub-type of <code>skos:narrower</code></li>
+			<li><code>xkos:hasPart</code> is a sub-type of <code>skos:narrower</code></li>
+			<li><code>xkos:isPartOf</code> is a sub-type of <code>skos:broader</code></li>
 		</ul>
 		<pre class='example'>
 			<p>The term Car has a part with the term SteeringWheel.</p>
