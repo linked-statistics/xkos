@@ -83,6 +83,7 @@
 			  ISIC: "<cite>International Standard Industrial Classification of All Economic Activities</cite>. URL:&#160;<a href=\"http://unstats.un.org/unsd/cr/registry/regcst.asp?Cl=17\">http://unstats.un.org/unsd/cr/registry/regcst.asp?Cl=17</a>.",
 			  ISO1087: "<cite>ISO 1087-1:2000 &#8211; Terminology work &#8211; Vocabulary &#8211; Part 1: Theory and application</cite>. URL:&#160;<a href=\"http://www.iso.org/iso/catalogue_detail.htm?csnumber=20057\">http://www.iso.org/iso/catalogue_detail.htm?csnumber=20057</a>.",
 			  ISO704: "<cite>ISO 704:2009 &#8211; Terminology work &#8211; Principles and methods</cite>. URL:&#160;<a href=\"http://www.iso.org/iso/catalogue_detail.htm?csnumber=38109\">http://www.iso.org/iso/catalogue_detail.htm?csnumber=38109</a>.",
+			  ISOTHES: "<cite>ISO 25964 SKOS Extension</cite>. URL:&#160;<a href=\"http://pub.tenforce.com/schemas/iso25964/skos-thes\">http://pub.tenforce.com/schemas/iso25964/skos-thes</a>. See also :&#160;<a href=\"http://lov.okfn.org/dataset/lov/vocabs/iso-thes\">http://lov.okfn.org/dataset/lov/vocabs/iso-thes</a>",
 			  LOCSH: "<cite>Library of Congress Subject Headings</cite>. URL:&#160;<a href=\"http://id.loc.gov/authorities/subjects.html\">http://id.loc.gov/authorities/subjects.html</a>.",
 			  NACE: "<cite>Statistical Classification of Economic Activities in the European Community (Nomenclature statistique des activités économiques dans la Communauté européenne)</cite>. URL:&#160;<a href=\"http://en.wikipedia.org/wiki/Statistical_Classification_of_Economic_Activities_in_the_European_Community\">http://en.wikipedia.org/wiki/Statistical_Classification_of_Economic_Activities_in_the_European_Community</a>.",
 			  NAICS: "<cite>NAICS, North American Industry Classification System</cite>. URL:&#160;<a href=\"http://www.census.gov/eos/www/naics/index.html\">http://www.census.gov/eos/www/naics/index.html</a>.",
@@ -541,54 +542,65 @@
 			<li>skos:related a refinement of several associative properties</li>
 		</ul>
 
-		<p>The refinements of skos:broader and skos:narrower focus on the differentiating between the ideas of a generic relationship (generalized/specialized) and a partitive relationship (whole/part). These are important distinctions in many classification structures.</p>
+		<section id="sem-props-hierarchy">
+			<h3>Hierarchical properties</h3>
 
-		<p>XKOS defines the following sub-type for skos:broader and skos:narrower</p>
-		<ul>
-			<li><code>xkos:generalizes</code> is a sub-type of <code>skos:broader</code></li>
-			<li><code>xkos:specializes</code> is a sub-type of <code>skos:narrower</code></li>
-		</ul>
-		<pre class='example'>
-			<p>The term Vehicle is a generalized description of which Car is a specialized type of Vehicle.</p>
-		</pre>
-		<ul>
-			<li><code>xkos:hasPart</code> is a sub-type of <code>skos:broader</code></li>
-			<li><code>xkos:isPartOf</code> is a sub-type of <code>skos:narrower</code></li>
-		</ul>
-		<pre class='example'>
-			<p>The term Car has a part with the term SteeringWheel.</p>
-		</pre>
+			<p>The refinements of skos:broader and skos:narrower focus on the differentiating between the ideas of a generic relationship (generalized/specialized) and a partitive relationship (whole/part). These are important distinctions in many classification structures.</p>
 
-		<p>The Occupational Injury and Illness Classification System ([[!OIICS]]) offers more realistic examples. This classification defines four different schemes called <i>Nature</i>, <i>Body part</i>, <i>Source</i> and <i>Event</i>.</p>
-		<p>The idea is to classify each work related injury or illness which causes missed time at work with these four facets.</p>
-		<p>The <i>Body Part</i> facet scheme uses partitive relationships throughout:</p>
-		<pre class='example'>
-			<p>1&#8195;Head<br/>1.3&#8195;Face<br/>1.3.3&#8195;Nose<br/>1.3.3.4&#8195;Sinus(es)</p>
-		</pre>
-		<p>These features are related through the part-whole relation.</p>
-		<p>The <i>Nature</i> facet scheme uses generic relationships throughout:</p>
-		<pre class='example'>
-			<p>2&#8195;Diseases and Disorders of Body Systems<br/>2.3&#8195;Circulatory System Diseases<br/>2.3.3&#8195;Ischemic Heart Disease, including heart attack<br/>2.3.3.1&#8195;Myocardial Infarction (heart attack)</p>
-		</pre>
-		<p>These features are related through the specific-generic relation.</p>
+			<p>XKOS defines the following sub-type for skos:broader and skos:narrower</p>
+			<ul>
+				<li><code>xkos:generalizes</code> is a sub-type of <code>skos:broader</code></li>
+				<li><code>xkos:specializes</code> is a sub-type of <code>skos:narrower</code></li>
+			</ul>
+			<pre class='example'>
+				<p>The term Vehicle is a generalized description of which Car is a specialized type of Vehicle.</p>
+			</pre>
+			<ul>
+				<li><code>xkos:hasPart</code> is a sub-type of <code>skos:broader</code></li>
+				<li><code>xkos:isPartOf</code> is a sub-type of <code>skos:narrower</code></li>
+			</ul>
+			<pre class='example'>
+				<p>The term Car has a part with the term SteeringWheel.</p>
+			</pre>
 
-		<p>XKOS provides several refinements to <code>skos:related</code> which define causal and sequential relationships. These are initially separated into causal and sequential relationship types which are then further defined as shown in the diagram.</p>
+			<p>The Occupational Injury and Illness Classification System ([[!OIICS]]) offers more realistic examples. This classification defines four different schemes called <i>Nature</i>, <i>Body part</i>, <i>Source</i> and <i>Event</i>.</p>
+			<p>The idea is to classify each work related injury or illness which causes missed time at work with these four facets.</p>
+			<p>The <i>Body Part</i> facet scheme uses partitive relationships throughout:</p>
+			<pre class='example'>
+				<p>1&#8195;Head<br/>1.3&#8195;Face<br/>1.3.3&#8195;Nose<br/>1.3.3.4&#8195;Sinus(es)</p>
+			</pre>
+			<p>These features are related through the part-whole relation.</p>
+			<p>The <i>Nature</i> facet scheme uses generic relationships throughout:</p>
+			<pre class='example'>
+				<p>2&#8195;Diseases and Disorders of Body Systems<br/>2.3&#8195;Circulatory System Diseases<br/>2.3.3&#8195;Ischemic Heart Disease, including heart attack<br/>2.3.3.1&#8195;Myocardial Infarction (heart attack)</p>
+			</pre>
+			<p>These features are related through the specific-generic relation.</p>
 
-		<p>Causal relationships are either <code>xkos:caused</code> or <code>xkos:causedBy</code>.</p>
+		</section>
 
-		<p>Sequential relationships may be transitive or intransitive. When transitive the relationship is expressed by the pair <code>xkos:precedes</code> and <code>xkos:succeeds</code>. When not transitive the relationship is expressed by the pair <code>xkos:previous</code> and <code>xkos:next</code>.</p>
+		<section id="sem-props-associative">
+			<h3>Associative properties</h3>
 
-		<h6>Example of transitive and non-transitive sequential relationships</h6>
-		<p>Consider the following sequence going left to right:</p> 
+			<p>XKOS provides several refinements to <code>skos:related</code> which define causal and sequential relationships. These are initially separated into causal and sequential relationship types which are then further defined as shown in the diagram.</p>
 
-		<p>A &#8594; B &#8594; C &#8594; D &#8594; E</p>
+			<p>Causal relationships are either <code>xkos:caused</code> or <code>xkos:causedBy</code>.</p>
 
-		<p>If a transitive relationship to C is being described, C precedes D and E (which succeed C) and succeeds A and B (which precede C). The relation implied by <code>xkos:precedes</code> is n-m and <code>xkos:succeeds</code> is n+m where m is an number >= 1.</p>
-		<p>If a non-transitive relationship needs to be expressed between C and D then C is previous in order to D and D is next in order C. The relation implied by <code>xkos:previous</code> is n-1 and <code>xkos:next</code> is n+1.</p> 
+			<p>Sequential relationships may be transitive or intransitive. When transitive the relationship is expressed by the pair <code>xkos:precedes</code> and <code>xkos:succeeds</code>. When not transitive the relationship is expressed by the pair <code>xkos:previous</code> and <code>xkos:next</code>.</p>
 
-		<p>Temporal relationships are a specific type of sequential where one event or object is before or after another in terms of time. Temporal relationships are transitive and are expressed as <code>xkos:before</code> and <code>xkos:after</code>.</p> 
+			<section id="sem-props-associative-example">
+				<h4>Example of transitive and non-transitive sequential relationships</h4>
+				<p>Consider the following sequence going left to right:</p> 
 
-		<p>Note that a concept may have a temporal aspect that is not sequential in nature but simply an expression of the period for which it is applicable. This is expressed using <code>dcterms:valid</code> which provides the date range of validity.</p> 
+				<p>A &#8594; B &#8594; C &#8594; D &#8594; E</p>
+
+				<p>If a transitive relationship to C is being described, C precedes D and E (which succeed C) and succeeds A and B (which precede C). The relation implied by <code>xkos:precedes</code> is n-m and <code>xkos:succeeds</code> is n+m where m is an number >= 1.</p>
+				<p>If a non-transitive relationship needs to be expressed between C and D then C is previous in order to D and D is next in order C. The relation implied by <code>xkos:previous</code> is n-1 and <code>xkos:next</code> is n+1.</p> 
+
+				<p>Temporal relationships are a specific type of sequential where one event or object is before or after another in terms of time. Temporal relationships are transitive and are expressed as <code>xkos:before</code> and <code>xkos:after</code>.</p> 
+
+				<p>Note that a concept may have a temporal aspect that is not sequential in nature but simply an expression of the period for which it is applicable. This is expressed using <code>dcterms:valid</code> which provides the date range of validity.</p> 
+			</section>
+		</section>
 	</section>
 
 	<section id="examples">
