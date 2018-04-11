@@ -189,8 +189,10 @@ rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 
 xkos:supersedes a rdf:Property, owl:ObjectProperty ;
 rdfs:label "supersedes"@en, "remplace"@fr ;
-rdfs:subPropertyOf xkos:follows, dcterms:replaces ;
+rdfs:subPropertyOf xkos:follows ;
+skos:exactMatch dcterms:replaces ;
 rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
+
 
 # Property connecting a classification scheme to its variant(s)
 
@@ -313,13 +315,15 @@ rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 xkos:isPartOf a rdf:Property, owl:ObjectProperty ;
 rdfs:label "is a part of"@en, "est une partie de"@fr ;
 owl:inverseOf xkos:hasPart ;
-rdfs:subPropertyOf skos:broader, dcterms:isPartOf ;
+rdfs:subPropertyOf skos:broader ;
+skos:exactMatch dcterms:isPartOf ;
 rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 
 xkos:hasPart a rdf:Property, owl:ObjectProperty ;
 rdfs:label "has part"@en, "a pour partie"@fr ;
 owl:inverseOf xkos:isPartOf ;
-rdfs:subPropertyOf skos:narrower, dcterms:hasPart ;
+rdfs:subPropertyOf skos:narrower ;
+skos:exactMatch dcterms:hasPart ;
 rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 
 xkos:specializes a rdf:Property, owl:ObjectProperty ;
