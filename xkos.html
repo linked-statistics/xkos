@@ -382,12 +382,17 @@
 				<tr>
 					<td>skos</td>
 					<td>http://www.w3.org/2004/02/skos/core#</td>
-					<td>Simple Knowledge Organization System</a></td>
+					<td>Simple Knowledge Organization System ([[!SKOS]])</a></td>
 				</tr>
 				<tr>
 					<td>skosxl</td>
 					<td>http://www.w3.org/2008/05/skos-xl#</td>
 					<td>SKOS eXtension for Labels (SKOS-XL) ([[!SKOSXL]])</a></td>
+				</tr>
+				<tr>
+					<td>iso-thes</td>
+					<td>http://purl.org/iso25964/skos-thes#</td>
+					<td>ISO 25964 SKOS extension ([[ISOTHES]])</a></td>
 				</tr>
 			</tbody>
 		</table>
@@ -549,20 +554,19 @@
 
 			<p>XKOS defines the following sub-type for skos:broader and skos:narrower</p>
 			<ul>
-				<li><code>xkos:generalizes</code> is a sub-type of <code>skos:broader</code></li>
-				<li><code>xkos:specializes</code> is a sub-type of <code>skos:narrower</code></li>
+				<li><code>xkos:specializes</code> is a sub-property of <code>skos:broader</code></li>
+				<li><code>xkos:generalizes</code> is a sub-property of <code>skos:narrower</code></li>
 			</ul>
 			<pre class='example'>
 				<p>The term Vehicle is a generalized description of which Car is a specialized type of Vehicle.</p>
 			</pre>
 			<ul>
-				<li><code>xkos:hasPart</code> is a sub-type of <code>skos:broader</code></li>
-				<li><code>xkos:isPartOf</code> is a sub-type of <code>skos:narrower</code></li>
+				<li><code>xkos:isPartOf</code> is a sub-property of <code>skos:broader</code></li>
+				<li><code>xkos:hasPart</code> is a sub-property of <code>skos:narrower</code></li>
 			</ul>
 			<pre class='example'>
 				<p>The term Car has a part with the term SteeringWheel.</p>
 			</pre>
-
 			<p>The Occupational Injury and Illness Classification System ([[!OIICS]]) offers more realistic examples. This classification defines four different schemes called <i>Nature</i>, <i>Body part</i>, <i>Source</i> and <i>Event</i>.</p>
 			<p>The idea is to classify each work related injury or illness which causes missed time at work with these four facets.</p>
 			<p>The <i>Body Part</i> facet scheme uses partitive relationships throughout:</p>
@@ -575,7 +579,14 @@
 				<p>2&#8195;Diseases and Disorders of Body Systems<br/>2.3&#8195;Circulatory System Diseases<br/>2.3.3&#8195;Ischemic Heart Disease, including heart attack<br/>2.3.3.1&#8195;Myocardial Infarction (heart attack)</p>
 			</pre>
 			<p>These features are related through the specific-generic relation.</p>
-
+			<p>It should be noted [[ISOTHES]] also extends the SKOS hierarchical properties with equivalent notions. Thus, the following property equivalences are declared :
+			<ul>
+				<li><code>xkos:generalizes</code> is equivalent to <code>iso-thes:narrowerGeneric</code></li>
+				<li><code>xkos:specializes</code> is equivalent to <code>iso-thes:broaderGeneric</code></li>
+				<li><code>xkos:hasPart</code> is equivalent to <code>iso-thes:narrowerPartitive</code></li>
+				<li><code>xkos:isPartOf</code> is equivalent to <code>iso-thes:broaderPartitive</code></li>
+			</ul>
+			</p>	
 		</section>
 
 		<section id="sem-props-associative">
