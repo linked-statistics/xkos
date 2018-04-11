@@ -11,6 +11,7 @@
 @prefix voaf: <http://purl.org/vocommons/voaf#> .
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix cc: <http://creativecommons.org/ns#> .
+@prefix iso-thes: <http://purl.org/iso25964/skos-thes#> .
 
 #################################################################
 # Ontology
@@ -317,6 +318,7 @@ rdfs:label "is a part of"@en, "est une partie de"@fr ;
 owl:inverseOf xkos:hasPart ;
 rdfs:subPropertyOf skos:broader ;
 skos:exactMatch dcterms:isPartOf ;
+owl:equivalentProperty iso-thes:broaderPartitive ;
 rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 
 xkos:hasPart a rdf:Property, owl:ObjectProperty ;
@@ -324,18 +326,21 @@ rdfs:label "has part"@en, "a pour partie"@fr ;
 owl:inverseOf xkos:isPartOf ;
 rdfs:subPropertyOf skos:narrower ;
 skos:exactMatch dcterms:hasPart ;
+owl:equivalentProperty iso-thes:narrowerPartitive ;
 rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 
 xkos:specializes a rdf:Property, owl:ObjectProperty ;
 rdfs:label "specializes"@en, "spécialise"@fr ;
 owl:inverseOf xkos:generalizes ;
 rdfs:subPropertyOf skos:broader ;
+owl:equivalentProperty iso-thes:broaderGeneric ;
 rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 
 xkos:generalizes a rdf:Property, owl:ObjectProperty ;
 rdfs:label "generalizes"@en , "généralise"@fr ;
 owl:inverseOf xkos:specializes ;
 rdfs:subPropertyOf skos:narrower ;
+owl:equivalentProperty iso-thes:narrowerGeneric ;
 rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 
 # Types of relations for comparison purposes
