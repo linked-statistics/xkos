@@ -99,6 +99,7 @@ xkos:plainText a rdf:Property, owl:AnnotationProperty ;
 rdfs:label "plain text"@en, "texte brut"@fr ;
 rdfs:domain xkos:ExplanatoryNote ;
 rdfs:range rdf:PlainLiteral ;
+rdfs:comment "This property is expected to store plain text literals, without HTML or XML markup."@en ;
 rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 
 #################################################################
