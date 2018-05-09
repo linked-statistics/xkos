@@ -454,6 +454,7 @@
 		<p>A classification level is often characterized by a generic name for the classification items that it regroups. The ISCO names "major groups" the items of the first level, "sub-major groups" the items of the second level, etc. The NACE uses the terms "sections", "divisions", "groups" and "classes"; the NAICS has "sectors", "subsectors", "groups", etc. This information can be rendered in XKOS by the property <code>xkos:organizedBy</code> that links the <code>xkos:ClassificationLevel</code> object to a <code>skos:Concept</code> representing the generic item for this level (<i>e.g.</i> the concept of an ISCO major group, of a NACE section, etc.).</p>
 
 		<p>Also, classification items of a given levels usually have a code (expressed by the <code>skos:notation</code> property) that conforms to a specific structure. For example, the NACE sections are identified by a capital letter between A and U; NACE divisions are identified by two-digits codes, etc. In order to capture this information, XKOS defines the <code>xkos:notationPattern</code> property. This property is attached to a classification level and should contain a regular expression refecting the code structure of the items of this level.</p>
+
 	</section>
 
 	<section id="correspondences">
@@ -484,7 +485,9 @@
 
 		<p>The <code>xkos:ConceptAssociation</code> is similar to the Correspondence Item of the Neuchâtel model. However, the <code>xkos:ConceptAssociation</code> can describe the relationship of any number of source concepts to any number of target concepts rather than expressing the association through a set of pair-wise associations.</p>
 
-		<p>As already mentioned, there are different ypes of correspondences between classifications, classification schemes or classification items:</p>
+		<p>Well-defined classifications cover their field in a mutually exclusive way (cf. <a href="#class-coverage">Section 5.4</a>); hence it should be noted that the interpretation of relating multiple source or target concepts in a <code>xkos:ConceptAssociation</code> is the <em>union</em> of these concepts, since their intersection will be empty in mutually exclusive classifications.</p>
+
+		<p>As already mentioned, there are different types of correspondences between classifications, classification schemes or classification items:</p>
 		<ul>
 			<li>Between classification on the same field, for example North American and European activities classifications</li>
 			<li>Between different linked fields, for example classifications of activities and products</li>
