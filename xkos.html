@@ -100,7 +100,9 @@
 		</script>
 	</head>
 	<body>
-		<section id='abstract'>
+	<p style="font-size:80%"><em>(Authors affiliations were recorded at the beginning of the writing of this document and might have changed since.)</em></p>
+	</section>
+	<section id='abstract'>
 		<p>Semantic technology associated with Linked Open Data (LOD) is gaining much broader use and acceptance. Marrying LOD techniques to those of the international statistical community is the goal. Specifically, the use of the Simple Knowledge Organization System ([[!SKOS]]) for managing statistical classifications and concept management systems is addressed, since SKOS is widely used. LOD is used to create Web artifacts that machines can interpret, so publishing machine readable statistical classifications and other concept management systems as SKOS instances is desired. We found that SKOS is insufficient for the problem.  No aspect of SKOS was found to be wrong, just incomplete. Therefore, we propose an extension to SKOS, which we call XKOS.</p>
     </section>
 
@@ -123,8 +125,10 @@
 			<h3>Understanding statistical classifications</h3>
 			<p>This section provides a brief introduction to the terminology relevant to the understanding of statistical classifications.</p>
 			<p>A statistical classification scheme (SCS) is a hierarchical concept scheme which includes concepts associated codes (numeric string labels), short textual names (also labels), definitions, and longer descriptions that include rules for their use.</p>
+
 			<p>By a hierarchy, we mean a system of concepts where each has zero or one parent and zero or more children. The root, or top concept, has no parent; the leaves, or bottom concepts, have no children; and the rest have one parent and one or more children.</p>
-			<p>An SCS may be a flat list (i.e., one level) or a hierarchy, and if it is a hierarchy then it is with the added proviso that all its concepts are grouped into levels. In every SCS, the root concept is implicit and is often referred to as the defining concept for the SCS. All the concepts in one level are the same number of relationships away from the root, and this number is known as the depth of the level. All the concepts at each level are mutually exclusive and exhaustive, meaning each unit can be classified to one and only one concept per level. For example:</p>
+			<p>An SCS may be a flat list (i.e., one level) or a hierarchy, and if it is a hierarchy then it is with the added proviso that all its concepts are grouped into levels. In every SCS, the root concept is implicit and is often referred to as the defining concept for the SCS. All the concepts in one level are the same number of relationships away from the root, and this number is known as the depth of the level. All the concepts at each level are mutually exclusive and exhaustive, meaning each unit can be classified to one and only one concept per level.</p>
+
 			<p>From the perspective of SKOS, the relation between a concept and its parent is one of the <i>broader than</i> and <i>narrower than</i> kinds, depending which direction one is looking. A parent is a broader concept, whereas a child is narrower.</p>
 			<p>Each level is defined by its own concept, as the collection of concepts at a particular level have a common overall meaning. For instance, the first level below the root in the North American Standard Industrial Classification ([[!NAICS]]) is known as Sectors, and Government is one of the sectors; these sectors are the broadest industry categories.</p>
 			<p>The most important use of a classification scheme is to classify and organize units within some domain, for example business establishments by industry. NAICS is used for this in the US, but due to limitations in coverage for some geographic areas, establishment sizes, or NAICS concepts, not enough data might be available to report meaningfully at all levels. So, the lowest level with meaningful data in most of the concepts is used. However, what determines “meaningful” is a statistical consideration and out of scope for this specification.</p>
@@ -374,11 +378,6 @@
 					<td>Dublin Core Metadata Initiative Metadata Terms ([[!DC-TERMS]])</a></td>
 				</tr>
 				<tr>
-					<td>foaf</td>
-					<td>http://xmlns.com/foaf/0.1/</td>
-					<td>FOAF Vocabulary Specification 0.98 ([[FOAF]])</a></td>
-				</tr>
-				<tr>
 					<td>skos</td>
 					<td>http://www.w3.org/2004/02/skos/core#</td>
 					<td>Simple Knowledge Organization System</a></td>
@@ -519,7 +518,7 @@
 
 			<p>Moreover, the actual classification of an item in one position or another of a statistical classification is often decided after a debate between experts. For example, when a new product appears, it is necessary to study its characteristics in respect to the design principles of the classification in order to determine where the product will be classified. Those decisions and the reasoning behind them are recorded and attached to the relevant items of the classification in order to be referred to later on. These special kinds of explanatory notes are called "case law" notes.</p>
 
-			<p>For the description of classification items contents, XKOS extends the <code>skos:scopeNote</code> annotation property, which is a sub-property of <code>skos:note</code>, to define additional sub-properties needed to support the model described above. The sub-properties added to <code>skos:scopeNote</code> include an <code>xkos:inclusionNote</code> and <code>xkos:exclusionNote</code>. Additional sub-properties were added to <code>xkos:inclusionNote</code> to further define the type of inclusion specification using the sub-properties <code>xkos:coreContentNote</code> (to identify central content) and <code>xkos:additionalContentNote</code> (to identify limit content). For the recording of case law notes, XKOS defines the <code>xkos:caseLaw</code> as a direct sub-property of <code>skos:note</code>.</p>
+			<p>For the description of classification items contents, XKOS extends the <code>skos:scopeNote</code> annotation property, which is a sub-property of <code>skos:note</code>, to define additional sub-properties needed to support the model described above. The sub-properties added to <code>skos:scopeNote</code> include an <code>xkos:inclusionNote</code> and <code>xkos:exclusionNote</code>. Additional sub-properties were added to <code>xkos:inclusionNote</code> to further define the type of inclusion specification using the sub-properties <code>xkos:coreContentNote</code> (to identify central content) and <code>xkos:additionalContentNote</code>. For the recording of case law notes, XKOS defines the <code>xkos:caseLaw</code> as a direct sub-property of <code>skos:note</code>.</p>
 
 			<p>The values of SKOS and XKOS annotation properties can directly be textual literals. However, in most cases, it is desirable to attach more properties to the explanatory notes, in particular versioning and authoring information. In these cases, explanatory notes will themselves be resources. XKOS defines the <code>xkos:ExplanatoryNote</code> class so that all resources corresponding to explanatory notes can be typed in a standard manner.</p>
 
@@ -533,7 +532,7 @@
 
 	<section id="sem-props">
 		<h2>Semantic properties</h2>
-		<p>The semantic properties extend the possible relations that can be applied between pairs of concepts. SKOS allows the following relations: <i>broader than</i>, <i>narrower than,</i> and <i>related to</i>. The first two are hierarchical relations, one in each direction. However, terminologists recognize two main kinds of hierarchical relations: <i>generic</i> and <i>partitive</i>. IsPartof and hasPart are <i>partitive</i>; and specializes and generalizes are <i>generic</i>. In addition, several detailed associations, the <i>related to</i> relations, are provided: <i>causal</i> and <i>sequential</i>. <i>Causal</i> has two directions: <i>causes</i> and <i>causedBy</i>, and sequential has two directions: <i>precedes</i> or <i>previous</i>, and <i>succeeds</i> or <i>next</i>. <i>Previous</i> and <i>next</i> have the additional criterion that they are <u>transitive</u> relations. In addition, <i>temporal</i> is a kind of <i>sequential</i> relation, which is subdivided into <i>before</i> and <i>after</i>, in addition which are <u>transitive</u>. Two concepts are <i>disjoint</i> if no objects correspond to both concepts at once.</p>
+		<p>The semantic properties extend the possible relations that can be applied between pairs of concepts. SKOS allows the following relations: <i>broader than</i>, <i>narrower than,</i> and <i>related to</i>. The first two are hierarchical relations, one in each direction. However, terminologists recognize two main kinds of hierarchical relations: <i>generic</i> and <i>partitive</i>. IsPartof and hasPart are <i>partitive</i>; and specializes and generalizes are <i>generic</i>. In addition, several detailed associations, the <i>related to</i> relations, are provided: <i>causal</i> and <i>sequential</i>. <i>Causal</i> has two directions: <i>causes</i> and <i>causedBy</i>, and sequential has two directions: <i>precedes</i> or <i>previous</i>, and <i>succeeds</i> or <i>next</i>. <i>Previous</i> and <i>next</i> have the additional criterion that they are <u>transitive</u> relations. In addition, <i>temporal</i> is a kind of <i>sequential</i> relation, which is subdivided into <i>before</i> and <i>after</i>, in addition which are <u>transitive</u>. Two concepts are <i>disjoint</i> if no objects can correspond to both concepts at once.</p>
 
 		<p>The management of classification structures requires further specification of a number of SKOS terms in order to describe very specific relationships. XKOS has chosen to address these as refinements of existing SKOS terms whenever possible in order to facilitate understanding among users of related domain areas:</p>
 		<ul>
@@ -711,7 +710,7 @@
 					xkos:follows &lt;http://www.fao.org/fishery/ns#ISSCAAP_2001&gt; .
 
 				fi:ASFIS_COD a skos:Concept ;
-					skos:inScheme fi:ISSCAAP ;
+					skos:inScheme fi:ISSCAAP_2005 ;
 					skos:prefLabel "Atlantic Cod"@en ;
 					skos:prefLabel "Morue de l'Atlantique"@fr ;
 					skos:prefLabel "Bacalao del Atlántico"@es ;
@@ -724,13 +723,13 @@
 					xkos:specializes fi:ISSCAAP_32 .
 
 				fi:ISSCAAP_32 a skos:Concept ;
-					skos:inScheme fi:ISSCAAP ;
+					skos:inScheme fi:ISSCAAP_2005 ;
 					skos:prefLabel "Cods, Hakes, Haddocks"@en ;
 					skos:notation "32"^^fi:ISSCAAPGroupCode ;
 					xkos:generalizes fi:ASFIS_COD .
 
 				fi:ISSCAAP_3 a skos:Concept ;
-					skos:inScheme fi:ISSCAAP ;
+					skos:inScheme fi:ISSCAAP_2005 ;
 					skos:prefLabel "Marine Fishes"@en ;
 					skos:notation "3"^^fi:ISSCAAPDivisionCode ;
 					xkos:generalizes fi:ISSCAAP_32 .
