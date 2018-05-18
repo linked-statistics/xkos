@@ -177,7 +177,7 @@ rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 xkos:compares a rdf:Property, owl:ObjectProperty ;
 rdfs:label "compares"@en, "compare"@fr ;
 rdfs:domain xkos:Correspondence ;
-rdfs:range xkos:ConceptScheme ;
+rdfs:range skos:ConceptScheme ;
 rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 
 # Properties linking major versions of classifications
@@ -208,7 +208,8 @@ rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 xkos:belongsTo a rdf:Property, owl:ObjectProperty ;
 rdfs:label "belongs to"@en, "appartient à"@fr ;
 rdfs:domain skos:ConceptScheme ;
-rdfs:range skos:Concept ;
+# no explicit range on xkos:belongsTo is defined to allow other types to be used
+# rdfs:range skos:Concept ;
 rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 
 # Name (or nature, or type) of the items that constitute the level
