@@ -222,7 +222,7 @@ rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 
 xkos:covers a rdf:Property, owl:ObjectProperty ;
 rdfs:label "covers"@en, "couvre"@fr ;
-rdfs:domain [ owl:unionOf (skos:ConceptScheme xkos:ClassificationLevel)] ;
+rdfs:domain [rdf:type owl:Class ; owl:unionOf (skos:ConceptScheme xkos:ClassificationLevel)] ;
 rdfs:range skos:Concept ;
 rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 
