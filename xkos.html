@@ -800,33 +800,32 @@
 				@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
 				@prefix skos: &lt;http://www.w3.org/2004/02/skos/core#&gt; .
 				@prefix ess: &lt;http://www.fao.org/ess/ns#&gt; .
-				@prefix cpc: &lt;http://unstats.un.org/ns#&gt; .
+				@prefix cpc: &lt;http://unstats.un.org/cpc21/ns#&gt; .
 
-				#A Correspondence is madeOf a set of ConceptAssociations
+				# A Correspondence is madeOf a set of ConceptAssociations
 				ess:FCL2012_CPC2 rdf:type xkos:Correspondence;
 					skos:prefLabel "Correspondence from FAO Commodity list to Central Product Classification"@en;
 					xkos:madeOf ess:FCL2012_CPC2_1, ess:FCL2012_CPC2_2, ess:FCL2012_CPC2_3.
 
-				#Each ConceptAssociation represents a mapping across two items
-				#note that this association is 1:n
+				# Each ConceptAssociation represents a mapping across two items
+				# note that this association is 1:n
 				ess:FCL2012_CPC2_1 rdf:type xkos:ConceptAssociation;
-					rdfs:comment "ipsum lorum";
 					xkos:sourceConcept ess:FCL0015;
 					xkos:targetConcept cpc:CPC01111;
 					xkos:targetConcept cpc:CPC01112.
 
-				#note that this association is n:m
 				ess:FCL2012_CPC2_2 rdf:type xkos:ConceptAssociation;
+					xkos:sourceConcept ess:FCL0027;
+					xkos:targetConcept cpc:CPC01131;
+					xkos:targetConcept cpc:CPC01131.
+
+				# note that this association is n:m
+				ess:FCL2012_CPC2_3 rdf:type xkos:ConceptAssociation;
 					xkos:sourceConcept ess:FCL0056;
 					xkos:sourceConcept ess:FCL0067;
 					xkos:sourceConcept ess:FCL0068;
 					xkos:targetConcept cpc:CPC01121;
 					xkos:targetConcept cpc:CPC01122.
-
-				ess:FCL2012_CPC2_3 rdf:type xkos:ConceptAssociation;
-					xkos:sourceConcept ess:FCL0027;
-					xkos:targetConcept cpc:CPC01131;
-					xkos:targetConcept cpc:CPC01131.
 				</p>
 			</pre>
 		</section>
