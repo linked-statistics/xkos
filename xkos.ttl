@@ -11,6 +11,7 @@
 @prefix voaf: <http://purl.org/vocommons/voaf#> .
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix cc: <http://creativecommons.org/ns#> .
+@prefix iso-thes: <http://purl.org/iso25964/skos-thes#> .
 
 #################################################################
 # Ontology
@@ -99,6 +100,7 @@ xkos:plainText a rdf:Property, owl:AnnotationProperty ;
 rdfs:label "plain text"@en, "texte brut"@fr ;
 rdfs:domain xkos:ExplanatoryNote ;
 rdfs:range rdf:PlainLiteral ;
+rdfs:comment "This property is expected to store plain text literals, without HTML or XML markup."@en ;
 rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 
 #################################################################
@@ -176,7 +178,7 @@ rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 xkos:compares a rdf:Property, owl:ObjectProperty ;
 rdfs:label "compares"@en, "compare"@fr ;
 rdfs:domain xkos:Correspondence ;
-rdfs:range xkos:ConceptScheme ;
+rdfs:range skos:ConceptScheme ;
 rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 
 # Properties linking major versions of classifications
@@ -189,8 +191,10 @@ rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 
 xkos:supersedes a rdf:Property, owl:ObjectProperty ;
 rdfs:label "supersedes"@en, "remplace"@fr ;
-rdfs:subPropertyOf xkos:follows, dcterms:replaces ;
+rdfs:subPropertyOf xkos:follows ;
+skos:exactMatch dcterms:replaces ;
 rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
+
 
 # Property connecting a classification scheme to its variant(s)
 
@@ -205,7 +209,8 @@ rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 xkos:belongsTo a rdf:Property, owl:ObjectProperty ;
 rdfs:label "belongs to"@en, "appartient à"@fr ;
 rdfs:domain skos:ConceptScheme ;
-rdfs:range skos:Concept ;
+# no explicit range on xkos:belongsTo is defined to allow other types to be used
+# rdfs:range skos:Concept ;
 rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 
 # Name (or nature, or type) of the items that constitute the level
@@ -220,7 +225,7 @@ rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 
 xkos:covers a rdf:Property, owl:ObjectProperty ;
 rdfs:label "covers"@en, "couvre"@fr ;
-rdfs:domain [ owl:unionOf (skos:ConceptScheme xkos:ClassificationLevel)] ;
+rdfs:domain [rdf:type owl:Class ; owl:unionOf (skos:ConceptScheme xkos:ClassificationLevel)] ;
 rdfs:range skos:Concept ;
 rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 
@@ -313,25 +318,31 @@ rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 xkos:isPartOf a rdf:Property, owl:ObjectProperty ;
 rdfs:label "is a part of"@en, "est une partie de"@fr ;
 owl:inverseOf xkos:hasPart ;
-rdfs:subPropertyOf skos:broader, dcterms:isPartOf ;
+rdfs:subPropertyOf skos:broader ;
+skos:exactMatch dcterms:isPartOf ;
+owl:equivalentProperty iso-thes:broaderPartitive ;
 rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 
 xkos:hasPart a rdf:Property, owl:ObjectProperty ;
 rdfs:label "has part"@en, "a pour partie"@fr ;
 owl:inverseOf xkos:isPartOf ;
-rdfs:subPropertyOf skos:narrower, dcterms:hasPart ;
+rdfs:subPropertyOf skos:narrower ;
+skos:exactMatch dcterms:hasPart ;
+owl:equivalentProperty iso-thes:narrowerPartitive ;
 rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 
 xkos:specializes a rdf:Property, owl:ObjectProperty ;
 rdfs:label "specializes"@en, "spécialise"@fr ;
 owl:inverseOf xkos:generalizes ;
 rdfs:subPropertyOf skos:broader ;
+owl:equivalentProperty iso-thes:broaderGeneric ;
 rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 
 xkos:generalizes a rdf:Property, owl:ObjectProperty ;
 rdfs:label "generalizes"@en , "généralise"@fr ;
 owl:inverseOf xkos:specializes ;
 rdfs:subPropertyOf skos:narrower ;
+owl:equivalentProperty iso-thes:narrowerGeneric ;
 rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos> .
 
 # Types of relations for comparison purposes
