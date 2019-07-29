@@ -153,9 +153,17 @@
 	</head>
 	<body>
 	<p style="font-size:80%"><em>(Authors affiliations were recorded at the beginning of the writing of this document and might have changed since.)</em></p>
-	</section>
+
 	<section id='abstract'>
 		<p>Semantic technology associated with Linked Open Data (LOD) is gaining much broader use and acceptance. Marrying LOD techniques to those of the international statistical community is the goal. Specifically, the use of the Simple Knowledge Organization System ([[!SKOS]]) for managing statistical classifications and concept management systems is addressed, since SKOS is widely used. LOD is used to create Web artifacts that machines can interpret, so publishing machine readable statistical classifications and other concept management systems as SKOS instances is desired. We found that SKOS is insufficient for the problem.  No aspect of SKOS was found to be wrong, just incomplete. Therefore, we propose an extension to SKOS, which we call XKOS.</p>
+    </section>
+
+    <section id='sotd'>
+      <p>This document is the first published version of this product by the DDI Alliance.</p>
+
+      <p>The publication process is governed by <a href="https://www.ddialliance.org/sites/default/files/DDIBylaws2013.pdf">DDI Alliance Bylaws</a> and <a href="https://www.ddialliance.org/sites/default/files/DDIAllianceStandardsDevelopmentandReviewProcessandProcedure.pdf">Standards Development and Review Process and Procedures</a>.
+
+      <p>For changes since the last draft, see the GitHub repository.</p>
     </section>
 
 	<section>
@@ -217,7 +225,7 @@
 		<p>The figure below gives an overview of the SKOS/XKOS model for modeling classifications and their components. This model will be described in sections 5 to 7.</p>
 		<table class="image">
 			<caption align="bottom">Figure 1 &#8211; Overview of the SKOS/XKOS model for classifications</caption>
-			<tr><td><img src="img/overview.png" alt="SKOS/XKOS model for classifications" title="SKOS/XKOS model for classifications"></td></tr>
+			<tr><td><img src="img/overview.png" alt="SKOS/XKOS model for classifications" title="SKOS/XKOS model for classifications" width="962" height="451"></td></tr>
 		</table>
 		<p>XKOS also defines documentary properties for classifications (<a href="#doc-props">Section 8</a>). In particular, specializations of the SKOS scope note property are proposed in order to capture the different types of explanatory notes that usually come with statistical classifications.</p>
 		<p>The other objective of XKOS is to make available to concept or classification schemes designers the semantic properties defined by ISO 704 and ISO 1087-1. Those properties are defined in <a href="#doc-props">Section 9</a>, and their articulation with SKOS semantic properties is described. An overall view of the SKOS and XKOS property structure can be found in Annex B.</p>
@@ -702,7 +710,7 @@
 			<p>The following figure gives an example inspired by the ANZSIC (Australian and New Zealand Industry Classification [[!ANZSIC]]), which is a classification covering the field of economic activity. A small excerpt is shown here, limited to the classification object itself and its levels, as well as one item of the most detailed level (Class 6720 &#8211; Real Estate Services) and its parent items. Note that the URI employed in this example are entirely fictitious, since the ANZSIC has not yet been published as RDF.</p>
 			<table class="image">
 				<caption align="bottom">Figure 6 &#8211; Statistical classification &#8211; ANZSIC</caption>
-				<tr><td><img src="img/anzsic.png" alt="Classification example - ANZSIC" title="Classification example - ANZSIC"></td></tr>
+				<tr><td><img src="img/anzsic.png" alt="Classification example - ANZSIC" title="Classification example - ANZSIC" width="973" height="653"></td></tr>
 			</table>
 			<p>On the left of the figure is the <code>skos:ConceptScheme</code> instance that corresponds to the ANZIC 2006 classification scheme, with its various SKOS and Dublin Core properties. Additionnal XKOS properties indicate that the classification has four levels and covers the field of economic activity, identified here as a concept from the EuroVoc thesaurus. In this case, the coverage is intended to be exhaustive and without overlap, so <code>xkos:coversExhaustively</code> and <code>xkos:coversMutuallyExclusively</code> could have been used together instead of <code>xkos:covers</code>.</p>
 			<p>The four levels are instances of <code>xkos:ClassificationLevel</code>; they are organized as a <code>rdf:List</code> which is attached to the classification by the <code>xkos:levels</code> property. Some level information has been represented on the top level, for example its depth in the classification (<code>xkos:depth</code>) and the concept that characterizes the items it is composed of (<code>xkos:organizedBy</code>). In the same fashion, concepts of subdivision, group and class could be created to describe the items of the lower levels.</p>
@@ -926,11 +934,18 @@
 			<li>Benjamin Zapilko (GESIS, Leibniz Institute for the Social Sciences, Germany)</li>
 			<li>Matthäus Zloch (GESIS, Leibniz Institute for the Social Sciences, Germany))</li>
 		</ul>
+		<p>The editor would like to thank the people who contributed during the public review, as well as the following persons who helped to integrate these contributions:</p>
+		<ul>
+			<li>Thomas Francart (Sparna, Tours, France)</li>
+			<li>Guillaume Duffes (Insee, Paris, France)</li>
+		</ul>
+		<p>This document uses a modified version of <a href="https://github.com/w3c/respec">ReSpec</a>.</p>
+
 	</section>
 
 	<section class="appendix">
 		<h2>Full copyright</h2>
-		<p>Copyright © 2016 The DDI Alliance, <i>All Rights Reserved</i><br/><a href="http://www.ddialliance.org/">http://www.ddialliance.org/</a></p>
+		<p>Copyright © 2014-2019 The DDI Alliance, <i>All Rights Reserved</i><br/><a href="http://www.ddialliance.org/">http://www.ddialliance.org/</a></p>
 		<p>Content of this document is licensed under a Creative Commons License:<br/>Attribution 4.0 International (CC BY 4.0)</p>
 		<p>This is a human-readable summary of the Legal Code (the full license).<br/><a href="http://creativecommons.org/licenses/by/4.0/">http://creativecommons.org/licenses/by/4.0/</a></p>
 		<p>You are free to:</p>
