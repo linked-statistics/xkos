@@ -8,70 +8,39 @@
 		<script class='remove'>
 			var respecConfig = {
 			  // specification status (e.g. WD, LCWD, NOTE, etc.). If in doubt use ED.
-			  specStatus:           "unofficial",
-			  
-			  // the specification's short name, as in http://www.w3.org/TR/short-name/
-			  shortName:            "xkos",
-
-			  // if your specification has a subtitle that goes below the main
-			  // formal title, define it here
-			  subtitle   :  "An SKOS extension for modeling statistical classifications",
-
-			  // if you wish the publication date to be other than today, set this
-			  // publishDate:  "2009-08-06",
-
-			  // if the specification's copyright date is a range of years, specify
-			  // the start date here:
-			  // copyrightStart: "2005"
-
-			  // if there is a previously published draft, uncomment this and set its YYYY-MM-DD date
-			  // and its maturity status
-			  // previousPublishDate:  "1977-03-15",
-			  // previousMaturity:  "WD",
-
-			  // if there a publicly available Editor's Draft, this is the link
-			  // edDraftURI:           "http://dev.w3.org/2009/dap/ReSpec.js/documentation.html",
-
-			  // if this is a LCWD, uncomment and set the end of its review period
-			  // lcEnd: "2009-08-05",
-
-			  // if you want to have extra CSS, append them to this list
-			  // it is recommended that the respec.css stylesheet be kept
-			  // extraCSS:             ["http://dev.w3.org/2009/dap/ReSpec.js/css/respec.css"],
-
-			  // editors, add as many as you like
-			  // only "name" is required
-			  editors:  [
+			  specStatus: "DDI-RDF",
+			  noRecTrack: true,
+			  shortName: "xkos",
+			  subtitle: "An SKOS extension for representing statistical classifications",
+			  overrideCopyright: "<p class='copyright'>Copyright © 2014-2019 <a href='https://www.ddialliance.org/'>The DDI Alliance</a>, All Rights Reserved</p >",
+			  publishDate:  "2019-05-01",
+			  editors: [
 				  { name: "Franck Cotton", company: "INSEE", companyURL: "http://www.insee.fr/" },
 			  ],
-
-			  // authors, add as many as you like. 
-			  // This is optional, uncomment if you have authors as well as editors.
-			  // only "name" is required. Same format as editors.
-
-			  authors:  [
+			  authors: [
 				  { name: "Richard Cyganiak", company: "DERI", companyURL: "http://www.deri.ie/" },
 				  { name: "Daniel Gillman", company: "Bureau of Labor Statistics", companyURL: "http://www.bls.gov/" },
 				  { name: "R.T.A.M. Grim", company: "Tilburg University", companyURL: "http://www.tilburguniversity.edu/" },
 				  { name: "Yves Jaques", company: "Food and Agriculture Organization", companyURL: "http://www.fao.org/" },
 				  { name: "Wendy Thomas", company: "Minnesota Population Center", companyURL: "http://www.pop.umn.edu/" },
 			  ],
-			  
+
 			  // name of the WG
-			  wg:           "Dagstuhl Group on Semantic Statistics",
-			  
-			  // URI of the public WG page
-			  wgURI:        "http://example.org/really-cool-wg",
-			  
-			  // name (without the @w3c.org) of the public mailing to which comments are due
-			  wgPublicList: "public-vocabs",
-			  
-			  // URI of the patent status for this WG, for Rec-track documents
-			  // !!!! IMPORTANT !!!!
-			  // This is important for Rec-track documents, do not copy a patent URI from a random
-			  // document unless you know what you're doing. If in doubt ask your friendly neighbourhood
-			  // Team Contact.
-			  wgPatentURI:  "http://creativecommons.org/licenses/by/4.0/",
+			  wg: "Dagstuhl Group on Semantic Statistics",
+
+			  wgPatentURI: "https://creativecommons.org/licenses/by/4.0/",
+
+			  github: {
+				  repoURL: "https://github.com/linked-statistics/xkos",
+				  branch: " ", // avoids default 'gh-pages' 
+			  },
+			  logos: [{
+				  src: "https://www.ddialliance.org/sites/default/files/ddi-logo-r.png",
+				  alt: "DDI Alliance",
+				  height: 48,
+				  width: 200,
+				  url: "https://www.ddialliance.org/"
+			  }],
 
 			  localBiblio: {
 				"ANZSIC": {
