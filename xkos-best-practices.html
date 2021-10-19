@@ -42,7 +42,7 @@
 			  // editors, add as many as you like
 			  // only "name" is required
 			  editors:  [
-				  { name: "Thomas Francart", company: "Sparna", companyURL: "http://www.sparna.fr/" },
+				  { name: "Thomas Francart", company: "Sparna", companyURL: "http://www.sparna.fr/" }
 			  ],
 
 			  // authors, add as many as you like. 
@@ -50,7 +50,8 @@
 			  // only "name" is required. Same format as editors.
 
 			  authors:  [
-				  { name: "Franck Cotton", company: "INSEE", companyURL: "http://www.insee.fr/" }
+				  { name: "Christophe Dzikowski", company: "Insee", companyURL: "http://www.insee.fr/" },
+				  { name: "Franck Cotton", company: "Insee", companyURL: "http://www.insee.fr/" }
 			  ],
 			  
 			  // name of the WG
@@ -68,7 +69,17 @@
 			  // document unless you know what you're doing. If in doubt ask your friendly neighbourhood
 			  // Team Contact.
 			  wgPatentURI:  "http://creativecommons.org/licenses/by/4.0/",
-
+			  github: {
+				  repoURL: "https://github.com/linked-statistics/xkos",
+				  branch: " ", // avoids default 'gh-pages' 
+			  },
+			  logos: [{
+				  src: "https://www.ddialliance.org/sites/default/files/ddi-logo-r.png",
+				  alt: "DDI Alliance",
+				  height: 48,
+				  width: 200,
+				  url: "https://www.ddialliance.org/"
+			  }],
 			  localBiblio: {
 			  	"SKOS": {
 					"href": "http://www.w3.org/2004/02/skos/",
@@ -86,36 +97,118 @@
 	</head>
 	<body>
 	<p style="font-size:80%"><em>(Authors affiliations were recorded at the beginning of the writing of this document and might have changed since.)</em></p>
-	
+
 	<section id='abstract'>
-		<p>abstract</p>
+    	<h2>Abstract</h2>
+		<p>Abstract goes here</p>
     </section>
 
-    <section id="classification-entity">
-    	<h2>Describing a statistical classification</h2>
+	<section id='acknowledgements'>
+	    <h2>Acknowledgements</h2>
+		<p>Acknowledgements go here</p>
     </section>
 
-    <section id="notes-and-labels">
-    	<h2>XKOS Notes and Labels</h2>
+	<section id='introduction'>
+	    <h2>Introduction</h2>
+		<p>Introduction goes here</p>
     </section>
 
-    <section id="notes-and-labels">
-    	<h2>XKOS Correspondances</h2>
+	<section id='goals'>
+	    <h2>Goals of this document</h2>
+		<p>Acknowledgements go here</p>
     </section>
 
-	<section id="versioning">
-    	<h2>Versioning of statistical classifications</h2>
+    <section id="audience">
+    	<h2>Audience</h2>
+		<p>Audience description goes here</p>
+    </section>
+
+    <section id="summary">
+    	<h2>Best Practices Summary</h2>
+		<p>Summmary goes here</p>
+    </section>
+
+    <section id="namespaces">
+    	<h2>Namespaces</h2>
+		<p>Namespaces list goes here</p>
+    </section>
+
+    <section id="classifications">
+    	<h2>Statistical classifications</h2>
+		<section id="classifications-evolution">
+		    <h3>Revisions and Versioning</h3>
+			<p>Revisions and versioning paragraph goes here</p>
+		</section>
+		<section id="classifications-actors">
+		    <h3>Main actors working with statistical classifications</h3>
+			<p>Main actors paragraph goes here</p>
+		</section>
+		<section id="classifications-examples">
+		    <h3>International and national classifications</h3>
+			<p>Paragraph on international and national classifications goes here</p>
+		</section>
+		<section id="classifications-tables-usage">
+		    <h3>Usage of correspondence tables</h3>
+			<p>Paragraph on usage of correspondence tables goes here</p>
+		</section>
+    </section>
+
+    <section id="best-practices">
+    	<h2>The Best Practices</h2>
+		<section id="bp-classification">
+		    <h3>Description of a statistical classification</h3>
+			<p>Paragraph on the description of a statistical classification goes here</p>
+		</section>
+		<section id="bp-labels">
+		    <h3>Labels</h3>
+			<p>Paragraph on labels goes here</p>
+		</section>
+		<section id="bp-notes">
+		    <h3>Notes</h3>
+			<p>Paragraph on notes goes here</p>
+		</section>
+		<section id="bp-levels">
+		    <h3>Levels</h3>
+			<p>Paragraph on levels goes here</p>
+		</section>
+		<section id="bp-entries">
+		    <h3>Types of the classification entries</h3>
+			<p>Paragraph on types of the classification entries goes here</p>
+		</section>
+		<section id="bp-correspondences">
+		    <h3>Correspondences</h3>
+			<p>Paragraph on correspondences goes here</p>
+		</section>
+		<section id="bp-relations">
+		    <h3>Describing the relation between an international and a national classification</h3>
+			<p>Paragraph on describing the relation between an international and a national classification goes here</p>
+		</section>
+		<section id="bp-evolution">
+		    <h3>Evolution of classifications over time</h3>
+			<p>Paragraph on evolution of classifications over time goes here</p>
+		</section>
+		<section id="bp-publishing">
+		    <h3>Publishing statistical classification data</h3>
+			<p>Paragraph on publishing statistical classification data goes here</p>
+		</section>
+		<section id="bp-uri-patterns">
+		    <h3>URI patterns</h3>
+			<p>Paragraph on URI patterns goes here</p>
+		</section>
+    </section>
+
+	<section id="tools">
+    	<h2>Tools</h2>
+		<p>Paragraph on tools goes here</p>
     </section>
 
     <section id="xkos-and-others">
     	<h2>Combining XKOS with other vocabularies</h2>
     </section>
 
-
-
 	<section class="appendix">
 		<h2>Full copyright</h2>
-		<p>Copyright © 2019 The DDI Alliance, <i>All Rights Reserved</i><br/><a href="http://www.ddialliance.org/">http://www.ddialliance.org/</a></p>
+		<p>Copyright © 2021 The DDI Alliance, <i>All Rights Reserved</i><br/><a href="http://www.ddialliance.org/">http://www.ddialliance.org/</a></p>
 		<p>Content of this document is licensed under a Creative Commons License:<br/>Attribution 4.0 International (CC BY 4.0)</p>
 		<p>This is a human-readable summary of the Legal Code (the full license).<br/><a href="http://creativecommons.org/licenses/by/4.0/">http://creativecommons.org/licenses/by/4.0/</a></p>
 		<p>You are free to:</p>
