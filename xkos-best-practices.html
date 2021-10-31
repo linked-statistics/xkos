@@ -4,7 +4,7 @@
 		<title>XKOS Best Practices</title>
 		<meta http-equiv='Content-Type' content='text/html;charset=utf-8'/>
 
-		<script src='http://www.w3.org/Tools/respec/respec-w3c-common' class='remove'></script>
+		<script src='http://www.w3.org/Tools/respec/respec-w3c' class='remove'></script>
 		<script class='remove'>
 			var respecConfig = {
 			  // specification status (e.g. WD, LCWD, NOTE, etc.). If in doubt use ED.
@@ -58,10 +58,10 @@
 			  wg:           "XKOS working group",
 			  
 			  // URI of the public WG page
-			  wgURI:        "http://example.org/really-cool-wg",
+			  wgURI:        "https://ddialliance.org/Specification/RDF/XKOS",
 			  
 			  // name (without the @w3c.org) of the public mailing to which comments are due
-			  wgPublicList: "public-vocabs",
+			  wgPublicList: "https://groups.google.com/forum/?fromgroups#!forum/ddi-rdf-vocabulary",
 			  
 			  // URI of the patent status for this WG, for Rec-track documents
 			  // !!!! IMPORTANT !!!!
@@ -86,8 +86,27 @@
 					"publisher": "World Wide Web Consortium (W3C)",
 					"title": "Data Catalog Vocabulary (DCAT) - Version 2"
 				},
+				"ELI": {
+					"href": "https://eur-lex.europa.eu/eli-register/about.html",
+					"publisher": "Publications Office of the European Union",
+					"title": "European Legislation Identifier"
+				},
+				"INSEE": {
+					"href": "http://rdf.insee.fr/def/base#",
+					"publisher": "Institut National de la Statistique et des Études Économiques",
+					"title": "Ontology of Institut National de la Statistique et des Études Économiques (France)"
+				},
+				"ISOTHES": {
+					"href": "http://pub.tenforce.com/schemas/iso25964/skos-thes/",
+					"title": "ISO 25964 SKOS Extension"
+				},
+				"QB": {
+					"href": "https://www.w3.org/TR/vocab-data-cube/",
+					"title": "The RDF Data Cube Vocabulary",
+					"publisher": "World Wide Web Consortium (W3C)"
+				},
 			  	"SKOS": {
-					"href": "http://www.w3.org/2004/02/skos/",
+					"href": "http://www.w3.org/TR/skos-reference",
 					"publisher": "World Wide Web Consortium (W3C)",
 					"title": "Simple Knowledge Organization System"
 				},
@@ -99,7 +118,7 @@
 				"XKOS": {
 					"href": "https://rdf-vocabulary.ddialliance.org/xkos.html",
 					"publisher": "Data Documentation Initiative (DDI)",
-					"title": "An SKOS extension for representing statistical classifications"
+					"title": "SKOS extension for representing statistical classifications"
 				}
 			  }
 			};
@@ -125,6 +144,22 @@
 				font-size: larger;
 			}
 
+			.table-section {
+				background:  #b3d0fb;
+				color: black;
+				text-align: center;
+				font-weight: bold;
+			}
+
+			.stickyTableHead {
+		      overflow-y: auto;
+		      height: 110px;
+		    }
+		    .stickyTableHead thead th {
+		      position: sticky;
+		      top: 0;
+		    }
+
 		</style>
 	</head>
 	<body>
@@ -147,6 +182,8 @@
 	<section id='introduction'>
 	    <h2>Introduction</h2>
 		<p>Introduction goes here</p>
+
+
     </section>
 
 	<section id='goals'>
@@ -159,14 +196,86 @@
 		<p>Audience description goes here</p>
     </section>
 
-    <section id="summary">
-    	<h2>Best Practices Summary</h2>
-		<p>Summmary goes here</p>
-    </section>
-
     <section id="namespaces">
     	<h2>Namespaces</h2>
-		<p>Namespaces list goes here</p>
+		The vocabularies used in this document are listed in the table below, with their namespaces and associated prefixes.
+
+		<table class="simple">
+			<caption>Prefixes used in this document</caption>
+			<thead>
+				<tr>
+					<th>Prefix</th>
+					<th>URI</th>
+					<th>Description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><b>xkos</b></td>
+					<td><b>http://rdf-vocabulary.ddialliance.org/xkos#</b></td>
+					<td>SKOS extension for representing statistical classifications ([[XKOS]])</td>
+				</tr>
+				<tr>
+					<td>dc</td>
+					<td>http://purl.org/dc/elements/1.1/</td>
+					<td>Dublin Core Metadata Element Set, Version 1.1 ([[DC11]])</td>
+				</tr>
+				<tr>
+					<td>dcat</td>
+					<td>http://www.w3.org/ns/dcat#</td>
+					<td>Data Catalog Vocabulary (DCAT) - Version 2 ([[DCAT]])</td>
+				</tr>
+				<tr>
+					<td>dct</td>
+					<td>http://purl.org/dc/terms/</td>
+					<td>Dublin Core Metadata Initiative Metadata Terms ([[DC-TERMS]])</td>
+				</tr>
+				<tr>
+					<td>ex</td>
+					<td>http://example.com/ns#</td>
+					<td>Fictitious namespace used for exemples in this document.</td>
+				</tr>
+				<tr>
+					<td>insee</td>
+					<td>http://rdf.insee.fr/def/base#</td>
+					<td>Ontology of France "Institut National de la Statistique et des Études Économiques" ([[INSEE]])</td>
+				</tr>
+				<tr>
+					<td>iso-thes</td>
+					<td>http://purl.org/iso25964/skos-thes#</td>
+					<td>ISO 25964 SKOS extension ([[ISOTHES]])</td>
+				</tr>
+				<tr>
+					<td>qb</td>
+					<td>https://www.w3.org/TR/vocab-data-cube/</td>
+					<td>The RDF Data Cube Vocabulary ([[QB]])</td>
+				</tr>
+				<tr>
+					<td>rdf</td>
+					<td>http://www.w3.org/1999/02/22-rdf-syntax-ns#</td>
+					<td>RDF 1.1 Concepts Vocabulary ([[RDF11-CONCEPTS]])</td>
+				</tr>
+				<tr>
+					<td>skos</td>
+					<td>http://www.w3.org/2004/02/skos/core#</td>
+					<td>Simple Knowledge Organization System ([[SKOS]])</a></td>
+				</tr>
+				<tr>
+					<td>skosxl</td>
+					<td>http://www.w3.org/2008/05/skos-xl#</td>
+					<td>SKOS eXtension for Labels (SKOS-XL) ([[SKOSXL]])</a></td>
+				</tr>
+			</tbody>
+		</table>
+
+		<p>The RDF examples are expressed with the Terse RDF Triple language (Turtle) [[TURTLE]]. Individual resource names used as examples in the `ex:` namespace are entirely fictious.</p>
+
+		<div class="issue" title="Harmonize dct: vs. dcterms:">
+		  
+		</div>
+		<div class="issue" title="INSEE Ontology cannot be dereferenced">
+		  
+		</div>
     </section>
 
     <section id="classifications">
@@ -193,7 +302,172 @@
     	<h2>The Best Practices</h2>
 		<section id="bp-classification">
 		    <h3>Description of a statistical classification</h3>
-			<p>Paragraph on the description of a statistical classification goes here</p>
+			<p><a href="https://rdf-vocabulary.ddialliance.org/xkos.html#class-representation">§5.1 of the XKOS specification</a> states that <blockquote><em>“In order to represent classifications and classification schemes, XKOS does not define specific classes but uses directly SKOS classes, adding to them different properties that specifically apply to classifications or classification schemes. Each major version of a classification is represented in XKOS by a `skos:ConceptScheme`.”</em></blockquote>.</p>
+			<p>This best practices document gives further recommendations on how best to describe a `skos:ConceptScheme` that identifies a statistical classification, with mandatory, recommended and optional properties. Note that some constraints impose the presence of a property in English, hence the "lang" column with value "en" for certain properties</p>
+
+			<table class="simple stickyTableHead">
+				<caption>Mandatory, Recommended and Optional properties to describe statistical classifications</caption>
+				<thead>
+					<tr>
+						<th>Property
+						<th>Lang.</th>
+						<th>Card.</th>
+						<th>Range</th>
+						<th>Description</th>
+					</tr>
+					<tr><td colspan="5" class="table-section">Mandatory properties</td></tr>
+					<tr>
+						<td>`skos:notation`</td>
+						<td></td>
+						<td>1..1</td>
+						<td>`xsd:string`</td>
+						<td>The value must be the short name of the classification, with no language tag.</td>
+					</tr>
+					<tr>
+						<td>`skos:prefLabel`</td>
+						<td>en</td>
+						<td>1..1</td>
+						<td>`rdf:langLiteral`</td>
+						<td>The value must be the complete name of the classification scheme in english.</td>
+					</tr>
+					<tr>
+						<td>`dcterms:issued`</td>
+						<td></td>
+						<td>1..1</td>
+						<td>`xsd:date`</td>
+						<td>The value must be the publication date of the classification scheme</td>
+					</tr>
+					<tr><td colspan="5" class="table-section">Recommended properties</td></tr>
+					<tr>
+						<td>`skos:prefLabel`</td>
+						<td><em>any language</em></td>
+						<td>0..n</td>
+						<td>`rdf:langLiteral`</td>
+						<td>The value must be the complete name of the classification scheme in another language than english, with a proper language tag.</td>
+					</tr>
+					<tr>
+						<td>`dc:description`</td>
+						<td>en</td>
+						<td>0..1</td>
+						<td>`rdf:langLiteral`</td>
+						<td>The value must be a short descriptive text about the classification scheme in english.</td>
+					</tr>
+					<tr>
+						<td>`skos:scopeNote`</td>
+						<td>en</td>
+						<td>0..1</td>
+						<td>`xkos:ExplanatoryNote`</td>
+						<td>The explanatory note MUST have a `xkos:plainText` property which value is a long descriptive text about the classification scheme in English, with a language tag set at ‘@en’</td>
+					</tr>
+					<tr>
+						<td>`dcterms:modified`</td>
+						<td></td>
+						<td>0..1</td>
+						<td>`xsd:date`</td>
+						<td>The value must be the last modification date of the classification scheme.</td>
+					</tr>
+					<tr>
+						<td><a href="http://rdf-vocabulary.ddialliance.org/xkos#belongsTo">`xkos:belongsTo`</a></td>
+						<td></td>
+						<td>0..1</td>
+						<td>`skos:Concept`</td>
+						<td>Connects a major version of a classification to a concept representing the overall classification.</td>
+					</tr>
+					<tr>
+						<td>`xkos:levels`</td>
+						<td></td>
+						<td>0..1</td>
+						<td>`rdf:List`</td>
+						<td>Lists the classification levels represented as an RDF list of ordered levels (instances of `xkos:ClassificationLevel`).</td>
+					</tr>
+					<tr>
+						<td>`xkos:covers`</td>
+						<td></td>
+						<td>0..1</td>
+						<td>`skos:Concept`</td>
+						<td>The domain covered by the classification or its levels (eg. activities, products, etc.). Subproperties `xkos:coversExhaustively` and `xkos:coversMutuallyExclusively` can also be used.</td>
+					</tr>
+					<tr>
+						<td>`xkos:coversExhaustively`</td>
+						<td></td>
+						<td>0..1</td>
+						<td>`skos:Concept`</td>
+						<td>The domain covered by the classification (exhaustive coverage).</td>
+					</tr>
+					<tr>
+						<td>`xkos:coversMutuallyExclusively`</td>
+						<td></td>
+						<td>0..1</td>
+						<td>`skos:Concept`</td>
+						<td>The domain covered by the classification (mutually exclusive coverage).</td>
+					</tr>
+					<tr>
+						<td>`xkos:variant`</td>
+						<td></td>
+						<td>0..n</td>
+						<td>`skos:ConceptScheme`</td>
+						<td>`Connects a classification scheme to its variant(s)`</td>
+					</tr>
+					<tr>
+						<td>`xkos:numberOfLevels`</td>
+						<td></td>
+						<td>0..1</td>
+						<td>`xsd:integer`</td>
+						<td>Depth of a classification (number of hierarchically imbricated levels) ; 1 for a flat classification.</td>
+					</tr>
+					<tr>
+						<td>`xkos:follows`</td>
+						<td></td>
+						<td>0..1</td>
+						<td>`skos:ConceptScheme`</td>
+						<td>Links major revisions of classifications.</td>
+					</tr>
+					<tr>
+						<td>`xkos:supersedes`</td>
+						<td></td>
+						<td>0..1</td>
+						<td>`skos:ConceptScheme`</td>
+						<td>Links major revisions of classifications.</td>
+					</tr>
+					<tr><td colspan="5" class="table-section">Optional properties</td></tr>
+					<tr>
+						<td>`skos:scopeNote`</td>
+						<td>any language</td>
+						<td>0..n</td>
+						<td>`xkos:ExplanatoryNote`</td>
+						<td>Each explanatory note MUST have a xkos:plainText property which value is a long descriptive text about the classification scheme in another langage than english, with the langage tag set appropriately</td>
+					</tr>
+					<tr>
+						<td>`dcterms:language`</td>
+						<td></td>
+						<td>0..n</td>
+						<td>`xsd:language`</td>
+						<td>Indicates the langage coverage of the classificaiton scheme. Each value must correspond to a possible langage of labels within that classification.</td>
+					</tr>
+					<tr>
+						<td>`insee:legalMaterial`</td>
+						<td></td>
+						<td>0..n</td>
+						<td>`rdf:Resource`</td>
+						<td>Legislation related to the nomenclaure. Use of an <a href="https://eur-lex.europa.eu/eli-register/about.html">ELI URI</a> is preferred, if one is available ([[ELI]])</td>
+					</tr>
+				</thead>
+			</table>
+
+			<div class="issue" title="No namespace document for XKOS">
+				It would be nice to add hyperlinks in the table above. It would be nice if those hyperlinks would be the URI of the properties themselves, e.g. <a href="http://rdf-vocabulary.ddialliance.org/xkos#belongsTo">`xkos:belongsTo`</a>. Problem : such an hyperlink returns the XKOS specification document, at no particular anchor, because no anchor corresponds to property names. A solution could be to add anchors to the table at <a href="https://rdf-vocabulary.ddialliance.org/xkos.html#nsvoc">https://rdf-vocabulary.ddialliance.org/xkos.html#nsvoc</a>
+			</div>
+			<div class="issue" title="missing dct:valid">
+				We are missing dcterms:valid to express the temporal coverage of the classification, as indicated in XKOS
+			</div>
+			<aside class="example" title="Example of a statistical classification description">
+					<pre class="nohighlight">
+						TODO
+					</pre>
+			</aside>
+			<div class="issue" title="complete example of description of a statistical classification">
+				Provide a Turtle example applying the best practices above. Use ISIC by building the example by hand. @franck.cotton@insee.fr Build from existing description of the classification.
+			</div>
 		</section>
 		<section id="bp-labels">
 		    <h3>Labels</h3>
@@ -402,7 +676,7 @@ ex:NafRev2Dataset a dcat:Dataset ;
 			</section>
 		</section>
 		<section id="bp-uri-patterns">
-		    <h3>URI patterns</h3>
+		    <h3>URI patterns Best Practices</h3>
 			<section id="bp-uri-patterns-classifications">
 				<h4>Proposed URI pattern for classifications</h4>
 				<div class="uri-pattern">
