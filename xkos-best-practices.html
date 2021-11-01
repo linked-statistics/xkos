@@ -679,20 +679,153 @@
 				<h4>xkos:inclusionNote vs. xkos:caseLaw</h4>
 				<p>When a framework classification is implemented it is generally accompanied by explanatory notes (represented using `skos:scopeNote` or its sub-properties). These explanatory notes can undergo some review procedures so that countries can provide feedback about their content. Once the new or updated/revised classification comes into force and for stability sake, the explanatory notes remain untouched until the classification is next revised or updated.</p>
 				<p>However between two revisions or updates questions arise from users about the classification of activities or products (goods or services) not explicitly mentioned in the official explanatory notes. Such questions are addressed to the custodians of the relevant classifications who then issue classification decisions after discussion with countries; as explanatory notes must remain untouched, these classification decisions are generally grouped under various names (e.g. "rulings", "classification decisions", "caselaws") and represented using the `xkos:caseLaw` property. When a framework classification is revised or updated theses caselaws are considered for inclusion in the official explanatory notes.</p>
-				<p>Below is an example of a caselaw relating to the NACE Rev. 2 classification. Rulings are displayed after `xkos:coreContentNote` and `xkos:additionalContentNote` properties but before `xkos:exclusionNote` property because such explanatory texts are labelled as inclusions and not as exclusions.</p>
+				<aside class="example" title="xkos:caseLaw example in NACE">
+					<p>Below is an example of a caselaw relating to the NACE Rev. 2 classification. Rulings are displayed after `xkos:coreContentNote` and `xkos:additionalContentNote` properties but before `xkos:exclusionNote` property because such explanatory texts are labelled as inclusions and not as exclusions.</p>
 
-				
+					<img src="img/bp-caseLaw-example.png" alt="Case Law Example from NACE Rev. 2" />
+				</aside>
 
+				<div class="issue" title="add an RDF example of caseLaw vs. inclusionNote"></div>
+
+				<div class="issue" title="Improve by clarifying the difference with inclusionNote"></div>
 
 			</section>
 		</section>
 		<section id="bp-levels">
 		    <h3>Levels</h3>
-			<p>Paragraph on levels goes here</p>
+			<p><a href="https://rdf-vocabulary.ddialliance.org/xkos.html#levels">§6 of the XKOS specification</a> specifies how to describe the levels in a classification, and how the property `xkos:organizedBy` can be used to link a level in a (specific revision of a) classification to the generic `skos:Concept` describing the generic kind of entries that this level regroups (e.g. the concept of an ISCO major group, of a NACE section, etc.).</p>
+			<p>We emphasize what XKOS already specifies :</p>
+			<ul>
+				<li>the `skos:ConceptScheme` uses the property `xkos:levels` to point to an `rdf:List` that contains an ordered list of instances of `xkos:ClassificationLevels` in this classification. The list is ordered from the highest level to the lowest. These classification levels represent the grouping of the concepts in this particular revision of the classification.</li>
+				<li>Each instance of `xkos:ClassificationLevel` uses `xkos:organizedBy` to refer to a `skos:Concept` describing the “abstract” kind of entries at this level of the classification, independently of the revision of the classification.</li>
+			</ul>
+			<p>We give additional best practices :</p>
+			<ol>
+				<li>the `skos:Concept`s describing the “abstract” kind of entries should be organized hierarchically using `skos:broader` / `skos:narrower` relationships.</li>
+				<li>they should not be blank nodes.</li>
+				<li>these `skos:Concept` should belong to a `skos:ConceptScheme` that is the list of levels in this classification, in general (not a particular revision of the classification).</li>
+				<li>these `skos:Concept` can be declared in the same file as the `skos:ConceptScheme` of the classification, and thus will be repeated with each major revision of the classification.</li>
+			</ol>
+
+			<aside class="example" title="xkos:ClassificationLevel example from NACE">
+				<pre class="nohighlight">
+# The classification revision with an ordered list of its classification levels
+ex:nace-r2 a skos:ConceptScheme;
+  skos:prefLabel “NACE-r2”@en ;
+  xkos:levels (
+    ex:nace-r2-Section,
+    ex:nace-r2-Division,
+    ex:nace-r2-Group,
+    ex:nace-r2-Class
+  )
+.
+
+# Description of classification levels in this particular revision
+# Each having an xkos:organizedBy that points to levels of the NACE
+# Independantly of the revision
+ 
+ex:nace-r2-Section a xkos:ClassificationLevel ;
+  xkos:organizedBy ex:NACE_Section .
+ 
+ex:nace-r2-Division a xkos:ClassificationLevel ;
+  xkos:organizedBy ex:NACE_Division .
+ 
+ex:nace-r2-Group a xkos:ClassificationLevel ;
+  xkos:organizedBy ex:NACE_Group .
+ 
+ex:nace-r2-Class a xkos:ClassificationLevel ;
+  xkos:organizedBy ex:NACE_Class .
+ 
+ 
+# Description of abstract levels of the NACE
+# Organized hierarchically, and all belonging to a ConceptScheme
+ 
+ex:NACE_Section a skos:Concept ;
+  skos:inScheme ex:NACE_ItemTypes ;
+  skos:topConceptOf ex:NACE_ItemTypes ;
+  skos:prefLabel “NACE Section”@en ;
+.
+ 
+ex:NACE_Division a skos:Concept ;
+  skos:inScheme ex:NACE_ItemTypes ;
+  skos:prefLabel “NACE Division”@en ;
+  skos:broader ex:NACE_Section ;
+.
+ 
+ex:NACE_Group a skos:Concept ;
+  skos:inScheme ex:NACE_ItemTypes ;
+  skos:prefLabel “NACE Group”@en ;
+  skos:broader ex:NACE_Division ;
+.
+ 
+ex:NACE_Class a skos:Concept ;
+  skos:inScheme ex:NACE_ItemTypes ;
+  skos:prefLabel “NACE Class”@en ;
+  skos:broader ex:NACE_Group ;
+.
+ 
+ex:NACE_ItemTypes a skos:ConceptScheme ;
+  skos:hasTopConcept ex:NACE_Section ;
+  skos:prefLabel “NACE Item Types”@en ;
+.
+					</pre>
+			</aside>
 		</section>
 		<section id="bp-entries">
 		    <h3>Types of the classification entries</h3>
-			<p>Paragraph on types of the classification entries goes here</p>
+		    <p>The XKOS specification does not define a specific class to represent classification items but rather directly relies on `skos:Concept`.  This best practices document gives further recommendations on how the classification items can be typed according to their levels.</p>
+		    <section id="bp-entries-type">
+		    	<h4>Type the classification items of a given classification</h4>
+		    	<p>A best practice is to declare a new subclass of `skos:Concept` as the type of the classification items for a given classification. For example the class “ex:NACE_Item” can be declared as a subclass of `skos:Concept` to represent the set of all items in the NACE classification. Introducing this class allows to constrain the range of certain properties on this class.</p>
+				<div class="issue" title="New subclass for each revision ? or globally ?">
+					<p>Should it be linked to every version of the classification ? to the abstract Concept representing the classification ?</p>
+					<p>If it serves to constrain the range of properties, then it means this class represents the set of entry of a given revision of the classification, not the set of items of the abstract classification.</p>
+					<p>This is unclear and the pattern needs to be clarified.</p>
+				</div>
+				<p>This new subclass of skos:Concept shall be linked to the skos:ConceptScheme with either of these 2 modelling patterns :</p>
+				<ol>
+					<li>an `rdfs:seeAlso` property, in both direction (from the `skos:ConceptScheme` to the new sub-class of `skos:Concept`, and from the new subclass of `skos:Concept` to the `skos:ConceptScheme`)</li>
+					<li>a formal OWL equivalence between the subclass of `skos:Concept` and a restriction on the property `skos:inScheme`, with an `owl:hasValue` equal to the `skos:ConceptScheme` URI. For example here is how one would declare the equivalence between a new subclass of skos:Concept "NACE_Item" and the set of `skos:Concept` that have a `skos:inScheme` equal to the corresponding scheme URI :
+						<pre>
+Class: ex:NACE_Item
+
+    EquivalentTo:
+        skos:inScheme value ex:nace-r2
+						</pre>
+					</li>
+				</ol>
+				<div class="issue" title="add subClassOf in this example"></div>
+				<p>While the first option is more direct and readable, the second one is more formal.</p>
+				<p>This new class is expected to be declared in the same file as the `skos:ConceptScheme` representing the classification.</p>
+				<p>Both these options are illustrated in the example below.</p>
+				<aside class="example" title="Example of declaring a class for all entries in a classification">
+					<pre class="nohighlight">
+# The ConceptScheme
+ex:nace-r2 a skos:ConceptScheme;
+  skos:prefLabel “NACE-r2”@en ;
+  # See also the Class
+  rdfs:seeAlso ex:NACE_Item ;
+.
+ 
+# The Class, subClassOf skos:Concept
+ex:NACE_Item a owl:Class;
+  rdfs:subClassOf skos:Concept ;
+  skos:prefLabel “NACE R2 Item”@en ;
+  # See also the ConceptScheme
+  rdfs:seeAlso ex:nace-r2 ;
+  # Formal OWL equivalence to the set of Concepts belonging to the ConceptScheme
+  owl:equivalentClass [
+    a owl:Restriction ;
+    owl:onProperty skos:inScheme ;
+    owl:hasValue ex:nace-r2 ;
+  ] ;
+.
+						</pre>
+				</aside>
+				<p>Note that items inside the classification are <em>not</em> expected to be explicitely typed with this new class; they should only be typed with `skos:Concept`. The declaration of this class is only useful so that it can be assigned as the range of some properties.</p>
+		    </section>
+			
+
 		</section>
 		<section id="bp-correspondences">
 		    <h3>Correspondences</h3>
