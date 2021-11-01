@@ -315,6 +315,8 @@
 						<th>Range</th>
 						<th>Description</th>
 					</tr>
+				</thead>
+				<tbody>
 					<tr><td colspan="5" class="table-section">Mandatory properties</td></tr>
 					<tr>
 						<td>`skos:notation`</td>
@@ -451,7 +453,7 @@
 						<td>`rdf:Resource`</td>
 						<td>Legislation related to the nomenclaure. Use of an <a href="https://eur-lex.europa.eu/eli-register/about.html">ELI URI</a> is preferred, if one is available ([[ELI]])</td>
 					</tr>
-				</thead>
+				</tbody>
 			</table>
 
 			<div class="issue" title="No namespace document for XKOS">
@@ -468,6 +470,9 @@
 			<div class="issue" title="complete example of description of a statistical classification">
 				Provide a Turtle example applying the best practices above. Use ISIC by building the example by hand. @franck.cotton@insee.fr Build from existing description of the classification.
 			</div>
+			<div class="issue" title="provide SHACL">
+				Provide SHACL encoding of the properties
+			</div>
 		</section>
 		<section id="bp-labels">
 		    <h3>Labels</h3>
@@ -475,7 +480,211 @@
 		</section>
 		<section id="bp-notes">
 		    <h3>Notes</h3>
-			<p>Paragraph on notes goes here</p>
+			<p><a href="https://rdf-vocabulary.ddialliance.org/xkos.html#note-ext">§8.2 of the XKOS specification</a> describes the different types of content notes introduced in XKOS and mentions the `xkos:plainText` property as a way to capture the raw content of the note. This best practice document gives additional recommendations on how best to describe the note entity, how to handle note versioning and timestamps, and clarifies the difference between `xkos:inclusionNote` and `xkos:caseLaw`.</p>
+			<section id="bp-notes-structure">
+				<h4>Note structure</h4>
+				<p>As indicated in the XKOS specification, and as a prerequisite for the versioning and timestamping of notes, instances of `xkos:ExplanatoryNote` should be used as value for the SKOS and XKOS note properties, and not literal values.</p>
+				<p>The instances of `xkos:ExplanatoryNote` should at least follow the structure given in the table below, in addition to other properties described below, depending if the note is timestamped or versioned.</p>
+				<table class="simple stickyTableHead">
+					<caption>General structure of an `xkos:ExplanatoryNote`</caption>
+					<thead>
+						<tr>
+							<th>Property</th>
+							<th>Card.</th>
+							<th>Range</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>`xkos:plainText`</td>
+							<td>1..1</td>
+							<td>xsd:string</td>
+							<td>The value of the note, in plain text (no HTML / XML markup). The literal is tagged with a proper language tag.</td>
+						</tr>
+						<tr>
+							<td>`dcterms:language`</td>
+							<td>1..1</td>
+							<td>xsd:language</td>
+							<td>The language code of the note. This is a repetition of the language tag of the `xkos:plainText` attribute, that makes it easier to query/select notes in a certain language.</td>
+						</tr>
+						<tr>
+							<td>`rdf:value`</td>
+							<td>0..1</td>
+							<td>rdf:XMLLiteral</td>
+							<td>If needed the value of the note containing HTML or XML markup.</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="issue" title="provide SHACL">
+					Provide SHACL encoding of the properties
+				</div>
+			</section>
+			<section id="bp-notes-versioning-timestamping">
+				<h4>Versioning notes and timestamping notes</h4>
+				<p>As indicated in the introductory paragraph about classification major revisions and versions, the notes are the information that have fine-grained versions between each major revision of a classification.</p>
+				<p>We propose 2 different patterns of versioning for notes : versioning notes with a version number and a date range, and keeping the history of notes with a timestamp.</p>
+				<p>The first pattern to version notes implies that each new version of the note is given a version number and a date range. All notes, except `skos:changeNote` should follow this pattern : `skos:scopeNote`, `skos:definition`, `xkos:coreContentNote`, `xkos:additionalContentNote`, `xkos:exclusionNote`, `xkos:inclusionNote`, `xkos:caseLaw`. These notes should uses the properties listed in the table below.</p>
+				<table class="simple stickyTableHead">
+					<caption>Additional properties for an `xkos:ExplanatoryNote` when versioned</caption>
+					<thead>
+						<tr>
+							<th>Property</th>
+							<th>Card.</th>
+							<th>Range</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>`dcat:version`</td>
+							<td>1..1</td>
+							<td>xsd:int</td>
+							<td>The version number of the note. e.g. `"1"^^xsd:int`, `"2"^^xsd:int`, etc. Note that this version number will typically be used in the URI of the `xkos:ExplanatoryNote`.</td>
+						</tr>
+						<tr>
+							<td>`schema:startDate`</td>
+							<td>1..1</td>
+							<td>xsd:dateTime</td>
+							<td>The date from which this note content is valid.</td>
+						</tr>
+						<tr>
+							<td>`schema:endDate`</td>
+							<td>0..1</td>
+							<td>rdf:XMLLiteral</td>
+							<td>The date until which this note content was (or will be) valid, indicating it was (or will be) replaced with another note with a different text, and its version number increased by 1. This property is not set in the case if there is no known end date.</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="issue" title="How to express date ranges">
+					to be discussed : use of schema.org or dcterms:valid, which is less convenient, but more reliable in terms of standard. Or we recommend insee:validFrom and insee:validUntil ? Also adjust examples !!
+
+					Note : the ISO-8601 does not define open-ended ranges; this is extended by an LC extension that suggest "2012-09-10/.." for open ended ranges; this is used by schema.org
+				</div>
+				<p>Given the versioning history of such notes, a client accessing a particular version of the classification might not be interested to know about the versioning history of all notes, and is only interested in the current state of each note.</p>
+				<aside class="example" title="Concept with a versioned note">
+					<p>Before 2010-02-01, the Concept description is the following :</p>
+					<pre class="nohighlight">
+&lt;http://id.insee.fr/codes/cpfr2/sousCategorie/08.12.21> a skos:Concept;
+  xkos:coreContentNote 
+    &lt;http://id.insee.fr/codes/cpfr2/sousCategorie/08.12.21/noteContenuCentral/v1/fr>;
+    skos:prefLabel 
+      "Kaolin and other kaolinic clays"@en, 
+      "Kaolin et autres argiles kaoliniques"@fr .
+
+&lt;http://id.insee.fr/codes/cpfr2/sousCategorie/08.12.21/noteContenuCentral/v1/fr> a
+    xkos:ExplanatoryNote;
+  rdf:value 
+    "&lt;div xmlns=\"http://www.w3.org/1999/xhtml\">&lt;ul class=\"list1\">&lt;li>&lt;p>argiles kaoliniques brutes ou calcinées et pâtes céramiques&lt;/p>&lt;/li>&lt;/ul>&lt;/div>"^^rdf:XMLLiteral;
+  dcterms:language "fr"^^xsd:language;
+  dcat:version "1"^^xsd:int;
+  xkos:plainText "- argiles kaoliniques brutes ou calcinées et pâtes céramiques"@fr;
+  insee:validFrom "2008-01-01T00:00:00.000+01:00"^^xsd:dateTime;
+  insee:validUntil "2010-02-01T00:00:00.000+01:00"^^xsd:dateTime .
+					</pre>
+					<p>On the 2010-02-01, the note is modified, and a second version is created. The current state of the Concept then becomes the following :</p>
+					<pre class="nohighlight">
+&lt;http://id.insee.fr/codes/cpfr2/sousCategorie/08.12.21> a skos:Concept;
+  xkos:coreContentNote,
+    &lt;http://id.insee.fr/codes/cpfr2/sousCategorie/08.12.21/noteContenuCentral/v2/fr>;
+    skos:prefLabel
+      "Kaolin and other kaolinic clays"@en,
+      "Kaolin et autres argiles kaoliniques"@fr .
+
+&lt;http://id.insee.fr/codes/cpfr2/sousCategorie/08.12.21/noteContenuCentral/v2/fr> a
+    xkos:ExplanatoryNote;
+  rdf:value 
+    "&lt;div xmlns=\"http://www.w3.org/1999/xhtml\">&lt;ul class=\"list1\">&lt;li>&lt;p>argiles kaoliniques brutes et pâtes céramiques&lt;/p>&lt;/li>&lt;/ul>&lt;/div>"^^rdf:XMLLiteral;
+  dcterms:language "fr"^^xsd:language;
+  dcat:version "2"^^xsd:int;
+  xkos:plainText "- argiles kaoliniques brutes et pâtes céramiques"@fr;
+  insee:validFrom "2010-02-01T00:00:00.000+01:00"^^xsd:dateTime .
+					</pre>
+					<p>The complete history of that Concept is the following :</p>
+					<pre class="nohighlight">
+&lt;http://id.insee.fr/codes/cpfr2/sousCategorie/08.12.21> a skos:Concept;
+  xkos:coreContentNote 
+    &lt;http://id.insee.fr/codes/cpfr2/sousCategorie/08.12.21/noteContenuCentral/v1/fr>,
+    &lt;http://id.insee.fr/codes/cpfr2/sousCategorie/08.12.21/noteContenuCentral/v2/fr>;
+    skos:prefLabel 
+      "Kaolin and other kaolinic clays"@en,
+      "Kaolin et autres argiles kaoliniques"@fr .
+
+&lt;http://id.insee.fr/codes/cpfr2/sousCategorie/08.12.21/noteContenuCentral/v1/fr> a
+    xkos:ExplanatoryNote;
+  rdf:value 
+    "&lt;div xmlns=\"http://www.w3.org/1999/xhtml\">&lt;ul class=\"list1\">&lt;li>&lt;p>argiles kaoliniques brutes ou calcinées et pâtes céramiques&lt;/p>&lt;/li>&lt;/ul>&lt;/div>"^^rdf:XMLLiteral;
+  dcterms:language "fr"^^xsd:language;
+  dcat:version "1"^^xsd:int;
+  xkos:plainText "- argiles kaoliniques brutes ou calcinées et pâtes céramiques"@fr;
+  insee:validFrom "2008-01-01T00:00:00.000+01:00"^^xsd:dateTime;
+  insee:validUntil "2010-02-01T00:00:00.000+01:00"^^xsd:dateTime .
+
+&lt;http://id.insee.fr/codes/cpfr2/sousCategorie/08.12.21/noteContenuCentral/v2/fr> a
+    xkos:ExplanatoryNote;
+  rdf:value 
+    "&lt;div xmlns=\"http://www.w3.org/1999/xhtml\">&lt;ul class=\"list1\">&lt;li>&lt;p>argiles kaoliniques brutes et pâtes céramiques&lt;/p>&lt;/li>&lt;/ul>&lt;/div>"^^rdf:XMLLiteral;
+  dcterms:language "fr"^^xsd:language;
+  dcat:version "2"^^xsd:int;
+  xkos:plainText "- argiles kaoliniques brutes et pâtes céramiques"@fr;
+  insee:validFrom "2010-02-01T00:00:00.000+01:00"^^xsd:dateTime .
+					</pre>
+					<p>The modification of the core content note is documented by a (timestamped) `skos:changeNote` - see example below.</p>
+					<div class="issue" title="reference DCAT publishing section"></div>
+					<div class="issue" title="Can we remove xmlns='http://www.w3.org/1999/xhtml' and class='list1' from example ?">Also in second example</div>
+				</aside>
+
+				<p>The second pattern implies that the note is associated with a publication date, but no version number.This pattern applies to `skos:changeNote` only. It will use the properties listed in the table below.</p>
+
+				<table class="simple stickyTableHead">
+					<caption>Additional properties for an `xkos:ExplanatoryNote` when timestamped</caption>
+					<thead>
+						<tr>
+							<th>Property</th>
+							<th>Card.</th>
+							<th>Range</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>`dcterms:issued`</td>
+							<td>0..1</td>
+							<td>xsd:dateTime</td>
+							<td>The date at which the note was issued. Note that this date will typically be used in the URI of the `xkos:ExplanatoryNote`.</td>
+						</tr>
+					</tbody>
+				</table>
+				<p>Given the versioning history of such a note, a client accessing a particular version of the classification might be interested to have the full history of each value of the note.</p>
+				<aside class="example" title="Concept with a timestamped note">
+					<pre class="nohighlight">
+&lt;http://id.insee.fr/codes/cpfr2/sousCategorie/08.12.21> a skos:Concept;
+  skos:changeNote 
+    &lt;http://id.insee.fr/codes/cpfr2/sousCategorie/08.12.21/noteChangement/2010-02-01/fr>;
+  skos:prefLabel 
+    "Kaolin and other kaolinic clays"@en, 
+    "Kaolin et autres argiles kaoliniques"@fr .
+
+&lt;http://id.insee.fr/codes/cpfr2/sousCategorie/08.12.21/noteChangement/2010-02-01/fr>
+  a xkos:ExplanatoryNote;
+  rdf:value 
+    "&lt;div xmlns=\"http://www.w3.org/1999/xhtml\">&lt;p>Suppression dans la rubrique \"Comprend\" : ou calcinées&lt;/p>&lt;/div>"^^rdf:XMLLiteral;
+  dcterms:issued "2010-02-01T00:00:00.000+01:00"^^xsd:dateTime;
+  dcterms:language "fr"^^xsd:language;
+  xkos:plainText "Suppression dans la rubrique \"Comprend\" : ou calcinées"@fr .
+					</pre>
+				</aside>
+			</section>
+			<section id="bp-notes-inclusionNote-caseLaw">
+				<h4>xkos:inclusionNote vs. xkos:caseLaw</h4>
+				<p>When a framework classification is implemented it is generally accompanied by explanatory notes (represented using `skos:scopeNote` or its sub-properties). These explanatory notes can undergo some review procedures so that countries can provide feedback about their content. Once the new or updated/revised classification comes into force and for stability sake, the explanatory notes remain untouched until the classification is next revised or updated.</p>
+				<p>However between two revisions or updates questions arise from users about the classification of activities or products (goods or services) not explicitly mentioned in the official explanatory notes. Such questions are addressed to the custodians of the relevant classifications who then issue classification decisions after discussion with countries; as explanatory notes must remain untouched, these classification decisions are generally grouped under various names (e.g. "rulings", "classification decisions", "caselaws") and represented using the `xkos:caseLaw` property. When a framework classification is revised or updated theses caselaws are considered for inclusion in the official explanatory notes.</p>
+				<p>Below is an example of a caselaw relating to the NACE Rev. 2 classification. Rulings are displayed after `xkos:coreContentNote` and `xkos:additionalContentNote` properties but before `xkos:exclusionNote` property because such explanatory texts are labelled as inclusions and not as exclusions.</p>
+
+				
+
+
+			</section>
 		</section>
 		<section id="bp-levels">
 		    <h3>Levels</h3>
