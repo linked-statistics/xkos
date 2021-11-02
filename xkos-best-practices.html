@@ -246,6 +246,11 @@
 					<td>ISO 25964 SKOS extension ([[ISOTHES]])</td>
 				</tr>
 				<tr>
+					<td>prov</td>
+					<td>http://www.w3.org/ns/prov#</td>
+					<td>The Provenance Ontology ([[PROV-O]])</td>
+				</tr>
+				<tr>
 					<td>qb</td>
 					<td>https://www.w3.org/TR/vocab-data-cube/</td>
 					<td>The RDF Data Cube Vocabulary ([[QB]])</td>
@@ -575,7 +580,7 @@
 &lt;http://id.insee.fr/codes/cpfr2/sousCategorie/08.12.21/noteContenuCentral/v1/fr> a
     xkos:ExplanatoryNote;
   rdf:value 
-    "&lt;div xmlns=\"http://www.w3.org/1999/xhtml\">&lt;ul class=\"list1\">&lt;li>&lt;p>argiles kaoliniques brutes ou calcinées et pâtes céramiques&lt;/p>&lt;/li>&lt;/ul>&lt;/div>"^^rdf:XMLLiteral;
+    "&lt;div>&lt;ul>&lt;li>&lt;p>argiles kaoliniques brutes ou calcinées et pâtes céramiques&lt;/p>&lt;/li>&lt;/ul>&lt;/div>"^^rdf:XMLLiteral;
   dcterms:language "fr"^^xsd:language;
   dcat:version "1"^^xsd:int;
   xkos:plainText "- argiles kaoliniques brutes ou calcinées et pâtes céramiques"@fr;
@@ -594,7 +599,7 @@
 &lt;http://id.insee.fr/codes/cpfr2/sousCategorie/08.12.21/noteContenuCentral/v2/fr> a
     xkos:ExplanatoryNote;
   rdf:value 
-    "&lt;div xmlns=\"http://www.w3.org/1999/xhtml\">&lt;ul class=\"list1\">&lt;li>&lt;p>argiles kaoliniques brutes et pâtes céramiques&lt;/p>&lt;/li>&lt;/ul>&lt;/div>"^^rdf:XMLLiteral;
+    "&lt;div>&lt;ul>&lt;li>&lt;p>argiles kaoliniques brutes et pâtes céramiques&lt;/p>&lt;/li>&lt;/ul>&lt;/div>"^^rdf:XMLLiteral;
   dcterms:language "fr"^^xsd:language;
   dcat:version "2"^^xsd:int;
   xkos:plainText "- argiles kaoliniques brutes et pâtes céramiques"@fr;
@@ -613,7 +618,7 @@
 &lt;http://id.insee.fr/codes/cpfr2/sousCategorie/08.12.21/noteContenuCentral/v1/fr> a
     xkos:ExplanatoryNote;
   rdf:value 
-    "&lt;div xmlns=\"http://www.w3.org/1999/xhtml\">&lt;ul class=\"list1\">&lt;li>&lt;p>argiles kaoliniques brutes ou calcinées et pâtes céramiques&lt;/p>&lt;/li>&lt;/ul>&lt;/div>"^^rdf:XMLLiteral;
+    "&lt;div>&lt;ul>&lt;li>&lt;p>argiles kaoliniques brutes ou calcinées et pâtes céramiques&lt;/p>&lt;/li>&lt;/ul>&lt;/div>"^^rdf:XMLLiteral;
   dcterms:language "fr"^^xsd:language;
   dcat:version "1"^^xsd:int;
   xkos:plainText "- argiles kaoliniques brutes ou calcinées et pâtes céramiques"@fr;
@@ -623,7 +628,7 @@
 &lt;http://id.insee.fr/codes/cpfr2/sousCategorie/08.12.21/noteContenuCentral/v2/fr> a
     xkos:ExplanatoryNote;
   rdf:value 
-    "&lt;div xmlns=\"http://www.w3.org/1999/xhtml\">&lt;ul class=\"list1\">&lt;li>&lt;p>argiles kaoliniques brutes et pâtes céramiques&lt;/p>&lt;/li>&lt;/ul>&lt;/div>"^^rdf:XMLLiteral;
+    "&lt;div>&lt;ul>&lt;li>&lt;p>argiles kaoliniques brutes et pâtes céramiques&lt;/p>&lt;/li>&lt;/ul>&lt;/div>"^^rdf:XMLLiteral;
   dcterms:language "fr"^^xsd:language;
   dcat:version "2"^^xsd:int;
   xkos:plainText "- argiles kaoliniques brutes et pâtes céramiques"@fr;
@@ -631,7 +636,6 @@
 					</pre>
 					<p>The modification of the core content note is documented by a (timestamped) `skos:changeNote` - see example below.</p>
 					<div class="issue" title="reference DCAT publishing section"></div>
-					<div class="issue" title="Can we remove xmlns='http://www.w3.org/1999/xhtml' and class='list1' from example ?">Also in second example</div>
 				</aside>
 
 				<p>The second pattern implies that the note is associated with a publication date, but no version number.This pattern applies to `skos:changeNote` only. It will use the properties listed in the table below.</p>
@@ -668,7 +672,7 @@
 &lt;http://id.insee.fr/codes/cpfr2/sousCategorie/08.12.21/noteChangement/2010-02-01/fr>
   a xkos:ExplanatoryNote;
   rdf:value 
-    "&lt;div xmlns=\"http://www.w3.org/1999/xhtml\">&lt;p>Suppression dans la rubrique \"Comprend\" : ou calcinées&lt;/p>&lt;/div>"^^rdf:XMLLiteral;
+    "&lt;div>&lt;p>Suppression dans la rubrique \"Comprend\" : ou calcinées&lt;/p>&lt;/div>"^^rdf:XMLLiteral;
   dcterms:issued "2010-02-01T00:00:00.000+01:00"^^xsd:dateTime;
   dcterms:language "fr"^^xsd:language;
   xkos:plainText "Suppression dans la rubrique \"Comprend\" : ou calcinées"@fr .
@@ -710,13 +714,13 @@
 			<aside class="example" title="xkos:ClassificationLevel example from NACE">
 				<pre class="nohighlight">
 # The classification revision with an ordered list of its classification levels
-ex:nace-r2 a skos:ConceptScheme;
+ex:NACE-R2 a skos:ConceptScheme;
   skos:prefLabel “NACE-r2”@en ;
   xkos:levels (
-    ex:nace-r2-Section,
-    ex:nace-r2-Division,
-    ex:nace-r2-Group,
-    ex:nace-r2-Class
+    ex:NACE-R2_Section,
+    ex:NACE-R2_Division,
+    ex:NACE-R2_Group,
+    ex:NACE-R2_Class
   )
 .
 
@@ -724,16 +728,16 @@ ex:nace-r2 a skos:ConceptScheme;
 # Each having an xkos:organizedBy that points to levels of the NACE
 # Independantly of the revision
  
-ex:nace-r2-Section a xkos:ClassificationLevel ;
+ex:NACE-R2_Section a xkos:ClassificationLevel ;
   xkos:organizedBy ex:NACE_Section .
  
-ex:nace-r2-Division a xkos:ClassificationLevel ;
+ex:NACE-R2_Division a xkos:ClassificationLevel ;
   xkos:organizedBy ex:NACE_Division .
  
-ex:nace-r2-Group a xkos:ClassificationLevel ;
+ex:NACE-R2_Group a xkos:ClassificationLevel ;
   xkos:organizedBy ex:NACE_Group .
  
-ex:nace-r2-Class a xkos:ClassificationLevel ;
+ex:NACE-R2_Class a xkos:ClassificationLevel ;
   xkos:organizedBy ex:NACE_Class .
  
  
@@ -776,18 +780,14 @@ ex:NACE_ItemTypes a skos:ConceptScheme ;
 		    <p>The XKOS specification does not define a specific class to represent classification items but rather directly relies on `skos:Concept`.  This best practices document gives further recommendations on how the classification items can be typed according to their levels.</p>
 		    <section id="bp-types-per-entry">
 		    	<h4>Type the classification items of a given classification</h4>
-		    	<p>A best practice is to declare a new subclass of `skos:Concept` as the type of the classification items for a given classification. For example the class “ex:NACE_Item” can be declared as a subclass of `skos:Concept` to represent the set of all items in the NACE classification. Introducing this class allows to constrain the range of certain properties on this class.</p>
-				<div class="issue" title="New subclass for each revision ? or globally ?">
-					<p>Should it be linked to every version of the classification ? to the abstract Concept representing the classification ?</p>
-					<p>If it serves to constrain the range of properties, then it means this class represents the set of entry of a given revision of the classification, not the set of items of the abstract classification.</p>
-					<p>This is unclear and the pattern needs to be clarified.</p>
-				</div>
+		    	<p>A best practice is to declare a new subclass of `skos:Concept` as the type of the classification items for a given revision of a classification. For example the class “ex:NACE-R2_Item” could be declared as a subclass of `skos:Concept` to represent the set of all items in the 2nd revision of the NACE classification. Introducing this class allows to constrain the range of certain properties on this class.</p>
+
 				<p>This new subclass of skos:Concept shall be linked to the skos:ConceptScheme with either of these 2 modelling patterns :</p>
 				<ol>
 					<li>an `rdfs:seeAlso` property, in both direction (from the `skos:ConceptScheme` to the new sub-class of `skos:Concept`, and from the new subclass of `skos:Concept` to the `skos:ConceptScheme`)</li>
-					<li>a formal OWL equivalence between the subclass of `skos:Concept` and a restriction on the property `skos:inScheme`, with an `owl:hasValue` equal to the `skos:ConceptScheme` URI. For example here is how one would declare the equivalence between a new subclass of skos:Concept "NACE_Item" and the set of `skos:Concept` that have a `skos:inScheme` equal to the corresponding scheme URI :
+					<li>a formal OWL equivalence between the subclass of `skos:Concept` and a restriction on the property `skos:inScheme`, with an `owl:hasValue` equal to the `skos:ConceptScheme` URI. For example here is how one would declare the equivalence between a new subclass of skos:Concept "NACE-R2_Item" and the set of `skos:Concept` that have a `skos:inScheme` equal to the corresponding scheme URI :
 						<pre>
-Class: ex:NACE_Item
+Class: ex:NACE-R2_Item
 
     EquivalentTo:
         skos:inScheme value ex:nace-r2
@@ -801,23 +801,23 @@ Class: ex:NACE_Item
 				<aside class="example" title="Example of declaring a class for all entries in a classification">
 					<pre class="nohighlight">
 # The ConceptScheme
-ex:nace-r2 a skos:ConceptScheme;
+ex:NACE-R2 a skos:ConceptScheme;
   skos:prefLabel “NACE-r2”@en ;
   # See also the Class
   rdfs:seeAlso ex:NACE_Item ;
 .
  
 # The Class, subClassOf skos:Concept
-ex:NACE_Item a owl:Class;
+ex:NACE-R2_Item a owl:Class;
   rdfs:subClassOf skos:Concept ;
   skos:prefLabel “NACE R2 Item”@en ;
   # See also the ConceptScheme
-  rdfs:seeAlso ex:nace-r2 ;
+  rdfs:seeAlso ex:NACE-R2 ;
   # Formal OWL equivalence to the set of Concepts belonging to the ConceptScheme
   owl:equivalentClass [
     a owl:Restriction ;
     owl:onProperty skos:inScheme ;
-    owl:hasValue ex:nace-r2 ;
+    owl:hasValue ex:NACE-R2 ;
   ] ;
 .
 						</pre>
@@ -826,109 +826,105 @@ ex:NACE_Item a owl:Class;
 		    </section>
 			<section id="bp-types-per-level">
 				<h4>Type classification items according to their level</h4>
-				<p><a href="https://rdf-vocabulary.ddialliance.org/xkos.html#levels">§6 of the XKOS specification</a> describing classification levels states the following : <blockquote><em>"A classification level is often characterized by a generic name for the classification items that it regroups. The ISCO names "major groups" the items of the first level, "sub-major groups" the items of the second level, etc. The NACE uses the terms "sections", "divisions", "groups" and "classes"; the NAICS has "sectors", "subsectors", "groups", etc. This information can be rendered in XKOS by the property xkos:organizedBy that links the xkos:ClassificationLevel object to a skos:Concept representing the generic item for this level (e.g. the concept of an ISCO major group, of a NACE section, etc.)."</em></blockquote></p>
 
-				<p>This best practice document suggests to go one step further, and to actually consider the <em>“skos:Concept representing the generic item for this level”</em> also as OWL classes (hence with 2 types : `skos:Concept` and `owl:Class`), declared as subclass of the dedicated class that represent the set of all items of the classification, as descripbed in previous section. This is a refinement of the previous best practices on Levels.</p>
+				<div class="issue" title="rediscuss if this works"></div>
 
-				<p>Following the example given above, the following levels of the NACE, in addition to being `skos:Concept`, would be typed as `owl:Class` and declared subclasses of `ex:NACE_Item` :</p>
-				<div class="issue" title="subclasses of NACE_Itemor of NACE-R2_Item ?"></div>
+				<p><a href="https://rdf-vocabulary.ddialliance.org/xkos.html#levels">§6 of the XKOS specification</a> describing classification levels states the following : <blockquote><em>"In XKOS, a classification level is defined as a specialization of `skos:Collection` named `xkos:ClassificationLevel`. (...) Individual `skos:Concept` objects are related to the `xkos:ClassificationLevel` to which they belong by the usual `skos:member` property (going from the level to the classification item)."</em></blockquote></p>
+
+				<p>This best practice document suggests to go one step further, and to actually consider the classification levels also as OWL classes (hence with 2 types : `xkos:ClassificationLevel` and `owl:Class`), declared as subclass of the dedicated class that represent the set of all items of the classification, as described in previous section.</p>
+
+				<p>Following the example given above, the following levels of the NACE-R2, in addition to being `xkos:ClassificationLevel`, would be typed as `owl:Class` and declared subclasses of `ex:NACE-R2_Item` :</p>
 				<ul>
-					<li>ex:NACE_Section</li>
-					<li>ex:NACE_Division</li>
-					<li>ex:NACE_Group</li>
-					<li>ex:NACE_Class</li>
+					<li>ex:NACE-R2_Section</li>
+					<li>ex:NACE-R2_Division</li>
+					<li>ex:NACE-R2_Group</li>
+					<li>ex:NACE-R2_Class</li>
 				</ul>
 
-				<p>These classes would be declared as direct subclasses of `ex:NACE_Item`, as the set of e.g. NACE sections is a subset of the set of all NACE items. However these classes would <em>not</em> be declared as subclasses of each other, as it is not true to state that e.g. the set of all NACE divisions is a subset of all NACE sections.</p>
-				<p>To capture the intent that instances of NACE divisions are expected to be narrower concepts of instances NACE sections, these entries would continue to be linked with `skos:broader` and `skos:narrower` links (as per the previous best practice), that do not have the same logical entailments as an `rdfs:subClassOf` link.</p>
-				<p>These subclasses should be linked with the corresponding instances of `xkos:ClassificationLevel` that serve as a grouping of the items at a particular level of the classification with the `xkos:organizedBy`. This is illustrated in the following example.</p>
+				<p>These classes would be declared as direct subclasses of `ex:NACE-R2_Item`, as the set of e.g. NACE sections is a subset of the set of all NACE items. However these classes would <em>not</em> be declared as subclasses of each other, as it is not true to state that e.g. the set of all NACE R2 divisions is a subset of all NACE R2 sections.</p>
+				<p>To capture the intent that instances of NACE R2 divisions are expected to be narrower concepts of instances NACE R2 sections, these entries are referenced in an ordered list by the `xkos:levels` property on the `skos:ConceptScheme`.</p>
+				<p>This is illustrated in the following example.</p>
 				<aside class="example" title="Example of declaring classes for each level in a classification">
 					<pre class="nohighlight">
 # The classification revision with an ordered list of its classification levels
-ex:nace-r2 a skos:ConceptScheme;
+ex:NACE-R2 a skos:ConceptScheme;
   skos:prefLabel “NACE-r2”@en ;
-  rdfs:seeAlso ex:NACE_Item ;
   xkos:levels (
-    ex:nace-2-Section,
-    ex:nace-2-Division,
-    ex:nace-2-Group,
-    ex:nace-2-Class
+    ex:NACE-R2_Section,
+    ex:NACE-R2_Division,
+    ex:NACE-R2_Group,
+    ex:NACE-R2_Class
   )
 .
 
 # Description of classification levels in this particular revision
 # Each having an xkos:organizedBy that points to levels of the NACE
 # Independantly of the revision
-
-ex:nace-2-Section a xkos:ClassificationLevel ;
+ 
+ex:NACE-R2_Section a xkos:ClassificationLevel, owl:Class ;
+  rdfs:subClassOf ex:NACE-R2_Item ;
   xkos:organizedBy ex:NACE_Section .
  
-ex:nace-2-Division a xkos:ClassificationLevel ;
+ex:NACE-R2_Division a xkos:ClassificationLevel, owl:Class ;
+  rdfs:subClassOf ex:NACE-R2_Item ;
   xkos:organizedBy ex:NACE_Division .
  
-ex:nace-2-Group a xkos:ClassificationLevel ;
+ex:NACE-R2_Group a xkos:ClassificationLevel, owl:Class ;
+  rdfs:subClassOf ex:NACE-R2_Item ;
   xkos:organizedBy ex:NACE_Group .
  
-ex:nace-2-Class a xkos:ClassificationLevel ;
+ex:NACE-R2_Class a xkos:ClassificationLevel, owl:Class ;
+  rdfs:subClassOf ex:NACE-R2_Item ;
   xkos:organizedBy ex:NACE_Class .
- 
-
-# Description of abstract levels of the NACE
-# Organized hierarchically, all belonging to a ConceptScheme , and also declared as subClasses of
-# a common parent class
- 
-ex:NACE_Section a skos:Concept, owl:Class ;
-  rdfs:subClassOf ex:NACE_Item ;
-  skos:inScheme ex:NACE_Levels ;
-  skos:topConceptOf ex:NACE_Levels ;
-  skos:prefLabel “NACE Section”@en ;
-.
- 
-ex:NACE_Division a skos:Concept, owl:Class ;
-  rdfs:subClassOf ex:NACE_Item ;
-  skos:inScheme ex:NACE_Levels ;
-  skos:prefLabel “NACE Division”@en ;
-  skos:broader ex:NACE_Section ;
-.
- 
-ex:NACE_Group a skos:Concept, owl:Class ;
-  rdfs:subClassOf ex:NACE_Item ;
-  skos:inScheme ex:NACE_Levels ;
-  skos:prefLabel “NACE Group”@en ;
-  skos:broader ex:NACE_Division ;
-.
- 
-ex:NACE_Class a skos:Concept, owl:Class ;
-  rdfs:subClassOf ex:NACE_Item ;
-  skos:inScheme ex:NACE_Levels ;
-  skos:prefLabel “NACE Class”@en ;
-  skos:broader ex:NACE_Group ;
-.
- 
-ex:NACE_Levels a skos:ConceptScheme ;
-  skos:hasTopConcept ex:NACE_Section ;
-  skos:prefLabel “NACE Levels”@en ;
-.
- 
 
 # The common parent class that represents the sets of all entries of the classification
 # linked to the ConceptScheme with an rdfs:seeAlso and a formal OWL equivalence
 
-ex:NACE_Item a owl:Class;
+ex:NACE-R2_Item a owl:Class;
   rdfs:subClassOf skos:Concept ;
-  skos:prefLabel “NACE Item”@en ;
-  rdfs:seeAlso ex:nace-r2 ;
+  skos:prefLabel “NACE R2 Item”@en ;
+  rdfs:seeAlso ex:NACE-R2 ;
   owl:equivalentClass [
     a owl:Restriction ;
     owl:onProperty skos:inScheme ;
-    owl:hasValue ex:nace-r2 ;
+    owl:hasValue ex:NACE-R2 ;
   ] ;
 .
-
+ 
+# Description of abstract levels of the NACE
+# Organized hierarchically, and all belonging to a ConceptScheme
+ 
+ex:NACE_Section a skos:Concept ;
+  skos:inScheme ex:NACE_ItemTypes ;
+  skos:topConceptOf ex:NACE_ItemTypes ;
+  skos:prefLabel “NACE Section”@en ;
+.
+ 
+ex:NACE_Division a skos:Concept ;
+  skos:inScheme ex:NACE_ItemTypes ;
+  skos:prefLabel “NACE Division”@en ;
+  skos:broader ex:NACE_Section ;
+.
+ 
+ex:NACE_Group a skos:Concept ;
+  skos:inScheme ex:NACE_ItemTypes ;
+  skos:prefLabel “NACE Group”@en ;
+  skos:broader ex:NACE_Division ;
+.
+ 
+ex:NACE_Class a skos:Concept ;
+  skos:inScheme ex:NACE_ItemTypes ;
+  skos:prefLabel “NACE Class”@en ;
+  skos:broader ex:NACE_Group ;
+.
+ 
+ex:NACE_ItemTypes a skos:ConceptScheme ;
+  skos:hasTopConcept ex:NACE_Section ;
+  skos:prefLabel “NACE Item Types”@en ;
+.
 						</pre>
 				</aside>
-
-				<div class="issue" title="Isn't the cass ex:NACE_Item equivalent to the ConceptScheme ex:NACE_Levels ?" />
+				<div class="issue" title="Describe how this is used as the range of a property"></div>
 			</section>
 
 		</section>
@@ -958,7 +954,71 @@ skos:prefLabel "ISIC Group"@en .
 		</section>
 		<section id="bp-evolution">
 		    <h3>Evolution of classifications over time</h3>
-			<p>Paragraph on evolution of classifications over time goes here</p>
+			<section id="bp-evolution-major-versions">
+				<h4>Major versions of classifications</h4>
+				<p>When a complete revision of a classification happens, a new major version of a classification is produced. The recommendation is that all the URIs of the concepts and levels are recreated and the relation between the classification items is given by a correspondence table as presented in the <a href="#bp-correspondences">corresponding section of this document</a>. The former classification should have the property `owl:deprecated` set to “true” and its period of validity updated in a `dcat:temporal` property.</p>
+				<div class="issue" title="dcat:temporal or dct:valid ?"></div>
+			</section>
+			<section id="bp-evolution-linking">
+				<h4>Linking major versions of classifications</h4>
+				<p>In the situation of managing classifications over time, links between successive major versions of classifications can be created at the `skos:ConceptScheme` level by using `xkos:supersedes` that conveys the idea that the value of this property is a deprecated classification.</p>
+			</section>
+			<section id="bp-evolution-prov">
+				<h4>Use of PROV-O</h4>
+				<p><a href="https://rdf-vocabulary.ddialliance.org/xkos.html#class-representation">§5.1 of the XKOS Specification</a> states <blockquote><em>“Readers should also be aware that the Provenance Ontology, which was not available at the time of writing of this specification, introduces the related notion of "entity specialization" (`prov:specializationOf`). This can be an alternative approach for describing the versioning of classifications.”</em></blockquote></p>
+				<p>The following table gives more details on how XKOS properties are related to [[PROV-O]]. The use of [[PROV-O]] properties in combination with XKOS properties is encouraged to promote wider interoperability of links between classifications.</p>
+				<table class="simple stickyTableHead">
+					<caption>Relations between XKOS and PROV-O</caption>
+					<thead>
+						<tr>
+							<th>XKOS Property or Path</th>
+							<th>Alignement</th>
+							<th>PROV-O property</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>`xkos:supersedes`</td>
+							<td>`rdfs:subPropertyOf`</td>
+							<td><a href="http://www.w3.org/ns/prov#wasRevisionOf">`prov:wasRevisionOf`</a></td>
+						</tr>
+						<tr>
+							<td>`xkos:follows`</td>
+							<td>`rdfs:subPropertyOf`</td>
+							<td><a href="http://www.w3.org/ns/prov#wasDerivedFrom">`prov:wasDerivedFrom`</a></td>
+						</tr>
+						<tr>
+							<td>`^xkos:variant`</td>
+							<td>`rdfs:subPropertyOf`</td>
+							<td><a href="http://www.w3.org/ns/prov#wasDerivedFrom">`prov:wasDerivedFrom`</a></td>
+						</tr>
+						<tr>
+							<td>`^xkos:targetConcept/xkos:sourceConcept`</td>
+							<td>`rdfs:subPropertyOf`</td>
+							<td><a href="http://www.w3.org/ns/prov#wasDerivedFrom">`prov:wasDerivedFrom`</a></td>
+						</tr>						
+						<tr>
+							<td>`^xkos:belongsTo`</td>
+							<td>`rdfs:subPropertyOf`</td>
+							<td><a href="http://www.w3.org/ns/prov#specializationOf">`prov:specializationOf`</a></td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="issue" title="Discuss xkos:belongsTo and xkos:variant here"></div>
+				<p>Note that in the case of a `xkos:variant`, the corresponding [[PROV-O]] property is `prov:wasDerivedFrom` instead of `prov:wasRevisionOf`. The existence of a variant does not imply the original version is deprecated. There will be an overlap between the validity time period of the variant version and the reference one.</p>
+			</section>
+			<section id="bp-evolution-series">
+				<h4>Series of classification</h4>
+				<p>The figure below presents the succession of two revisions of the NAF classification. The temporal periods of validity of each revision are given through the `dct:temporal` property that has as value a `dcat:PeriodOfTime` using the `dcat:startDate` and `dcat:endDate` properties. A possibility to clearly identify that the NAFRev1 is the obsolete version is to use the `owl:deprecated` property set to `true`.</p>
+				<img src="img/bp-series-example.png" alt="Example of a classification serie" />
+				<div class="issue" title="dct:temporal or dct:valid or something else ?"></div>
+				<div class="issue" title="improve diagram">
+					<p>I think we need to review the formalism of this diagram, which mixes an entity/relation graph formalism with a UML class diagram formalism. I think that everything should be in the entity/relationship formalism (= drawing the graph of RDF triples, with instance URIs).</p>
+
+					<p>Furthermore, we need to go all the way to the end of the diagram for the ConceptAssociation, we need to exemplify source and target concepts. For that, we need a second, different diagram, otherwise there will be too many elements on a single diagram.</p>
+				</div>
+				<p>In the `xkos:ConceptAssociation` the `xkos:sourceConcept` makes a reference to a `skos:Concept` belonging to the `skos:ConceptScheme` of the former classification while the `xkos:targetConcept` references a `skos:Concept` belonging to the (`skos:ConceptScheme` of) the new revision of the classification.</p>				
+			</section>
 		</section>
 		<section id="bp-publishing">
 		    <h3>Publishing statistical classification data</h3>
@@ -1275,11 +1335,12 @@ ex:NafRev2Dataset a dcat:Dataset ;
 
 	<section id="tools">
     	<h2>Tools</h2>
-		<p>Paragraph on tools goes here</p>
+		<div class="issue" title="Move Tools section to DDI website"></div>
     </section>
 
     <section id="xkos-and-others">
     	<h2>Combining XKOS with other vocabularies</h2>
+    	<div class="issue" title="Do we keep this paragraph ?"></div>
     </section>
 
 	<section class="appendix">
