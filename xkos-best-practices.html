@@ -842,7 +842,7 @@ ex:NACE_Item a owl:Class;
 				<p>These classes would be declared as direct subclasses of `ex:NACE_Item`, as the set of e.g. NACE sections is a subset of the set of all NACE items. However these classes would <em>not</em> be declared as subclasses of each other, as it is not true to state that e.g. the set of all NACE divisions is a subset of all NACE sections.</p>
 				<p>To capture the intent that instances of NACE divisions are expected to be narrower concepts of instances NACE sections, these entries would continue to be linked with `skos:broader` and `skos:narrower` links (as per the previous best practice), that do not have the same logical entailments as an `rdfs:subClassOf` link.</p>
 				<p>These subclasses should be linked with the corresponding instances of `xkos:ClassificationLevel` that serve as a grouping of the items at a particular level of the classification with the `xkos:organizedBy`. This is illustrated in the following example.</p>
-				<aside class="example" title="Example of declaring a class for all entries in a classification">
+				<aside class="example" title="Example of declaring classes for each level in a classification">
 					<pre class="nohighlight">
 # The classification revision with an ordered list of its classification levels
 ex:nace-r2 a skos:ConceptScheme;
@@ -938,7 +938,23 @@ ex:NACE_Item a owl:Class;
 		</section>
 		<section id="bp-relations">
 		    <h3>Describing the relation between an international and a national classification</h3>
-			<p>Paragraph on describing the relation between an international and a national classification goes here</p>
+			<p>The relationship between a classification and its derivation is partly described by the correspondence table which, for a given level, maps the items of the two nomenclatures.</p>
+			<p>Specific information can also be expressed on the levels to characterise them in relation to each other. Thus, for some derivations an additional level is defined or the granularity of the level is finer, for example to provide more precision at national level. It is suggected that the relationship between the finer level of the derived classification and the more aggregated level of the reference classification be expressed with a `skos:broadMatch` predicate.</p>
+			<p>Below is an example where the level is thinner in the NACE compare to ISIC (NACE being an EU-level extension of the world-level ISIC classification).</p>
+			<aside class="example" title="Example of declaring a class for all entries in a classification">
+					<pre class="nohighlight">
+ex:NACE-2-Group a xkos:ClassificationLevel ;
+  xkos:organizedBy ex:NACE_Group .
+ 
+ex:NACE_Group a skos:Concept ;
+skos:prefLabel "NACE Group"@en ;
+skos:broadMatch ex:ISIC_Group .
+ 
+ex:ISIC_Group a skos:Concept ;
+skos:prefLabel "ISIC Group"@en .
+						</pre>
+			</aside>
+			<p>XKOS does not propose a property to indicate that a (national) classification refines another (international) one. However, it would be possible to state a `prov:wasDerivedFrom` property on the concept scheme of the derived classification.</p>
 		</section>
 		<section id="bp-evolution">
 		    <h3>Evolution of classifications over time</h3>
