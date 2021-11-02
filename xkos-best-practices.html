@@ -771,10 +771,10 @@ ex:NACE_ItemTypes a skos:ConceptScheme ;
 					</pre>
 			</aside>
 		</section>
-		<section id="bp-entries">
+		<section id="bp-types">
 		    <h3>Types of the classification entries</h3>
 		    <p>The XKOS specification does not define a specific class to represent classification items but rather directly relies on `skos:Concept`.  This best practices document gives further recommendations on how the classification items can be typed according to their levels.</p>
-		    <section id="bp-entries-type">
+		    <section id="bp-types-per-entry">
 		    	<h4>Type the classification items of a given classification</h4>
 		    	<p>A best practice is to declare a new subclass of `skos:Concept` as the type of the classification items for a given classification. For example the class “ex:NACE_Item” can be declared as a subclass of `skos:Concept` to represent the set of all items in the NACE classification. Introducing this class allows to constrain the range of certain properties on this class.</p>
 				<div class="issue" title="New subclass for each revision ? or globally ?">
@@ -824,7 +824,112 @@ ex:NACE_Item a owl:Class;
 				</aside>
 				<p>Note that items inside the classification are <em>not</em> expected to be explicitely typed with this new class; they should only be typed with `skos:Concept`. The declaration of this class is only useful so that it can be assigned as the range of some properties.</p>
 		    </section>
-			
+			<section id="bp-types-per-level">
+				<h4>Type classification items according to their level</h4>
+				<p><a href="https://rdf-vocabulary.ddialliance.org/xkos.html#levels">§6 of the XKOS specification</a> describing classification levels states the following : <blockquote><em>"A classification level is often characterized by a generic name for the classification items that it regroups. The ISCO names "major groups" the items of the first level, "sub-major groups" the items of the second level, etc. The NACE uses the terms "sections", "divisions", "groups" and "classes"; the NAICS has "sectors", "subsectors", "groups", etc. This information can be rendered in XKOS by the property xkos:organizedBy that links the xkos:ClassificationLevel object to a skos:Concept representing the generic item for this level (e.g. the concept of an ISCO major group, of a NACE section, etc.)."</em></blockquote></p>
+
+				<p>This best practice document suggests to go one step further, and to actually consider the <em>“skos:Concept representing the generic item for this level”</em> also as OWL classes (hence with 2 types : `skos:Concept` and `owl:Class`), declared as subclass of the dedicated class that represent the set of all items of the classification, as descripbed in previous section. This is a refinement of the previous best practices on Levels.</p>
+
+				<p>Following the example given above, the following levels of the NACE, in addition to being `skos:Concept`, would be typed as `owl:Class` and declared subclasses of `ex:NACE_Item` :</p>
+				<div class="issue" title="subclasses of NACE_Itemor of NACE-R2_Item ?"></div>
+				<ul>
+					<li>ex:NACE_Section</li>
+					<li>ex:NACE_Division</li>
+					<li>ex:NACE_Group</li>
+					<li>ex:NACE_Class</li>
+				</ul>
+
+				<p>These classes would be declared as direct subclasses of `ex:NACE_Item`, as the set of e.g. NACE sections is a subset of the set of all NACE items. However these classes would <em>not</em> be declared as subclasses of each other, as it is not true to state that e.g. the set of all NACE divisions is a subset of all NACE sections.</p>
+				<p>To capture the intent that instances of NACE divisions are expected to be narrower concepts of instances NACE sections, these entries would continue to be linked with `skos:broader` and `skos:narrower` links (as per the previous best practice), that do not have the same logical entailments as an `rdfs:subClassOf` link.</p>
+				<p>These subclasses should be linked with the corresponding instances of `xkos:ClassificationLevel` that serve as a grouping of the items at a particular level of the classification with the `xkos:organizedBy`. This is illustrated in the following example.</p>
+				<aside class="example" title="Example of declaring a class for all entries in a classification">
+					<pre class="nohighlight">
+# The classification revision with an ordered list of its classification levels
+ex:nace-r2 a skos:ConceptScheme;
+  skos:prefLabel “NACE-r2”@en ;
+  rdfs:seeAlso ex:NACE_Item ;
+  xkos:levels (
+    ex:nace-2-Section,
+    ex:nace-2-Division,
+    ex:nace-2-Group,
+    ex:nace-2-Class
+  )
+.
+
+# Description of classification levels in this particular revision
+# Each having an xkos:organizedBy that points to levels of the NACE
+# Independantly of the revision
+
+ex:nace-2-Section a xkos:ClassificationLevel ;
+  xkos:organizedBy ex:NACE_Section .
+ 
+ex:nace-2-Division a xkos:ClassificationLevel ;
+  xkos:organizedBy ex:NACE_Division .
+ 
+ex:nace-2-Group a xkos:ClassificationLevel ;
+  xkos:organizedBy ex:NACE_Group .
+ 
+ex:nace-2-Class a xkos:ClassificationLevel ;
+  xkos:organizedBy ex:NACE_Class .
+ 
+
+# Description of abstract levels of the NACE
+# Organized hierarchically, all belonging to a ConceptScheme , and also declared as subClasses of
+# a common parent class
+ 
+ex:NACE_Section a skos:Concept, owl:Class ;
+  rdfs:subClassOf ex:NACE_Item ;
+  skos:inScheme ex:NACE_Levels ;
+  skos:topConceptOf ex:NACE_Levels ;
+  skos:prefLabel “NACE Section”@en ;
+.
+ 
+ex:NACE_Division a skos:Concept, owl:Class ;
+  rdfs:subClassOf ex:NACE_Item ;
+  skos:inScheme ex:NACE_Levels ;
+  skos:prefLabel “NACE Division”@en ;
+  skos:broader ex:NACE_Section ;
+.
+ 
+ex:NACE_Group a skos:Concept, owl:Class ;
+  rdfs:subClassOf ex:NACE_Item ;
+  skos:inScheme ex:NACE_Levels ;
+  skos:prefLabel “NACE Group”@en ;
+  skos:broader ex:NACE_Division ;
+.
+ 
+ex:NACE_Class a skos:Concept, owl:Class ;
+  rdfs:subClassOf ex:NACE_Item ;
+  skos:inScheme ex:NACE_Levels ;
+  skos:prefLabel “NACE Class”@en ;
+  skos:broader ex:NACE_Group ;
+.
+ 
+ex:NACE_Levels a skos:ConceptScheme ;
+  skos:hasTopConcept ex:NACE_Section ;
+  skos:prefLabel “NACE Levels”@en ;
+.
+ 
+
+# The common parent class that represents the sets of all entries of the classification
+# linked to the ConceptScheme with an rdfs:seeAlso and a formal OWL equivalence
+
+ex:NACE_Item a owl:Class;
+  rdfs:subClassOf skos:Concept ;
+  skos:prefLabel “NACE Item”@en ;
+  rdfs:seeAlso ex:nace-r2 ;
+  owl:equivalentClass [
+    a owl:Restriction ;
+    owl:onProperty skos:inScheme ;
+    owl:hasValue ex:nace-r2 ;
+  ] ;
+.
+
+						</pre>
+				</aside>
+
+				<div class="issue" title="Isn't the cass ex:NACE_Item equivalent to the ConceptScheme ex:NACE_Levels ?" />
+			</section>
 
 		</section>
 		<section id="bp-correspondences">
