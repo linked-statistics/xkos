@@ -413,7 +413,7 @@
 						<td></td>
 						<td>0..n</td>
 						<td>`skos:ConceptScheme`</td>
-						<td>`Connects a classification scheme to its variant(s)`</td>
+						<td>Connects a classification scheme to its variant(s)</td>
 					</tr>
 					<tr>
 						<td>`xkos:numberOfLevels`</td>
@@ -635,7 +635,6 @@
   insee:validFrom "2010-02-01T00:00:00.000+01:00"^^xsd:dateTime .
 					</pre>
 					<p>The modification of the core content note is documented by a (timestamped) `skos:changeNote` - see example below.</p>
-					<div class="issue" title="reference DCAT publishing section"></div>
 				</aside>
 
 				<p>The second pattern implies that the note is associated with a publication date, but no version number.This pattern applies to `skos:changeNote` only. It will use the properties listed in the table below.</p>
@@ -791,10 +790,12 @@ Class: ex:NACE-R2_Item
 
     EquivalentTo:
         skos:inScheme value ex:nace-r2
+
+    SubClassOf:
+    	skos:Concept
 						</pre>
 					</li>
 				</ol>
-				<div class="issue" title="add subClassOf in this example"></div>
 				<p>While the first option is more direct and readable, the second one is more formal.</p>
 				<p>This new class is expected to be declared in the same file as the `skos:ConceptScheme` representing the classification.</p>
 				<p>Both these options are illustrated in the example below.</p>
@@ -930,7 +931,365 @@ ex:NACE_ItemTypes a skos:ConceptScheme ;
 		</section>
 		<section id="bp-correspondences">
 		    <h3>Correspondences</h3>
-			<p>Paragraph on correspondences goes here</p>
+			<p><a href="https://rdf-vocabulary.ddialliance.org/xkos.html#correspondences">§7 of the XKOS specification</a> introduces `xkos:Correspondence` and `xkos:ConceptAssociation`, amongst other terms, to model correspondences, conversion tables, mapping, concordance tables. This best practice document gives further details on how to document correspondences and concept associations, gives examples of how to describe a split or a merge of a concept, or more complicated cases (n concepts to m concepts), and gives precisions on how to deal with deleted or new entries in the case a `xkos:Correspondence` is used to document the mapping between 2 revisions of a classification.</p>
+			<section id="bp-correspondences-direction">
+				<h4>Correspondences direction</h4>
+				<p>By convention, the source Classification in a correspondence is the ‘former’ one, and the target Classification is the ‘new’ one. Or in other words, the source is the classification whose entries compose the domain of the correspondence relation and the target is the classification whose entries correspond to the range of this correspondence relation.</p>
+				<p>As an additionnal information, it is also possible to use properties given by the [[PROV-O]] vocabulary, for instance `prov:wasDerivedFrom` to convey the fact that one classification is based on a previous one and have with it a common content (see below).</p>
+			</section>
+			<section id="bp-correspondences-documenting-correspondences">
+				<h4>Documenting correspondences</h4>
+				<p>Works requiring classifications are numerous, and there may exist several correspondence tables between two given classifications, depending on the scope of the comparison, the used methodology, etc. Thus it is recommended to document the `xkos:Correspondence` with notes and other properties providing information concerning the creation context of these correspondence tables. The table below lists the mandatory and optional properties for this.</p>
+				<table class="simple stickyTableHead">
+					<caption>Properties to describe a `xkos:Correspondence`</caption>
+					<thead>
+						<tr>
+							<th>Property</th>
+							<th>Card.</th>
+							<th>Range</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr><td colspan="4" class="table-section">Mandatory properties</td></tr>
+						<tr>
+							<td>`dcterms:title`</td>
+							<td>1..n</td>
+							<td>rdfs:Literal</td>
+							<td>A name given to the correspondence table, with a maximum of one per language</td>
+						</tr>
+						<tr>
+							<td>`dcterms:creator`</td>
+							<td>1..1</td>
+							<td>dcterms:Agent</td>
+							<td>The agent responsible for creating the correspondence table.</td>
+						</tr>
+						<tr>
+							<td>`dcterms:issued`</td>
+							<td>1..1</td>
+							<td>The date at which the correspondence table was issued.</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>`skos:scopeNote`</td>
+							<td>1..1</td>
+							<td>xkos:ExplanatoryNote</td>
+							<td>A note concerning the type of use of this correspondence table, typically in the case where the correspondence covers only part of the classification.</td>
+						</tr>
+						<tr><td colspan="4" class="table-section">Optional properties</td></tr>
+						<tr>
+							<td>`dcterms:license`</td>
+							<td>0..1</td>
+							<td>dcterms:LicenseDocument</td>
+							<td>The URI to the legal document giving official permission to do something with the entire correspondence table.</td>
+						</tr>
+						<tr>
+							<td>`rdfs:seeAlso`</td>
+							<td>0..1</td>
+							<td>xkos:Correspondence</td>
+							<td>Refers to another correspondence table based on the same classifications but with a different approach (e.g. reversing the role of the source and target classification).</td>
+						</tr>
+						<tr>
+							<td>`xkos:weightedBy`</td>
+							<td>0..1</td>
+							<td>qb:DataSet</td>
+							<td>Refers to a matrix that contains the weights / ratios associated to each pair of mapped source and target concepts.</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="issue" title="Same constraints as on ConceptScheme ?">
+					<p>Shall the same constraints as on the ConceptScheme be enforced ? e.g. use skos:prefLabel rather than dcterms:title ? have at least one title in English ? + dc:description</p>
+					<p>Besides, it is strange to enforce the creator here and not on ConceptScheme - we should make this consistent</p>
+				</div>
+				<p>It is possible to have several correspondence tables based on the same source and target classifications that are created with different methodologies and thus give different views of the relation between the two classifications (e.g. if links are constructed automatically or if they are determined by expert judgement). It may therefore be necessary to store this information by associating with the mapping table a `prov:Activity` encompassing the creation steps followed.</p>
+			</section>
+			<section id="bp-correspondences-documenting-associations">
+				<h4>Documenting concept associations</h4>
+				<p>The following table lists the optional properties that can be expressed on a `xkos:ConceptAssociation`</p>
+				<table class="simple stickyTableHead">
+					<caption>Properties to describe a `xkos:ConceptAssociation`</caption>
+					<thead>
+						<tr>
+							<th>Property</th>
+							<th>Card.</th>
+							<th>Range</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr><td colspan="4" class="table-section">Optional properties</td></tr>
+						<tr>
+							<td>`skos:scopeNote`</td>
+							<td>0..n</td>
+							<td>xkos:ExplanatoryNote</td>
+							<td>Note concerning the sub-field outlined by this concept association, with a maximum of 1 note per language.</td>
+						</tr>
+						<tr>
+							<td>`dct:description`</td>
+							<td>0..n</td>
+							<td>xkos:Correspondence</td>
+							<td>Note concerning significant changes between former and updated concepts included in the concept association, with a maximum of 1 note per language.</td>
+						</tr>
+					</tbody>
+				</table>
+				<p>It is possible to further describe concept associations with custom properties. <a href="https://www.insee.fr">INSEE</a> for example uses `insee:differenceNote` and `insee:similarityNote` to capture respectively how the related entries differs and how they are similar, as in the following example :</p>
+				<aside class="example" title="Example of further description of a xkos:ConceptAssociation with custom properties">
+					<pre class="nohighlight">
+# A xkos:ConceptAssociation with custom properties to describe the similarity and differences of related concepts
+&lt;http://id.insee.fr/codes/pcsese2003/association/10-21> a xkos:ConceptAssociation ;
+  # This is "Agriculteur" / "farmer"
+  xkos:sourceConcept &lt;http://id.insee.fr/codes/pcsese2003/categorieSocioprofessionnelle/10> ;
+  # This is "Artisan" / "craftsman"
+  xkos:targetConcept &lt;http://id.insee.fr/codes/pcsese2003/categorieSocioprofessionnelle/21> ;
+  insee:differenceNote &lt;http://id.insee.fr/codes/pcsese2003/association/10-21/difference/v1/fr> ;
+  insee:similarityNote &lt;http://id.insee.fr/codes/pcsese2003/association/10-21/ressemblance/v1/fr> ;
+.
+ 
+# The differenceNote "Activity is not in the agriculture field"
+&lt;http://id.insee.fr/codes/pcsese2003/association/10-21/difference/v1/fr> a xkos:ExplanatoryNote ;
+  xkos:plainText “Activité ne relevant pas de l'agriculture”;
+  dct:language “fr” ;
+  .
+ 
+# The similarityNote : "Can have a similar position"
+&lt;http://id.insee.fr/codes/pcsese2003/association/10-21/ressemblance/v1/fr> a xkos:ExplanatoryNote ;
+  xkos:plainText “Peuvent faire un métier voisin”;
+  dct:language “fr” ;
+  .
+
+						</pre>
+				</aside>
+			</section>
+			<section id="bp-correspondences-example">
+				<h4>Examples of using xkos:ConceptAssociation</h4>
+				<p>Examples below are taken from the correspondence table between two successive versions of the french classification of occupations.</p>
+				<p>In the RDF snippet below, the two classifications pcsese1982 and pcsese2003 are typed as two `skos:ConceptScheme` and the correspondence table pcsese1982 - pcsese2003 is typed as a `xkos:Correspondence`.</p>
+				<aside class="example" title="Declaration of the correspondence table between pcsese1982 and pcsese2003">
+					<pre class="nohighlight">
+# 1982 Classification
+&lt;http://id.insee.fr/codes/pcsese1982/pcsese> a skos:ConceptScheme ;
+          skos:prefLabel "Nomenclature des Professions et Catégories Socioprofessionnelles des Emplois Salariés d'Entreprise (PCS-ESE) 1982"@fr ;
+          skos:notation "PCS-ESE 1982"@fr .
+
+# 2003 Classification
+&lt;http://id.insee.fr/codes/pcsese2003/pcsese> a skos:ConceptScheme ;
+          skos:prefLabel "Nomenclature des Professions et Catégories Socioprofessionnelles des Emplois Salariés d'Entreprise (PCS-ESE) 2003"@fr ;
+          skos:notation "PCS-ESE 2003"@fr ;
+          xkos:after &lt;http://id.insee.fr/codes/pcsese1982/pcsese> .
+
+# Correspondance table
+&lt;http://id.insee.fr/codes/pcsese1982-pcsese2003> a xkos:Correspondence ;
+          skos:prefLabel "Table de correspondance PCS-ESE 1982 / PCS-ESE 2003"@fr ;
+          xkos:compares &lt;http://id.insee.fr/codes/pcsese1982/pcsese> ;
+          xkos:compares &lt;http://id.insee.fr/codes/pcsese2003/pcsese> .
+					</pre>
+				</aside>
+				<section id="bp-correspondences-example-nochange">
+					<h5>1-to-1 example</h5>
+					<p>This example shows a simple case where a single source concept is related to a single target concept.</p>
+					<aside class="example" title="Using a xkos:ConceptAssociation in case a concept has not changed between revisions">
+						<pre class="nohighlight">
+# source concept in 1982 revision
+&lt;http://id.insee.fr/codes/pcsese1982/rubrique/4702> a skos:Concept ;
+          skos:inScheme &lt;http://id.insee.fr/codes/pcsese1982/pcsese> ;
+          skos:prefLabel "Contrôleurs laitiers, inséminateurs et autres agents techniques agricoles"@fr ;
+          skos:notation "4702"@fr .
+
+# target concept in 2003 revision
+&lt;http://id.insee.fr/codes/pcsese2003/rubrique/471b> a skos:Concept ;
+          skos:inScheme &lt;http://id.insee.fr/codes/pcsese2003/pcsese> ;
+          skos:prefLabel "Techniciens d'exploitation et de contrôle de la production en agriculture, eaux et forêts"@fr ;
+          skos:notation "471b"@fr .
+
+# A concept association links the single source concept to the single target concept
+&lt;http://id.insee.fr/codes/pcsese1982-pcsese2003/association/4702-471b> a xkos:ConceptAssociation ;
+          xkos:sourceConcept &lt;http://id.insee.fr/codes/pcsese1982/rubrique/4702> ;
+          xkos:targetConcept &lt;http://id.insee.fr/codes/pcsese2003/rubrique/471b> .
+
+# Correspondence table contains the ConceptAssociation (as well as all others concept associations)
+&lt;http://id.insee.fr/codes/pcsese1982-pcsese2003> xkos:madeOf &lt;http://id.insee.fr/codes/pcsese1982-pcsese2003/association/4702-471b> .
+						</pre>
+					</aside>
+				</section>
+				<section id="bp-correspondences-example-split">
+					<h5>Split example (1 > 2)</h5>
+					<p>In this case the `skos:Concept` 6742 from pcsese1982 gives two new entries in the pcsese2003, the concepts indexed 671a and 671c. Note how a single `xkos:ConceptAssociation` is used, with one source and two target. The link between the `xkos:Correspondence` and `xkos:ConceptAssociation` is beared by the `xkos:madeOf` property.</p>
+					<aside class="example" title="Using a xkos:ConceptAssociation in case of a split of entry">
+						<pre class="nohighlight">
+# source concept in 1982 revision
+&lt;http://id.insee.fr/codes/pcsese1982/rubrique/6741> a skos:Concept ;
+          skos:inScheme &lt;http://id.insee.fr/codes/pcsese1982/pcsese> ;
+          skos:prefLabel "Ouvriers non qualifiés du travail du béton et du génie civil"@fr ;
+          skos:notation "6741"@fr .
+
+# first target concept in 2003 revision
+&lt;http://id.insee.fr/codes/pcsese2003/rubrique/671a> a skos:Concept ;
+          skos:inScheme &lt;http://id.insee.fr/codes/pcsese2003/pcsese> ;
+          skos:prefLabel "Ouvriers non qualifiés des travaux publics de l'Etat et des collectivités locales"@fr ;
+          skos:notation "671a"@fr .
+
+# second target concept in 2003 revision
+&lt;http://id.insee.fr/codes/pcsese2003/rubrique/671c> a skos:Concept ;
+          skos:inScheme &lt;http://id.insee.fr/codes/pcsese2003/pcsese> ;
+          skos:prefLabel "Ouvriers non qualifiés des travaux publics et du travail du béton"@fr ;
+          skos:notation "671c"@fr .
+
+# A single ConceptAssociation describes the split, it has one source and two targets
+&lt;http://id.insee.fr/codes/pcsese1982-pcsese2003/association/6741-671a> a xkos:ConceptAssociation ;
+          xkos:sourceConcept &lt;http://id.insee.fr/codes/pcsese1982/rubrique/6741> ;
+          xkos:targetConcept &lt;http://id.insee.fr/codes/pcsese2003/rubrique/671a> ;
+          xkos:targetConcept &lt;http://id.insee.fr/codes/pcsese2003/rubrique/671c> .
+
+# Correspondence table contains the ConceptAssociation (as well as all others concept associations)
+&lt;http://id.insee.fr/codes/pcsese1982-pcsese2003> xkos:madeOf &lt;http://id.insee.fr/codes/pcsese1982-pcsese2003/association/6741-671a> .
+
+						</pre>
+					</aside>
+				</section>
+				<section id="bp-correspondences-example-merge">
+					<h5>Merge example (2 > 1)</h5>
+					<p>Inversely, this example illustrates a merge of two concepts from the pcsese1982 into one concept in the pcsese2003. A single `xkos:ConceptAssociation` is used, with two sources and one target.</p>
+					<aside class="example" title="Using a xkos:ConceptAssociation in case of a merge of entries">
+						<pre class="nohighlight">
+# first source concept in 1982 revision
+&lt;http://id.insee.fr/codes/pcsese1982/rubrique/3412>  a skos:Concept ;
+          skos:inScheme &lt;http://id.insee.fr/codes/pcsese1982/pcsese>  ;
+          skos:prefLabel "Professeurs agrégés et certifiés d'enseignement général"@fr ;
+          skos:notation "3412"@fr .
+
+# second source concept in 1982 revision
+&lt;http://id.insee.fr/codes/pcsese1982/rubrique/3413> a skos:Concept ;
+          skos:inScheme &lt;http://id.insee.fr/codes/pcsese1982/pcsese> ;
+          skos:prefLabel "Professeurs techniques de lycée"@fr ;
+          skos:notation "3413"@fr .
+
+# target concept in 2003 revision
+&lt;http://id.insee.fr/codes/pcsese2003/rubrique/341a> a skos:Concept ;
+          skos:inScheme &lt;http://id.insee.fr/codes/pcsese2003/pcsese> ;
+          skos:prefLabel "Professeurs agrégés et certifiés de l'enseignement secondaire"@fr ;
+          skos:notation "341a"@fr .
+
+# A single ConceptAssociation describes a merge, it has 2 sources and a single target
+&lt;http://id.insee.fr/codes/pcsese1982-pcsese2003/association/3412-341a> a xkos:ConceptAssociation ;
+          xkos:sourceConcept &lt;http://id.insee.fr/codes/pcsese1982/rubrique/3412> ;
+          xkos:sourceConcept &lt;http://id.insee.fr/codes/pcsese1982/rubrique/3413> ;
+          xkos:targetConcept &lt;http://id.insee.fr/codes/pcsese2003/rubrique/341a> .
+
+# Correspondence table contains the ConceptAssociation (as well as all others concept associations)
+&lt;http://id.insee.fr/codes/pcsese1982-pcsese2003> xkos:madeOf &lt;http://id.insee.fr/codes/pcsese1982-pcsese2003/association/3412-341a> .
+						</pre>
+					</aside>
+				</section>
+				
+				<section id="bp-correspondences-example-n-m">
+					<h5>n-to-m example</h5>
+					<p>The example below gives an example of a n-m relation between the two classifications. This allows us to more directly identify the equivalence of the two sets of concepts that cover the same sub-field of interest but whose relations are tangled. The example below shows only the `xkos:ConceptAssociation` : </p>
+					<aside class="example" title="Using a xkos:ConceptAssociation in case of an n-m relation">
+						<pre class="nohighlight">
+# a concept association having 2 source concepts and 3 target concepts
+&lt;http://id.insee.fr/codes/nafr2-cpfr21/association/72.1-72.0> a xkos:ConceptAssociation ;
+  xkos:sourceConcept &lt;http://id.insee.fr/codes/nafr2/groupe/72.1> ;
+  xkos:sourceConcept &lt;http://id.insee.fr/codes/nafr2/groupe/72.2> ;
+  xkos:targetConcept &lt;http://id.insee.fr/codes/cpfr21/groupe/72.0>  ;
+  xkos:targetConcept &lt;http://id.insee.fr/codes/cpfr21/groupe/72.1> ;
+  xkos:targetConcept &lt;http://id.insee.fr/codes/cpfr21/groupe/72.2> .
+
+# Correspondence table contains the ConceptAssociation (as well as all others concept associations)
+&lt;http://id.insee.fr/codes/nafr2-cpfr21> xkos:madeOf <http://id.insee.fr/codes/nafr2-cpfr21/association/72.1-72.0> .
+						</pre>
+					</aside>
+					<p>The description above is sufficient for mapping the source Concepts  to the target concepts, and thus outlining the comparable set of concepts between the two classifications, but it doesn’t describe how these concepts are actually linked. For instance the source Concept 72.1 may be linked to only 2 of the 3 target concepts, and the use of `xkos:ConceptAssociation` as above doesn’t allow discriminating between these alternatives.</p>
+					<p>In order to be more accurate in this linkage definition one could be tempted to split the n-m `xkos:ConceptAssocation` in several 1-1 `xkos:ConceptAssocation`. However that solution is discouraged and not considered a good practice : if there is a decision to split a concept, then this decision needs to be documented on only one `xkos:ConceptAssociation`. Moreover, in the case of a split we would lose the information that the two target concepts originate from the same concept.</p>
+					<p>The alternative to capture this is to introduce a matrix based on the links from the source concepts towards the target concepts. This is described in another section below.</p>
+				</section>
+				<section id="bp-correspondences-example-creation-deletion">
+					<h5>Creation or Deletion example (0-to-1 or 1-to-0)</h5>
+					<p>Between two classifications revisions, classification items can appear or be deleted to better represent the evolution of the field of interest covered by the classification. In this situation, the practice would be to use a `xkos:ConceptAssociation` without the source or the target to reflect respectively the creation or the deletion of a classification item between the revisions.</p>
+					<aside class="example" title="Using a xkos:ConceptAssociation in case of the deletion or creation of an entry">
+						<pre class="nohighlight">
+
+						</pre>
+					</aside>
+					<div class="issue" title="Missing example of ConceptAssociation for creation or deletion" />
+					<p>However, if the fields of two classifications partially overlap, e.g. if the field of one classification is a sub-field of the other, it is not recommended to use this technique. Although it is recommended that the mapping table exhaustively covers both classifications, in this case it is more relevant to use a correspondence table adapted to the current subfield.</p>
+				</section>
+			</section>
+			<section id="bp-correspondences-matrix">
+				<h4>Describing the correspondence table matrix</h4>
+				<p>Among the numerous kind of work involving classifications, we may have to apply distribution coefficients between the items of the initial (source) classification and those of the final (target) classification, for instance when we have to make economical estimations between two revisions of a classification, spanning different temporal periods.</p>
+				<p>To cope with this use case, as well as the use-case of the n-to-m concept association described above, it is possible to link the correspondence table with a matrix, expressed with the RDF Data Cube vocabulary [[QB]], that associates some values to each pair of associated source-target concepts. These values could be a percentage, a price, or a boolean to indicate whether the concepts are actually linked or not. These values are actually the measures of the observations in the data cube.<br />
+				Note that multiple values can be associated with a single observation in this data cube matrix, to give for exemple values both in terms of number of employees and in terms of revenues.
+				</p>
+				<p>One could see this matrix as a redundancy with the correspondence table. It is actually a different, complimentary point of view : while the correspondence table gives a “documentary” view, and an easy way to traverse from the source concept to the target concept, the matrix provides the statistical point of view, with the numbers or weights associated to each pair of related source-target concept.</p><p>It is suggested that a new property is introduced in XKOS to capture the link between a Correspondence table and its corresponding `qb:DataSet` that captures the weights. The suggested property is `xkos:weightedBy`, but it is not part of XKOS at the time of this writing. A more generic property like `dct:relation` can also be used by default.</p>
+				<p>The following example illustrates this suggested mechanism. Note how the correspondence table in this example, and the associated matrix, are defined only for a given `xkos:ClassificationLevel` in each of the compared classifications.</p>
+				<aside class="example" title="Example of a correspondence table matrix">
+						<pre class="nohighlight">
+# Defines Classification A with 2 levels, groups and sections
+ex:classificationA a skos:ConceptScheme ;
+  xkos:levels (ex:classificationA-Groups ex:classificationA-Sections) ;
+.
+ex:classificationA-Groups a xkos:ClassificationLevel .
+ex:classificationA-Sections a xkos:ClassificationLevel .
+
+# Defines Classification B with 2 levels, headings and sub-headings
+ex:classificationB a skos:ConceptScheme ;
+  xkos:levels (ex:classificationB-Headings ex:classificationB-Subheadings) ;
+.
+ex:classificationB-Headings a xkos:ClassificationLevel .
+ex:classificationB-Subheadings a xkos:ClassificationLevel .
+ 
+ 
+# The XKOS Correspondence compares classification A
+# and classification B, and points to its qb:DataSet matrix
+ex:correspondence-classificationA-to-classificationB a xkos:Correspondence ;
+  xkos:compares ex:classificationA, ex:classificationB ;
+  xkos:weightedBy ex:correspondence-matrix ;
+.
+ 
+# Describes the QB Dataset
+ex:correspondence-matrix a qb:DataSet;
+    rdfs:label "weighted matrix"@en;
+    rdfs:comment "Matrix of weighted links between source and target concepts"@en;
+    qb:structure ex:correspondence-matrix-dsd ;  
+    .
+ 
+# DataSet Definition of the matrix
+# It declares 2 dimensions (source concept and target concept)
+# as well as a measure in this case “ex:percentage”
+ex:correspondence-matrix-dsd a qb:DataStructureDefinition;
+    qb:component 
+        [ qb:dimension ex:source-concept ];
+        [ qb:dimension ex:target-concept ] ;
+        [ qb:measure ex:percentage] ;
+    .
+ 
+# Each dimension has a code list that corresponds
+# to a level in each of the classification
+# Here the “Sections” from classification A are compared 
+# with the “Subheadings” of classification B
+ex:source-concept qb:codeList ex:classificationA-Sections .
+ex:target-concept qb:codeList ex:classificationB-Subheadings .
+ 
+# Each qb:Observation has 2 dimensions, the source concept in A 
+# and the target concept in B, with an associated percentage
+# concept A1.2 is mapped to concept B3.4 at 10% and to concept 5.6 at 90%
+ex:obs1 a qb:Observation;
+    qb:dataSet  ex:correspondence-matrix ;
+    ex:source-concept ex:conceptA1.2 ;    
+    ex:target-concept ex:conceptB3.4  ;                  
+    ex:percentage        10 ;
+    .
+    
+ex:obs2 a qb:Observation;
+    qb:dataSet  ex:correspondence-matrix ;
+    ex:source-concept ex:conceptA1.2 ;    
+    ex:target-concept ex:conceptB5.6  ;                  
+    ex:percentage        90 ;
+    .
+						</pre>
+					</aside>
+					<div class="issue" title="Include second example with real case of INSEE based on conceptAssociation example above"></div>
+			</section>
 		</section>
 		<section id="bp-relations">
 		    <h3>Describing the relation between an international and a national classification</h3>
