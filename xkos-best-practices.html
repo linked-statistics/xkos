@@ -205,9 +205,17 @@
 		<p>Users of statistical classifications will be mostly interested in how to find classifications and tables, how to explore them, understand, use and query the data.</p>
     </section>
 
+	<section id='summary'>
+	    <h2>Best practise summary</h2>
+		<div class="issue" title="Complete summary">
+			<p>TF: write this section</p>
+		</div>
+    </section>
+
+Quick-list of best practices with hyperlinks
     <section id="namespaces">
     	<h2>Namespaces</h2>
-		The vocabularies used in this document are listed in the table below, with their namespaces and associated prefixes.
+		<p>The vocabularies used in this document are listed in the table below, with their namespaces and associated prefixes.</p>
 
 		<table class="simple">
 			<caption>Prefixes used in this document</caption>
@@ -284,27 +292,55 @@
 
 		<p>The RDF examples are expressed with the Terse RDF Triple language (Turtle) [[TURTLE]]. Individual resource names used as examples in the `ex:` namespace are entirely fictious.</p>
 
-		<div class="issue" title="Harmonize dct: vs. dcterms:">
-		  
-		</div>
-		<div class="issue" title="INSEE Ontology cannot be dereferenced">
-		  
-		</div>
+		<div class="issue" title="Harmonize dct: vs. dcterms:"></div>
+
+		<div class="issue" title="INSEE Ontology cannot be dereferenced"></div>
     </section>
 
     <section id="classifications">
+
     	<h2>Statistical classifications</h2>
+
+		<p>For a general understanding of statistical classifications and their specificities, readers should refer to [chapter §2.1 “Understanding statistical classifications” of the XKOS standard](https://rdf-vocabulary.ddialliance.org/xkos.html#intro-class). The paragraphs below complements this general introduction with further details on the actors publishing or using statistical classifications, the revision and versioning mechanism, and the articulation between international and national classifications.</p>
+
 		<section id="classifications-evolution">
+
 		    <h3>Revisions and Versioning</h3>
+
 			<p>The rate at which classifications are revised must strike a balance between the stability of the classification over time to allow for analyses and adaptation to changes in the field of study. Thus, the lifespan of a classification is typically several years; the HS (Harmonised Commodity Description and Coding System) nomenclature, for example, is revised every five years.</p>
+
 			<p>As can be seen in the diagram in Figure 1, classifications should ideally be interoperable between domains and between geographical scales. Therefore, revisions can be coordinated to ensure that all classifications can remain consistent.</p>
+
 			<p>We make a distinction between revisions of statistical classifications and the versioning of the descriptive notes within a major revision.</p>
+
 			<p>Revisions of a classification include major changes resulting from upstream expertise in order to provide an updated analysis grid to better reflect the reality of the domain of interest.</p>
+
 			<p>Between revisions, although classifications are relatively stable resources, changes can be made to the elements, and typically to their definitions. To this end, the versioning of statistical classification is targeting the various notes that define the items. At the level of the classification itself, these minor changes do not result in a version number increment.</p>
+
 		</section>
+
 		<section id="classifications-actors">
+
 		    <h3>Main actors working with statistical classifications</h3>
-			<p>Main actors paragraph goes here</p>
+
+			<p>At the United Nations (UN), statistical activities are carried out by the United Nations Statistics Division (UNSD). The Division compiles and disseminates global statistical information, develops standards and norms for statistical activities, and supports countries' efforts to strengthen their national statistical systems. It facilitates the coordination of international statistical activities and supports the functioning of the United Nations Statistical Commission as the apex body of the global statistical system.</p>
+
+			<p>In particular, the UNSD is the repository of the main international classifications such as ISIC, CPC, SITC, BEC and COICOP.</p>
+
+			<p>At the European level, Eurostat coordinates the consultation of Member States and establishes a timetable for the joint revision or updating of classifications. Eurostat offers a variety of information in paper, electronic and online formats, e.g. [RAMON](http://ec.europa.eu/eurostat/ramon/index.cfm?TargetUrl=DSP_PUB_WELC), the Eurostat metadata server.</p>
+
+			<p>Although the UNSD classifications mentionned above are only implemented as recommendations, the classifications at European level are implemented legally to ensure their adoption by the Member States. For instance in the CPA 2008 Guidelines, we can read that The CPA is the European version of the CPC, and the purposes it serves are in line with those of the CPC. Whilst the CPC is merely a recommended classification, the CPA is legally binding in the European Union. In addition, specific survey classifications must be linked to the CPA, unless the CPA itself is used as a survey classification.</p>
+
+			<p>The figure 1 below gives an overview of the relationships between the classifications both between domains and between geographical scales. International classifications are usually derived at national level to take account of local specificities.</p>
+
+			<p>For instance with CPA classification, The CPA Regulations allow Member States to use a national version derived from the CPA for national purposes. Such national versions must, however, fit into the structural and hierarchical framework of the CPA in accordance with the following rules:</p>
+			<ol>
+				<li>classifications that are more aggregated than the CPA shall comprise precise aggregations of CPA subcategories;</li>
+				<li>classificationsclassifications that are more detailed than the CPA shall comprise headings that are wholly contained within CPA subcategories;</li>
+				<li>classificationsclassifications that are derived from the CPA may have a different coding and shall include a table of correspondence with the CPA.</li>
+			</o>
+			<p>The European Commission is required to verify the conformity of the national classifications with these rules.</p>
+
 		</section>
 		<section id="classifications-examples">
 		    <h3>International and national classifications</h3>
