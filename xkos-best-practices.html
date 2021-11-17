@@ -1113,6 +1113,7 @@ ex:NACE_ItemTypes a skos:ConceptScheme ;
 				<div class="issue" title="Same constraints as on ConceptScheme ?">
 					<p>Shall the same constraints as on the ConceptScheme be enforced ? e.g. use skos:prefLabel rather than dcterms:title ? have at least one title in English ? + dc:description</p>
 					<p>Besides, it is strange to enforce the creator here and not on ConceptScheme - we should make this consistent</p>
+					<p>17/11/2021 : Yes, make this consistent - and make creator as optionnal property.</p>
 				</div>
 				<p>It is possible to have several correspondence tables based on the same source and target classifications that are created with different methodologies and thus give different views of the relation between the two classifications (e.g. if links are constructed automatically or if they are determined by expert judgement). It may therefore be necessary to store this information by associating with the mapping table a `prov:Activity` encompassing the creation steps followed.</p>
 			</section>
