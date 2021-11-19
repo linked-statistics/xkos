@@ -1402,6 +1402,81 @@ ex:obs2 a qb:Observation;
     .
 						</pre>
 					</aside>
+				
+									<p>The following example illustrates a real example with a weighted correspondence table between NAF and NAFrev1 classifications.</p>
+									<aside class="example" title="Real example of a correspondence table matrix">
+						<pre class="nohighlight">
+# Defines Classification NAF with 5 levels, sections, sousSections, divisions, groupes, classes
+&lt;http://id.insee.fr/codes/nafr1/naf> a skos:ConceptScheme ;
+  xkos:levels (&lt;http://id.insee.fr/codes/naf/sections> &lt;http://id.insee.fr/codes/naf/sousSections> &lt;http://id.insee.fr/codes/naf/divisions> &lt;http://id.insee.fr/codes/naf/groupes> &lt;http://id.insee.fr/codes/naf/classes>) ;
+.
+
+&lt;http://id.insee.fr/codes/naf/sections> a xkos:ClassificationLevel .
+&lt;http://id.insee.fr/codes/naf/sousSections> a xkos:ClassificationLevel .
+&lt;http://id.insee.fr/codes/naf/divisions>  a xkos:ClassificationLevel .
+&lt;http://id.insee.fr/codes/naf/groupes> a xkos:ClassificationLevel .
+&lt;http://id.insee.fr/codes/naf/classes> a xkos:ClassificationLevel .
+
+
+
+# Defines Classification NAFrev1 with 5 levels, sections, sousSections, divisions, groupes, classes
+&lt;http://id.insee.fr/codes/nafr2/naf> a skos:ConceptScheme ;
+  xkos:levels (&lt;http://id.insee.fr/codes/nafr1/sections> &lt;http://id.insee.fr/codes/nafr1/sousSections> &lt;http://id.insee.fr/codes/nafr1/divisions> &lt;http://id.insee.fr/codes/nafr1/groupes> &lt;http://id.insee.fr/codes/nafr1/classes>) ;
+.
+
+&lt;http://id.insee.fr/codes/nafr1/sections> a xkos:ClassificationLevel .
+&lt;http://id.insee.fr/codes/nafr1/sousSections> a xkos:ClassificationLevel .
+&lt;http://id.insee.fr/codes/nafr1/divisions>  a xkos:ClassificationLevel .
+&lt;http://id.insee.fr/codes/nafr1/groupes> a xkos:ClassificationLevel .
+&lt;http://id.insee.fr/codes/nafr1/classes> a xkos:ClassificationLevel .
+
+
+ 
+# The XKOS Correspondence compares NAF and NAFrev1 classifications, and points to its qb:DataSet matrix
+&lt;http://id.insee.fr/codes/naf-nafr1> a xkos:Correspondence ;
+  xkos:compares &lt;http://id.insee.fr/codes/naf/naf>, &lt;http://id.insee.fr/codes/nafr1/naf> ;
+  xkos:weightedBy ex:correspondence-matrix ;
+.
+ 
+# Describes the QB Dataset
+&lt;http://id.insee.fr/qb/donnees-Correspondance-classes-naf-classes-nafr1> a qb:DataSet;
+    rdfs:label "weighted matrix"@en;
+    rdfs:comment "Matrix containing weighted links between source concepts and target concepts"@en;
+    qb:structure ex:correspondence-matrix-dsd ;  
+    .
+ 
+# DataSet Definition of the matrix
+# It declares 2 dimensions (source concept and target concept) as well as a measure in this case “ex:percentage”
+&lt;http://id.insee.fr/qb/dsd-classes-naf-classes-nafr1> a qb:DataStructureDefinition;
+    qb:component 
+        [ qb:dimension &lt;http://id.insee.fr/qb/dimClassesNaf> ];
+        [ qb:dimension &lt;http://id.insee.fr/qb/dimClassesNafr1> ] ;
+        [ qb:measure &lt;http://id.insee.fr/qb/percentage>] ;
+    .
+ 
+# Each dimension has a code list that corresponds to a level in each of the classification
+# Here the “classes” from classification NAF are compared with the “sousClasses” of classification NAFrev1
+&lt;http://id.insee.fr/qb/dimClassesNaf> qb:codeList &lt;http://id.insee.fr/codes/naf/classes> .
+&lt;http://id.insee.fr/qb/dimClassesNafr1> qb:codeList &lt;http://id.insee.fr/codes/nafr1/classes> .
+ 
+# Each qb:Observation has 2 dimensions, the source concept in NAF and the target concept in NAFrev1, with an associated percentage
+# concept 29.1C is mapped to concept 29.1B at 76.41% and to concept 29.1E at 23.59%
+ex:obs1 a qb:Observation;
+    qb:dataSet  &lt;http://id.insee.fr/qb/donnees-Correspondance-classes-naf-classes-nafr1> ;
+    &lt;http://id.insee.fr/qb/dimClassesNaf> &lt;http://id.insee.fr/codes/naf/classe/29.1C> ;    
+    &lt;http://id.insee.fr/qb/dimClassesNafr1> &lt;http://id.insee.fr/codes/nafr1/classe/29.1B>  ;                  
+    &lt;http://id.insee.fr/qb/percentage>       76.41  ;
+    .
+    
+ex:obs2 a qb:Observation;
+    qb:dataSet  &lt;http://id.insee.fr/qb/donnees-Correspondance-classes-naf-classes-nafr1> ;
+    &lt;http://id.insee.fr/qb/dimClassesNaf> &lt;http://id.insee.fr/codes/naf/classe/29.1C> ;    
+    &lt;http://id.insee.fr/qb/dimClassesNafr1> &lt;http://id.insee.fr/codes/nafr1/classe/29.1E>  ;                  
+    &lt;http://id.insee.fr/qb/percentage>        23.59  ;
+    .
+
+						</pre>
+					</aside>
 					<div class="issue" title="Include second example with real case of INSEE based on conceptAssociation example above"></div>
 			</section>
 		</section>
