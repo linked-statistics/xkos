@@ -292,8 +292,6 @@ Quick-list of best practices with hyperlinks
 
 		<p>The RDF examples are expressed with the Terse RDF Triple language (Turtle) [[TURTLE]]. Individual resource names used as examples in the `ex:` namespace are entirely fictious.</p>
 
-		<div class="issue" title="Harmonize dct: vs. dcterms:"></div>
-
 		<div class="issue" title="INSEE Ontology cannot be dereferenced"></div>
     </section>
 
@@ -577,7 +575,7 @@ Quick-list of best practices with hyperlinks
 			<div class="issue" title="No namespace document for XKOS">
 				It would be nice to add hyperlinks in the table above. It would be nice if those hyperlinks would be the URI of the properties themselves, e.g. <a href="http://rdf-vocabulary.ddialliance.org/xkos#belongsTo">`xkos:belongsTo`</a>. Problem : such an hyperlink returns the XKOS specification document, at no particular anchor, because no anchor corresponds to property names. A solution could be to add anchors to the table at <a href="https://rdf-vocabulary.ddialliance.org/xkos.html#nsvoc">https://rdf-vocabulary.ddialliance.org/xkos.html#nsvoc</a>
 			</div>
-			<div class="issue" title="missing dct:valid">
+			<div class="issue" title="missing dcterms:valid">
 				We are missing dcterms:valid to express the temporal coverage of the classification, as indicated in XKOS
 			</div>
 			<aside class="example" title="Example of a statistical classification description">
@@ -1139,7 +1137,7 @@ ex:NACE_ItemTypes a skos:ConceptScheme ;
 							<td>Note concerning the sub-field outlined by this concept association, with a maximum of 1 note per language.</td>
 						</tr>
 						<tr>
-							<td>`dct:description`</td>
+							<td>`dcterms:description`</td>
 							<td>0..n</td>
 							<td>xkos:Correspondence</td>
 							<td>Note concerning significant changes between former and updated concepts included in the concept association, with a maximum of 1 note per language.</td>
@@ -1162,13 +1160,13 @@ ex:NACE_ItemTypes a skos:ConceptScheme ;
 # The differenceNote "Activity is not in the agriculture field"
 &lt;http://id.insee.fr/codes/pcsese2003/association/10-21/difference/v1/fr> a xkos:ExplanatoryNote ;
   xkos:plainText “Activité ne relevant pas de l'agriculture”;
-  dct:language “fr” ;
+  dcterms:language “fr” ;
   .
  
 # The similarityNote : "Can have a similar position"
 &lt;http://id.insee.fr/codes/pcsese2003/association/10-21/ressemblance/v1/fr> a xkos:ExplanatoryNote ;
   xkos:plainText “Peuvent faire un métier voisin”;
-  dct:language “fr” ;
+  dcterms:language “fr” ;
   .
 
 						</pre>
@@ -1334,7 +1332,7 @@ ex:NACE_ItemTypes a skos:ConceptScheme ;
 				<p>To cope with this use case, as well as the use-case of the n-to-m concept association described above, it is possible to link the correspondence table with a matrix, expressed with the RDF Data Cube vocabulary [[QB]], that associates some values to each pair of associated source-target concepts. These values could be a percentage, a price, or a boolean to indicate whether the concepts are actually linked or not. These values are actually the measures of the observations in the data cube.<br />
 				Note that multiple values can be associated with a single observation in this data cube matrix, to give for exemple values both in terms of number of employees and in terms of revenues.
 				</p>
-				<p>One could see this matrix as a redundancy with the correspondence table. It is actually a different, complimentary point of view : while the correspondence table gives a “documentary” view, and an easy way to traverse from the source concept to the target concept, the matrix provides the statistical point of view, with the numbers or weights associated to each pair of related source-target concept.</p><p>It is suggested that a new property is introduced in XKOS to capture the link between a Correspondence table and its corresponding `qb:DataSet` that captures the weights. The suggested property is `xkos:weightedBy`, but it is not part of XKOS at the time of this writing. A more generic property like `dct:relation` can also be used by default.</p>
+				<p>One could see this matrix as a redundancy with the correspondence table. It is actually a different, complimentary point of view : while the correspondence table gives a “documentary” view, and an easy way to traverse from the source concept to the target concept, the matrix provides the statistical point of view, with the numbers or weights associated to each pair of related source-target concept.</p><p>It is suggested that a new property is introduced in XKOS to capture the link between a Correspondence table and its corresponding `qb:DataSet` that captures the weights. The suggested property is `xkos:weightedBy`, but it is not part of XKOS at the time of this writing. A more generic property like `dcterms:relation` can also be used by default.</p>
 				<p>The following example illustrates this suggested mechanism. Note how the correspondence table in this example, and the associated matrix, are defined only for a given `xkos:ClassificationLevel` in each of the compared classifications.</p>
 				<aside class="example" title="Example of a correspondence table matrix">
 						<pre class="nohighlight">
@@ -1505,7 +1503,7 @@ skos:prefLabel "ISIC Group"@en .
 			<section id="bp-evolution-major-versions">
 				<h4>Major versions of classifications</h4>
 				<p>When a complete revision of a classification happens, a new major version of a classification is produced. The recommendation is that all the URIs of the concepts and levels are recreated and the relation between the classification items is given by a correspondence table as presented in the <a href="#bp-correspondences">corresponding section of this document</a>. The former classification should have the property `owl:deprecated` set to “true” and its period of validity updated in a `dcat:temporal` property.</p>
-				<div class="issue" title="dcat:temporal or dct:valid ?"></div>
+				<div class="issue" title="dcat:temporal or dcterms:valid ?"></div>
 			</section>
 			<section id="bp-evolution-linking">
 				<h4>Linking major versions of classifications</h4>
@@ -1557,9 +1555,9 @@ skos:prefLabel "ISIC Group"@en .
 			</section>
 			<section id="bp-evolution-series">
 				<h4>Series of classification</h4>
-				<p>The figure below presents the succession of two revisions of the NAF classification. The temporal periods of validity of each revision are given through the `dct:temporal` property that has as value a `dcat:PeriodOfTime` using the `dcat:startDate` and `dcat:endDate` properties. A possibility to clearly identify that the NAFRev1 is the obsolete version is to use the `owl:deprecated` property set to `true`.</p>
+				<p>The figure below presents the succession of two revisions of the NAF classification. The temporal periods of validity of each revision are given through the `dcterms:temporal` property that has as value a `dcat:PeriodOfTime` using the `dcat:startDate` and `dcat:endDate` properties. A possibility to clearly identify that the NAFRev1 is the obsolete version is to use the `owl:deprecated` property set to `true`.</p>
 				<img src="img/bp-series-example.png" alt="Example of a classification serie" />
-				<div class="issue" title="dct:temporal or dct:valid or something else ?"></div>
+				<div class="issue" title="dcterms:temporal or dcterms:valid or something else ?"></div>
 				<div class="issue" title="improve diagram">
 					<p>I think we need to review the formalism of this diagram, which mixes an entity/relation graph formalism with a UML class diagram formalism. I think that everything should be in the entity/relationship formalism (= drawing the graph of RDF triples, with instance URIs).</p>
 
@@ -1575,11 +1573,11 @@ skos:prefLabel "ISIC Group"@en .
 				<h4>Datasets of classifications</h4>
 				<p>It is recommended to use DCAT V2 to describe and disseminate metadata associated with classifications.</p>
 				<p>Each revision of a classification should correspond to one `dcat:Dataset`. For instance, in the example below, the classification NAF Rev1 and NAF Rev2 are separated in distinct `dcat:Dataset`s with different version information. Each classification’s dataset belongs to a `dcat:Catalog`.</p>
-				<p>Each dataset should have downloadable files in the necessary formats for both human and machine agents. In particular, statistical classifications should be provided for download in an RDF file based on [[SKOS]] and [[XKOS]] vocabularies, containing the full content of the classification. In the example, CSV and RDF (SKOS) formats are provided. The `dct:conformsTo` property should be set to the URI of the [[XKOS]] vocabulary : <a href="http://rdf-vocabulary.ddialliance.org/xkos">http://rdf-vocabulary.ddialliance.org/xkos</a>.</p>
-				<p>For practical reasons it is important to have direct access to the latest version of a classification for directly retrieving the updated notes. However, for reasons of nomenclature expertise it is also important to have access to changes in notes that have affected the nomenclature. It is therefore recommended to have access to the history of modifications of all notes within the revision of the classification included in a `dcat:Dataset`. These versions containing the history of all notes are considered as different distributions of the datasets. They should be described by specific properties. Here we use `rdfs:comment` for describing and discriminating the distributions, given a lack of other alternatives. Other information is given by the `dct:PeriodOfTime` that is wider in the case of the distribution with all the note changes.</p>
+				<p>Each dataset should have downloadable files in the necessary formats for both human and machine agents. In particular, statistical classifications should be provided for download in an RDF file based on [[SKOS]] and [[XKOS]] vocabularies, containing the full content of the classification. In the example, CSV and RDF (SKOS) formats are provided. The `dcterms:conformsTo` property should be set to the URI of the [[XKOS]] vocabulary : <a href="http://rdf-vocabulary.ddialliance.org/xkos">http://rdf-vocabulary.ddialliance.org/xkos</a>.</p>
+				<p>For practical reasons it is important to have direct access to the latest version of a classification for directly retrieving the updated notes. However, for reasons of nomenclature expertise it is also important to have access to changes in notes that have affected the nomenclature. It is therefore recommended to have access to the history of modifications of all notes within the revision of the classification included in a `dcat:Dataset`. These versions containing the history of all notes are considered as different distributions of the datasets. They should be described by specific properties. Here we use `rdfs:comment` for describing and discriminating the distributions, given a lack of other alternatives. Other information is given by the `dcterms:PeriodOfTime` that is wider in the case of the distribution with all the note changes.</p>
 
 				<div class="issue" title="how can we link the distribution containing the note changes with the distribution being a snapshot ?">
-				  <p>how can we link the distribution containing the note changes with the distribution being a snapshot ? we could use dct:isVersionOf, but this could be misleading. If we could say "is subset of" this would be more precise. Or a PROV relation wasderivedFrom ?</p>
+				  <p>how can we link the distribution containing the note changes with the distribution being a snapshot ? we could use dcterms:isVersionOf, but this could be misleading. If we could say "is subset of" this would be more precise. Or a PROV relation wasderivedFrom ?</p>
 				</div>
 
 				<aside class="example" title="Example of a statistical classification dataset in DCAT">
@@ -1604,8 +1602,8 @@ skos:inScheme ex:CatalogClassificationThemes .
 # its conformance to XKOS, date of issuance, and link to distributions
 ex:NAFRev2Dataset a dcat:Dataset ;
   dcat:Theme ex:Activity ;
-  dct:conformsTo <http://rdf-vocabulary.ddialliance.org/xkos> ;
-  dct:issued "2008-01-01"^^xsd:date ; 
+  dcterms:conformsTo <http://rdf-vocabulary.ddialliance.org/xkos> ;
+  dcterms:issued "2008-01-01"^^xsd:date ; 
   dcat:distribution ex:Nafrev2CsvHistoric ;
   dcat:distribution ex:Nafrev2Csv ;
   dcat:distribution ex:Nafrev2RdfHistoric ;
@@ -1615,12 +1613,12 @@ ex:NAFRev2Dataset a dcat:Dataset ;
 # Distribution 1, in CSV with all note history
 # Specifies the access rights, description, date of issuance, date coverage, URL links
 ex:Nafrev2CsvHistoric a dcat:Distribution ;
-  dct:format <http://publications.europa.eu/resource/authority/file-type/CSV> ;
-  dct:accessRights <http://publications.europa.eu/resource/authority/access-right/PUBLIC> ;
-  dct:description "Economic activities in the EU in CSV with notes history"@en ;
-  dct:issued "2008-01-01"^^xsd:date ;
-  dct:temporal [ 
-    a dct:PeriodOfTime ;
+  dcterms:format <http://publications.europa.eu/resource/authority/file-type/CSV> ;
+  dcterms:accessRights <http://publications.europa.eu/resource/authority/access-right/PUBLIC> ;
+  dcterms:description "Economic activities in the EU in CSV with notes history"@en ;
+  dcterms:issued "2008-01-01"^^xsd:date ;
+  dcterms:temporal [ 
+    a dcterms:PeriodOfTime ;
     dcat:startDate "2008-01-01"^^xsd:date ;
   ] ;
   dcat:accessURL ex:Nafrev2CsvHistoricPage ;
@@ -1629,12 +1627,12 @@ ex:Nafrev2CsvHistoric a dcat:Distribution ;
 
 # Distribution 2, in CSV, containing only current version of the notes
 ex:Nafrev2Csv a dcat:Distribution ;
-  dct:format <http://publications.europa.eu/resource/authority/file-type/CSV> ;
-  dct:accessRights <http://publications.europa.eu/resource/authority/access-right/PUBLIC> ;
-  dct:description "Economic activities in the  EU in CSV in current version"@en ;
-  dct:issued "2010-01-01”^^xsd:date ;
-  dct:temporal [ 
-    a dct:PeriodOfTime ;
+  dcterms:format <http://publications.europa.eu/resource/authority/file-type/CSV> ;
+  dcterms:accessRights <http://publications.europa.eu/resource/authority/access-right/PUBLIC> ;
+  dcterms:description "Economic activities in the  EU in CSV in current version"@en ;
+  dcterms:issued "2010-01-01”^^xsd:date ;
+  dcterms:temporal [ 
+    a dcterms:PeriodOfTime ;
     dcat:startDate "2010-01-01"^^xsd:date ;
   ] ;
   dcat:accessURL ex:Nafrev2CsvPage ;
@@ -1643,12 +1641,12 @@ ex:Nafrev2Csv a dcat:Distribution ;
 
 # Distribution 3, in RDF with all note history
 ex:Nafrev2RdfHistoric a dcat:Distribution ;
-  dct:format <http://publications.europa.eu/resource/authority/file-type/RDF> ;
-  dct:accessRights <http://publications.europa.eu/resource/authority/access-right/PUBLIC> ;
-  dct:description "Economic activities in the  EU in RDF with notes history"@en ;
-  dct:issued "2008-01-01"^^xsd:date ;
-  dct:temporal [ 
-    a dct:PeriodOfTime ;
+  dcterms:format <http://publications.europa.eu/resource/authority/file-type/RDF> ;
+  dcterms:accessRights <http://publications.europa.eu/resource/authority/access-right/PUBLIC> ;
+  dcterms:description "Economic activities in the  EU in RDF with notes history"@en ;
+  dcterms:issued "2008-01-01"^^xsd:date ;
+  dcterms:temporal [ 
+    a dcterms:PeriodOfTime ;
     dcat:startDate "2008-01-01"^^xsd:date ;
   ] ;
   dcat:accessURL ex:Nafrev2RdfHistoricPage ;
@@ -1657,12 +1655,12 @@ ex:Nafrev2RdfHistoric a dcat:Distribution ;
 
 # Distribution 4, in RDF, containing only current version of the notes
 ex:Nafrev2Csv a dcat:Distribution ;
-  dct:format <http://publications.europa.eu/resource/authority/file-type/RDF> ;
-  dct:accessRights <http://publications.europa.eu/resource/authority/access-right/PUBLIC> ;
-  dct:description "Economic activities in the  EU in RDF in current version"@en ;
-  dct:issued "2010-01-01”^^xsd:date ;
-  dct:temporal [ 
-    a dct:PeriodOfTime ;
+  dcterms:format <http://publications.europa.eu/resource/authority/file-type/RDF> ;
+  dcterms:accessRights <http://publications.europa.eu/resource/authority/access-right/PUBLIC> ;
+  dcterms:description "Economic activities in the  EU in RDF in current version"@en ;
+  dcterms:issued "2010-01-01”^^xsd:date ;
+  dcterms:temporal [ 
+    a dcterms:PeriodOfTime ;
     dcat:startDate "2010-01-01"^^xsd:date ;
   ] ;
   dcat:accessURL ex:Nafrev2CsvPage ;
@@ -1672,8 +1670,8 @@ ex:Nafrev2Csv a dcat:Distribution ;
 # Same would go for ex:NAFRev1Dataset
 ex:NAFRev1Dataset a dcat:Dataset ;
   dcat:Theme ex:Activity ;
-  dct:conformsTo <http://rdf-vocabulary.ddialliance.org/xkos> ;
-  dct:issued "2008-01-01"^^xsd:date ; 
+  dcterms:conformsTo <http://rdf-vocabulary.ddialliance.org/xkos> ;
+  dcterms:issued "2008-01-01"^^xsd:date ; 
   dcat:distribution ex:Nafrev1CsvHistoric ;
   dcat:distribution ex:Nafrev1Csv ;
   dcat:distribution ex:Nafrev1RdfHistoric ;
@@ -1689,7 +1687,7 @@ ex:NAFRev1Dataset a dcat:Dataset ;
 				<h4>Datasets of correspondences</h4>
 				<p>Each correspondence table shall also be provided as a distinct Dataset in the catalog. This dataset can be linked with the dataset of the source classification and the dataset of the target classification with :</p>
 				<ul>
-					<li>A generic `dct:relation` property, that is expressed both from the source and target dataset to the correspondence table dataset, and from the correspondence dataset to its source and target.</li>
+					<li>A generic `dcterms:relation` property, that is expressed both from the source and target dataset to the correspondence table dataset, and from the correspondence dataset to its source and target.</li>
 					<li>A `dcat:Relationship` that indicates more precisely the role of each dataset, either source or target in the correspondence table. The role of each dataset is captured by the `dcat:hasRole` property, with one of these 2 values :
 						<ul>
 							<li>`xkos:correspondenceFromRole`</li>
@@ -1709,36 +1707,36 @@ ex:CorrespondenceTableNafrev1Nafrev2Dataset a dcat:Dataset ;
   # Qualified relation to the source dataset
   dcat:qualifiedRelation [
     a dcat:Relationship ;
-    dct:relation ex:NafRev1Dataset ;
+    dcterms:relation ex:NafRev1Dataset ;
     dcat:hadRole xkos:correspondenceFromRole ;
   ] ;
   # Qualified relation to the target dataset
   dcat:qualifiedRelation [
     a dcat:Relationship ;
-    dct:relation ex:NafRev2Dataset ;
+    dcterms:relation ex:NafRev2Dataset ;
     dcat:hadRole xkos:correspondenceToRole ;
   ] ;
 .
  
 # Distribution 1 in CSV
 ex:CorrespondenceTableCsv a dcat:Distribution ;
-  dct:format <http://publications.europa.eu/resource/authority/file-type/CSV> ;
+  dcterms:format <http://publications.europa.eu/resource/authority/file-type/CSV> ;
 .
 
 # Distribution 2 in RDF
 ex:CorrespondenceTableRdf a dcat:Distribution ;
-  dct:format <http://publications.europa.eu/resource/authority/file-type/RDF> ;
+  dcterms:format <http://publications.europa.eu/resource/authority/file-type/RDF> ;
 .
 
 # The source dataset
 ex:NafRev1Dataset a dcat:Dataset ;
-  dct:issued "2003-01-01"^^xsd:date ;
+  dcterms:issued "2003-01-01"^^xsd:date ;
   # ... further description of the dataset
 .
 
 # The target dataset 
 ex:NafRev2Dataset a dcat:Dataset ;
-  dct:issued "2008-01-01"^^xsd:date ;
+  dcterms:issued "2008-01-01"^^xsd:date ;
   # ... further description of the dataset
  .
 
