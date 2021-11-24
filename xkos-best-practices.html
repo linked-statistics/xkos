@@ -209,10 +209,10 @@
 	    <h2>Best practise summary</h2>
 		<div class="issue" title="Complete summary">
 			<p>TF: write this section</p>
+			<p>Insert quick-list of best practices with hyperlinks</p>
 		</div>
     </section>
 
-Quick-list of best practices with hyperlinks
     <section id="namespaces">
     	<h2>Namespaces</h2>
 		<p>The vocabularies used in this document are listed in the table below, with their namespaces and associated prefixes.</p>
@@ -583,16 +583,83 @@ Quick-list of best practices with hyperlinks
 					</pre>
 			</aside>
 			<div class="issue" title="complete example of description of a statistical classification">
-				Provide a Turtle example applying the best practices above. Use ISIC by building the example by hand. @franck.cotton@insee.fr Build from existing description of the classification.
+				Provide a Turtle example applying the best practices above. Use ISIC by building the example by hand. @FC: Build from existing description of the classification.
 			</div>
 			<div class="issue" title="provide SHACL">
 				Provide SHACL encoding of the properties
 			</div>
 		</section>
+
 		<section id="bp-labels">
 		    <h3>Labels</h3>
-			<p>Paragraph on labels goes here</p>
+			<p>Statistical classification often make use of different types of labels for their items. Two examples taken from French classifications can be mentioned:</p>
+			<ul>
+				<li>The classification of activities (NAF rev.2) makes “standard” shortened labels available for use in certain cases where space is constrained (e.g. table headers in a paper publication).</li>
+				<li>The classification of professions (PCS 2020) defines an “official” label and a “usual” label.</li>
+			</ul>
+
+			<p>In these and other similar cases, it is recommended to use alternative labels (`skos:altLabel`), and if necessary the SKOS-XL extension of SKOS. However, SKOS specifies a number of integrity rules that must be respected:</p>
+			<ul>
+				<li>`skos:prefLabel`, `skos:altLabel` and `skos:hiddenLabel` are pairwise disjoint properties.</li>
+				<li>a resource has no more than one value of `skos:prefLabel` per language tag.</li>
+			</ul>
+
+			<p>The first rule implies in particular that preferred and alternative labels cannot have the same value.</p>
+
+			<p>These rules extend to SKOS-XL labels through a mechanism explained in the <a href="https://www.w3.org/TR/skos-reference/#L899">SKOS Reference</a>. So, for example, a `skosxl:Label` attached to an item by the `skosxl:altLabel` predicate cannot have the same literal form value as a plain SKOS preferred label.</p>
+
+			<p>This best practices document gives further recommendations and examples on how best to deal with fixed-length labels, translations, or labels in a specific context/usage.</p>
+
+			<section id="bp-labels-length">
+				<h4>Dealing with fixed-length labels</h4>
+				<p><a href="https://rdf-vocabulary.ddialliance.org/xkos.html#add-labels">§ 8.1 of the XKOS specification</a> describes how to use SKOS labels in combination with `xkos:maxLength` to render fixed-length labels. Another example taken from the NAF rév. 2 (“Nomenclature d'activités française”) is given below:</p>
+
+				<aside class="example" title="Example of fixed-length labels">
+					<pre class="nohighlight">
+<http://id.insee.fr/codes/nafr2/classe/27.12> a skos:Concept , nafr2:Classe ;
+    skos:prefLabel "Fabrication de matériel de distribution et de commande électrique"@fr ;
+    skos:prefLabel <http://id.insee.fr/codes/nafr2/classe/27.12/label40fr> .
+
+<http://id.insee.fr/codes/nafr2/classe/27.12/label40fr> a skos-xl:Label ;
+    skos-xl:literalForm "Fab. mat. de distrib. & de cde électri."@fr ;
+    xkos:maxLength 40 .
+					</pre>
+				</aside>
+			</section>
+
+			<section id="bp-labels-types">
+				<h4>Dealing with different types of labels</h4>
+				<p>The “official” label and a “usual” from the PCS2020 (“Nomenclature des professions et catégories socioprofessionnelles”) can be rendered using the base elements from SKOS:
+				<aside class="example" title="Example of labels of different types with different values">
+					<pre class="nohighlight">
+<http://id.insee.fr/codes/pcs2020/2/22>
+    skos:prefLabel "Commerçants / commerçantes et assimilés"@fr ;
+    skos:altLabel "Commerçants et assimilées"@fr .
+					</pre>
+				</aside>
+				<p>Official labels should always be represented by the `skos:prefLabel` property. For usual labels, should be used, but only when they are different from the official ones, due to the SKOS integrity rules:</p>
+				<aside class="example" title="Example of labels of different types with the same value">
+					<pre class="nohighlight">
+<http://id.insee.fr/codes/pcs2020/1/4> skos:prefLabel "Professions intermédiaires"@fr .
+					</pre>
+				</aside>
+				<p>If more than one type of “unofficial” labels exist, SKOS-XL constructs can be used, in the same way than for the fixed-length labels example. In this case, the `skos-xl:Label` can be qualified by a custom property listing the different types of labels. The current version of XKOS does not define this kind of property.</p>
+			</section>
+
+			<section id="bp-labels-languages">
+				<h4>Dealing with translations</h4>
+				<p>Classification publishers should always provide textual material (labels and notes) in their original language. Additionally, it is recommended to publish English versions of at least the official labels and if possible of other labels and of all notes.</p>
+				<p>RDF native support of multilingualism should always be used:</p>
+				<aside class="example" title="Example of labels in different languages">
+					<pre class="nohighlight">
+ex:isco2008-9611
+      skos:notation "9611" ;
+      skos:prefLabel "Manoeuvres, enlèvement des ordures et matériel recyclable"@fr , "Garbage and recycling collectors"@en , "Recolectores de basura y material reciclable"@es .
+					</pre>
+				</aside>
+			</section>
 		</section>
+
 		<section id="bp-notes">
 		    <h3>Notes</h3>
 			<p><a href="https://rdf-vocabulary.ddialliance.org/xkos.html#note-ext">§8.2 of the XKOS specification</a> describes the different types of content notes introduced in XKOS and mentions the `xkos:plainText` property as a way to capture the raw content of the note. This best practice document gives additional recommendations on how best to describe the note entity, how to handle note versioning and timestamps, and clarifies the difference between `xkos:inclusionNote` and `xkos:caseLaw`.</p>
@@ -1107,7 +1174,7 @@ ex:NACE_ItemTypes a skos:ConceptScheme ;
 						</tr>
 					</tbody>
 				</table>
-				<div class="issue" title="Same constraints as on ConceptScheme ?">
+				<div class="issue" title="Same constraints as on ConceptScheme?">
 					<p>Shall the same constraints as on the ConceptScheme be enforced ? e.g. use skos:prefLabel rather than dcterms:title ? have at least one title in English ? + dc:description</p>
 					<p>Besides, it is strange to enforce the creator here and not on ConceptScheme - we should make this consistent</p>
 					<p>17/11/2021 : Yes, make this consistent - and make creator as optionnal property.</p>
@@ -1575,7 +1642,7 @@ skos:prefLabel "ISIC Group"@en .
 				<p>Each dataset should have downloadable files in the necessary formats for both human and machine agents. In particular, statistical classifications should be provided for download in an RDF file based on [[SKOS]] and [[XKOS]] vocabularies, containing the full content of the classification. In the example, CSV and RDF (SKOS) formats are provided. The `dcterms:conformsTo` property should be set to the URI of the [[XKOS]] vocabulary : <a href="http://rdf-vocabulary.ddialliance.org/xkos">http://rdf-vocabulary.ddialliance.org/xkos</a>.</p>
 				<p>For practical reasons it is important to have direct access to the latest version of a classification for directly retrieving the updated notes. However, for reasons of nomenclature expertise it is also important to have access to changes in notes that have affected the nomenclature. It is therefore recommended to have access to the history of modifications of all notes within the revision of the classification included in a `dcat:Dataset`. These versions containing the history of all notes are considered as different distributions of the datasets. They should be described by specific properties. Here we use `rdfs:comment` for describing and discriminating the distributions, given a lack of other alternatives. Other information is given by the `dcterms:PeriodOfTime` that is wider in the case of the distribution with all the note changes.</p>
 
-				<div class="issue" title="how can we link the distribution containing the note changes with the distribution being a snapshot ?">
+				<div class="issue" title="how can we link the distribution containing the note changes with the distribution being a snapshot?">
 				  <p>how can we link the distribution containing the note changes with the distribution being a snapshot ? we could use dcterms:isVersionOf, but this could be misleading. If we could say "is subset of" this would be more precise. Or a PROV relation wasderivedFrom ?</p>
 				</div>
 
@@ -1885,7 +1952,7 @@ ex:NafRev2Dataset a dcat:Dataset ;
 
     <section id="xkos-and-others">
     	<h2>Combining XKOS with other vocabularies</h2>
-    	<div class="issue" title="Do we keep this paragraph ?"></div>
+    	<div class="issue" title="Do we keep this paragraph?"></div>
     </section>
 
 	<section class="appendix">
