@@ -781,7 +781,7 @@ ex:isco2008-9611
 &lt;http://id.insee.fr/codes/cpfr2/sousCategorie/08.12.21/noteContenuCentral/v2/fr&gt;
     a xkos:ExplanatoryNote;
     rdf:value 
-    "&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;p&gt;argiles kaoliniques brutes et pâtes céramiques&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;"^^rdf:XMLLiteral;
+      "&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;p&gt;argiles kaoliniques brutes et pâtes céramiques&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;"^^rdf:XMLLiteral;
     dcterms:language "fr"^^xsd:language;
     dcat:version "2"^^xsd:int;
     xkos:plainText "- argiles kaoliniques brutes et pâtes céramiques"@fr;
@@ -929,30 +929,30 @@ ex:NACE_Section
     a skos:Concept ;
     skos:inScheme ex:NACE_ItemTypes ;
     skos:topConceptOf ex:NACE_ItemTypes ;
-    skos:prefLabel “NACE Section”@en .
+    skos:prefLabel "NACE Section"@en .
  
 ex:NACE_Division
     a skos:Concept ;
     skos:inScheme ex:NACE_ItemTypes ;
-    skos:prefLabel “NACE Division”@en ;
+    skos:prefLabel "NACE Division"@en ;
     skos:broader ex:NACE_Section .
  
 ex:NACE_Group
     a skos:Concept ;
     skos:inScheme ex:NACE_ItemTypes ;
-    skos:prefLabel “NACE Group”@en ;
+    skos:prefLabel "NACE Group"@en ;
     skos:broader ex:NACE_Division .
  
 ex:NACE_Class
     a skos:Concept ;
     skos:inScheme ex:NACE_ItemTypes ;
-    skos:prefLabel “NACE Class”@en ;
+    skos:prefLabel "NACE Class"@en ;
     skos:broader ex:NACE_Group .
  
 ex:NACE_ItemTypes
     a skos:ConceptScheme ;
     skos:hasTopConcept ex:NACE_Section ;
-    skos:prefLabel “NACE Item Types”@en .
+    skos:prefLabel "NACE Item Types"@en .
 					</pre>
 			</aside>
 		</section>
@@ -986,7 +986,7 @@ Class: ex:NACE-R2_Item
 # The ConceptScheme
 ex:NACE-R2
     a skos:ConceptScheme;
-    skos:prefLabel “NACE-r2”@en ;
+    skos:prefLabel "NACE-r2"@en ;
   # See also the Class
     rdfs:seeAlso ex:NACE_Item .
  
@@ -994,7 +994,7 @@ ex:NACE-R2
 ex:NACE-R2_Item
     a owl:Class;
     rdfs:subClassOf skos:Concept ;
-    skos:prefLabel “NACE R2 Item”@en ;
+    skos:prefLabel "NACE R2 Item"@en ;
     # See also the ConceptScheme
     rdfs:seeAlso ex:NACE-R2 ;
     # Formal OWL equivalence to the set of Concepts belonging to the ConceptScheme
@@ -1002,7 +1002,7 @@ ex:NACE-R2_Item
       a owl:Restriction ;
       owl:onProperty skos:inScheme ;
       owl:hasValue ex:NACE-R2 ;
-  ] .
+    ] .
 						</pre>
 				</aside>
 				<p>Note that items inside the classification are <em>not</em> expected to be explicitely typed with this new class; they should only be typed with `skos:Concept`. The declaration of this class is only useful so that it can be assigned as the range of some properties.</p>
@@ -1033,7 +1033,7 @@ ex:NACE-R2_Item
 ex:NACE-R2
     a skos:ConceptScheme;
     skos:prefLabel "NACE-r2"@en ;
-  xkos:levels ( ex:NACE-R2_Section , ex:NACE-R2_Division , ex:NACE-R2_Group , ex:NACE-R2_Class ) .
+    xkos:levels ( ex:NACE-R2_Section , ex:NACE-R2_Division , ex:NACE-R2_Group , ex:NACE-R2_Class ) .
 
 # Description of classification levels in this particular revision
 # Each having an xkos:organizedBy that points to levels of the NACE
@@ -1393,7 +1393,8 @@ ex:NACE_ItemTypes
     xkos:targetConcept &lt;http://id.insee.fr/codes/cpfr21/groupe/72.2&gt; .
 
 # A correspondence table contains the ConceptAssociation (as well as all others concept associations)
-&lt;http://id.insee.fr/codes/nafr2-cpfr21> xkos:madeOf <http://id.insee.fr/codes/nafr2-cpfr21/association/72.1-72.0&gt; .
+&lt;http://id.insee.fr/codes/nafr2-cpfr21&gt;
+    xkos:madeOf &lt;http://id.insee.fr/codes/nafr2-cpfr21/association/72.1-72.0&gt; .
 						</pre>
 					</aside>
 					<p>The description above is sufficient for mapping the source Concepts  to the target concepts, and thus outlining the comparable set of concepts between the two classifications, but it doesn’t describe how these concepts are actually linked. For instance the source Concept 72.1 may be linked to only 2 of the 3 target concepts, and the use of `xkos:ConceptAssociation` as above doesn’t allow discriminating between these alternatives.</p>
@@ -1439,8 +1440,7 @@ ex:classificationB-Headings
     a xkos:ClassificationLevel .
 ex:classificationB-Subheadings
     a xkos:ClassificationLevel .
- 
- 
+
 # The XKOS Correspondence compares classification A
 # and classification B, and points to its qb:DataSet matrix
 ex:correspondence-classificationA-to-classificationB
@@ -1453,8 +1453,7 @@ ex:correspondence-matrix
     a qb:DataSet;
     rdfs:label "weighted matrix"@en ;
     rdfs:comment "Matrix of weighted links between source and target concepts"@en ;
-    qb:structure ex:correspondence-matrix-dsd ;  
-    .
+    qb:structure ex:correspondence-matrix-dsd .
  
 # DataSet Definition of the matrix
 # It declares 2 dimensions (source concept and target concept)
@@ -1498,7 +1497,8 @@ ex:obs2
 # Defines classification version NAF with 5 levels, sections, sousSections, divisions, groupes, classes
 &lt;http://id.insee.fr/codes/nafr1/naf&gt;
     a skos:ConceptScheme ;
-    xkos:levels (&lt;http://id.insee.fr/codes/naf/sections&gt; &lt;http://id.insee.fr/codes/naf/sousSections&gt; &lt;http://id.insee.fr/codes/naf/divisions&gt; &lt;http://id.insee.fr/codes/naf/groupes&gt; &lt;http://id.insee.fr/codes/naf/classes&gt;) .
+    xkos:levels ( &lt;http://id.insee.fr/codes/naf/sections&gt; &lt;http://id.insee.fr/codes/naf/sousSections&gt; &lt;http://id.insee.fr/codes/naf/divisions&gt;
+    &lt;http://id.insee.fr/codes/naf/groupes&gt; &lt;http://id.insee.fr/codes/naf/classes&gt; ) .
 
 &lt;http://id.insee.fr/codes/naf/sections&gt;
     a xkos:ClassificationLevel .
@@ -1514,7 +1514,8 @@ ex:obs2
 # Defines classification version NAFrev1 with 5 levels: sections, sousSections, divisions, groupes and classes
 &lt;http://id.insee.fr/codes/nafr2/naf&gt;
     a skos:ConceptScheme ;
-    xkos:levels (&lt;http://id.insee.fr/codes/nafr1/sections&gt; &lt;http://id.insee.fr/codes/nafr1/sousSections&gt; &lt;http://id.insee.fr/codes/nafr1/divisions&gt; &lt;http://id.insee.fr/codes/nafr1/groupes&gt; &lt;http://id.insee.fr/codes/nafr1/classes&gt;) .
+    xkos:levels ( &lt;http://id.insee.fr/codes/nafr1/sections&gt; &lt;http://id.insee.fr/codes/nafr1/sousSections&gt; &lt;http://id.insee.fr/codes/nafr1/divisions&gt;
+    &lt;http://id.insee.fr/codes/nafr1/groupes&gt; &lt;http://id.insee.fr/codes/nafr1/classes&gt; ) .
 
 &lt;http://id.insee.fr/codes/nafr1/sections&gt;
     a xkos:ClassificationLevel .
