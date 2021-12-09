@@ -15,7 +15,7 @@
 
 			  // if your specification has a subtitle that goes below the main
 			  // formal title, define it here
-			  subtitle   :  "Best Practices for describing statistical classifications with XKOS",
+			  subtitle:  "Best Practices for describing statistical classifications with XKOS",
 
 			  // if you wish the publication date to be other than today, set this
 			  // publishDate:  "2009-08-06",
@@ -209,10 +209,10 @@
 	    <h2>Best practise summary</h2>
 		<div class="issue" title="Complete summary">
 			<p>TF: write this section</p>
+			<p>Insert quick-list of best practices with hyperlinks</p>
 		</div>
     </section>
 
-Quick-list of best practices with hyperlinks
     <section id="namespaces">
     	<h2>Namespaces</h2>
 		<p>The vocabularies used in this document are listed in the table below, with their namespaces and associated prefixes.</p>
@@ -243,7 +243,7 @@ Quick-list of best practices with hyperlinks
 					<td>Data Catalog Vocabulary (DCAT) - Version 2 ([[DCAT]])</td>
 				</tr>
 				<tr>
-					<td>dct</td>
+					<td>dcterms</td>
 					<td>http://purl.org/dc/terms/</td>
 					<td>Dublin Core Metadata Initiative Metadata Terms ([[DC-TERMS]])</td>
 				</tr>
@@ -292,9 +292,6 @@ Quick-list of best practices with hyperlinks
 
 		<p>The RDF examples are expressed with the Terse RDF Triple language (Turtle) [[TURTLE]]. Individual resource names used as examples in the `ex:` namespace are entirely fictious.</p>
 
-		<div class="issue" title="Harmonize dct: vs. dcterms:"></div>
-
-		<div class="issue" title="INSEE Ontology cannot be dereferenced"></div>
     </section>
 
     <section id="classifications">
@@ -369,11 +366,11 @@ Quick-list of best practices with hyperlinks
 
 		    <h4>Classifications on occupations</h4>
 
-			<p>The International Standard Classification of Occupations (<a href="https://www.ilo.org/public/english/bureau/stat/isco/">ISCO</a>) belongs to the international family of economic and social classifications</a>. ISCO is a tool for organizing jobs into a clearly defined set of groups according to the tasks and duties undertaken in the job. Its main aims are to provide:</p>
+			<p>The International Standard Classification of Occupations (<a href="https://www.ilo.org/public/english/bureau/stat/isco/">ISCO</a>) belongs to the <a href="https://unstats.un.org/unsd/classifications/Family ">international family of economic and social classifications</a>. ISCO is a tool for organizing jobs into a clearly defined set of groups according to the tasks and duties undertaken in the job. Its main aims are to provide:</p>
 			<ul>
-				<li>a basis for the international reporting, comparison and exchange of statistical and administrative data about occupations;<li>
-				<li>a model for the development of national and regional classifications of occupations; and<li>
-				<li>a system that can be used directly in countries that have not developed their own national classifications.<li>
+				<li>a basis for the international reporting, comparison and exchange of statistical and administrative data about occupations;</li>
+				<li>a model for the development of national and regional classifications of occupations; and</li>
+				<li>a system that can be used directly in countries that have not developed their own national classifications.</li>
 			</ul>
 
 			<p><a href=" https://www.ilo.org/public/english/bureau/stat/isco/docs/publication08.pdf">ISCO-08</a> is a four-level hierarchically structured classification that allows all jobs in the world to be classified into 436 unit groups. These groups form the most detailed level of the classification structure and are aggregated into 130 minor groups, 43 sub-major groups and 10 major groups, based on their similarity in terms of the skill level and skill specialization required for the jobs. This allows the production of relatively detailed internationally comparable data as well as summary information for only 10 groups at the highest level of aggregation.</p>
@@ -575,9 +572,9 @@ Quick-list of best practices with hyperlinks
 			</table>
 
 			<div class="issue" title="No namespace document for XKOS">
-				It would be nice to add hyperlinks in the table above. It would be nice if those hyperlinks would be the URI of the properties themselves, e.g. <a href="http://rdf-vocabulary.ddialliance.org/xkos#belongsTo">`xkos:belongsTo`</a>. Problem : such an hyperlink returns the XKOS specification document, at no particular anchor, because no anchor corresponds to property names. A solution could be to add anchors to the table at <a href="https://rdf-vocabulary.ddialliance.org/xkos.html#nsvoc">https://rdf-vocabulary.ddialliance.org/xkos.html#nsvoc</a>
+				It would be nice to add hyperlinks in the table above. It would be nice if those hyperlinks would be the URI of the properties themselves, e.g. <a href="http://rdf-vocabulary.ddialliance.org/xkos#belongsTo">`xkos:belongsTo`</a>. Problem: such an hyperlink returns the XKOS specification document, at no particular anchor, because no anchor corresponds to property names. A solution could be to add anchors to the table at <a href="https://rdf-vocabulary.ddialliance.org/xkos.html#nsvoc">https://rdf-vocabulary.ddialliance.org/xkos.html#nsvoc</a>
 			</div>
-			<div class="issue" title="missing dct:valid">
+			<div class="issue" title="missing dcterms:valid">
 				We are missing dcterms:valid to express the temporal coverage of the classification, as indicated in XKOS
 			</div>
 			<aside class="example" title="Example of a statistical classification description">
@@ -586,16 +583,86 @@ Quick-list of best practices with hyperlinks
 					</pre>
 			</aside>
 			<div class="issue" title="complete example of description of a statistical classification">
-				Provide a Turtle example applying the best practices above. Use ISIC by building the example by hand. @franck.cotton@insee.fr Build from existing description of the classification.
+				Provide a Turtle example applying the best practices above. Use ISIC by building the example by hand. @FC: Build from existing description of the classification.
 			</div>
 			<div class="issue" title="provide SHACL">
 				Provide SHACL encoding of the properties
 			</div>
 		</section>
+
 		<section id="bp-labels">
 		    <h3>Labels</h3>
-			<p>Paragraph on labels goes here</p>
+			<p>Statistical classification often make use of different types of labels for their items. Two examples taken from French classifications can be mentioned:</p>
+			<ul>
+				<li>The classification of activities (NAF rev.2) makes “standard” shortened labels available for use in certain cases where space is constrained (e.g. table headers in a paper publication).</li>
+				<li>The classification of professions (PCS 2020) defines an “official” label and a “usual” label.</li>
+			</ul>
+
+			<p>In these and other similar cases, it is recommended to use alternative labels (`skos:altLabel`), and if necessary the SKOS-XL extension of SKOS. However, SKOS specifies a number of integrity rules that must be respected:</p>
+			<ul>
+				<li>`skos:prefLabel`, `skos:altLabel` and `skos:hiddenLabel` are pairwise disjoint properties.</li>
+				<li>a resource has no more than one value of `skos:prefLabel` per language tag.</li>
+			</ul>
+
+			<p>The first rule implies in particular that preferred and alternative labels cannot have the same value.</p>
+
+			<p>These rules extend to SKOS-XL labels through a mechanism explained in the <a href="https://www.w3.org/TR/skos-reference/#L899">SKOS Reference</a>. So, for example, a `skosxl:Label` attached to an item by the `skosxl:altLabel` predicate cannot have the same literal form value as a plain SKOS preferred label.</p>
+
+			<p>This best practices document gives further recommendations and examples on how best to deal with fixed-length labels, translations, or labels in a specific context/usage.</p>
+
+			<section id="bp-labels-length">
+				<h4>Dealing with fixed-length labels</h4>
+				<p><a href="https://rdf-vocabulary.ddialliance.org/xkos.html#add-labels">§ 8.1 of the XKOS specification</a> describes how to use SKOS labels in combination with `xkos:maxLength` to render fixed-length labels. Another example taken from the NAF rév. 2 (“Nomenclature d'activités française”) is given below:</p>
+
+				<aside class="example" title="Example of fixed-length labels">
+					<pre class="nohighlight">
+&lt;http://id.insee.fr/codes/nafr2/classe/27.12&gt;
+    a skos:Concept , nafr2:Classe ;
+    skos:prefLabel "Fabrication de matériel de distribution et de commande électrique"@fr ;
+    skos:prefLabel &lt;http://id.insee.fr/codes/nafr2/classe/27.12/label40fr&gt; .
+
+&lt;http://id.insee.fr/codes/nafr2/classe/27.12/label40fr&gt;
+    a skos-xl:Label ;
+    skos-xl:literalForm "Fab. mat. de distrib. & de cde électri."@fr ;
+    xkos:maxLength 40 .
+					</pre>
+				</aside>
+			</section>
+
+			<section id="bp-labels-types">
+				<h4>Dealing with different types of labels</h4>
+				<p>The “official” label and a “usual” from the PCS2020 (“Nomenclature des professions et catégories socioprofessionnelles”) can be rendered using the base elements from SKOS:
+				<aside class="example" title="Example of labels of different types with different values">
+					<pre class="nohighlight">
+&lt;http://id.insee.fr/codes/pcs2020/2/22&gt;
+    skos:prefLabel "Commerçants / commerçantes et assimilés"@fr ;
+    skos:altLabel "Commerçants et assimilées"@fr .
+					</pre>
+				</aside>
+				<p>Official labels should always be represented by the `skos:prefLabel` property. For usual labels, should be used, but only when they are different from the official ones, due to the SKOS integrity rules:</p>
+				<aside class="example" title="Example of labels of different types with the same value">
+					<pre class="nohighlight">
+&lt;http://id.insee.fr/codes/pcs2020/1/4&gt;
+    skos:prefLabel "Professions intermédiaires"@fr .
+					</pre>
+				</aside>
+				<p>If more than one type of “unofficial” labels exist, SKOS-XL constructs can be used, in the same way than for the fixed-length labels example. In this case, the `skos-xl:Label` can be qualified by a custom property listing the different types of labels. The current version of XKOS does not define this kind of property.</p>
+			</section>
+
+			<section id="bp-labels-languages">
+				<h4>Dealing with translations</h4>
+				<p>Classification publishers should always provide textual material (labels and notes) in their original language. Additionally, it is recommended to publish English versions of at least the official labels and if possible of other labels and of all notes.</p>
+				<p>RDF native support of multilingualism should always be used:</p>
+				<aside class="example" title="Example of labels in different languages">
+					<pre class="nohighlight">
+ex:isco2008-9611
+    skos:notation "9611" ;
+    skos:prefLabel "Manoeuvres, enlèvement des ordures et matériel recyclable"@fr , "Garbage and recycling collectors"@en , "Recolectores de basura y material reciclable"@es .
+					</pre>
+				</aside>
+			</section>
 		</section>
+
 		<section id="bp-notes">
 		    <h3>Notes</h3>
 			<p><a href="https://rdf-vocabulary.ddialliance.org/xkos.html#note-ext">§8.2 of the XKOS specification</a> describes the different types of content notes introduced in XKOS and mentions the `xkos:plainText` property as a way to capture the raw content of the note. This best practice document gives additional recommendations on how best to describe the note entity, how to handle note versioning and timestamps, and clarifies the difference between `xkos:inclusionNote` and `xkos:caseLaw`.</p>
@@ -641,8 +708,8 @@ Quick-list of best practices with hyperlinks
 			<section id="bp-notes-versioning-timestamping">
 				<h4>Versioning notes and timestamping notes</h4>
 				<p>As indicated in the introductory paragraph about classification major revisions and versions, the notes are the information that have fine-grained versions between each major revision of a classification.</p>
-				<p>We propose 2 different patterns of versioning for notes : versioning notes with a version number and a date range, and keeping the history of notes with a timestamp.</p>
-				<p>The first pattern to version notes implies that each new version of the note is given a version number and a date range. All notes, except `skos:changeNote` should follow this pattern : `skos:scopeNote`, `skos:definition`, `xkos:coreContentNote`, `xkos:additionalContentNote`, `xkos:exclusionNote`, `xkos:inclusionNote`, `xkos:caseLaw`. These notes should uses the properties listed in the table below.</p>
+				<p>We propose 2 different patterns of versioning for notes: versioning notes with a version number and a date range, and keeping the history of notes with a timestamp.</p>
+				<p>The first pattern to version notes implies that each new version of the note is given a version number and a date range. All notes, except `skos:changeNote` should follow this pattern: `skos:scopeNote`, `skos:definition`, `xkos:coreContentNote`, `xkos:additionalContentNote`, `xkos:exclusionNote`, `xkos:inclusionNote`, `xkos:caseLaw`. These notes should uses the properties listed in the table below.</p>
 				<table class="simple stickyTableHead">
 					<caption>Additional properties for an `xkos:ExplanatoryNote` when versioned</caption>
 					<thead>
@@ -675,77 +742,80 @@ Quick-list of best practices with hyperlinks
 					</tbody>
 				</table>
 				<div class="issue" title="How to express date ranges">
-					to be discussed : use of schema.org or dcterms:valid, which is less convenient, but more reliable in terms of standard. Or we recommend insee:validFrom and insee:validUntil ? Also adjust examples !!
+					to be discussed: use of schema.org or dcterms:valid, which is less convenient, but more reliable in terms of standard. Or we recommend insee:validFrom and insee:validUntil ? Also adjust examples !!
 
-					Note : the ISO-8601 does not define open-ended ranges; this is extended by an LC extension that suggest "2012-09-10/.." for open ended ranges; this is used by schema.org
+					Note: the ISO-8601 does not define open-ended ranges; this is extended by an LC extension that suggest "2012-09-10/.." for open ended ranges; this is used by schema.org
 				</div>
 				<p>Given the versioning history of such notes, a client accessing a particular version of the classification might not be interested to know about the versioning history of all notes, and is only interested in the current state of each note.</p>
 				<aside class="example" title="Concept with a versioned note">
-					<p>Before 2010-02-01, the Concept description is the following :</p>
+					<p>Before 2010-02-01, the Concept description is the following:</p>
 					<pre class="nohighlight">
-&lt;http://id.insee.fr/codes/cpfr2/sousCategorie/08.12.21> a skos:Concept;
-  xkos:coreContentNote 
-    &lt;http://id.insee.fr/codes/cpfr2/sousCategorie/08.12.21/noteContenuCentral/v1/fr>;
+&lt;http://id.insee.fr/codes/cpfr2/sousCategorie/08.12.21&gt;
+    a skos:Concept;
+    xkos:coreContentNote
+      &lt;http://id.insee.fr/codes/cpfr2/sousCategorie/08.12.21/noteContenuCentral/v1/fr&gt; ;
     skos:prefLabel 
       "Kaolin and other kaolinic clays"@en, 
       "Kaolin et autres argiles kaoliniques"@fr .
 
-&lt;http://id.insee.fr/codes/cpfr2/sousCategorie/08.12.21/noteContenuCentral/v1/fr> a
-    xkos:ExplanatoryNote;
-  rdf:value 
-    "&lt;div>&lt;ul>&lt;li>&lt;p>argiles kaoliniques brutes ou calcinées et pâtes céramiques&lt;/p>&lt;/li>&lt;/ul>&lt;/div>"^^rdf:XMLLiteral;
-  dcterms:language "fr"^^xsd:language;
-  dcat:version "1"^^xsd:int;
-  xkos:plainText "- argiles kaoliniques brutes ou calcinées et pâtes céramiques"@fr;
-  insee:validFrom "2008-01-01T00:00:00.000+01:00"^^xsd:dateTime;
-  insee:validUntil "2010-02-01T00:00:00.000+01:00"^^xsd:dateTime .
+&lt;http://id.insee.fr/codes/cpfr2/sousCategorie/08.12.21/noteContenuCentral/v1/fr&gt;
+    a xkos:ExplanatoryNote;
+    rdf:value 
+      "&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;p&gt;argiles kaoliniques brutes ou calcinées et pâtes céramiques&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;"^^rdf:XMLLiteral ;
+    dcterms:language "fr"^^xsd:language ;
+    dcat:version "1"^^xsd:int ;
+    xkos:plainText "- argiles kaoliniques brutes ou calcinées et pâtes céramiques"@fr ;
+    insee:validFrom "2008-01-01T00:00:00.000+01:00"^^xsd:dateTime ;
+    insee:validUntil "2010-02-01T00:00:00.000+01:00"^^xsd:dateTime .
 					</pre>
-					<p>On the 2010-02-01, the note is modified, and a second version is created. The current state of the Concept then becomes the following :</p>
+					<p>On the 2010-02-01, the note is modified, and a second version is created. The current state of the Concept then becomes the following:</p>
 					<pre class="nohighlight">
-&lt;http://id.insee.fr/codes/cpfr2/sousCategorie/08.12.21> a skos:Concept;
-  xkos:coreContentNote,
-    &lt;http://id.insee.fr/codes/cpfr2/sousCategorie/08.12.21/noteContenuCentral/v2/fr>;
+&lt;http://id.insee.fr/codes/cpfr2/sousCategorie/08.12.21&gt;
+    a skos:Concept;
+    xkos:coreContentNote,
+      &lt;http://id.insee.fr/codes/cpfr2/sousCategorie/08.12.21/noteContenuCentral/v2/fr&gt; ;
     skos:prefLabel
       "Kaolin and other kaolinic clays"@en,
       "Kaolin et autres argiles kaoliniques"@fr .
 
-&lt;http://id.insee.fr/codes/cpfr2/sousCategorie/08.12.21/noteContenuCentral/v2/fr> a
-    xkos:ExplanatoryNote;
-  rdf:value 
-    "&lt;div>&lt;ul>&lt;li>&lt;p>argiles kaoliniques brutes et pâtes céramiques&lt;/p>&lt;/li>&lt;/ul>&lt;/div>"^^rdf:XMLLiteral;
-  dcterms:language "fr"^^xsd:language;
-  dcat:version "2"^^xsd:int;
-  xkos:plainText "- argiles kaoliniques brutes et pâtes céramiques"@fr;
-  insee:validFrom "2010-02-01T00:00:00.000+01:00"^^xsd:dateTime .
+&lt;http://id.insee.fr/codes/cpfr2/sousCategorie/08.12.21/noteContenuCentral/v2/fr&gt;
+    a xkos:ExplanatoryNote;
+    rdf:value 
+      "&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;p&gt;argiles kaoliniques brutes et pâtes céramiques&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;"^^rdf:XMLLiteral;
+    dcterms:language "fr"^^xsd:language;
+    dcat:version "2"^^xsd:int;
+    xkos:plainText "- argiles kaoliniques brutes et pâtes céramiques"@fr;
+    insee:validFrom "2010-02-01T00:00:00.000+01:00"^^xsd:dateTime .
 					</pre>
-					<p>The complete history of that Concept is the following :</p>
+					<p>The complete history of that Concept is the following:</p>
 					<pre class="nohighlight">
-&lt;http://id.insee.fr/codes/cpfr2/sousCategorie/08.12.21> a skos:Concept;
-  xkos:coreContentNote 
-    &lt;http://id.insee.fr/codes/cpfr2/sousCategorie/08.12.21/noteContenuCentral/v1/fr>,
-    &lt;http://id.insee.fr/codes/cpfr2/sousCategorie/08.12.21/noteContenuCentral/v2/fr>;
+&lt;http://id.insee.fr/codes/cpfr2/sousCategorie/08.12.21&gt;
+    a skos:Concept;
+    xkos:coreContentNote 
+      &lt;http://id.insee.fr/codes/cpfr2/sousCategorie/08.12.21/noteContenuCentral/v1/fr&gt; ,
+      &lt;http://id.insee.fr/codes/cpfr2/sousCategorie/08.12.21/noteContenuCentral/v2/fr&gt; ;
     skos:prefLabel 
       "Kaolin and other kaolinic clays"@en,
       "Kaolin et autres argiles kaoliniques"@fr .
 
-&lt;http://id.insee.fr/codes/cpfr2/sousCategorie/08.12.21/noteContenuCentral/v1/fr> a
-    xkos:ExplanatoryNote;
-  rdf:value 
-    "&lt;div>&lt;ul>&lt;li>&lt;p>argiles kaoliniques brutes ou calcinées et pâtes céramiques&lt;/p>&lt;/li>&lt;/ul>&lt;/div>"^^rdf:XMLLiteral;
-  dcterms:language "fr"^^xsd:language;
-  dcat:version "1"^^xsd:int;
-  xkos:plainText "- argiles kaoliniques brutes ou calcinées et pâtes céramiques"@fr;
-  insee:validFrom "2008-01-01T00:00:00.000+01:00"^^xsd:dateTime;
-  insee:validUntil "2010-02-01T00:00:00.000+01:00"^^xsd:dateTime .
+&lt;http://id.insee.fr/codes/cpfr2/sousCategorie/08.12.21/noteContenuCentral/v1/fr&gt;
+    a xkos:ExplanatoryNote;
+    rdf:value 
+      "&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;p&gt;argiles kaoliniques brutes ou calcinées et pâtes céramiques&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;"^^rdf:XMLLiteral;
+    dcterms:language "fr"^^xsd:language;
+    dcat:version "1"^^xsd:int;
+    xkos:plainText "- argiles kaoliniques brutes ou calcinées et pâtes céramiques"@fr;
+    insee:validFrom "2008-01-01T00:00:00.000+01:00"^^xsd:dateTime;
+    insee:validUntil "2010-02-01T00:00:00.000+01:00"^^xsd:dateTime .
 
-&lt;http://id.insee.fr/codes/cpfr2/sousCategorie/08.12.21/noteContenuCentral/v2/fr> a
-    xkos:ExplanatoryNote;
-  rdf:value 
-    "&lt;div>&lt;ul>&lt;li>&lt;p>argiles kaoliniques brutes et pâtes céramiques&lt;/p>&lt;/li>&lt;/ul>&lt;/div>"^^rdf:XMLLiteral;
-  dcterms:language "fr"^^xsd:language;
-  dcat:version "2"^^xsd:int;
-  xkos:plainText "- argiles kaoliniques brutes et pâtes céramiques"@fr;
-  insee:validFrom "2010-02-01T00:00:00.000+01:00"^^xsd:dateTime .
+&lt;http://id.insee.fr/codes/cpfr2/sousCategorie/08.12.21/noteContenuCentral/v2/fr&gt;
+    a xkos:ExplanatoryNote;
+    rdf:value 
+      "&lt;div>&lt;ul>&lt;li>&lt;p>argiles kaoliniques brutes et pâtes céramiques&lt;/p>&lt;/li>&lt;/ul>&lt;/div>"^^rdf:XMLLiteral;
+    dcterms:language "fr"^^xsd:language;
+    dcat:version "2"^^xsd:int;
+    xkos:plainText "- argiles kaoliniques brutes et pâtes céramiques"@fr;
+    insee:validFrom "2010-02-01T00:00:00.000+01:00"^^xsd:dateTime .
 					</pre>
 					<p>The modification of the core content note is documented by a (timestamped) `skos:changeNote` - see example below.</p>
 				</aside>
@@ -774,20 +844,21 @@ Quick-list of best practices with hyperlinks
 				<p>Given the versioning history of such a note, a client accessing a particular version of the classification might be interested to have the full history of each value of the note.</p>
 				<aside class="example" title="Concept with a timestamped note">
 					<pre class="nohighlight">
-&lt;http://id.insee.fr/codes/cpfr2/sousCategorie/08.12.21> a skos:Concept;
-  skos:changeNote 
-    &lt;http://id.insee.fr/codes/cpfr2/sousCategorie/08.12.21/noteChangement/2010-02-01/fr>;
-  skos:prefLabel 
-    "Kaolin and other kaolinic clays"@en, 
-    "Kaolin et autres argiles kaoliniques"@fr .
+&lt;http://id.insee.fr/codes/cpfr2/sousCategorie/08.12.21&gt;
+    a skos:Concept;
+    skos:changeNote 
+      &lt;http://id.insee.fr/codes/cpfr2/sousCategorie/08.12.21/noteChangement/2010-02-01/fr&gt; ;
+    skos:prefLabel 
+      "Kaolin and other kaolinic clays"@en, 
+      "Kaolin et autres argiles kaoliniques"@fr .
 
-&lt;http://id.insee.fr/codes/cpfr2/sousCategorie/08.12.21/noteChangement/2010-02-01/fr>
-  a xkos:ExplanatoryNote;
-  rdf:value 
-    "&lt;div>&lt;p>Suppression dans la rubrique \"Comprend\" : ou calcinées&lt;/p>&lt;/div>"^^rdf:XMLLiteral;
-  dcterms:issued "2010-02-01T00:00:00.000+01:00"^^xsd:dateTime;
-  dcterms:language "fr"^^xsd:language;
-  xkos:plainText "Suppression dans la rubrique \"Comprend\" : ou calcinées"@fr .
+&lt;http://id.insee.fr/codes/cpfr2/sousCategorie/08.12.21/noteChangement/2010-02-01/fr&gt;
+    a xkos:ExplanatoryNote;
+    rdf:value 
+      "&lt;div>&lt;p&gt;Suppression dans la rubrique \"Comprend\" : ou calcinées&lt;/p&gt;&lt;/div&gt;"^^rdf:XMLLiteral;
+    dcterms:issued "2010-02-01T00:00:00.000+01:00"^^xsd:dateTime;
+    dcterms:language "fr"^^xsd:language;
+    xkos:plainText "Suppression dans la rubrique \"Comprend\" : ou calcinées"@fr .
 					</pre>
 				</aside>
 			</section>
@@ -810,12 +881,12 @@ Quick-list of best practices with hyperlinks
 		<section id="bp-levels">
 		    <h3>Levels</h3>
 			<p><a href="https://rdf-vocabulary.ddialliance.org/xkos.html#levels">§6 of the XKOS specification</a> specifies how to describe the levels in a classification, and how the property `xkos:organizedBy` can be used to link a level in a (specific revision of a) classification to the generic `skos:Concept` describing the generic kind of entries that this level regroups (e.g. the concept of an ISCO major group, of a NACE section, etc.).</p>
-			<p>We emphasize what XKOS already specifies :</p>
+			<p>We emphasize what XKOS already specifies:</p>
 			<ul>
 				<li>the `skos:ConceptScheme` uses the property `xkos:levels` to point to an `rdf:List` that contains an ordered list of instances of `xkos:ClassificationLevels` in this classification. The list is ordered from the highest level to the lowest. These classification levels represent the grouping of the concepts in this particular revision of the classification.</li>
 				<li>Each instance of `xkos:ClassificationLevel` uses `xkos:organizedBy` to refer to a `skos:Concept` describing the “abstract” kind of entries at this level of the classification, independently of the revision of the classification.</li>
 			</ul>
-			<p>We give additional best practices :</p>
+			<p>We give additional best practices:</p>
 			<ol>
 				<li>the `skos:Concept`s describing the “abstract” kind of entries should be organized hierarchically using `skos:broader` / `skos:narrower` relationships.</li>
 				<li>they should not be blank nodes.</li>
@@ -826,64 +897,62 @@ Quick-list of best practices with hyperlinks
 			<aside class="example" title="xkos:ClassificationLevel example from NACE">
 				<pre class="nohighlight">
 # The classification revision with an ordered list of its classification levels
-ex:NACE-R2 a skos:ConceptScheme;
-  skos:prefLabel “NACE-r2”@en ;
-  xkos:levels (
-    ex:NACE-R2_Section,
-    ex:NACE-R2_Division,
-    ex:NACE-R2_Group,
-    ex:NACE-R2_Class
-  )
-.
+ex:NACE-R2
+    a skos:ConceptScheme;
+    skos:prefLabel “NACE-r2”@en ;
+    xkos:levels ( ex:NACE-R2_Section , ex:NACE-R2_Division , ex:NACE-R2_Group , ex:NACE-R2_Class ) .
 
 # Description of classification levels in this particular revision
 # Each having an xkos:organizedBy that points to levels of the NACE
-# Independantly of the revision
+# Independently of the revision
  
-ex:NACE-R2_Section a xkos:ClassificationLevel ;
-  xkos:organizedBy ex:NACE_Section .
+ex:NACE-R2_Section
+    a xkos:ClassificationLevel ;
+    xkos:organizedBy ex:NACE_Section .
  
-ex:NACE-R2_Division a xkos:ClassificationLevel ;
-  xkos:organizedBy ex:NACE_Division .
+ex:NACE-R2_Division
+    a xkos:ClassificationLevel ;
+    xkos:organizedBy ex:NACE_Division .
  
-ex:NACE-R2_Group a xkos:ClassificationLevel ;
-  xkos:organizedBy ex:NACE_Group .
+ex:NACE-R2_Group
+    a xkos:ClassificationLevel ;
+    xkos:organizedBy ex:NACE_Group .
  
-ex:NACE-R2_Class a xkos:ClassificationLevel ;
-  xkos:organizedBy ex:NACE_Class .
- 
+ex:NACE-R2_Class
+    a xkos:ClassificationLevel ;
+    xkos:organizedBy ex:NACE_Class .
  
 # Description of abstract levels of the NACE
 # Organized hierarchically, and all belonging to a ConceptScheme
  
-ex:NACE_Section a skos:Concept ;
-  skos:inScheme ex:NACE_ItemTypes ;
-  skos:topConceptOf ex:NACE_ItemTypes ;
-  skos:prefLabel “NACE Section”@en ;
-.
+ex:NACE_Section
+    a skos:Concept ;
+    skos:inScheme ex:NACE_ItemTypes ;
+    skos:topConceptOf ex:NACE_ItemTypes ;
+    skos:prefLabel "NACE Section"@en .
  
-ex:NACE_Division a skos:Concept ;
-  skos:inScheme ex:NACE_ItemTypes ;
-  skos:prefLabel “NACE Division”@en ;
-  skos:broader ex:NACE_Section ;
-.
+ex:NACE_Division
+    a skos:Concept ;
+    skos:inScheme ex:NACE_ItemTypes ;
+    skos:prefLabel "NACE Division"@en ;
+    skos:broader ex:NACE_Section .
  
-ex:NACE_Group a skos:Concept ;
-  skos:inScheme ex:NACE_ItemTypes ;
-  skos:prefLabel “NACE Group”@en ;
-  skos:broader ex:NACE_Division ;
-.
+ex:NACE_Group
+    a skos:Concept ;
+    skos:inScheme ex:NACE_ItemTypes ;
+    skos:prefLabel "NACE Group"@en ;
+    skos:broader ex:NACE_Division .
  
-ex:NACE_Class a skos:Concept ;
-  skos:inScheme ex:NACE_ItemTypes ;
-  skos:prefLabel “NACE Class”@en ;
-  skos:broader ex:NACE_Group ;
-.
+ex:NACE_Class
+    a skos:Concept ;
+    skos:inScheme ex:NACE_ItemTypes ;
+    skos:prefLabel "NACE Class"@en ;
+    skos:broader ex:NACE_Group .
  
-ex:NACE_ItemTypes a skos:ConceptScheme ;
-  skos:hasTopConcept ex:NACE_Section ;
-  skos:prefLabel “NACE Item Types”@en ;
-.
+ex:NACE_ItemTypes
+    a skos:ConceptScheme ;
+    skos:hasTopConcept ex:NACE_Section ;
+    skos:prefLabel "NACE Item Types"@en .
 					</pre>
 			</aside>
 		</section>
@@ -894,10 +963,10 @@ ex:NACE_ItemTypes a skos:ConceptScheme ;
 		    	<h4>Type the classification items of a given classification</h4>
 		    	<p>A best practice is to declare a new subclass of `skos:Concept` as the type of the classification items for a given revision of a classification. For example the class “ex:NACE-R2_Item” could be declared as a subclass of `skos:Concept` to represent the set of all items in the 2nd revision of the NACE classification. Introducing this class allows to constrain the range of certain properties on this class.</p>
 
-				<p>This new subclass of skos:Concept shall be linked to the skos:ConceptScheme with either of these 2 modelling patterns :</p>
+				<p>This new subclass of skos:Concept shall be linked to the skos:ConceptScheme with either of these 2 modelling patterns:</p>
 				<ol>
 					<li>an `rdfs:seeAlso` property, in both direction (from the `skos:ConceptScheme` to the new sub-class of `skos:Concept`, and from the new subclass of `skos:Concept` to the `skos:ConceptScheme`)</li>
-					<li>a formal OWL equivalence between the subclass of `skos:Concept` and a restriction on the property `skos:inScheme`, with an `owl:hasValue` equal to the `skos:ConceptScheme` URI. For example here is how one would declare the equivalence between a new subclass of skos:Concept "NACE-R2_Item" and the set of `skos:Concept` that have a `skos:inScheme` equal to the corresponding scheme URI :
+					<li>a formal OWL equivalence between the subclass of `skos:Concept` and a restriction on the property `skos:inScheme`, with an `owl:hasValue` equal to the `skos:ConceptScheme` URI. For example here is how one would declare the equivalence between a new subclass of skos:Concept "NACE-R2_Item" and the set of `skos:Concept` that have a `skos:inScheme` equal to the corresponding scheme URI:
 						<pre>
 Class: ex:NACE-R2_Item
 
@@ -915,25 +984,25 @@ Class: ex:NACE-R2_Item
 				<aside class="example" title="Example of declaring a class for all entries in a classification">
 					<pre class="nohighlight">
 # The ConceptScheme
-ex:NACE-R2 a skos:ConceptScheme;
-  skos:prefLabel “NACE-r2”@en ;
+ex:NACE-R2
+    a skos:ConceptScheme;
+    skos:prefLabel "NACE-r2"@en ;
   # See also the Class
-  rdfs:seeAlso ex:NACE_Item ;
-.
+    rdfs:seeAlso ex:NACE_Item .
  
 # The Class, subClassOf skos:Concept
-ex:NACE-R2_Item a owl:Class;
-  rdfs:subClassOf skos:Concept ;
-  skos:prefLabel “NACE R2 Item”@en ;
-  # See also the ConceptScheme
-  rdfs:seeAlso ex:NACE-R2 ;
-  # Formal OWL equivalence to the set of Concepts belonging to the ConceptScheme
-  owl:equivalentClass [
-    a owl:Restriction ;
-    owl:onProperty skos:inScheme ;
-    owl:hasValue ex:NACE-R2 ;
-  ] ;
-.
+ex:NACE-R2_Item
+    a owl:Class;
+    rdfs:subClassOf skos:Concept ;
+    skos:prefLabel "NACE R2 Item"@en ;
+    # See also the ConceptScheme
+    rdfs:seeAlso ex:NACE-R2 ;
+    # Formal OWL equivalence to the set of Concepts belonging to the ConceptScheme
+    owl:equivalentClass [
+      a owl:Restriction ;
+      owl:onProperty skos:inScheme ;
+      owl:hasValue ex:NACE-R2 ;
+    ] .
 						</pre>
 				</aside>
 				<p>Note that items inside the classification are <em>not</em> expected to be explicitely typed with this new class; they should only be typed with `skos:Concept`. The declaration of this class is only useful so that it can be assigned as the range of some properties.</p>
@@ -943,11 +1012,11 @@ ex:NACE-R2_Item a owl:Class;
 
 				<div class="issue" title="rediscuss if this works">17/11/2021 : FC to review</div>
 
-				<p><a href="https://rdf-vocabulary.ddialliance.org/xkos.html#levels">§6 of the XKOS specification</a> describing classification levels states the following : <blockquote><em>"In XKOS, a classification level is defined as a specialization of `skos:Collection` named `xkos:ClassificationLevel`. (...) Individual `skos:Concept` objects are related to the `xkos:ClassificationLevel` to which they belong by the usual `skos:member` property (going from the level to the classification item)."</em></blockquote></p>
+				<p><a href="https://rdf-vocabulary.ddialliance.org/xkos.html#levels">§6 of the XKOS specification</a> describing classification levels states the following: <blockquote><em>"In XKOS, a classification level is defined as a specialization of `skos:Collection` named `xkos:ClassificationLevel`. (...) Individual `skos:Concept` objects are related to the `xkos:ClassificationLevel` to which they belong by the usual `skos:member` property (going from the level to the classification item)."</em></blockquote></p>
 
-				<p>This best practice document suggests to go one step further, and to actually consider the classification levels also as OWL classes (hence with 2 types : `xkos:ClassificationLevel` and `owl:Class`), declared as subclass of the dedicated class that represent the set of all items of the classification, as described in previous section.</p>
+				<p>This best practice document suggests to go one step further, and to actually consider the classification levels also as OWL classes (hence with 2 types: `xkos:ClassificationLevel` and `owl:Class`), declared as subclass of the dedicated class that represent the set of all items of the classification, as described in previous section.</p>
 
-				<p>Following the example given above, the following levels of the NACE-R2, in addition to being `xkos:ClassificationLevel`, would be typed as `owl:Class` and declared subclasses of `ex:NACE-R2_Item` :</p>
+				<p>Following the example given above, the following levels of the NACE-R2, in addition to being `xkos:ClassificationLevel`, would be typed as `owl:Class` and declared subclasses of `ex:NACE-R2_Item`:</p>
 				<ul>
 					<li>ex:NACE-R2_Section</li>
 					<li>ex:NACE-R2_Division</li>
@@ -961,81 +1030,80 @@ ex:NACE-R2_Item a owl:Class;
 				<aside class="example" title="Example of declaring classes for each level in a classification">
 					<pre class="nohighlight">
 # The classification revision with an ordered list of its classification levels
-ex:NACE-R2 a skos:ConceptScheme;
-  skos:prefLabel “NACE-r2”@en ;
-  xkos:levels (
-    ex:NACE-R2_Section,
-    ex:NACE-R2_Division,
-    ex:NACE-R2_Group,
-    ex:NACE-R2_Class
-  )
-.
+ex:NACE-R2
+    a skos:ConceptScheme;
+    skos:prefLabel "NACE-r2"@en ;
+    xkos:levels ( ex:NACE-R2_Section , ex:NACE-R2_Division , ex:NACE-R2_Group , ex:NACE-R2_Class ) .
 
 # Description of classification levels in this particular revision
 # Each having an xkos:organizedBy that points to levels of the NACE
 # Independantly of the revision
  
-ex:NACE-R2_Section a xkos:ClassificationLevel, owl:Class ;
-  rdfs:subClassOf ex:NACE-R2_Item ;
-  xkos:organizedBy ex:NACE_Section .
+ex:NACE-R2_Section
+    a xkos:ClassificationLevel, owl:Class ;
+    rdfs:subClassOf ex:NACE-R2_Item ;
+    xkos:organizedBy ex:NACE_Section .
  
-ex:NACE-R2_Division a xkos:ClassificationLevel, owl:Class ;
-  rdfs:subClassOf ex:NACE-R2_Item ;
-  xkos:organizedBy ex:NACE_Division .
+ex:NACE-R2_Division
+    a xkos:ClassificationLevel, owl:Class ;
+    rdfs:subClassOf ex:NACE-R2_Item ;
+    xkos:organizedBy ex:NACE_Division .
  
-ex:NACE-R2_Group a xkos:ClassificationLevel, owl:Class ;
-  rdfs:subClassOf ex:NACE-R2_Item ;
-  xkos:organizedBy ex:NACE_Group .
+ex:NACE-R2_Group
+    a xkos:ClassificationLevel, owl:Class ;
+    rdfs:subClassOf ex:NACE-R2_Item ;
+    xkos:organizedBy ex:NACE_Group .
  
-ex:NACE-R2_Class a xkos:ClassificationLevel, owl:Class ;
-  rdfs:subClassOf ex:NACE-R2_Item ;
-  xkos:organizedBy ex:NACE_Class .
+ex:NACE-R2_Class
+    a xkos:ClassificationLevel, owl:Class ;
+    rdfs:subClassOf ex:NACE-R2_Item ;
+    xkos:organizedBy ex:NACE_Class .
 
 # The common parent class that represents the sets of all entries of the classification
 # linked to the ConceptScheme with an rdfs:seeAlso and a formal OWL equivalence
 
-ex:NACE-R2_Item a owl:Class;
-  rdfs:subClassOf skos:Concept ;
-  skos:prefLabel “NACE R2 Item”@en ;
-  rdfs:seeAlso ex:NACE-R2 ;
-  owl:equivalentClass [
-    a owl:Restriction ;
-    owl:onProperty skos:inScheme ;
-    owl:hasValue ex:NACE-R2 ;
-  ] ;
-.
+ex:NACE-R2_Item
+    a owl:Class;
+    rdfs:subClassOf skos:Concept ;
+    skos:prefLabel "NACE R2 Item"@en ;
+    rdfs:seeAlso ex:NACE-R2 ;
+    owl:equivalentClass [
+      a owl:Restriction ;
+      owl:onProperty skos:inScheme ;
+      owl:hasValue ex:NACE-R2 ;
+    ] .
  
 # Description of abstract levels of the NACE
 # Organized hierarchically, and all belonging to a ConceptScheme
  
-ex:NACE_Section a skos:Concept ;
-  skos:inScheme ex:NACE_ItemTypes ;
-  skos:topConceptOf ex:NACE_ItemTypes ;
-  skos:prefLabel “NACE Section”@en ;
-.
+ex:NACE_Section
+    a skos:Concept ;
+    skos:inScheme ex:NACE_ItemTypes ;
+    skos:topConceptOf ex:NACE_ItemTypes ;
+    skos:prefLabel "NACE Section"@en .
  
-ex:NACE_Division a skos:Concept ;
-  skos:inScheme ex:NACE_ItemTypes ;
-  skos:prefLabel “NACE Division”@en ;
-  skos:broader ex:NACE_Section ;
-.
+ex:NACE_Division
+    a skos:Concept ;
+    skos:inScheme ex:NACE_ItemTypes ;
+    skos:prefLabel "NACE Division"@en ;
+    skos:broader ex:NACE_Section .
  
-ex:NACE_Group a skos:Concept ;
-  skos:inScheme ex:NACE_ItemTypes ;
-  skos:prefLabel “NACE Group”@en ;
-  skos:broader ex:NACE_Division ;
-.
+ex:NACE_Group
+    a skos:Concept ;
+    skos:inScheme ex:NACE_ItemTypes ;
+    skos:prefLabel "NACE Group"@en ;
+    skos:broader ex:NACE_Division .
  
-ex:NACE_Class a skos:Concept ;
-  skos:inScheme ex:NACE_ItemTypes ;
-  skos:prefLabel “NACE Class”@en ;
-  skos:broader ex:NACE_Group ;
-.
+ex:NACE_Class
+    a skos:Concept ;
+    skos:inScheme ex:NACE_ItemTypes ;
+    skos:prefLabel "NACE Class"@en ;
+    skos:broader ex:NACE_Group .
  
-ex:NACE_ItemTypes a skos:ConceptScheme ;
-  skos:hasTopConcept ex:NACE_Section ;
-  skos:prefLabel “NACE Item Types”@en ;
-.
+ex:NACE_ItemTypes
+    a skos:ConceptScheme ;
+    skos:hasTopConcept ex:NACE_Section ;
+    skos:prefLabel "NACE Item Types"@en .
 						</pre>
 				</aside>
 				<div class="issue" title="Describe how this is used as the range of a property"></div>
@@ -1110,10 +1178,10 @@ ex:NACE_ItemTypes a skos:ConceptScheme ;
 						</tr>
 					</tbody>
 				</table>
-				<div class="issue" title="Same constraints as on ConceptScheme ?">
+				<div class="issue" title="Same constraints as on ConceptScheme?">
 					<p>Shall the same constraints as on the ConceptScheme be enforced ? e.g. use skos:prefLabel rather than dcterms:title ? have at least one title in English ? + dc:description</p>
 					<p>Besides, it is strange to enforce the creator here and not on ConceptScheme - we should make this consistent</p>
-					<p>17/11/2021 : Yes, make this consistent - and make creator as optionnal property.</p>
+					<p>17/11/2021: Yes, make this consistent - and make creator as optionnal property.</p>
 				</div>
 				<p>It is possible to have several correspondence tables based on the same source and target classifications that are created with different methodologies and thus give different views of the relation between the two classifications (e.g. if links are constructed automatically or if they are determined by expert judgement). It may therefore be necessary to store this information by associating with the mapping table a `prov:Activity` encompassing the creation steps followed.</p>
 			</section>
@@ -1139,37 +1207,37 @@ ex:NACE_ItemTypes a skos:ConceptScheme ;
 							<td>Note concerning the sub-field outlined by this concept association, with a maximum of 1 note per language.</td>
 						</tr>
 						<tr>
-							<td>`dct:description`</td>
+							<td>`dcterms:description`</td>
 							<td>0..n</td>
 							<td>xkos:Correspondence</td>
 							<td>Note concerning significant changes between former and updated concepts included in the concept association, with a maximum of 1 note per language.</td>
 						</tr>
 					</tbody>
 				</table>
-				<p>It is possible to further describe concept associations with custom properties. <a href="https://www.insee.fr">INSEE</a> for example uses `insee:differenceNote` and `insee:similarityNote` to capture respectively how the related entries differs and how they are similar, as in the following example :</p>
+				<p>It is possible to further describe concept associations with custom properties. <a href="https://www.insee.fr">INSEE</a> for example uses `insee:differenceNote` and `insee:similarityNote` to capture respectively how the related entries differs and how they are similar, as in the following example:</p>
 				<aside class="example" title="Example of further description of a xkos:ConceptAssociation with custom properties">
 					<pre class="nohighlight">
 # A xkos:ConceptAssociation with custom properties to describe the similarity and differences of related concepts
-&lt;http://id.insee.fr/codes/pcsese2003/association/10-21> a xkos:ConceptAssociation ;
-  # This is "Agriculteur" / "farmer"
-  xkos:sourceConcept &lt;http://id.insee.fr/codes/pcsese2003/categorieSocioprofessionnelle/10> ;
-  # This is "Artisan" / "craftsman"
-  xkos:targetConcept &lt;http://id.insee.fr/codes/pcsese2003/categorieSocioprofessionnelle/21> ;
-  insee:differenceNote &lt;http://id.insee.fr/codes/pcsese2003/association/10-21/difference/v1/fr> ;
-  insee:similarityNote &lt;http://id.insee.fr/codes/pcsese2003/association/10-21/ressemblance/v1/fr> ;
-.
+&lt;http://id.insee.fr/codes/pcsese2003/association/10-21&gt;
+    a xkos:ConceptAssociation ;
+    # This is "Agriculteur" / "farmer"
+    xkos:sourceConcept &lt;http://id.insee.fr/codes/pcsese2003/categorieSocioprofessionnelle/10&gt; ;
+    # This is "Artisan" / "craftsman"
+    xkos:targetConcept &lt;http://id.insee.fr/codes/pcsese2003/categorieSocioprofessionnelle/21&gt; ;
+    insee:differenceNote &lt;http://id.insee.fr/codes/pcsese2003/association/10-21/difference/v1/fr&gt; ;
+    insee:similarityNote &lt;http://id.insee.fr/codes/pcsese2003/association/10-21/ressemblance/v1/fr&gt; .
  
 # The differenceNote "Activity is not in the agriculture field"
-&lt;http://id.insee.fr/codes/pcsese2003/association/10-21/difference/v1/fr> a xkos:ExplanatoryNote ;
-  xkos:plainText “Activité ne relevant pas de l'agriculture”;
-  dct:language “fr” ;
-  .
+&lt;http://id.insee.fr/codes/pcsese2003/association/10-21/difference/v1/fr&gt;
+    a xkos:ExplanatoryNote ;
+    xkos:plainText "Activité ne relevant pas de l'agriculture" ;
+    dcterms:language "fr" .
  
-# The similarityNote : "Can have a similar position"
-&lt;http://id.insee.fr/codes/pcsese2003/association/10-21/ressemblance/v1/fr> a xkos:ExplanatoryNote ;
-  xkos:plainText “Peuvent faire un métier voisin”;
-  dct:language “fr” ;
-  .
+# The similarityNote: "Can have a similar position"
+&lt;http://id.insee.fr/codes/pcsese2003/association/10-21/ressemblance/v1/fr&gt;
+    a xkos:ExplanatoryNote ;
+    xkos:plainText "Peuvent faire un métier voisin" ;
+    dcterms:language "fr" .
 
 						</pre>
 				</aside>
@@ -1181,21 +1249,24 @@ ex:NACE_ItemTypes a skos:ConceptScheme ;
 				<aside class="example" title="Declaration of the correspondence table between pcsese1982 and pcsese2003">
 					<pre class="nohighlight">
 # 1982 Classification
-&lt;http://id.insee.fr/codes/pcsese1982/pcsese> a skos:ConceptScheme ;
-          skos:prefLabel "Nomenclature des Professions et Catégories Socioprofessionnelles des Emplois Salariés d'Entreprise (PCS-ESE) 1982"@fr ;
-          skos:notation "PCS-ESE 1982"@fr .
+&lt;http://id.insee.fr/codes/pcsese1982/pcsese&gt;
+    a skos:ConceptScheme ;
+    skos:prefLabel "Nomenclature des Professions et Catégories Socioprofessionnelles des Emplois Salariés d'Entreprise (PCS-ESE) 1982"@fr ;
+    skos:notation "PCS-ESE 1982"@fr .
 
 # 2003 Classification
-&lt;http://id.insee.fr/codes/pcsese2003/pcsese> a skos:ConceptScheme ;
-          skos:prefLabel "Nomenclature des Professions et Catégories Socioprofessionnelles des Emplois Salariés d'Entreprise (PCS-ESE) 2003"@fr ;
-          skos:notation "PCS-ESE 2003"@fr ;
-          xkos:after &lt;http://id.insee.fr/codes/pcsese1982/pcsese> .
+&lt;http://id.insee.fr/codes/pcsese2003/pcsese&gt;
+    a skos:ConceptScheme ;
+    skos:prefLabel "Nomenclature des Professions et Catégories Socioprofessionnelles des Emplois Salariés d'Entreprise (PCS-ESE) 2003"@fr ;
+    skos:notation "PCS-ESE 2003"@fr ;
+    xkos:after &lt;http://id.insee.fr/codes/pcsese1982/pcsese&gt; .
 
 # Correspondance table
-&lt;http://id.insee.fr/codes/pcsese1982-pcsese2003> a xkos:Correspondence ;
-          skos:prefLabel "Table de correspondance PCS-ESE 1982 / PCS-ESE 2003"@fr ;
-          xkos:compares &lt;http://id.insee.fr/codes/pcsese1982/pcsese> ;
-          xkos:compares &lt;http://id.insee.fr/codes/pcsese2003/pcsese> .
+&lt;http://id.insee.fr/codes/pcsese1982-pcsese2003&gt;
+    a xkos:Correspondence ;
+    skos:prefLabel "Table de correspondance PCS-ESE 1982 / PCS-ESE 2003"@fr ;
+    xkos:compares &lt;http://id.insee.fr/codes/pcsese1982/pcsese&gt; ;
+    xkos:compares &lt;http://id.insee.fr/codes/pcsese2003/pcsese&gt; .
 					</pre>
 				</aside>
 				<section id="bp-correspondences-example-nochange">
@@ -1204,24 +1275,29 @@ ex:NACE_ItemTypes a skos:ConceptScheme ;
 					<aside class="example" title="Using a xkos:ConceptAssociation in case a concept has not changed between revisions">
 						<pre class="nohighlight">
 # source concept in 1982 revision
-&lt;http://id.insee.fr/codes/pcsese1982/rubrique/4702> a skos:Concept ;
-          skos:inScheme &lt;http://id.insee.fr/codes/pcsese1982/pcsese> ;
-          skos:prefLabel "Contrôleurs laitiers, inséminateurs et autres agents techniques agricoles"@fr ;
-          skos:notation "4702"@fr .
+&lt;http://id.insee.fr/codes/pcsese1982/rubrique/4702&gt;
+    a skos:Concept ;
+    skos:inScheme &lt;http://id.insee.fr/codes/pcsese1982/pcsese&gt; ;
+    skos:prefLabel "Contrôleurs laitiers, inséminateurs et autres agents techniques agricoles"@fr ;
+    skos:notation "4702"@fr .
 
 # target concept in 2003 revision
-&lt;http://id.insee.fr/codes/pcsese2003/rubrique/471b> a skos:Concept ;
-          skos:inScheme &lt;http://id.insee.fr/codes/pcsese2003/pcsese> ;
-          skos:prefLabel "Techniciens d'exploitation et de contrôle de la production en agriculture, eaux et forêts"@fr ;
-          skos:notation "471b"@fr .
+&lt;http://id.insee.fr/codes/pcsese2003/rubrique/471b&gt;
+    a skos:Concept ;
+    skos:inScheme &lt;http://id.insee.fr/codes/pcsese2003/pcsese&gt; ;
+    skos:prefLabel "Techniciens d'exploitation et de contrôle de la production en agriculture, eaux et forêts"@fr ;
+    skos:notation "471b"@fr .
 
 # A concept association links the single source concept to the single target concept
-&lt;http://id.insee.fr/codes/pcsese1982-pcsese2003/association/4702-471b> a xkos:ConceptAssociation ;
-          xkos:sourceConcept &lt;http://id.insee.fr/codes/pcsese1982/rubrique/4702> ;
-          xkos:targetConcept &lt;http://id.insee.fr/codes/pcsese2003/rubrique/471b> .
+&lt;http://id.insee.fr/codes/pcsese1982-pcsese2003/association/4702-471b&gt;
+    a xkos:ConceptAssociation ;
+    xkos:sourceConcept &lt;http://id.insee.fr/codes/pcsese1982/rubrique/4702&gt; ;
+    xkos:targetConcept &lt;http://id.insee.fr/codes/pcsese2003/rubrique/471b&gt; .
 
 # Correspondence table contains the ConceptAssociation (as well as all others concept associations)
-&lt;http://id.insee.fr/codes/pcsese1982-pcsese2003> xkos:madeOf &lt;http://id.insee.fr/codes/pcsese1982-pcsese2003/association/4702-471b> .
+&lt;http://id.insee.fr/codes/pcsese1982-pcsese2003&gt; 
+    a xkos:Correspondence ;
+    xkos:madeOf &lt;http://id.insee.fr/codes/pcsese1982-pcsese2003/association/4702-471b&gt; .
 						</pre>
 					</aside>
 				</section>
@@ -1230,33 +1306,37 @@ ex:NACE_ItemTypes a skos:ConceptScheme ;
 					<p>In this case the `skos:Concept` 6742 from pcsese1982 gives two new entries in the pcsese2003, the concepts indexed 671a and 671c. Note how a single `xkos:ConceptAssociation` is used, with one source and two target. The link between the `xkos:Correspondence` and `xkos:ConceptAssociation` is beared by the `xkos:madeOf` property.</p>
 					<aside class="example" title="Using a xkos:ConceptAssociation in case of a split of entry">
 						<pre class="nohighlight">
-# source concept in 1982 revision
-&lt;http://id.insee.fr/codes/pcsese1982/rubrique/6741> a skos:Concept ;
-          skos:inScheme &lt;http://id.insee.fr/codes/pcsese1982/pcsese> ;
-          skos:prefLabel "Ouvriers non qualifiés du travail du béton et du génie civil"@fr ;
-          skos:notation "6741"@fr .
+# Source concept in 1982 revision
+&lt;http://id.insee.fr/codes/pcsese1982/rubrique/6741&gt;
+    a skos:Concept ;
+    skos:inScheme &lt;http://id.insee.fr/codes/pcsese1982/pcsese&gt; ;
+    skos:prefLabel "Ouvriers non qualifiés du travail du béton et du génie civil"@fr ;
+    skos:notation "6741"@fr .
 
-# first target concept in 2003 revision
-&lt;http://id.insee.fr/codes/pcsese2003/rubrique/671a> a skos:Concept ;
-          skos:inScheme &lt;http://id.insee.fr/codes/pcsese2003/pcsese> ;
-          skos:prefLabel "Ouvriers non qualifiés des travaux publics de l'Etat et des collectivités locales"@fr ;
-          skos:notation "671a"@fr .
+# First target concept in 2003 revision
+&lt;http://id.insee.fr/codes/pcsese2003/rubrique/671a&gt;
+    a skos:Concept ;
+    skos:inScheme &lt;http://id.insee.fr/codes/pcsese2003/pcsese&gt; ;
+    skos:prefLabel "Ouvriers non qualifiés des travaux publics de l'Etat et des collectivités locales"@fr ;
+    skos:notation "671a"@fr .
 
-# second target concept in 2003 revision
-&lt;http://id.insee.fr/codes/pcsese2003/rubrique/671c> a skos:Concept ;
-          skos:inScheme &lt;http://id.insee.fr/codes/pcsese2003/pcsese> ;
-          skos:prefLabel "Ouvriers non qualifiés des travaux publics et du travail du béton"@fr ;
-          skos:notation "671c"@fr .
+# Second target concept in 2003 revision
+&lt;http://id.insee.fr/codes/pcsese2003/rubrique/671c&gt;
+    a skos:Concept ;
+    skos:inScheme &lt;http://id.insee.fr/codes/pcsese2003/pcsese&gt; ;
+    skos:prefLabel "Ouvriers non qualifiés des travaux publics et du travail du béton"@fr ;
+    skos:notation "671c"@fr .
 
 # A single ConceptAssociation describes the split, it has one source and two targets
-&lt;http://id.insee.fr/codes/pcsese1982-pcsese2003/association/6741-671a> a xkos:ConceptAssociation ;
-          xkos:sourceConcept &lt;http://id.insee.fr/codes/pcsese1982/rubrique/6741> ;
-          xkos:targetConcept &lt;http://id.insee.fr/codes/pcsese2003/rubrique/671a> ;
-          xkos:targetConcept &lt;http://id.insee.fr/codes/pcsese2003/rubrique/671c> .
+&lt;http://id.insee.fr/codes/pcsese1982-pcsese2003/association/6741-671a&gt;
+    a xkos:ConceptAssociation ;
+    xkos:sourceConcept &lt;http://id.insee.fr/codes/pcsese1982/rubrique/6741&gt; ;
+    xkos:targetConcept &lt;http://id.insee.fr/codes/pcsese2003/rubrique/671a&gt; ;
+    xkos:targetConcept &lt;http://id.insee.fr/codes/pcsese2003/rubrique/671c&gt; .
 
 # Correspondence table contains the ConceptAssociation (as well as all others concept associations)
-&lt;http://id.insee.fr/codes/pcsese1982-pcsese2003> xkos:madeOf &lt;http://id.insee.fr/codes/pcsese1982-pcsese2003/association/6741-671a> .
-
+&lt;http://id.insee.fr/codes/pcsese1982-pcsese2003&gt;
+    xkos:madeOf &lt;http://id.insee.fr/codes/pcsese1982-pcsese2003/association/6741-671a&gt; .
 						</pre>
 					</aside>
 				</section>
@@ -1265,31 +1345,34 @@ ex:NACE_ItemTypes a skos:ConceptScheme ;
 					<p>Inversely, this example illustrates a merge of two concepts from the pcsese1982 into one concept in the pcsese2003. A single `xkos:ConceptAssociation` is used, with two sources and one target.</p>
 					<aside class="example" title="Using a xkos:ConceptAssociation in case of a merge of entries">
 						<pre class="nohighlight">
-# first source concept in 1982 revision
-&lt;http://id.insee.fr/codes/pcsese1982/rubrique/3412>  a skos:Concept ;
-          skos:inScheme &lt;http://id.insee.fr/codes/pcsese1982/pcsese>  ;
-          skos:prefLabel "Professeurs agrégés et certifiés d'enseignement général"@fr ;
-          skos:notation "3412"@fr .
+# First source concept in 1982 revision
+&lt;http://id.insee.fr/codes/pcsese1982/rubrique/3412&gt;
+    a skos:Concept ;
+    skos:inScheme &lt;http://id.insee.fr/codes/pcsese1982/pcsese&gt; ;
+    skos:prefLabel "Professeurs agrégés et certifiés d'enseignement général"@fr ;
+    skos:notation "3412"@fr .
 
-# second source concept in 1982 revision
-&lt;http://id.insee.fr/codes/pcsese1982/rubrique/3413> a skos:Concept ;
-          skos:inScheme &lt;http://id.insee.fr/codes/pcsese1982/pcsese> ;
-          skos:prefLabel "Professeurs techniques de lycée"@fr ;
-          skos:notation "3413"@fr .
+# Second source concept in 1982 revision
+&lt;http://id.insee.fr/codes/pcsese1982/rubrique/3413&gt;
+    a skos:Concept ;
+    skos:inScheme &lt;http://id.insee.fr/codes/pcsese1982/pcsese&gt; ;
+    skos:prefLabel "Professeurs techniques de lycée"@fr ;
+    skos:notation "3413"@fr .
 
-# target concept in 2003 revision
-&lt;http://id.insee.fr/codes/pcsese2003/rubrique/341a> a skos:Concept ;
-          skos:inScheme &lt;http://id.insee.fr/codes/pcsese2003/pcsese> ;
-          skos:prefLabel "Professeurs agrégés et certifiés de l'enseignement secondaire"@fr ;
-          skos:notation "341a"@fr .
+# Target concept in 2003 revision
+&lt;http://id.insee.fr/codes/pcsese2003/rubrique/341a&gt;
+    a skos:Concept ;
+    skos:inScheme &lt;http://id.insee.fr/codes/pcsese2003/pcsese&gt; ;
+    skos:prefLabel "Professeurs agrégés et certifiés de l'enseignement secondaire"@fr ;
+    skos:notation "341a"@fr .
 
 # A single ConceptAssociation describes a merge, it has 2 sources and a single target
-&lt;http://id.insee.fr/codes/pcsese1982-pcsese2003/association/3412-341a> a xkos:ConceptAssociation ;
-          xkos:sourceConcept &lt;http://id.insee.fr/codes/pcsese1982/rubrique/3412> ;
-          xkos:sourceConcept &lt;http://id.insee.fr/codes/pcsese1982/rubrique/3413> ;
-          xkos:targetConcept &lt;http://id.insee.fr/codes/pcsese2003/rubrique/341a> .
+&lt;http://id.insee.fr/codes/pcsese1982-pcsese2003/association/3412-341a&gt; a xkos:ConceptAssociation ;
+          xkos:sourceConcept &lt;http://id.insee.fr/codes/pcsese1982/rubrique/3412&gt; ;
+          xkos:sourceConcept &lt;http://id.insee.fr/codes/pcsese1982/rubrique/3413&gt; ;
+          xkos:targetConcept &lt;http://id.insee.fr/codes/pcsese2003/rubrique/341a&gt; .
 
-# Correspondence table contains the ConceptAssociation (as well as all others concept associations)
+# A correspondence table contains the ConceptAssociation (as well as all others concept associations)
 &lt;http://id.insee.fr/codes/pcsese1982-pcsese2003> xkos:madeOf &lt;http://id.insee.fr/codes/pcsese1982-pcsese2003/association/3412-341a> .
 						</pre>
 					</aside>
@@ -1297,23 +1380,25 @@ ex:NACE_ItemTypes a skos:ConceptScheme ;
 				
 				<section id="bp-correspondences-example-n-m">
 					<h5>n-to-m example</h5>
-					<p>The example below gives an example of a n-m relation between the two classifications. This allows us to more directly identify the equivalence of the two sets of concepts that cover the same sub-field of interest but whose relations are tangled. The example below shows only the `xkos:ConceptAssociation` : </p>
+					<p>The example below gives an example of a n-m relation between the two classifications. This allows us to more directly identify the equivalence of the two sets of concepts that cover the same sub-field of interest but whose relations are tangled. The example below shows only the `xkos:ConceptAssociation`: </p>
 					<aside class="example" title="Using a xkos:ConceptAssociation in case of an n-m relation">
 						<pre class="nohighlight">
-# a concept association having 2 source concepts and 3 target concepts
-&lt;http://id.insee.fr/codes/nafr2-cpfr21/association/72.1-72.0> a xkos:ConceptAssociation ;
-  xkos:sourceConcept &lt;http://id.insee.fr/codes/nafr2/groupe/72.1> ;
-  xkos:sourceConcept &lt;http://id.insee.fr/codes/nafr2/groupe/72.2> ;
-  xkos:targetConcept &lt;http://id.insee.fr/codes/cpfr21/groupe/72.0>  ;
-  xkos:targetConcept &lt;http://id.insee.fr/codes/cpfr21/groupe/72.1> ;
-  xkos:targetConcept &lt;http://id.insee.fr/codes/cpfr21/groupe/72.2> .
+# A concept association having 2 source concepts and 3 target concepts
+&lt;http://id.insee.fr/codes/nafr2-cpfr21/association/72.1-72.0&gt;
+    a xkos:ConceptAssociation ;
+    xkos:sourceConcept &lt;http://id.insee.fr/codes/nafr2/groupe/72.1&gt; ;
+    xkos:sourceConcept &lt;http://id.insee.fr/codes/nafr2/groupe/72.2&gt; ;
+    xkos:targetConcept &lt;http://id.insee.fr/codes/cpfr21/groupe/72.0&gt;  ;
+    xkos:targetConcept &lt;http://id.insee.fr/codes/cpfr21/groupe/72.1&gt; ;
+    xkos:targetConcept &lt;http://id.insee.fr/codes/cpfr21/groupe/72.2&gt; .
 
-# Correspondence table contains the ConceptAssociation (as well as all others concept associations)
-&lt;http://id.insee.fr/codes/nafr2-cpfr21> xkos:madeOf <http://id.insee.fr/codes/nafr2-cpfr21/association/72.1-72.0> .
+# A correspondence table contains the ConceptAssociation (as well as all others concept associations)
+&lt;http://id.insee.fr/codes/nafr2-cpfr21&gt;
+    xkos:madeOf &lt;http://id.insee.fr/codes/nafr2-cpfr21/association/72.1-72.0&gt; .
 						</pre>
 					</aside>
 					<p>The description above is sufficient for mapping the source Concepts  to the target concepts, and thus outlining the comparable set of concepts between the two classifications, but it doesn’t describe how these concepts are actually linked. For instance the source Concept 72.1 may be linked to only 2 of the 3 target concepts, and the use of `xkos:ConceptAssociation` as above doesn’t allow discriminating between these alternatives.</p>
-					<p>In order to be more accurate in this linkage definition one could be tempted to split the n-m `xkos:ConceptAssocation` in several 1-1 `xkos:ConceptAssocation`. However that solution is discouraged and not considered a good practice : if there is a decision to split a concept, then this decision needs to be documented on only one `xkos:ConceptAssociation`. Moreover, in the case of a split we would lose the information that the two target concepts originate from the same concept.</p>
+					<p>In order to be more accurate in this linkage definition one could be tempted to split the n-m `xkos:ConceptAssocation` in several 1-1 `xkos:ConceptAssocation`. However that solution is discouraged and not considered a good practice: if there is a decision to split a concept, then this decision needs to be documented on only one `xkos:ConceptAssociation`. Moreover, in the case of a split we would lose the information that the two target concepts originate from the same concept.</p>
 					<p>The alternative to capture this is to introduce a matrix based on the links from the source concepts towards the target concepts. This is described in another section below.</p>
 				</section>
 				<section id="bp-correspondences-example-creation-deletion">
@@ -1334,48 +1419,51 @@ ex:NACE_ItemTypes a skos:ConceptScheme ;
 				<p>To cope with this use case, as well as the use-case of the n-to-m concept association described above, it is possible to link the correspondence table with a matrix, expressed with the RDF Data Cube vocabulary [[QB]], that associates some values to each pair of associated source-target concepts. These values could be a percentage, a price, or a boolean to indicate whether the concepts are actually linked or not. These values are actually the measures of the observations in the data cube.<br />
 				Note that multiple values can be associated with a single observation in this data cube matrix, to give for exemple values both in terms of number of employees and in terms of revenues.
 				</p>
-				<p>One could see this matrix as a redundancy with the correspondence table. It is actually a different, complimentary point of view : while the correspondence table gives a “documentary” view, and an easy way to traverse from the source concept to the target concept, the matrix provides the statistical point of view, with the numbers or weights associated to each pair of related source-target concept.</p><p>It is suggested that a new property is introduced in XKOS to capture the link between a Correspondence table and its corresponding `qb:DataSet` that captures the weights. The suggested property is `xkos:weightedBy`, but it is not part of XKOS at the time of this writing. A more generic property like `dct:relation` can also be used by default.</p>
+				<p>One could see this matrix as a redundancy with the correspondence table. It is actually a different, complimentary point of view: while the correspondence table gives a “documentary” view, and an easy way to traverse from the source concept to the target concept, the matrix provides the statistical point of view, with the numbers or weights associated to each pair of related source-target concept.</p><p>It is suggested that a new property is introduced in XKOS to capture the link between a Correspondence table and its corresponding `qb:DataSet` that captures the weights. The suggested property is `xkos:weightedBy`, but it is not part of XKOS at the time of this writing. A more generic property like `dcterms:relation` can also be used by default.</p>
 				<p>The following example illustrates this suggested mechanism. Note how the correspondence table in this example, and the associated matrix, are defined only for a given `xkos:ClassificationLevel` in each of the compared classifications.</p>
 				<aside class="example" title="Example of a correspondence table matrix">
 						<pre class="nohighlight">
 # Defines Classification A with 2 levels, groups and sections
-ex:classificationA a skos:ConceptScheme ;
-  xkos:levels (ex:classificationA-Groups ex:classificationA-Sections) ;
-.
-ex:classificationA-Groups a xkos:ClassificationLevel .
-ex:classificationA-Sections a xkos:ClassificationLevel .
+ex:classificationA
+    a skos:ConceptScheme ;
+    xkos:levels (ex:classificationA-Groups ex:classificationA-Sections) .
+ex:classificationA-Groups
+    a xkos:ClassificationLevel .
+ex:classificationA-Sections
+    a xkos:ClassificationLevel .
 
 # Defines Classification B with 2 levels, headings and sub-headings
-ex:classificationB a skos:ConceptScheme ;
-  xkos:levels (ex:classificationB-Headings ex:classificationB-Subheadings) ;
-.
-ex:classificationB-Headings a xkos:ClassificationLevel .
-ex:classificationB-Subheadings a xkos:ClassificationLevel .
- 
- 
+ex:classificationB
+    a skos:ConceptScheme ;
+    xkos:levels (ex:classificationB-Headings ex:classificationB-Subheadings) .
+ex:classificationB-Headings
+    a xkos:ClassificationLevel .
+ex:classificationB-Subheadings
+    a xkos:ClassificationLevel .
+
 # The XKOS Correspondence compares classification A
 # and classification B, and points to its qb:DataSet matrix
-ex:correspondence-classificationA-to-classificationB a xkos:Correspondence ;
-  xkos:compares ex:classificationA, ex:classificationB ;
-  xkos:weightedBy ex:correspondence-matrix ;
-.
+ex:correspondence-classificationA-to-classificationB
+    a xkos:Correspondence ;
+    xkos:compares ex:classificationA, ex:classificationB ;
+    xkos:weightedBy ex:correspondence-matrix .
  
 # Describes the QB Dataset
-ex:correspondence-matrix a qb:DataSet;
-    rdfs:label "weighted matrix"@en;
-    rdfs:comment "Matrix of weighted links between source and target concepts"@en;
-    qb:structure ex:correspondence-matrix-dsd ;  
-    .
+ex:correspondence-matrix
+    a qb:DataSet;
+    rdfs:label "weighted matrix"@en ;
+    rdfs:comment "Matrix of weighted links between source and target concepts"@en ;
+    qb:structure ex:correspondence-matrix-dsd .
  
 # DataSet Definition of the matrix
 # It declares 2 dimensions (source concept and target concept)
-# as well as a measure in this case “ex:percentage”
-ex:correspondence-matrix-dsd a qb:DataStructureDefinition;
+# as well as a measure in this case "ex:percentage"
+ex:correspondence-matrix-dsd
+    a qb:DataStructureDefinition ;
     qb:component 
-        [ qb:dimension ex:source-concept ];
-        [ qb:dimension ex:target-concept ] ;
-        [ qb:measure ex:percentage] ;
-    .
+      [ qb:dimension ex:source-concept ];
+      [ qb:dimension ex:target-concept ] ;
+      [ qb:measure ex:percentage] .
  
 # Each dimension has a code list that corresponds
 # to a level in each of the classification
@@ -1387,19 +1475,103 @@ ex:target-concept qb:codeList ex:classificationB-Subheadings .
 # Each qb:Observation has 2 dimensions, the source concept in A 
 # and the target concept in B, with an associated percentage
 # concept A1.2 is mapped to concept B3.4 at 10% and to concept 5.6 at 90%
-ex:obs1 a qb:Observation;
-    qb:dataSet  ex:correspondence-matrix ;
+ex:obs1
+    a qb:Observation;
+    qb:dataSet ex:correspondence-matrix ;
     ex:source-concept ex:conceptA1.2 ;    
     ex:target-concept ex:conceptB3.4  ;                  
-    ex:percentage        10 ;
-    .
+    ex:percentage 10 .
     
-ex:obs2 a qb:Observation;
-    qb:dataSet  ex:correspondence-matrix ;
+ex:obs2
+    a qb:Observation ;
+    qb:dataSet ex:correspondence-matrix ;
     ex:source-concept ex:conceptA1.2 ;    
     ex:target-concept ex:conceptB5.6  ;                  
-    ex:percentage        90 ;
-    .
+    ex:percentage 90 .
+						</pre>
+					</aside>
+				
+									<p>The following example illustrates a real example with a weighted correspondence table between NAF and NAFrev1 classifications.</p>
+									<aside class="example" title="Real example of a correspondence table matrix">
+						<pre class="nohighlight">
+# Defines classification version NAF with 5 levels, sections, sousSections, divisions, groupes, classes
+&lt;http://id.insee.fr/codes/nafr1/naf&gt;
+    a skos:ConceptScheme ;
+    xkos:levels ( &lt;http://id.insee.fr/codes/naf/sections&gt; &lt;http://id.insee.fr/codes/naf/sousSections&gt; &lt;http://id.insee.fr/codes/naf/divisions&gt;
+    &lt;http://id.insee.fr/codes/naf/groupes&gt; &lt;http://id.insee.fr/codes/naf/classes&gt; ) .
+
+&lt;http://id.insee.fr/codes/naf/sections&gt;
+    a xkos:ClassificationLevel .
+&lt;http://id.insee.fr/codes/naf/sousSections&gt;
+    a xkos:ClassificationLevel .
+&lt;http://id.insee.fr/codes/naf/divisions&gt;
+    a xkos:ClassificationLevel .
+&lt;http://id.insee.fr/codes/naf/groupes&gt;
+    a xkos:ClassificationLevel .
+&lt;http://id.insee.fr/codes/naf/classes&gt;
+    a xkos:ClassificationLevel .
+
+# Defines classification version NAFrev1 with 5 levels: sections, sousSections, divisions, groupes and classes
+&lt;http://id.insee.fr/codes/nafr2/naf&gt;
+    a skos:ConceptScheme ;
+    xkos:levels ( &lt;http://id.insee.fr/codes/nafr1/sections&gt; &lt;http://id.insee.fr/codes/nafr1/sousSections&gt; &lt;http://id.insee.fr/codes/nafr1/divisions&gt;
+    &lt;http://id.insee.fr/codes/nafr1/groupes&gt; &lt;http://id.insee.fr/codes/nafr1/classes&gt; ) .
+
+&lt;http://id.insee.fr/codes/nafr1/sections&gt;
+    a xkos:ClassificationLevel .
+&lt;http://id.insee.fr/codes/nafr1/sousSections&gt;
+    a xkos:ClassificationLevel .
+&lt;http://id.insee.fr/codes/nafr1/divisions&gt;
+    a xkos:ClassificationLevel .
+&lt;http://id.insee.fr/codes/nafr1/groupes&gt;
+    a xkos:ClassificationLevel .
+&lt;http://id.insee.fr/codes/nafr1/classes&gt;
+    a xkos:ClassificationLevel .
+
+# The XKOS Correspondence compares NAF and NAFrev1 versions, and points to its qb:DataSet matrix
+&lt;http://id.insee.fr/codes/naf-nafr1&gt;
+    a xkos:Correspondence ;
+    xkos:compares &lt;http://id.insee.fr/codes/naf/naf&gt; , &lt;http://id.insee.fr/codes/nafr1/naf&gt; ;
+    xkos:weightedBy ex:correspondence-matrix .
+ 
+# Describes the QB Dataset
+&lt;http://id.insee.fr/qb/donnees-Correspondance-classes-naf-classes-nafr1&gt;
+    a qb:DataSet ;
+    rdfs:label "weighted matrix"@en ;
+    rdfs:comment "Matrix containing weighted links between source concepts and target concepts"@en ;
+    qb:structure ex:correspondence-matrix-dsd .
+ 
+# Data structure definition of the matrix
+# It declares 2 dimensions (source concept and target concept) as well as a measure in this case “ex:percentage”
+&lt;http://id.insee.fr/qb/dsd-classes-naf-classes-nafr1&gt;
+    a qb:DataStructureDefinition ;
+    qb:component 
+      [ qb:dimension &lt;http://id.insee.fr/qb/dimClassesNaf&gt; ] ;
+      [ qb:dimension &lt;http://id.insee.fr/qb/dimClassesNafr1&gt; ] ;
+      [ qb:measure &lt;http://id.insee.fr/qb/percentage&gt;] .
+ 
+# Each dimension has a code list that corresponds to a level in each of the classification versions
+# Here the “classes” from classification NAF are compared with the “sousClasses” of classification NAFrev1
+&lt;http://id.insee.fr/qb/dimClassesNaf&gt;
+    qb:codeList &lt;http://id.insee.fr/codes/naf/classes&gt; .
+&lt;http://id.insee.fr/qb/dimClassesNafr1&gt;
+    qb:codeList &lt;http://id.insee.fr/codes/nafr1/classes&gt; .
+ 
+# Each qb:Observation has 2 dimensions, the source concept in NAF and the target concept in NAFrev1, with an associated percentage
+# concept 29.1C is mapped to concept 29.1B at 76.41% and to concept 29.1E at 23.59%
+ex:obs1
+    a qb:Observation ;
+    qb:dataSet &lt;http://id.insee.fr/qb/donnees-Correspondance-classes-naf-classes-nafr1&gt; ;
+    &lt;http://id.insee.fr/qb/dimClassesNaf&gt; &lt;http://id.insee.fr/codes/naf/classe/29.1C&gt; ;    
+    &lt;http://id.insee.fr/qb/dimClassesNafr1&gt; &lt;http://id.insee.fr/codes/nafr1/classe/29.1B&gt; ;                  
+    &lt;http://id.insee.fr/qb/percentage&gt; 76.41 .
+    
+ex:obs2
+    a qb:Observation;
+    qb:dataSet  &lt;http://id.insee.fr/qb/donnees-Correspondance-classes-naf-classes-nafr1&gt; ;
+    &lt;http://id.insee.fr/qb/dimClassesNaf&gt; &lt;http://id.insee.fr/codes/naf/classe/29.1C&gt; ;    
+    &lt;http://id.insee.fr/qb/dimClassesNafr1&gt; &lt;http://id.insee.fr/codes/nafr1/classe/29.1E&gt;  ;                  
+    &lt;http://id.insee.fr/qb/percentage&gt; 23.59 .
 						</pre>
 					</aside>
 					<div class="issue" title="Include second example with real case of INSEE based on conceptAssociation example above"></div>
@@ -1430,7 +1602,7 @@ skos:prefLabel "ISIC Group"@en .
 			<section id="bp-evolution-major-versions">
 				<h4>Major versions of classifications</h4>
 				<p>When a complete revision of a classification happens, a new major version of a classification is produced. The recommendation is that all the URIs of the concepts and levels are recreated and the relation between the classification items is given by a correspondence table as presented in the <a href="#bp-correspondences">corresponding section of this document</a>. The former classification should have the property `owl:deprecated` set to “true” and its period of validity updated in a `dcat:temporal` property.</p>
-				<div class="issue" title="dcat:temporal or dct:valid ?"></div>
+				<div class="issue" title="dcat:temporal or dcterms:valid ?"></div>
 			</section>
 			<section id="bp-evolution-linking">
 				<h4>Linking major versions of classifications</h4>
@@ -1482,9 +1654,9 @@ skos:prefLabel "ISIC Group"@en .
 			</section>
 			<section id="bp-evolution-series">
 				<h4>Series of classification</h4>
-				<p>The figure below presents the succession of two revisions of the NAF classification. The temporal periods of validity of each revision are given through the `dct:temporal` property that has as value a `dcat:PeriodOfTime` using the `dcat:startDate` and `dcat:endDate` properties. A possibility to clearly identify that the NAFRev1 is the obsolete version is to use the `owl:deprecated` property set to `true`.</p>
+				<p>The figure below presents the succession of two revisions of the NAF classification. The temporal periods of validity of each revision are given through the `dcterms:temporal` property that has as value a `dcat:PeriodOfTime` using the `dcat:startDate` and `dcat:endDate` properties. A possibility to clearly identify that the NAFRev1 is the obsolete version is to use the `owl:deprecated` property set to `true`.</p>
 				<img src="img/bp-series-example.png" alt="Example of a classification serie" />
-				<div class="issue" title="dct:temporal or dct:valid or something else ?"></div>
+				<div class="issue" title="dcterms:temporal or dcterms:valid or something else ?"></div>
 				<div class="issue" title="improve diagram">
 					<p>I think we need to review the formalism of this diagram, which mixes an entity/relation graph formalism with a UML class diagram formalism. I think that everything should be in the entity/relationship formalism (= drawing the graph of RDF triples, with instance URIs).</p>
 
@@ -1500,122 +1672,124 @@ skos:prefLabel "ISIC Group"@en .
 				<h4>Datasets of classifications</h4>
 				<p>It is recommended to use DCAT V2 to describe and disseminate metadata associated with classifications.</p>
 				<p>Each revision of a classification should correspond to one `dcat:Dataset`. For instance, in the example below, the classification NAF Rev1 and NAF Rev2 are separated in distinct `dcat:Dataset`s with different version information. Each classification’s dataset belongs to a `dcat:Catalog`.</p>
-				<p>Each dataset should have downloadable files in the necessary formats for both human and machine agents. In particular, statistical classifications should be provided for download in an RDF file based on [[SKOS]] and [[XKOS]] vocabularies, containing the full content of the classification. In the example, CSV and RDF (SKOS) formats are provided. The `dct:conformsTo` property should be set to the URI of the [[XKOS]] vocabulary : <a href="http://rdf-vocabulary.ddialliance.org/xkos">http://rdf-vocabulary.ddialliance.org/xkos</a>.</p>
-				<p>For practical reasons it is important to have direct access to the latest version of a classification for directly retrieving the updated notes. However, for reasons of nomenclature expertise it is also important to have access to changes in notes that have affected the nomenclature. It is therefore recommended to have access to the history of modifications of all notes within the revision of the classification included in a `dcat:Dataset`. These versions containing the history of all notes are considered as different distributions of the datasets. They should be described by specific properties. Here we use `rdfs:comment` for describing and discriminating the distributions, given a lack of other alternatives. Other information is given by the `dct:PeriodOfTime` that is wider in the case of the distribution with all the note changes.</p>
+				<p>Each dataset should have downloadable files in the necessary formats for both human and machine agents. In particular, statistical classifications should be provided for download in an RDF file based on [[SKOS]] and [[XKOS]] vocabularies, containing the full content of the classification. In the example, CSV and RDF (SKOS) formats are provided. The `dcterms:conformsTo` property should be set to the URI of the [[XKOS]] vocabulary: <a href="http://rdf-vocabulary.ddialliance.org/xkos">http://rdf-vocabulary.ddialliance.org/xkos</a>.</p>
+				<p>For practical reasons it is important to have direct access to the latest version of a classification for directly retrieving the updated notes. However, for reasons of nomenclature expertise it is also important to have access to changes in notes that have affected the nomenclature. It is therefore recommended to have access to the history of modifications of all notes within the revision of the classification included in a `dcat:Dataset`. These versions containing the history of all notes are considered as different distributions of the datasets. They should be described by specific properties. Here we use `rdfs:comment` for describing and discriminating the distributions, given a lack of other alternatives. Other information is given by the `dcterms:PeriodOfTime` that is wider in the case of the distribution with all the note changes.</p>
 
-				<div class="issue" title="how can we link the distribution containing the note changes with the distribution being a snapshot ?">
-				  <p>how can we link the distribution containing the note changes with the distribution being a snapshot ? we could use dct:isVersionOf, but this could be misleading. If we could say "is subset of" this would be more precise. Or a PROV relation wasderivedFrom ?</p>
+				<div class="issue" title="how can we link the distribution containing the note changes with the distribution being a snapshot?">
+				  <p>how can we link the distribution containing the note changes with the distribution being a snapshot ? we could use dcterms:isVersionOf, but this could be misleading. If we could say "is subset of" this would be more precise. Or a PROV relation wasderivedFrom ?</p>
 				</div>
 
 				<aside class="example" title="Example of a statistical classification dataset in DCAT">
 					<pre class="nohighlight">
 # Catalogue of datasets
-ex:ClassificationCatalog a dcat:Catalog ;
-dcat:homepage ex:HomepageOfClassificationCatalog ;
-dcat:themeTaxonomy ex:CatalogClassificationThemes ;
-dc:title "Catalogue of statistical classifications"@en ;
-dcat:dataset ex:NAFRev2Dataset ;
-dcat:dataset ex:NAFRev1Dataset .
+ex:ClassificationCatalog
+    a dcat:Catalog ;
+    dcat:homepage ex:HomepageOfClassificationCatalog ;
+    dcat:themeTaxonomy ex:CatalogClassificationThemes ;
+    dc:title "Catalogue of statistical classifications"@en ;
+    dcat:dataset ex:NAFRev2Dataset ;
+    dcat:dataset ex:NAFRev1Dataset .
 
 # A theme taxonomy, with a single concept in it
-ex:CatalogClassificationThemes a skos:ConceptScheme ;
-skos:prefLabel "Concepts for describing statistical classifications"@en .
+ex:CatalogClassificationThemes
+    a skos:ConceptScheme ;
+    skos:prefLabel "Concepts for describing statistical classifications"@en .
 
-ex:Activity a skos:Concept ;
-skos:prefLabel "Economic activities"@en ;
-skos:inScheme ex:CatalogClassificationThemes .
+ex:Activity
+    a skos:Concept ;
+    skos:prefLabel "Economic activities"@en ;
+    skos:inScheme ex:CatalogClassificationThemes .
 
 # Dataset of NAFRev2, with its theme, 
 # its conformance to XKOS, date of issuance, and link to distributions
-ex:NAFRev2Dataset a dcat:Dataset ;
-  dcat:Theme ex:Activity ;
-  dct:conformsTo <http://rdf-vocabulary.ddialliance.org/xkos> ;
-  dct:issued "2008-01-01"^^xsd:date ; 
-  dcat:distribution ex:Nafrev2CsvHistoric ;
-  dcat:distribution ex:Nafrev2Csv ;
-  dcat:distribution ex:Nafrev2RdfHistoric ;
-  dcat:distribution ex:Nafrev2Rdf ;
-.
+ex:NAFRev2Dataset
+    a dcat:Dataset ;
+    dcat:Theme ex:Activity ;
+    dcterms:conformsTo &lt;http://rdf-vocabulary.ddialliance.org/xkos&gt; ;
+    dcterms:issued "2008-01-01"^^xsd:date ; 
+    dcat:distribution ex:Nafrev2CsvHistoric ;
+    dcat:distribution ex:Nafrev2Csv ;
+    dcat:distribution ex:Nafrev2RdfHistoric ;
+    dcat:distribution ex:Nafrev2Rdf .
 
 # Distribution 1, in CSV with all note history
 # Specifies the access rights, description, date of issuance, date coverage, URL links
-ex:Nafrev2CsvHistoric a dcat:Distribution ;
-  dct:format <http://publications.europa.eu/resource/authority/file-type/CSV> ;
-  dct:accessRights <http://publications.europa.eu/resource/authority/access-right/PUBLIC> ;
-  dct:description "Economic activities in the EU in CSV with notes history"@en ;
-  dct:issued "2008-01-01"^^xsd:date ;
-  dct:temporal [ 
-    a dct:PeriodOfTime ;
-    dcat:startDate "2008-01-01"^^xsd:date ;
-  ] ;
-  dcat:accessURL ex:Nafrev2CsvHistoricPage ;
-  rdfs:comment "Contains the complete history of classification note changes"@en  ;
-.
+ex:Nafrev2CsvHistoric
+    a dcat:Distribution ;
+    dcterms:format &lt;http://publications.europa.eu/resource/authority/file-type/CSV&gt; ;
+    dcterms:accessRights &lt;http://publications.europa.eu/resource/authority/access-right/PUBLIC&gt; ;
+    dcterms:description "Economic activities in the EU in CSV with notes history"@en ;
+    dcterms:issued "2008-01-01"^^xsd:date ;
+    dcterms:temporal [ 
+      a dcterms:PeriodOfTime ;
+      dcat:startDate "2008-01-01"^^xsd:date ;
+    ] ;
+    dcat:accessURL ex:Nafrev2CsvHistoricPage ;
+    rdfs:comment "Contains the complete history of classification note changes"@en .
 
 # Distribution 2, in CSV, containing only current version of the notes
-ex:Nafrev2Csv a dcat:Distribution ;
-  dct:format <http://publications.europa.eu/resource/authority/file-type/CSV> ;
-  dct:accessRights <http://publications.europa.eu/resource/authority/access-right/PUBLIC> ;
-  dct:description "Economic activities in the  EU in CSV in current version"@en ;
-  dct:issued "2010-01-01”^^xsd:date ;
-  dct:temporal [ 
-    a dct:PeriodOfTime ;
-    dcat:startDate "2010-01-01"^^xsd:date ;
-  ] ;
-  dcat:accessURL ex:Nafrev2CsvPage ;
-  rdfs:comment "Current version of the classification, without the history of classification note changes"@en ;
-.
+ex:Nafrev2Csv
+    a dcat:Distribution ;
+    dcterms:format &lt;http://publications.europa.eu/resource/authority/file-type/CSV&gt; ;
+    dcterms:accessRights &lt;http://publications.europa.eu/resource/authority/access-right/PUBLIC&gt; ;
+    dcterms:description "Economic activities in the  EU in CSV in current version"@en ;
+    dcterms:issued "2010-01-01”^^xsd:date ;
+    dcterms:temporal [ 
+      a dcterms:PeriodOfTime ;
+      dcat:startDate "2010-01-01"^^xsd:date ;
+    ] ;
+    dcat:accessURL ex:Nafrev2CsvPage ;
+    rdfs:comment "Current version of the classification, without the history of classification note changes"@en .
 
 # Distribution 3, in RDF with all note history
-ex:Nafrev2RdfHistoric a dcat:Distribution ;
-  dct:format <http://publications.europa.eu/resource/authority/file-type/RDF> ;
-  dct:accessRights <http://publications.europa.eu/resource/authority/access-right/PUBLIC> ;
-  dct:description "Economic activities in the  EU in RDF with notes history"@en ;
-  dct:issued "2008-01-01"^^xsd:date ;
-  dct:temporal [ 
-    a dct:PeriodOfTime ;
-    dcat:startDate "2008-01-01"^^xsd:date ;
-  ] ;
-  dcat:accessURL ex:Nafrev2RdfHistoricPage ;
-  rdfs:comment "Contains the complete history of classification note changes"@en  ;
-.
+ex:Nafrev2RdfHistoric
+    a dcat:Distribution ;
+    dcterms:format &lt;http://publications.europa.eu/resource/authority/file-type/RDF&gt; ;
+    dcterms:accessRights &lt;http://publications.europa.eu/resource/authority/access-right/PUBLIC&gt; ;
+    dcterms:description "Economic activities in the  EU in RDF with notes history"@en ;
+    dcterms:issued "2008-01-01"^^xsd:date ;
+    dcterms:temporal [ 
+      a dcterms:PeriodOfTime ;
+      dcat:startDate "2008-01-01"^^xsd:date ;
+    ] ;
+    dcat:accessURL ex:Nafrev2RdfHistoricPage ;
+    rdfs:comment "Contains the complete history of classification note changes"@en .
 
 # Distribution 4, in RDF, containing only current version of the notes
-ex:Nafrev2Csv a dcat:Distribution ;
-  dct:format <http://publications.europa.eu/resource/authority/file-type/RDF> ;
-  dct:accessRights <http://publications.europa.eu/resource/authority/access-right/PUBLIC> ;
-  dct:description "Economic activities in the  EU in RDF in current version"@en ;
-  dct:issued "2010-01-01”^^xsd:date ;
-  dct:temporal [ 
-    a dct:PeriodOfTime ;
-    dcat:startDate "2010-01-01"^^xsd:date ;
-  ] ;
-  dcat:accessURL ex:Nafrev2CsvPage ;
-  rdfs:comment "Current version of the classification, without the history of classification note changes"@en ;
-.
+ex:Nafrev2Csv
+    a dcat:Distribution ;
+    dcterms:format &lt;http://publications.europa.eu/resource/authority/file-type/RDF&gt; ;
+    dcterms:accessRights &lt;http://publications.europa.eu/resource/authority/access-right/PUBLIC&gt; ;
+    dcterms:description "Economic activities in the  EU in RDF in current version"@en ;
+    dcterms:issued "2010-01-01”^^xsd:date ;
+    dcterms:temporal [ 
+      a dcterms:PeriodOfTime ;
+      dcat:startDate "2010-01-01"^^xsd:date ;
+    ] ;
+    dcat:accessURL ex:Nafrev2CsvPage ;
+    rdfs:comment "Current version of the classification, without the history of classification note changes"@en .
 
 # Same would go for ex:NAFRev1Dataset
-ex:NAFRev1Dataset a dcat:Dataset ;
-  dcat:Theme ex:Activity ;
-  dct:conformsTo <http://rdf-vocabulary.ddialliance.org/xkos> ;
-  dct:issued "2008-01-01"^^xsd:date ; 
-  dcat:distribution ex:Nafrev1CsvHistoric ;
-  dcat:distribution ex:Nafrev1Csv ;
-  dcat:distribution ex:Nafrev1RdfHistoric ;
-  dcat:distribution ex:Nafrev1Rdf ;
-.
+ex:NAFRev1Dataset
+    a dcat:Dataset ;
+    dcat:Theme ex:Activity ;
+    dcterms:conformsTo &lt;http://rdf-vocabulary.ddialliance.org/xkos&gt; ;
+    dcterms:issued "2008-01-01"^^xsd:date ; 
+    dcat:distribution ex:Nafrev1CsvHistoric ;
+    dcat:distribution ex:Nafrev1Csv ;
+    dcat:distribution ex:Nafrev1RdfHistoric ;
+    dcat:distribution ex:Nafrev1Rdf .
 
 # ...
-
-</pre>
+					</pre>
 				</aside>
 			</section>
 			<section id="bp-publishing-correspondences">
 				<h4>Datasets of correspondences</h4>
-				<p>Each correspondence table shall also be provided as a distinct Dataset in the catalog. This dataset can be linked with the dataset of the source classification and the dataset of the target classification with :</p>
+				<p>Each correspondence table shall also be provided as a distinct Dataset in the catalog. This dataset can be linked with the dataset of the source classification and the dataset of the target classification with:</p>
 				<ul>
-					<li>A generic `dct:relation` property, that is expressed both from the source and target dataset to the correspondence table dataset, and from the correspondence dataset to its source and target.</li>
-					<li>A `dcat:Relationship` that indicates more precisely the role of each dataset, either source or target in the correspondence table. The role of each dataset is captured by the `dcat:hasRole` property, with one of these 2 values :
+					<li>A generic `dcterms:relation` property, that is expressed both from the source and target dataset to the correspondence table dataset, and from the correspondence dataset to its source and target.</li>
+					<li>A `dcat:Relationship` that indicates more precisely the role of each dataset, either source or target in the correspondence table. The role of each dataset is captured by the `dcat:hasRole` property, with one of these 2 values:
 						<ul>
 							<li>`xkos:correspondenceFromRole`</li>
 							<li>`xkos:correspondenceToRole`</li>
@@ -1628,45 +1802,44 @@ ex:NAFRev1Dataset a dcat:Dataset ;
 					<pre class="nohighlight">
 # The correspondence as a dcat:Dataset, with links to the source and target datasets
 # from the previous example
-ex:CorrespondenceTableNafrev1Nafrev2Dataset a dcat:Dataset ;
-  dcat:distribution ex:CorrespondenceTableCsv ;
-  dcat:distribution ex:CorrespondenceTableRdf ;
-  # Qualified relation to the source dataset
-  dcat:qualifiedRelation [
-    a dcat:Relationship ;
-    dct:relation ex:NafRev1Dataset ;
-    dcat:hadRole xkos:correspondenceFromRole ;
-  ] ;
-  # Qualified relation to the target dataset
-  dcat:qualifiedRelation [
-    a dcat:Relationship ;
-    dct:relation ex:NafRev2Dataset ;
-    dcat:hadRole xkos:correspondenceToRole ;
-  ] ;
-.
+ex:CorrespondenceTableNafrev1Nafrev2Dataset
+    a dcat:Dataset ;
+    dcat:distribution ex:CorrespondenceTableCsv ;
+    dcat:distribution ex:CorrespondenceTableRdf ;
+    # Qualified relation to the source dataset
+    dcat:qualifiedRelation [
+      a dcat:Relationship ;
+      dcterms:relation ex:NafRev1Dataset ;
+      dcat:hadRole xkos:correspondenceFromRole ;
+    ] ;
+    # Qualified relation to the target dataset
+    dcat:qualifiedRelation [
+      a dcat:Relationship ;
+      dcterms:relation ex:NafRev2Dataset ;
+      dcat:hadRole xkos:correspondenceToRole ;
+  ] .
  
 # Distribution 1 in CSV
-ex:CorrespondenceTableCsv a dcat:Distribution ;
-  dct:format <http://publications.europa.eu/resource/authority/file-type/CSV> ;
-.
+ex:CorrespondenceTableCsv
+    a dcat:Distribution ;
+    dcterms:format &lt;http://publications.europa.eu/resource/authority/file-type/CSV&gt; .
 
 # Distribution 2 in RDF
-ex:CorrespondenceTableRdf a dcat:Distribution ;
-  dct:format <http://publications.europa.eu/resource/authority/file-type/RDF> ;
-.
+ex:CorrespondenceTableRdf
+    a dcat:Distribution ;
+    dcterms:format &lt;http://publications.europa.eu/resource/authority/file-type/RDF&gt; .
 
 # The source dataset
-ex:NafRev1Dataset a dcat:Dataset ;
-  dct:issued "2003-01-01"^^xsd:date ;
-  # ... further description of the dataset
-.
+ex:NafRev1Dataset
+    a dcat:Dataset ;
+    dcterms:issued "2003-01-01"^^xsd:date .
+    # ... further description of the dataset
 
 # The target dataset 
-ex:NafRev2Dataset a dcat:Dataset ;
-  dct:issued "2008-01-01"^^xsd:date ;
-  # ... further description of the dataset
- .
-
+ex:NafRev2Dataset
+    a dcat:Dataset ;
+    dcterms:issued "2008-01-01"^^xsd:date .
+    # ... further description of the dataset
 					</pre>
 				</aside>
 			</section>
@@ -1682,10 +1855,10 @@ ex:NafRev2Dataset a dcat:Dataset ;
 					Where:
 					<ul>
 						<li>`{scheme}`: is the URI scheme, typically “http” or “https”.</li>
-						<li>`{authority}` : the domain name of the authority attributing the URI to the resource. This guarantees the unicity of the URI at Web scale. Note that the domain name can be a dedicated subdomain of the more general domain name of the authority e.g. “data.acme.org” or “id.acme.org”.</li>
-						<li>`{all_classifications}` : is a fixed component in the URI indicating that what follows pertains to the identification of an entity in the scope of a classification, as opposed to an entity in another domain, like statistical data, document metadata, etc. Typical examples are “codes”, “classifications”, etc.</li>
-						<li>`{classification_naming_context}` : an identifier for the naming context that will contain the different components of this classification; This component typically is based on the classification id in one of its specific revisions. Examples are “nafr2”, “pcs1982”, etc.</li>
-						<li>`{concept_scheme_id}` : an identifier for the concept scheme that represents a revision of the classification. </li>
+						<li>`{authority}`: the domain name of the authority attributing the URI to the resource. This guarantees the unicity of the URI at Web scale. Note that the domain name can be a dedicated subdomain of the more general domain name of the authority e.g. “data.acme.org” or “id.acme.org”.</li>
+						<li>`{all_classifications}`: is a fixed component in the URI indicating that what follows pertains to the identification of an entity in the scope of a classification, as opposed to an entity in another domain, like statistical data, document metadata, etc. Typical examples are “codes”, “classifications”, etc.</li>
+						<li>`{classification_naming_context}`: an identifier for the naming context that will contain the different components of this classification; This component typically is based on the classification id in one of its specific revisions. Examples are “nafr2”, “pcs1982”, etc.</li>
+						<li>`{concept_scheme_id}`: an identifier for the concept scheme that represents a revision of the classification. </li>
 					</ul>
 				</p>
 				<aside class="example">
@@ -1702,12 +1875,12 @@ ex:NafRev2Dataset a dcat:Dataset ;
 					Where:
 					<ul>
 						<li>`{scheme}`, `{authority}`, `{all_classifications}` and `{classification_naming_context}` components have the same meaning as the in the URI pattern for the classification;</li>
-						<li>`{level}` : an identifier for a level in this classification. Some implementations have chosen the plural forms, e.g. “sections”, “classes”, “divisions”, etc.</li>
+						<li>`{level}`: an identifier for a level in this classification. Some implementations have chosen the plural forms, e.g. “sections”, “classes”, “divisions”, etc.</li>
 					</ul>
 				</p>
 
 				<aside class="example">
-					<p>Given that the french NAF rev2 contains levels that are “sections”, “divisions”, “groupes”, “classes”, “sousClasses”, the corresponding URI would be :</p>
+					<p>Given that the french NAF rev2 contains levels that are “sections”, “divisions”, “groupes”, “classes”, “sousClasses”, the corresponding URI would be:</p>
 					<ul>
 						<li>http://id.insee.fr/codes/nafr2/sections</li>
 						<li>http://id.insee.fr/codes/nafr2/divisions</li>
@@ -1727,12 +1900,12 @@ ex:NafRev2Dataset a dcat:Dataset ;
 					Where:
 					<ul>
 						<li>`{scheme}`, `{authority}`, `{all_classifications}` and `{classification_naming_context}` components have the same meaning as in the URI pattern for the classification;</li>
-						<li>`{level}` : an identifier for the level of the concept. It is key to understand that the level is an intrinsic part of the concept identity in statistical classifications. A concept cannot be moved in a given revision of a classification. Hence the level is part of the concept URI. Implementations have chosen to use the singular form of the level, thus a different stem from the URI of the corresponding level. Examples are “section”, “class”, “division”, etc.</li>
-						<li>`{concept_id}` : an identifier for the specific concept within the classification; the format of the identifier varies depending on the classification and the level. Examples are “A”, “1963”, “10.73”, etc.</li>
+						<li>`{level}`: an identifier for the level of the concept. It is key to understand that the level is an intrinsic part of the concept identity in statistical classifications. A concept cannot be moved in a given revision of a classification. Hence the level is part of the concept URI. Implementations have chosen to use the singular form of the level, thus a different stem from the URI of the corresponding level. Examples are “section”, “class”, “division”, etc.</li>
+						<li>`{concept_id}`: an identifier for the specific concept within the classification; the format of the identifier varies depending on the classification and the level. Examples are “A”, “1963”, “10.73”, etc.</li>
 					</ul>
 				</p>
 				<aside class="example">
-					<p>Given that the french NAF rev2 contains levels identified with the level codes “section”, “division”, “groupe”, “classe”, “sousClasses”, corresponding examples of concepts at each of these levels are :</p>
+					<p>Given that the french NAF rev2 contains levels identified with the level codes “section”, “division”, “groupe”, “classe”, “sousClasses”, corresponding examples of concepts at each of these levels are:</p>
 					<ul>
 						<li>http://id.insee.fr/codes/nafr2/section/A</li>
 						<li>http://id.insee.fr/codes/nafr2/division/01</li>
@@ -1751,8 +1924,8 @@ ex:NafRev2Dataset a dcat:Dataset ;
 				<p>
 					Where:
 					<ul>
-						<li>`{concept_URI}` : the concept URI, as described above. The URI for the label is hierarchically below the URI of the concept having this label, since a label entity is attached to a single concept.</li>
-						<li>`{label_id_length_language}` : a component identifying the label, typically composed with a fixed part, the label length and the languages. Examples are “label40fr” or “label65en”</li>
+						<li>`{concept_URI}`: the concept URI, as described above. The URI for the label is hierarchically below the URI of the concept having this label, since a label entity is attached to a single concept.</li>
+						<li>`{label_id_length_language}`: a component identifying the label, typically composed with a fixed part, the label length and the languages. Examples are “label40fr” or “label65en”</li>
 					</ul>
 				</p>
 				<aside class="example">
@@ -1770,10 +1943,10 @@ ex:NafRev2Dataset a dcat:Dataset ;
 				<p>
 					Where:
 					<ul>
-						<li>`{concept_URI}` : the concept URI, as described above. The URI for the note is hierarchically below the URI of the concept having this note, since a note entity is attached to a single concept.</li>
-						<li>`{type_of_note}` : An indication of type of the note according to XKOS note types, e.g. “noteExclusions”, “noteGenerale”, “noteContenuCentral”, “noteContenuLimite”, etc.</li>
-						<li>`{note_version}` : the version of the note, e.g. “v1”, “v2”</li>
-						<li>`{language}` : the language code of the note, e.g. “fr”</li>
+						<li>`{concept_URI}`: the concept URI, as described above. The URI for the note is hierarchically below the URI of the concept having this note, since a note entity is attached to a single concept.</li>
+						<li>`{type_of_note}`: An indication of type of the note according to XKOS note types, e.g. “noteExclusions”, “noteGenerale”, “noteContenuCentral”, “noteContenuLimite”, etc.</li>
+						<li>`{note_version}`: the version of the note, e.g. “v1”, “v2”</li>
+						<li>`{language}`: the language code of the note, e.g. “fr”</li>
 					</ul>
 				</p>
 				<aside class="example">
@@ -1791,10 +1964,10 @@ ex:NafRev2Dataset a dcat:Dataset ;
 				<p>
 					Where:
 					<ul>
-						<li>`{concept_URI}` : the concept URI, as described above. The URI for the note is hierarchically below the URI of the concept having this note, since a note entity is attached to a single concept.</li>
-						<li>`{type_of_note}` : An indication of type of the timestamped note according to XKOS note types, typically a “changeNote” (“noteChangement”)</li>
-						<li>`{date}` : the date of the note, in an xsd:date format, e.g. “2021-09-22”</li>
-						<li>`{language}` : the language code of the note, e.g. “fr”</li>
+						<li>`{concept_URI}`: the concept URI, as described above. The URI for the note is hierarchically below the URI of the concept having this note, since a note entity is attached to a single concept.</li>
+						<li>`{type_of_note}`: An indication of type of the timestamped note according to XKOS note types, typically a “changeNote” (“noteChangement”)</li>
+						<li>`{date}`: the date of the note, in an xsd:date format, e.g. “2021-09-22”</li>
+						<li>`{language}`: the language code of the note, e.g. “fr”</li>
 					</ul>
 				</p>
 				<aside class="example">
@@ -1804,16 +1977,6 @@ ex:NafRev2Dataset a dcat:Dataset ;
 				</aside>
 			</section>
 		</section>
-    </section>
-
-	<section id="tools">
-    	<h2>Tools</h2>
-		<div class="issue" title="Move Tools section to DDI website"></div>
-    </section>
-
-    <section id="xkos-and-others">
-    	<h2>Combining XKOS with other vocabularies</h2>
-    	<div class="issue" title="Do we keep this paragraph ?"></div>
     </section>
 
 	<section class="appendix">
@@ -1840,7 +2003,6 @@ ex:NafRev2Dataset a dcat:Dataset ;
 		</div>
 		<p>Legal Code:<br/><a href="http://creativecommons.org/licenses/by/4.0/legalcode">http://creativecommons.org/licenses/by/4.0/legalcode</a></p>
 	</section>
-
 
   </body>
 </html>
