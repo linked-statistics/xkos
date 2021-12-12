@@ -1,0 +1,281 @@
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix euvoc: <http://publications.europa.eu/ontology/euvoc#> .
+@prefix evoc: <http://eurovoc.europa.eu/schema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix insee: <http://rdf.insee.fr/def/base#> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix qb: <http://purl.org/linked-data/cube#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix skosthes: <http://purl.org/iso25964/skos-thes#> .
+@prefix skosxl: <http://www.w3.org/2008/05/skos-xl#> .
+@prefix xkos: <http://rdf-vocabulary.ddialliance.org/xkos#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://rdf-vocabulary.ddialliance.org/xkos#> a owl:Ontology;
+  rdfs:label "XKOS Best practices Shapes" .
+
+xkos:ClassificationShape a sh:NodeShape;
+  rdfs:label "Classification"@en;
+  sh:nodeKind sh:IRI;
+  sh:order 1;
+  sh:property xkos:P1, xkos:P2, xkos:P3, xkos:P4, xkos:P5, xkos:P6, xkos:P7,
+    xkos:P8, xkos:P9, xkos:P10, xkos:P11, xkos:P12, xkos:P13, xkos:P14, xkos:P15, xkos:P16,
+    xkos:P17, xkos:P18;
+  sh:targetClass skos:ConceptScheme .
+
+
+# mandatory properties (severity = Violation)
+
+xkos:P1 
+  sh:order 1;
+  sh:path skos:notation;
+  sh:datatype xsd:string;
+  sh:description "The value must be the short name of the classification, with no language tag.";
+  sh:maxCount 1;
+  sh:minCount 1;
+  sh:name "short name"@en;
+  sh:nodeKind sh:Literal;
+  sh:severity sh:Violation .
+
+xkos:P2 
+  sh:order 2;
+  sh:path skos:prefLabel;
+  sh:datatype rdf:langString;
+  sh:description "The value must be the complete name of the classification scheme in english.";
+  sh:name "complete name in english"@en;
+  sh:nodeKind sh:Literal;
+  sh:qualifiedMaxCount 1;
+  sh:qualifiedMinCount 1;
+  sh:qualifiedValueShape [
+    sh:languageIn ("en")
+  ] ;
+  sh:severity sh:Violation
+  .
+
+xkos:P3 
+  sh:order 3;
+  sh:path dct:issued;
+  sh:datatype xsd:date;
+  sh:description "The value must be the publication date of the classification scheme";
+  sh:maxCount 1;
+  sh:minCount 1;
+  sh:name "date of publication"@en;
+  sh:nodeKind sh:Literal;
+  sh:severity sh:Violation .
+
+
+# recommended properties (severity = Warning)
+
+xkos:P4 
+  sh:order 4;
+  sh:path skos:prefLabel;
+  sh:datatype rdf:langString;
+  sh:description "The value must be the complete name of the classification scheme in another language than english, with a proper language tag.";
+  sh:minCount 0;
+  sh:name "complete name"@en;
+  sh:nodeKind sh:Literal;
+  sh:qualifiedMinCount 1;
+  sh:qualifiedValueShape [
+    sh:not [ 
+      sh:languageIn ("en");
+    ]
+  ];
+  sh:severity sh:Warning .
+
+xkos:P5
+  sh:order 5;
+  sh:path dc:description;
+  sh:datatype rdf:langString;
+  sh:description "The value must be a short descriptive text about the classification scheme in english.";
+  sh:languageIn ("en");
+  sh:maxCount 1;
+  sh:minCount 1;
+  sh:name "short description"@en;
+  sh:nodeKind sh:Literal;
+  sh:severity sh:Warning .
+
+xkos:P6 
+  sh:order 6;
+  sh:path skos:scopeNote;
+  sh:description "The explanatory note MUST have a xkos:plainText property which value is a long descriptive text about the classification scheme in English, with a language tag set at ‘@en’";
+  sh:maxCount 1;
+  sh:minCount 1;
+  sh:name "long description in english"@en;
+  sh:node xkos:ExplanatoryNoteInEnglish;
+  sh:nodeKind sh:BlankNodeOrIRI;
+  sh:severity sh:Warning .
+
+xkos:P7 
+  sh:order 7;
+  sh:path dct:modified;
+  sh:datatype xsd:date;
+  sh:description "The value must be the last modification date of the classification scheme.";
+  sh:maxCount 1;
+  sh:minCount 1;
+  sh:name "last modification date"@en;
+  sh:nodeKind sh:Literal;
+  sh:severity sh:Warning .
+
+xkos:P8 
+  sh:order 7;
+  sh:path xkos:belongsTo;
+  sh:class skos:Concept;
+  sh:description "Connects a major version of a classification to a concept representing the overall classification.";
+  sh:maxCount 1;
+  sh:minCount 1;
+  sh:name "overall classification"@en;
+  sh:nodeKind sh:IRI;
+  sh:severity sh:Warning .
+
+xkos:P9
+  sh:order 8;
+  sh:path xkos:levels;
+  sh:description "Lists the classification levels represented as an RDF list of ordered levels (instances of xkos:ClassificationLevel).";
+  sh:maxCount 1;
+  sh:minCount 1;
+  sh:name "classification levels"@en;
+  sh:node [
+    sh:property [
+      sh:path rdf:rest ;
+      sh:minCount 1;
+    ] ;
+    sh:property [
+      sh:path rdf:first ;
+      sh:minCount 1;
+    ]
+  ] ;
+  sh:severity sh:Warning .
+
+xkos:P10 
+  sh:order 10;
+  sh:path xkos:covers;
+  sh:class skos:Concept;
+  sh:description "The domain covered by the classification or its levels (eg. activities, products, etc.). Subproperties xkos:coversExhaustively and xkos:coversMutuallyExclusively can also be used.";
+  sh:maxCount 1;
+  sh:minCount 1;
+  sh:name "domain covered"@en;
+  sh:nodeKind sh:IRI;
+  sh:severity sh:Warning .
+
+xkos:P11 
+  sh:order 11;
+  sh:path xkos:coversExhaustively;
+  sh:class skos:Concept;
+  sh:description "The domain covered by the classification (exhaustive coverage).";
+  sh:maxCount 1;
+  sh:minCount 1;
+  sh:name "domain covered exhaustively"@en;
+  sh:nodeKind sh:IRI;
+  sh:severity sh:Warning .
+
+xkos:P12
+  sh:order 12;
+  sh:path xkos:coversMutuallyExclusively; 
+  sh:class skos:Concept;
+  sh:description "The domain covered by the classification (mutually exclusive coverage).";
+  sh:maxCount 1;
+  sh:minCount 1;
+  sh:name "domain covered mutually exhaustively"@en;
+  sh:nodeKind sh:IRI;
+  sh:severity sh:Warning .
+
+xkos:P13
+  sh:order 13;
+  sh:path xkos:numberOfLevels;
+  sh:datatype xsd:integer;
+  sh:description "Depth of a classification (number of hierarchically imbricated levels) ; 1 for a flat classification.";
+  sh:maxCount 1;
+  sh:minCount 1;
+  sh:name "classification depth"@en;
+  sh:nodeKind sh:Literal;
+  sh:severity sh:Warning .
+
+xkos:P14 
+  sh:order 14;
+  sh:path xkos:follows;
+  sh:class skos:ConceptScheme;
+  sh:description "Links major revisions of classifications.";
+  sh:maxCount 1;
+  sh:minCount 1;
+  sh:name "previous major version"@en;
+  sh:nodeKind sh:IRI;
+  sh:severity sh:Warning .
+
+xkos:P15
+  sh:order 13;
+  sh:path xkos:supersedes;
+  sh:class skos:ConceptScheme;
+  sh:description "Links major revisions of classifications, when the new one obsoletes the old one.";
+  sh:maxCount 1;
+  sh:minCount 1;
+  sh:name "previous major version (obsoleted)"@en;
+  sh:nodeKind sh:IRI;
+  sh:severity sh:Warning .
+
+# optional properties (severity = Info)
+
+xkos:P16
+  sh:order 16;
+  sh:path xkos:variant;
+  sh:class skos:ConceptScheme;
+  sh:description "Connects a classification scheme to its variant(s)";
+  sh:minCount 1;
+  sh:name "variant"@en;
+  sh:nodeKind sh:IRI;
+  sh:severity sh:Info .
+
+xkos:P17 
+  sh:order 17;
+  sh:path skos:scopeNote;
+  sh:description "Each explanatory note MUST have a xkos:plainText property which value is a long descriptive text about the classification scheme in another langage than english, with the langage tag set appropriately";
+  sh:minCount 1;
+  sh:name "long description"@en;
+  sh:node xkos:ExplanatoryNoteNotInEnglish;
+  sh:severity sh:Info .
+
+xkos:P18
+  sh:order 18;
+  sh:path dct:language;
+  sh:datatype xsd:language;
+  sh:description "Indicates the langage coverage of the classificaiton scheme. Each value must correspond to a possible langage of labels within that classification.";
+  sh:minCount 1;
+  sh:name "langage coverage"@en;
+  sh:nodeKind sh:Literal;  
+  sh:severity sh:Info .
+
+# Other Shapes
+
+xkos:ExplanatoryNoteInEnglish a sh:NodeShape;
+  rdfs:label "Explanatory Note in english"@en;
+  sh:property [
+    sh:path xkos:plainText ;
+    sh:datatype rdf:langString;
+    sh:languageIn ("en");
+    sh:maxCount 1;
+    sh:minCount 1;
+    sh:name "value"@en;
+    sh:nodeKind sh:Literal;
+  ]
+  .
+
+xkos:ExplanatoryNoteNotInEnglish a sh:NodeShape;
+  rdfs:label "Explanatory Note not in english"@en;
+  sh:property [
+    sh:path xkos:plainText;
+    sh:datatype rdf:langString;
+    sh:maxCount 1;
+    sh:minCount 1;
+    sh:name "value"@en;
+    sh:nodeKind sh:Literal;
+    sh:node [
+      sh:not [ sh:languageIn ("en") ]
+    ] ;
+  ]

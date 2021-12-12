@@ -537,7 +537,7 @@
 						<td></td>
 						<td>0..1</td>
 						<td>`skos:ConceptScheme`</td>
-						<td>Links major revisions of classifications.</td>
+						<td>Links major revisions of classifications, when the new one obsoletes the old one.</td>
 					</tr>
 					<tr><td colspan="5" class="table-section">Optional properties</td></tr>
 					<tr>
@@ -585,8 +585,9 @@
 			<div class="issue" title="complete example of description of a statistical classification">
 				Provide a Turtle example applying the best practices above. Use ISIC by building the example by hand. @FC: Build from existing description of the classification.
 			</div>
-			<div class="issue" title="provide SHACL">
-				Provide SHACL encoding of the properties
+			<div class="issue" title="Should SHACL contain sh:class constraints ?">
+				Do we encode the range constraint with sh:class as these will probably always fail if
+				one points to an external skos:Concept
 			</div>
 		</section>
 
