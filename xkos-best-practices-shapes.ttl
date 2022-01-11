@@ -22,6 +22,8 @@
 <http://rdf-vocabulary.ddialliance.org/xkos#> a owl:Ontology;
   rdfs:label "XKOS Best practices Shapes" .
 
+# Classification Shape
+
 xkos:ClassificationShape a sh:NodeShape;
   rdfs:label "Classification"@en;
   sh:nodeKind sh:IRI;
@@ -32,7 +34,7 @@ xkos:ClassificationShape a sh:NodeShape;
   sh:targetClass skos:ConceptScheme .
 
 
-# mandatory properties (severity = Violation)
+## mandatory properties (severity = Violation)
 
 xkos:P1 
   sh:order 1;
@@ -72,7 +74,7 @@ xkos:P3
   sh:severity sh:Violation .
 
 
-# recommended properties (severity = Warning)
+## recommended properties (severity = Warning)
 
 xkos:P4 
   sh:order 4;
@@ -220,7 +222,7 @@ xkos:P15
   sh:nodeKind sh:IRI;
   sh:severity sh:Warning .
 
-# optional properties (severity = Info)
+## optional properties (severity = Info)
 
 xkos:P16
   sh:order 16;
@@ -251,7 +253,7 @@ xkos:P18
   sh:nodeKind sh:Literal;  
   sh:severity sh:Info .
 
-# Other Shapes
+## Other Shapes necessary to encode Classification Shape
 
 xkos:ExplanatoryNoteInEnglish a sh:NodeShape;
   rdfs:label "Explanatory Note in english"@en;
@@ -279,3 +281,121 @@ xkos:ExplanatoryNoteNotInEnglish a sh:NodeShape;
       sh:not [ sh:languageIn ("en") ]
     ] ;
   ]
+  .
+
+# Versioned Note Shape
+
+xkos:VersionedShape a sh:NodeShape;
+  rdfs:label "Versioned note"@en;
+  # notes must have an IRI
+  sh:nodeKind sh:IRI;
+  sh:order 3;
+  # any value of these properties are matched by this shape
+  sh:targetObjectsOf skos:scopeNote;
+  sh:targetObjectsOf skos:definition;
+  sh:targetObjectsOf xkos:coreContentNote;
+  sh:targetObjectsOf xkos:additionalContentNote;
+  sh:targetObjectsOf xkos:exclusionNote;
+  sh:targetObjectsOf xkos:inclusionNote;
+  sh:targetObjectsOf xkos:caseLaw;
+  sh:property xkos:P_note_xkos_plainText, xkos:P_note_dct_language, xkos:P_note_dcat_version,
+   xkos:P_note_schema_startDate, xkos:P_note_schema_endDate, xkos:P_note_rdf_value;
+  .
+
+## Mandatory properties (severity = Violation)
+
+xkos:P_note_xkos_plainText
+  sh:order 30;
+  sh:path xkos:plainText;
+  sh:datatype xsd:string;
+  sh:description "The value of the note, in plain text (no HTML / XML markup). The literal is tagged with a proper language tag.";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:name "value (plain text)"@en;
+  sh:nodeKind sh:Literal;  
+  sh:severity sh:Violation .
+
+xkos:P_note_dct_language
+  sh:order 31;
+  sh:path dct:language;
+  sh:datatype xsd:language;
+  sh:description "The language code of the note. This is a repetition of the language tag of the xkos:plainText attribute, that makes it easier to query/select notes in a certain language.";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:name "language"@en;
+  sh:nodeKind sh:Literal;  
+  sh:severity sh:Violation .
+
+xkos:P_note_dcat_version
+  sh:order 32;
+  sh:path dcat:version;
+  sh:datatype xsd:int;
+  sh:description "The version number of the note. e.g. \"1\"^^xsd:int, \"2\"^^xsd:int, etc. Note that this version number will typically be used in the URI of the xkos:ExplanatoryNote.";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:name "version"@en;
+  sh:nodeKind sh:Literal;  
+  sh:severity sh:Violation .
+
+xkos:P_note_schema_startDate
+  sh:order 33;
+  sh:path schema:startDate;
+  sh:datatype xsd:dateTime;
+  sh:description "The date from which this note content is valid.";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:name "start date"@en;
+  sh:nodeKind sh:Literal;  
+  sh:severity sh:Violation .
+
+xkos:P_note_schema_endDate
+  sh:order 34;
+  sh:path schema:endDate;
+  sh:datatype xsd:dateTime;
+  sh:description "The date until which this note content was (or will be) valid, indicating it was (or will be) replaced with another note with a different text, and its version number increased by 1. This property is not set in the case if there is no known end date.";
+  sh:minCount 1;
+  sh:name "end date"@en;
+  sh:nodeKind sh:Literal;  
+  sh:severity sh:Violation .
+
+## recommended properties (severity = Warning)
+
+
+## optional properties (severity = Info)
+
+xkos:P_note_rdf_value
+  sh:order 35;
+  sh:path rdf:value;
+  sh:datatype rdf:XMLLiteral;
+  sh:description "If needed the value of the note containing HTML or XML markup.";
+  sh:maxCount 1;
+  sh:name "value (with markup)"@en;
+  sh:nodeKind sh:Literal;  
+  sh:severity sh:Info .
+
+
+# Versioned Note Shape
+
+xkos:TimestampedNoteShape a sh:NodeShape;
+  rdfs:label "Timestamped note"@en;
+  # notes must have an IRI
+  sh:nodeKind sh:IRI;
+  sh:order 4;
+  # any value of these properties are matched by this shape
+  sh:targetObjectsOf skos:changeNote;
+  # some property shapes are common with versioned note shape
+  sh:property xkos:P_note_xkos_plainText, xkos:P_note_dct_language, xkos:P_note_dcat_version, xkos:P_note_dct_issued;
+  .
+
+## Mandatory properties (severity = Violation)
+
+xkos:P_note_dct_issued
+  sh:order 40;
+  sh:path dct:issued;
+  sh:datatype xsd:dateTime;
+  sh:description "The date at which the note was issued. Note that this date will typically be used in the URI of the xkos:ExplanatoryNote.";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:name "date of publication"@en;
+  sh:nodeKind sh:Literal;  
+  sh:severity sh:Violation .
