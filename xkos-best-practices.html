@@ -588,6 +588,8 @@
 			<div class="issue" title="Should SHACL contain sh:class constraints ?">
 				Do we encode the range constraint with sh:class as these will probably always fail if
 				one points to an external skos:Concept
+
+				26/01/2022 : keep sh:class constraint, with additional documentation
 			</div>
 		</section>
 
@@ -734,13 +736,17 @@ ex:isco2008-9611
 						<tr>
 							<td>`schema:endDate`</td>
 							<td>0..1</td>
-							<td>rdf:XMLLiteral</td>
+							<td>xsd:dateTime</td>
 							<td>The date until which this note content was (or will be) valid, indicating it was (or will be) replaced with another note with a different text, and its version number increased by 1. This property is not set in the case if there is no known end date.</td>
 						</tr>
 					</tbody>
 				</table>
 				<div class="issue" title="How to express date ranges">
 					to be discussed: use of schema.org or dcterms:valid, which is less convenient, but more reliable in terms of standard. Or we recommend insee:validFrom and insee:validUntil ? Also adjust examples !!
+
+					Or use time Ontology
+
+					Or use DCAT V3
 
 					Note: the ISO-8601 does not define open-ended ranges; this is extended by an LC extension that suggest "2012-09-10/.." for open ended ranges; this is used by schema.org
 				</div>
@@ -1657,6 +1663,8 @@ skos:prefLabel "ISIC Group"@en .
 				<div class="issue" title="dcterms:temporal or dcterms:valid or something else ?"></div>
 				<div class="issue" title="improve diagram">
 					<p>I think we need to review the formalism of this diagram, which mixes an entity/relation graph formalism with a UML class diagram formalism. I think that everything should be in the entity/relationship formalism (= drawing the graph of RDF triples, with instance URIs).</p>
+
+					<p>See example of diagrams on open annotation vocab : <a href="https://www.w3.org/TR/annotation-vocab/">https://www.w3.org/TR/annotation-vocab/</a></p>
 
 					<p>Furthermore, we need to go all the way to the end of the diagram for the ConceptAssociation, we need to exemplify source and target concepts. For that, we need a second, different diagram, otherwise there will be too many elements on a single diagram.</p>
 				</div>

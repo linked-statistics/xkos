@@ -28,15 +28,31 @@ xkos:ClassificationShape a sh:NodeShape;
   rdfs:label "Classification"@en;
   sh:nodeKind sh:IRI;
   sh:order 1;
-  sh:property xkos:P1, xkos:P2, xkos:P3, xkos:P4, xkos:P5, xkos:P6, xkos:P7,
-    xkos:P8, xkos:P9, xkos:P10, xkos:P11, xkos:P12, xkos:P13, xkos:P14, xkos:P15, xkos:P16,
-    xkos:P17, xkos:P18;
+  sh:property 
+    xkos:P_classification_skosnotation,
+    xkos:P_classification_skosprefLabel_en,
+    xkos:P_classification_dctissued,
+    xkos:P_classification_skosprefLabel_other,
+    xkos:P_classification_dcdescription,
+    xkos:P_classification_skosscopeNote,
+    xkos:P_classification_dctmodified,
+    xkos:P_classification_xkosbelongsTo,
+    xkos:P_classification_xkoslevels,
+    xkos:P_classification_xkoscovers,
+    xkos:P_classification_xkoscoversExhaustively,
+    xkos:P_classification_xkoscoversMutuallyExclusively,
+    xkos:P_classification_xkosnumberOfLevels,
+    xkos:P_classification_xkosfollows,
+    xkos:P_classification_xkossupersedes,
+    xkos:P_classification_xkosvariant,
+    xkos:P_classification_skosscopeNote,
+    xkos:P_classification_dctlanguage;
   sh:targetClass skos:ConceptScheme .
 
 
 ## mandatory properties (severity = Violation)
 
-xkos:P1 
+xkos:P_classification_skosnotation 
   sh:order 1;
   sh:path skos:notation;
   sh:datatype xsd:string;
@@ -47,7 +63,7 @@ xkos:P1
   sh:nodeKind sh:Literal;
   sh:severity sh:Violation .
 
-xkos:P2 
+xkos:P_classification_skosprefLabel_en 
   sh:order 2;
   sh:path skos:prefLabel;
   sh:datatype rdf:langString;
@@ -62,7 +78,7 @@ xkos:P2
   sh:severity sh:Violation
   .
 
-xkos:P3 
+xkos:P_classification_dctissued 
   sh:order 3;
   sh:path dct:issued;
   sh:datatype xsd:date;
@@ -76,7 +92,7 @@ xkos:P3
 
 ## recommended properties (severity = Warning)
 
-xkos:P4 
+xkos:P_classification_skosprefLabel_other 
   sh:order 4;
   sh:path skos:prefLabel;
   sh:datatype rdf:langString;
@@ -92,7 +108,7 @@ xkos:P4
   ];
   sh:severity sh:Warning .
 
-xkos:P5
+xkos:P_classification_dcdescription
   sh:order 5;
   sh:path dc:description;
   sh:datatype rdf:langString;
@@ -104,18 +120,18 @@ xkos:P5
   sh:nodeKind sh:Literal;
   sh:severity sh:Warning .
 
-xkos:P6 
+xkos:P_classification_skosscopeNote 
   sh:order 6;
   sh:path skos:scopeNote;
   sh:description "The explanatory note MUST have a xkos:plainText property which value is a long descriptive text about the classification scheme in English, with a language tag set at ‘@en’";
   sh:maxCount 1;
   sh:minCount 1;
   sh:name "long description in english"@en;
-  sh:node xkos:ExplanatoryNoteInEnglish;
+  sh:node xkos:ExplanatoryNoteInEnglishShape;
   sh:nodeKind sh:BlankNodeOrIRI;
   sh:severity sh:Warning .
 
-xkos:P7 
+xkos:P_classification_dctmodified 
   sh:order 7;
   sh:path dct:modified;
   sh:datatype xsd:date;
@@ -126,8 +142,8 @@ xkos:P7
   sh:nodeKind sh:Literal;
   sh:severity sh:Warning .
 
-xkos:P8 
-  sh:order 7;
+xkos:P_classification_xkosbelongsTo 
+  sh:order 8;
   sh:path xkos:belongsTo;
   sh:class skos:Concept;
   sh:description "Connects a major version of a classification to a concept representing the overall classification.";
@@ -137,8 +153,8 @@ xkos:P8
   sh:nodeKind sh:IRI;
   sh:severity sh:Warning .
 
-xkos:P9
-  sh:order 8;
+xkos:P_classification_xkoslevels
+  sh:order 9;
   sh:path xkos:levels;
   sh:description "Lists the classification levels represented as an RDF list of ordered levels (instances of xkos:ClassificationLevel).";
   sh:maxCount 1;
@@ -156,7 +172,7 @@ xkos:P9
   ] ;
   sh:severity sh:Warning .
 
-xkos:P10 
+xkos:P_classification_xkoscovers 
   sh:order 10;
   sh:path xkos:covers;
   sh:class skos:Concept;
@@ -167,7 +183,7 @@ xkos:P10
   sh:nodeKind sh:IRI;
   sh:severity sh:Warning .
 
-xkos:P11 
+xkos:P_classification_xkoscoversExhaustively 
   sh:order 11;
   sh:path xkos:coversExhaustively;
   sh:class skos:Concept;
@@ -178,7 +194,7 @@ xkos:P11
   sh:nodeKind sh:IRI;
   sh:severity sh:Warning .
 
-xkos:P12
+xkos:P_classification_xkoscoversMutuallyExclusively
   sh:order 12;
   sh:path xkos:coversMutuallyExclusively; 
   sh:class skos:Concept;
@@ -189,7 +205,7 @@ xkos:P12
   sh:nodeKind sh:IRI;
   sh:severity sh:Warning .
 
-xkos:P13
+xkos:P_classification_xkosnumberOfLevels
   sh:order 13;
   sh:path xkos:numberOfLevels;
   sh:datatype xsd:integer;
@@ -200,7 +216,7 @@ xkos:P13
   sh:nodeKind sh:Literal;
   sh:severity sh:Warning .
 
-xkos:P14 
+xkos:P_classification_xkosfollows 
   sh:order 14;
   sh:path xkos:follows;
   sh:class skos:ConceptScheme;
@@ -211,8 +227,8 @@ xkos:P14
   sh:nodeKind sh:IRI;
   sh:severity sh:Warning .
 
-xkos:P15
-  sh:order 13;
+xkos:P_classification_xkossupersedes
+  sh:order 15;
   sh:path xkos:supersedes;
   sh:class skos:ConceptScheme;
   sh:description "Links major revisions of classifications, when the new one obsoletes the old one.";
@@ -224,7 +240,7 @@ xkos:P15
 
 ## optional properties (severity = Info)
 
-xkos:P16
+xkos:P_classification_xkosvariant
   sh:order 16;
   sh:path xkos:variant;
   sh:class skos:ConceptScheme;
@@ -234,16 +250,16 @@ xkos:P16
   sh:nodeKind sh:IRI;
   sh:severity sh:Info .
 
-xkos:P17 
+xkos:P_classification_skosscopeNote 
   sh:order 17;
   sh:path skos:scopeNote;
   sh:description "Each explanatory note MUST have a xkos:plainText property which value is a long descriptive text about the classification scheme in another langage than english, with the langage tag set appropriately";
   sh:minCount 1;
   sh:name "long description"@en;
-  sh:node xkos:ExplanatoryNoteNotInEnglish;
+  sh:node xkos:ExplanatoryNoteNotInEnglishShape;
   sh:severity sh:Info .
 
-xkos:P18
+xkos:P_classification_dctlanguage
   sh:order 18;
   sh:path dct:language;
   sh:datatype xsd:language;
@@ -255,7 +271,7 @@ xkos:P18
 
 ## Other Shapes necessary to encode Classification Shape
 
-xkos:ExplanatoryNoteInEnglish a sh:NodeShape;
+xkos:ExplanatoryNoteInEnglishShape a sh:NodeShape;
   rdfs:label "Explanatory Note in english"@en;
   sh:property [
     sh:path xkos:plainText ;
@@ -268,7 +284,7 @@ xkos:ExplanatoryNoteInEnglish a sh:NodeShape;
   ]
   .
 
-xkos:ExplanatoryNoteNotInEnglish a sh:NodeShape;
+xkos:ExplanatoryNoteNotInEnglishShape a sh:NodeShape;
   rdfs:label "Explanatory Note not in english"@en;
   sh:property [
     sh:path xkos:plainText;
@@ -285,7 +301,7 @@ xkos:ExplanatoryNoteNotInEnglish a sh:NodeShape;
 
 # Versioned Note Shape
 
-xkos:VersionedShape a sh:NodeShape;
+xkos:VersionedNoteShape a sh:NodeShape;
   rdfs:label "Versioned note"@en;
   # notes must have an IRI
   sh:nodeKind sh:IRI;
@@ -298,8 +314,13 @@ xkos:VersionedShape a sh:NodeShape;
   sh:targetObjectsOf xkos:exclusionNote;
   sh:targetObjectsOf xkos:inclusionNote;
   sh:targetObjectsOf xkos:caseLaw;
-  sh:property xkos:P_note_xkos_plainText, xkos:P_note_dct_language, xkos:P_note_dcat_version,
-   xkos:P_note_schema_startDate, xkos:P_note_schema_endDate, xkos:P_note_rdf_value;
+  sh:property 
+    xkos:P_note_xkos_plainText,
+    xkos:P_note_dct_language,
+    xkos:P_note_dcat_version,
+    xkos:P_note_schema_startDate,
+    xkos:P_note_schema_endDate,
+    xkos:P_note_rdf_value;
   .
 
 ## Mandatory properties (severity = Violation)
@@ -374,7 +395,7 @@ xkos:P_note_rdf_value
   sh:severity sh:Info .
 
 
-# Versioned Note Shape
+# Timestamped Note Shape
 
 xkos:TimestampedNoteShape a sh:NodeShape;
   rdfs:label "Timestamped note"@en;
@@ -384,7 +405,11 @@ xkos:TimestampedNoteShape a sh:NodeShape;
   # any value of these properties are matched by this shape
   sh:targetObjectsOf skos:changeNote;
   # some property shapes are common with versioned note shape
-  sh:property xkos:P_note_xkos_plainText, xkos:P_note_dct_language, xkos:P_note_dcat_version, xkos:P_note_dct_issued;
+  sh:property 
+    xkos:P_note_xkos_plainText,
+    xkos:P_note_dct_language,
+    xkos:P_note_dcat_version,
+    xkos:P_note_dct_issued;
   .
 
 ## Mandatory properties (severity = Violation)
