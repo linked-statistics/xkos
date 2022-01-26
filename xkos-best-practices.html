@@ -1130,54 +1130,77 @@ ex:NACE_ItemTypes
 					<thead>
 						<tr>
 							<th>Property</th>
+							<th>Lang.</th>
 							<th>Card.</th>
 							<th>Range</th>
 							<th>Description</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr><td colspan="4" class="table-section">Mandatory properties</td></tr>
+						<tr><td colspan="5" class="table-section">Mandatory properties</td></tr>
 						<tr>
-							<td>`dcterms:title`</td>
+							<td>`skos:prefLabel`</td>
+							<td>en</td>
 							<td>1..n</td>
-							<td>rdfs:Literal</td>
-							<td>A name given to the correspondence table, with a maximum of one per language</td>
-						</tr>
-						<tr>
-							<td>`dcterms:creator`</td>
-							<td>1..1</td>
-							<td>dcterms:Agent</td>
-							<td>The agent responsible for creating the correspondence table.</td>
+							<td>`rdf:langString`</td>
+							<td>A name given to the correspondence table in english.</td>
 						</tr>
 						<tr>
 							<td>`dcterms:issued`</td>
-							<td>1..1</td>
-							<td>The date at which the correspondence table was issued.</td>
 							<td></td>
+							<td>1..1</td>
+							<td>`xsd:date`</td>
+							<td>The publication date of the correspondence table.</td>
+						</tr>
+						<tr><td colspan="5" class="table-section">Recommended properties</td></tr>
+						<tr>
+							<td>`skos:prefLabel`</td>
+							<td><em>any language</em></td>
+							<td>0..n</td>
+							<td>`rdf:langString`</td>
+							<td>A name given to the correspondence table in another language than english, with a proper language tag.</td>
 						</tr>
 						<tr>
 							<td>`skos:scopeNote`</td>
-							<td>1..1</td>
-							<td>xkos:ExplanatoryNote</td>
-							<td>A note concerning the type of use of this correspondence table, typically in the case where the correspondence covers only part of the classification.</td>
+							<td>en</td>
+							<td>0..1</td>
+							<td>`xkos:ExplanatoryNote`</td>
+							<td>A note concerning the type of use of this correspondence table, typically in the case where the correspondence covers only part of the classification. The explanatory note MUST have a `xkos:plainText` property with a language tag set at ‘@en’</td>
 						</tr>
-						<tr><td colspan="4" class="table-section">Optional properties</td></tr>
+						<tr>
+							<td>`dcterms:creator`</td>
+							<td></td>
+							<td>0..1</td>
+							<td>`dcterms:Agent`</td>
+							<td>The agent responsible for creating the correspondence table.</td>
+						</tr>
+						<tr><td colspan="5" class="table-section">Optional properties</td></tr>
+						<tr>
+							<td>`skos:scopeNote`</td>
+							<td><em>Any language</em></td>
+							<td>0..n</td>
+							<td>`xkos:ExplanatoryNote`</td>
+							<td>A short descriptive text about the correspondance table in another language than english. The explanatory note MUST have a `xkos:plainText` property with a language tag set appropriately.</td>
+						</tr>
 						<tr>
 							<td>`dcterms:license`</td>
+							<td></td>
 							<td>0..1</td>
-							<td>dcterms:LicenseDocument</td>
+							<td>`dcterms:LicenseDocument`</td>
 							<td>The URI to the legal document giving official permission to do something with the entire correspondence table.</td>
 						</tr>
 						<tr>
 							<td>`rdfs:seeAlso`</td>
+							<td></td>
 							<td>0..1</td>
-							<td>xkos:Correspondence</td>
+							<td>`xkos:Correspondence`</td>
 							<td>Refers to another correspondence table based on the same classifications but with a different approach (e.g. reversing the role of the source and target classification).</td>
 						</tr>
 						<tr>
 							<td>`xkos:weightedBy`</td>
+							<td></td>
 							<td>0..1</td>
-							<td>qb:DataSet</td>
+							<td>`qb:DataSet`</td>
 							<td>Refers to a matrix that contains the weights / ratios associated to each pair of mapped source and target concepts.</td>
 						</tr>
 					</tbody>
