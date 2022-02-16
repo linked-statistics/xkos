@@ -593,6 +593,8 @@
 			<div class="issue" title="missing dcterms:valid">
 				We are missing dcterms:valid to express the temporal coverage of the classification, as indicated in XKOS
 			</div>
+			<div class="issue" title="TF add owl:deprecated">
+			</div>
 			<aside class="example" title="Example of a statistical classification description">
 					<pre class="nohighlight">
 						TODO
@@ -1614,6 +1616,10 @@ ex:obs2
 		</section>
 		<div class="issue" title="DC Issue with classification URIs">
 			In the example above we have "xkos:compares &lt;http://id.insee.fr/codes/naf/naf&gt; , &lt;http://id.insee.fr/codes/nafr1/naf&gt; ;" but http://id.insee.fr/codes/naf/naf is not declared. Can you double check the URIs of the examples ?
+
+			And by the way, will the URI of the correspondence table really be in the "/codes" path ?
+
+			And it would be better to also include the xkos:ConceptAssociation in the example (although admitedly they are not described in the first example)
 		</div>
 		<section id="bp-relations">
 		    <h3>Describing the relation between an international and a national classification</h3>
