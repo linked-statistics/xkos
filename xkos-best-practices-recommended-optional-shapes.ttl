@@ -1,0 +1,227 @@
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix euvoc: <http://publications.europa.eu/ontology/euvoc#> .
+@prefix evoc: <http://eurovoc.europa.eu/schema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix insee: <http://rdf.insee.fr/def/base#> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix qb: <http://purl.org/linked-data/cube#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix skosthes: <http://purl.org/iso25964/skos-thes#> .
+@prefix skosxl: <http://www.w3.org/2008/05/skos-xl#> .
+@prefix xkos: <http://rdf-vocabulary.ddialliance.org/xkos#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+xkos:ClassificationShape a sh:NodeShape;
+  sh:property
+    # mandatory 
+    # recommended
+    xkos:P_classification_skosprefLabel_other_recommended,
+    xkos:P_classification_dcdescription_recommended,
+    xkos:P_classification_skosscopeNote_recommended,
+    xkos:P_classification_dctmodified_recommended,
+    xkos:P_classification_dctcreator_recommended,
+    xkos:P_classification_xkosbelongsTo_recommended,
+    xkos:P_classification_xkoslevels_recommended,
+    xkos:P_classification_xkoscovers_recommended,
+    xkos:P_classification_xkoscoversExhaustively_recommended,
+    xkos:P_classification_xkoscoversMutuallyExclusively_recommended,
+    xkos:P_classification_xkosnumberOfLevels_recommended,
+    xkos:P_classification_xkosfollows_recommended,
+    xkos:P_classification_xkossupersedes_recommended,
+    # optional
+    xkos:P_classification_xkosvariant_optional,
+    # xkos:P_classification_skosscopeNote,
+    xkos:P_classification_dctlanguage_optional,
+    xkos:P_classification_dctlicense_optional,
+    xkos:P_classification_inseelegalMaterial_optional;
+  .
+
+
+
+## mandatory properties
+
+
+## recommended properties
+
+xkos:P_classification_skosprefLabel_other_recommended
+  sh:path skos:prefLabel;
+  sh:qualifiedMinCount 1;
+  sh:qualifiedValueShape [
+    sh:not [ 
+      sh:languageIn ("en");
+    ]
+  ];
+  sh:severity sh:Warning
+.
+
+xkos:P_classification_dcdescription_recommended
+  sh:path dc:description;
+  sh:qualifiedMinCount 1;
+  sh:qualifiedValueShape [
+    sh:languageIn ("en")
+  ] ;
+  sh:severity sh:Warning .
+
+xkos:P_classification_skosscopeNote_recommended
+  sh:path skos:scopeNote;
+  sh:qualifiedMinCount 1;
+  sh:qualifiedValueShape [
+    sh:node xkos:ExplanatoryNoteInEnglishShape;
+  ] ;
+  sh:severity sh:Warning .
+
+xkos:P_classification_dctmodified_recommended 
+  sh:path dct:modified;
+  sh:minCount 1;
+  sh:severity sh:Warning .
+
+xkos:P_classification_dctcreator_recommended
+  sh:path dct:creator;
+  sh:minCount 1;
+  sh:severity sh:Warning .
+
+xkos:P_classification_xkosbelongsTo_recommended
+  sh:path xkos:belongsTo;
+  sh:minCount 1;
+  sh:severity sh:Warning .
+
+xkos:P_classification_xkoslevels_recommended
+  sh:path xkos:levels;
+  sh:minCount 1;
+  sh:severity sh:Warning .
+
+xkos:P_classification_xkoscovers_recommended
+  sh:path xkos:covers;
+  sh:minCount 1;
+  sh:severity sh:Warning .
+
+xkos:P_classification_xkoscoversExhaustively_recommended 
+  sh:path xkos:coversExhaustively;
+  sh:minCount 1;
+  sh:severity sh:Warning .
+
+xkos:P_classification_xkoscoversMutuallyExclusively_recommended
+  sh:path xkos:coversMutuallyExclusively; 
+  sh:minCount 1;
+  sh:severity sh:Warning .
+
+xkos:P_classification_xkosnumberOfLevels_recommended
+  sh:path xkos:numberOfLevels;
+  sh:minCount 1;
+  sh:severity sh:Warning .
+
+xkos:P_classification_xkosfollows_recommended 
+  sh:path xkos:follows;
+  sh:minCount 1;
+  sh:severity sh:Warning .
+
+xkos:P_classification_xkossupersedes_recommended 
+  sh:path xkos:supersedes;
+  sh:minCount 1;
+  sh:severity sh:Warning .
+
+## optional properties
+
+xkos:P_classification_xkosvariant_optional
+  sh:path xkos:variant;
+  sh:minCount 1;
+  sh:severity sh:Info .
+
+xkos:P_classification_skosscopeNote_optional
+  sh:path skos:scopeNote;
+  sh:qualifiedMinCount 1;
+  sh:qualifiedValueShape [
+    sh:node xkos:ExplanatoryNoteNotInEnglishShape;
+  ] ;
+  sh:severity sh:Info .
+
+xkos:P_classification_dctlanguage_optional
+  sh:path dct:language;
+  sh:minCount 1;
+  sh:severity sh:Info .
+
+xkos:P_classification_dctlicense_optional
+  sh:path dct:license;
+  sh:minCount 1; 
+  sh:severity sh:Info .
+
+xkos:P_classification_inseelegalMaterial_optional
+  sh:path insee:legalMaterial;
+  sh:minCount 1;
+  sh:severity sh:Info .
+
+
+
+xkos:CorrespondenceShape a sh:NodeShape;
+  sh:property
+    # mandatory
+    # recommended
+    xkos:P_correspondence_skosprefLabel_other_recommended,
+    xkos:P_correspondence_skosscopeNote_recommended,
+    xkos:P_correspondence_dctcreator_recommended,
+    # optional
+    xkos:P_correspondence_skosscopeNote_optional,
+    xkos:P_correspondence_dctlicense_optional
+
+.
+
+## Mandatory properties
+
+## Recommended properties
+
+xkos:P_correspondence_skosprefLabel_other_recommended
+  sh:path skos:prefLabel;
+  sh:qualifiedMinCount 1;
+  sh:qualifiedValueShape [
+    sh:not [ 
+      sh:languageIn ("en");
+    ]
+  ];
+  sh:severity sh:Warning
+.
+
+xkos:P_correspondence_skosscopeNote_recommended
+  sh:path skos:scopeNote;
+  sh:qualifiedMinCount 1;
+  sh:qualifiedValueShape [
+    sh:node xkos:ExplanatoryNoteInEnglishShape;
+  ] ;
+  sh:severity sh:Warning .
+
+xkos:P_correspondence_dctcreator_recommended
+  sh:path dct:creator;
+  sh:minCount 1;
+  sh:severity sh:Warning .
+
+## Optional properties
+
+xkos:P_correspondence_skosscopeNote_optional
+  sh:path skos:scopeNote;
+  sh:qualifiedMinCount 1;
+  sh:qualifiedValueShape [
+    sh:node xkos:ExplanatoryNoteNotInEnglishShape;
+  ] ;
+  sh:severity sh:Info .
+
+xkos:P_correspondence_dctlicense_optional
+  sh:path dct:license;
+  sh:minCount 1; 
+  sh:severity sh:Info .
+
+xkos:P_correspondence_rdfsseeAlso_optional
+  sh:path rdfs:seeAlso;
+  sh:minCount 1; 
+  sh:severity sh:Info .
+
+xkos:P_correspondence_xkosweightedBy_optional
+  sh:path xkos:weightedBy;
+  sh:minCount 1; 
+  sh:severity sh:Info .

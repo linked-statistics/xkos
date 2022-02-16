@@ -484,6 +484,13 @@
 						<td>The value must be the last modification date of the classification scheme.</td>
 					</tr>
 					<tr>
+						<td>`dcterms:creator`</td>
+						<td></td>
+						<td>0..n</td>
+						<td>`dcterms:Agent`</td>
+						<td>An agent responsible for creating the classification scheme.</td>
+					</tr>
+					<tr>
 						<td>`xkos:belongsTo`</td>
 						<td></td>
 						<td>0..1</td>
@@ -560,6 +567,13 @@
 						<td>0..n</td>
 						<td>`xsd:language`</td>
 						<td>Indicates the langage coverage of the classificaiton scheme. Each value must correspond to a possible langage of labels within that classification.</td>
+					</tr>
+					<tr>
+						<td>`dcterms:license`</td>
+						<td></td>
+						<td>0..1</td>
+						<td>`dcterms:LicenseDocument`</td>
+						<td>The URI to the legal document giving official permission to do something with the classification.</td>
 					</tr>
 					<tr>
 						<td>`insee:legalMaterial`</td>
@@ -1170,9 +1184,9 @@ ex:NACE_ItemTypes
 						<tr>
 							<td>`dcterms:creator`</td>
 							<td></td>
-							<td>0..1</td>
+							<td>0..n</td>
 							<td>`dcterms:Agent`</td>
-							<td>The agent responsible for creating the correspondence table.</td>
+							<td>An agent responsible for creating the correspondence table.</td>
 						</tr>
 						<tr><td colspan="5" class="table-section">Optional properties</td></tr>
 						<tr>
@@ -1205,11 +1219,6 @@ ex:NACE_ItemTypes
 						</tr>
 					</tbody>
 				</table>
-				<div class="issue" title="Same constraints as on ConceptScheme?">
-					<p>Shall the same constraints as on the ConceptScheme be enforced ? e.g. use skos:prefLabel rather than dcterms:title ? have at least one title in English ? + dc:description</p>
-					<p>Besides, it is strange to enforce the creator here and not on ConceptScheme - we should make this consistent</p>
-					<p>17/11/2021: Yes, make this consistent - and make creator as optionnal property.</p>
-				</div>
 				<p>It is possible to have several correspondence tables based on the same source and target classifications that are created with different methodologies and thus give different views of the relation between the two classifications (e.g. if links are constructed automatically or if they are determined by expert judgement). It may therefore be necessary to store this information by associating with the mapping table a `prov:Activity` encompassing the creation steps followed.</p>
 			</section>
 			<section id="bp-correspondences-documenting-associations">
