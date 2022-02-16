@@ -172,6 +172,8 @@
 	<section id='abstract'>
     	<h2>Abstract</h2>
 		<p>Abstract goes here</p>
+		<div class="issue" title="FC Write Abstract">
+		</div>
     </section>
 
 	<section id='acknowledgements'>
@@ -181,7 +183,7 @@
 
 	<section id='introduction'>
 	    <h2>Introduction</h2>
-		<div class="issue" title="Improve introduction">
+		<div class="issue" title="FC Improve introduction">
 			<p>FC: Improve the introduction</p>
 		</div>
 		<p>The XKOS Best Practices provide a set of recommendations that are applicable to the publication of statistical classifications on the Web using XKOS. The publication of statistical data is out of scope of this document.</p>
@@ -190,7 +192,7 @@
 
 	<section id='goals'>
 	    <h2>Goals of this document</h2>
-		<div class="issue" title="Improve goals section">
+		<div class="issue" title="FC Improve goals section">
 			<p>FC: Improve this section</p>
 		</div>
 		<p>XKOS defines a vocabulary for the representation of statistical classifications, as well as a general model based on SKOS and statistical business models (Neuchâtel, GSIM), but details of implementation are not specified.</p>
@@ -207,7 +209,7 @@
 
 	<section id='summary'>
 	    <h2>Best practices summary</h2>
-		<div class="issue" title="Complete summary">
+		<div class="issue" title="TF Complete summary">
 			<p>TF: write this section</p>
 			<p>Insert quick-list of best practices with hyperlinks</p>
 		</div>
@@ -392,19 +394,19 @@
 				<li>Relating revisions of the same classification.</li>
 			</ol>
 
-			<h4>7.4.1 Different hierarchical organisation (CPC / CPA)</h4>
+			<h4>Different hierarchical organisation (CPC / CPA)</h4>
 
 			<p>CPA is the European counterpart of CPC, although the components of CPA are in a different structural order. CPC structures products based on the physical properties and the intrinsic nature of the products as well as on the principle of industrial origin; the CPA has the same criteria but gives first priority to industrial origin.</p>
 
 			<p>The classes of the CPA are based on several other classifications: CPC, HS/CN and ISIC/NACE determine the borders of the CPA subcategories. The main principle for classifying products in the CPA is the industrial origin criterion. Each product - whether it be a transportable or a non-transportable good or a service - is assigned to one - and only one - NACE activity at the most detailed level, namely the NACE class that characteristically produces the product. Thus, classifying products according to industrial origin gives the product classification a different structure to that found in CPC: namely a structure which is parallel to that of NACE Rev. 2.</p>
 
-			<h4>7.4.2 Different point of view on the same domain area (ProdCom / CPC, or HS / CN)</h4>
+			<h4>Different point of view on the same domain area (ProdCom / CPC, or HS / CN)</h4>
 
 			<p>Prodcom provides statistics on the production of manufactured goods by enterprises on the national territory of reporting countries. Prodcom stands for "PRODuction COMmunautaire". Prodcom covers mining and quarrying and manufacturing: sections B and C of the statistical classification of economic activities in the European Union (NACE Rev. 2). Prodcom statistics aim to provide a comprehensive picture at EU level of the development of industrial production for a given product or sector, so that comparisons can be made between countries.</p>
 
 			<p>The scope of ProdCom is thus different, and smaller, from the one of CPC, and there is a correspondence table to that subpart of the CPC.</p>
 
-			<h4>7.4.3 Different revisions of the same classification (NAFrev1 / NAFrev2)</h4>
+			<h4>Different revisions of the same classification (NAFrev1 / NAFrev2)</h4>
 
 			<p>Since its creation, the NAF has been revised twice. The current version of the nomenclature is NAF rev.2, in force since 1 January 2008. It succeeded NAF rev.1, in force from 1 January 2003 to 31 December 2007.</p>
 
@@ -585,7 +587,7 @@
 				</tbody>
 			</table>
 
-			<div class="issue" title="No namespace document for XKOS">
+			<div class="issue" title="FC No namespace document for XKOS">
 				It would be nice to add hyperlinks in the table above. It would be nice if those hyperlinks would be the URI of the properties themselves, e.g. <a href="http://rdf-vocabulary.ddialliance.org/xkos#belongsTo">`xkos:belongsTo`</a>. Problem: such an hyperlink returns the XKOS specification document, at no particular anchor, because no anchor corresponds to property names. A solution could be to add anchors to the table at <a href="https://rdf-vocabulary.ddialliance.org/xkos.html#nsvoc">https://rdf-vocabulary.ddialliance.org/xkos.html#nsvoc</a>
 			</div>
 			<div class="issue" title="missing dcterms:valid">
@@ -596,7 +598,7 @@
 						TODO
 					</pre>
 			</aside>
-			<div class="issue" title="complete example of description of a statistical classification">
+			<div class="issue" title="FC complete example of description of a statistical classification">
 				Provide a Turtle example applying the best practices above. Use ISIC by building the example by hand. @FC: Build from existing description of the classification.
 			</div>
 		</section>
@@ -884,9 +886,9 @@ ex:isco2008-9611
 					<img src="img/bp-caseLaw-example.png" alt="Case Law Example from NACE Rev. 2" />
 				</aside>
 
-				<div class="issue" title="add an RDF example of caseLaw vs. inclusionNote"></div>
+				<div class="issue" title="CD: add an RDF example of caseLaw vs. inclusionNote"></div>
 
-				<div class="issue" title="Improve by clarifying the difference with inclusionNote"></div>
+				<div class="issue" title="CD: Improve by clarifying the difference with inclusionNote"></div>
 
 			</section>
 		</section>
@@ -1022,15 +1024,15 @@ ex:NACE-R2_Item
 			<section id="bp-types-per-level">
 				<h4>Type classification items according to their level</h4>
 
-				<div class="issue" title="rediscuss if this works">17/11/2021 : FC to review</div>
+				<div class="issue" title="FC rediscuss if this works">17/11/2021 : FC to review</div>
 
 				<p><a href="https://rdf-vocabulary.ddialliance.org/xkos.html#levels">§6 of the XKOS specification</a> describing classification levels states the following: <blockquote><em>"In XKOS, a classification level is defined as a specialization of `skos:Collection` named `xkos:ClassificationLevel`. (...) Individual `skos:Concept` objects are related to the `xkos:ClassificationLevel` to which they belong by the usual `skos:member` property (going from the level to the classification item)."</em></blockquote></p>
 
 				<p>This best practice document suggests to go one step further, and to actually consider the classification levels also as OWL classes (hence with 2 types: `xkos:ClassificationLevel` and `owl:Class`), declared as subclass of the dedicated class that represent the set of all items of the classification, as described in previous section.</p>
 
-				<p>Declaring OWL classes corresponding to classification levels allows to refer to these classes in the signature (domain or range) of properties. A typical use-case is to indicate that a certain property can refer only to the entries at one (or more) level of a classification.</p>
+				<p>Declaring OWL classes corresponding to classification levels allows to refer to these classes in the signature (domain or range) of properties. A typical use-case is to indicate that a certain property can refer only to the items at one or more levels of a classification.</p>
 
-				<div class="issue" title="FC : validate if the above paragraphe is correct"></div>
+				<div class="issue" title="CD See if INSEE can find an specific example of this (in Toucan ?)"></div>
 
 				<p>Following the example given above, the following levels of the NACE-R2, in addition to being `xkos:ClassificationLevel`, would be typed as `owl:Class` and declared subclasses of `ex:NACE-R2_Item`:</p>
 				<ul>
@@ -1443,7 +1445,7 @@ ex:NACE_ItemTypes
 
 						</pre>
 					</aside>
-					<div class="issue" title="Missing example of ConceptAssociation for creation or deletion"></div>
+					<div class="issue" title="CD Missing example of ConceptAssociation for creation or deletion"></div>
 					<p>However, if the fields of two classifications partially overlap, e.g. if the field of one classification is a sub-field of the other, it is not recommended to use this technique. Although it is recommended that the mapping table exhaustively covers both classifications, in this case it is more relevant to use a correspondence table adapted to the current subfield.</p>
 				</section>
 			</section>
@@ -1608,7 +1610,6 @@ ex:obs2
     &lt;http://id.insee.fr/qb/percentage&gt; 23.59 .
 						</pre>
 					</aside>
-					<div class="issue" title="Include second example with real case of INSEE based on conceptAssociation example above"></div>
 			</section>
 		</section>
 		<section id="bp-relations">
@@ -1683,7 +1684,10 @@ skos:prefLabel "ISIC Group"@en .
 						</tr>
 					</tbody>
 				</table>
-				<div class="issue" title="Discuss xkos:belongsTo and xkos:variant here"></div>
+				<div class="issue" title="FC : Discuss xkos:belongsTo and xkos:variant here">
+					xkos:belongsTo points to a skos:Concept so mapping it to prov:specializationOf is abusive as the PROV property implies the entities are of the same nature
+
+				</div>
 				<p>Note that in the case of a `xkos:variant`, the corresponding [[PROV-O]] property is `prov:wasDerivedFrom` instead of `prov:wasRevisionOf`. The existence of a variant does not imply the original version is deprecated. There will be an overlap between the validity time period of the variant version and the reference one.</p>
 			</section>
 			<section id="bp-evolution-series">
@@ -1691,8 +1695,12 @@ skos:prefLabel "ISIC Group"@en .
 				<p>The figure below presents the succession of two revisions of the NAF classification. The temporal periods of validity of each revision are given through the `dcterms:temporal` property that has as value a `dcat:PeriodOfTime` using the `dcat:startDate` and `dcat:endDate` properties. A possibility to clearly identify that the NAFRev1 is the obsolete version is to use the `owl:deprecated` property set to `true`.</p>
 				<img src="img/bp-series-example.png" alt="Example of a classification serie" />
 				<div class="issue" title="dcterms:temporal or dcterms:valid or something else ?"></div>
-				<div class="issue" title="improve diagram">
-					<p>I think we need to review the formalism of this diagram, which mixes an entity/relation graph formalism with a UML class diagram formalism. I think that everything should be in the entity/relationship formalism (= drawing the graph of RDF triples, with instance URIs).</p>
+				<div class="issue" title="TF improve diagram">
+					<p>I think we need to review the formalism of this diagram, which mixes an entity/relation graph formalism with a UML class diagram formalism. I think that everything should be in the entity/relationship formalism (= drawing the graph of RDF triples, with instance URIs).
+
+
+					Look at templates of "chowlk" : https://chowlk.linkeddata.es/notation.html
+					</p>
 
 					<p>See example of diagrams on open annotation vocab : <a href="https://www.w3.org/TR/annotation-vocab/">https://www.w3.org/TR/annotation-vocab/</a></p>
 
@@ -1713,6 +1721,10 @@ skos:prefLabel "ISIC Group"@en .
 
 				<div class="issue" title="how can we link the distribution containing the note changes with the distribution being a snapshot?">
 				  <p>how can we link the distribution containing the note changes with the distribution being a snapshot ? we could use dcterms:isVersionOf, but this could be misleading. If we could say "is subset of" this would be more precise. Or a PROV relation wasderivedFrom ?</p>
+				</div>
+
+				<div class="issue" title="Use 2 distinct Datasets instead of 1 ? ">
+				  <p>an alternative approach could be to declare 2 datasets, one without the note history, one with the note history. And then a link would be placed at the dataset level instead that at the Distribution level.</p>
 				</div>
 
 				<aside class="example" title="Example of a statistical classification dataset in DCAT">
