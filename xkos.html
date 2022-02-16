@@ -4,74 +4,43 @@
 		<title>XKOS</title>
 		<meta http-equiv='Content-Type' content='text/html;charset=utf-8'/>
 
-		<script src='http://www.w3.org/Tools/respec/respec-w3c-common' class='remove'></script>
+		<script src='https://www.w3.org/Tools/respec/respec-w3c-common' class='remove'></script>
 		<script class='remove'>
 			var respecConfig = {
 			  // specification status (e.g. WD, LCWD, NOTE, etc.). If in doubt use ED.
-			  specStatus:           "unofficial",
-			  
-			  // the specification's short name, as in http://www.w3.org/TR/short-name/
-			  shortName:            "xkos",
-
-			  // if your specification has a subtitle that goes below the main
-			  // formal title, define it here
-			  subtitle   :  "An SKOS extension for modeling statistical classifications",
-
-			  // if you wish the publication date to be other than today, set this
-			  // publishDate:  "2009-08-06",
-
-			  // if the specification's copyright date is a range of years, specify
-			  // the start date here:
-			  // copyrightStart: "2005"
-
-			  // if there is a previously published draft, uncomment this and set its YYYY-MM-DD date
-			  // and its maturity status
-			  // previousPublishDate:  "1977-03-15",
-			  // previousMaturity:  "WD",
-
-			  // if there a publicly available Editor's Draft, this is the link
-			  // edDraftURI:           "http://dev.w3.org/2009/dap/ReSpec.js/documentation.html",
-
-			  // if this is a LCWD, uncomment and set the end of its review period
-			  // lcEnd: "2009-08-05",
-
-			  // if you want to have extra CSS, append them to this list
-			  // it is recommended that the respec.css stylesheet be kept
-			  // extraCSS:             ["http://dev.w3.org/2009/dap/ReSpec.js/css/respec.css"],
-
-			  // editors, add as many as you like
-			  // only "name" is required
-			  editors:  [
+			  specStatus: "DDI-RDF",
+			  noRecTrack: true,
+			  shortName: "xkos",
+			  subtitle: "An SKOS extension for representing statistical classifications",
+			  overrideCopyright: "<p class='copyright'>Copyright © 2014-2019 <a href='https://www.ddialliance.org/'>The DDI Alliance</a>, All Rights Reserved</p >",
+			  publishDate:  "2019-05-01",
+			  editors: [
 				  { name: "Franck Cotton", company: "INSEE", companyURL: "http://www.insee.fr/" },
 			  ],
-
-			  // authors, add as many as you like. 
-			  // This is optional, uncomment if you have authors as well as editors.
-			  // only "name" is required. Same format as editors.
-
-			  authors:  [
+			  authors: [
 				  { name: "Richard Cyganiak", company: "DERI", companyURL: "http://www.deri.ie/" },
 				  { name: "Daniel Gillman", company: "Bureau of Labor Statistics", companyURL: "http://www.bls.gov/" },
 				  { name: "R.T.A.M. Grim", company: "Tilburg University", companyURL: "http://www.tilburguniversity.edu/" },
 				  { name: "Yves Jaques", company: "Food and Agriculture Organization", companyURL: "http://www.fao.org/" },
 				  { name: "Wendy Thomas", company: "Minnesota Population Center", companyURL: "http://www.pop.umn.edu/" },
 			  ],
-			  
+
 			  // name of the WG
-			  wg:           "Dagstuhl Group on Semantic Statistics",
-			  
-			  // URI of the public WG page
-			  wgURI:        "http://example.org/really-cool-wg",
-			  
-			  // name (without the @w3c.org) of the public mailing to which comments are due
-			  wgPublicList: "public-vocabs",
-			  
-			  // URI of the patent status for this WG, for Rec-track documents
-			  // !!!! IMPORTANT !!!!
-			  // This is important for Rec-track documents, do not copy a patent URI from a random
-			  // document unless you know what you're doing. If in doubt ask your friendly neighbourhood
-			  // Team Contact.
-			  wgPatentURI:  "http://creativecommons.org/licenses/by/4.0/",
+			  wg: "Dagstuhl Group on Semantic Statistics",
+
+			  wgPatentURI: "https://creativecommons.org/licenses/by/4.0/",
+
+			  github: {
+				  repoURL: "https://github.com/linked-statistics/xkos",
+				  branch: " ", // avoids default 'gh-pages' 
+			  },
+			  logos: [{
+				  src: "https://www.ddialliance.org/sites/default/files/ddi-logo-r.png",
+				  alt: "DDI Alliance",
+				  height: 48,
+				  width: 200,
+				  url: "https://www.ddialliance.org/"
+			  }],
 
 			  localBiblio: {
 				"ANZSIC": {
@@ -184,9 +153,17 @@
 	</head>
 	<body>
 	<p style="font-size:80%"><em>(Authors affiliations were recorded at the beginning of the writing of this document and might have changed since.)</em></p>
-	</section>
+
 	<section id='abstract'>
 		<p>Semantic technology associated with Linked Open Data (LOD) is gaining much broader use and acceptance. Marrying LOD techniques to those of the international statistical community is the goal. Specifically, the use of the Simple Knowledge Organization System ([[!SKOS]]) for managing statistical classifications and concept management systems is addressed, since SKOS is widely used. LOD is used to create Web artifacts that machines can interpret, so publishing machine readable statistical classifications and other concept management systems as SKOS instances is desired. We found that SKOS is insufficient for the problem.  No aspect of SKOS was found to be wrong, just incomplete. Therefore, we propose an extension to SKOS, which we call XKOS.</p>
+    </section>
+
+    <section id='sotd'>
+      <p>This document is the first published version of this product by the DDI Alliance.</p>
+
+      <p>The publication process is governed by <a href="https://www.ddialliance.org/sites/default/files/DDIBylaws2013.pdf">DDI Alliance Bylaws</a> and <a href="https://www.ddialliance.org/sites/default/files/DDIAllianceStandardsDevelopmentandReviewProcessandProcedure.pdf">Standards Development and Review Process and Procedures</a>.
+
+      <p>For changes since the last draft, see the GitHub repository.</p>
     </section>
 
 	<section>
@@ -245,12 +222,12 @@
 		<h2>Overview of XKOS</h2>
 		<p>XKOS extends SKOS with two main objectives: the first one is to allow the description of statistical classifications, the second one is to introduce refinements of the semantic properties defined in SKOS.</p>
 		<p>In order to describe classifications, XKOS draws from the Neuchâtel model [[NEUCHATEL]], which is a well known standard in the statistical community: the notions of classification levels (<a href="#levels">Section 6</a>) or correspondence tables (<a href="#correspondences">Section 7</a>) are directly taken from this model. Some aspects of the model are rendered in XKOS differently (e.g. classification families by the 'covers' property) or in a more general way (concepts associations, for example). Other aspects (e.g. indexes) are not covered by XKOS. XKOS also defines a few new additional properties that are not present in the Neuchâtel model. A new version of the Neuchâtel model has recently been created and included in the General Statistical Information Model ([[GSIMSCM]]).</p>
-		<p>The figure below gives an overview of the SKOS/XKOS model for modeling classifications and their components. This model will be described in sections 5 to 7.</p>
+		<p>The figure below gives an overview of the SKOS/XKOS model for representing classifications and their components. This model will be described in sections 5 to 7.</p>
 		<table class="image">
 			<caption align="bottom">Figure 1 &#8211; Overview of the SKOS/XKOS model for classifications</caption>
-			<tr><td><img src="img/overview.png" alt="SKOS/XKOS model for classifications" title="SKOS/XKOS model for classifications"></td></tr>
+			<tr><td><img src="img/overview.png" alt="SKOS/XKOS model for classifications" title="SKOS/XKOS model for classifications" width="962" height="451"></td></tr>
 		</table>
-		<p>XKOS also defines documentary properties for classifications (<a href="#doc-props">Section 8</a>). In particular, specializations of the SKOS scope note property are proposed in order to capture the different types of explanatory notes that usually come with statistical classifications.</p>
+		<p>XKOS also defines documentary properties for classifications (<a href="#doc-props">Section 8</a>). In particular, specializations of the SKOS scope note property are proposed in order to represent the different types of explanatory notes that usually come with statistical classifications.</p>
 		<p>The other objective of XKOS is to make available to concept or classification schemes designers the semantic properties defined by ISO 704 and ISO 1087-1. Those properties are defined in <a href="#doc-props">Section 9</a>, and their articulation with SKOS semantic properties is described. An overall view of the SKOS and XKOS property structure can be found in Annex B.</p>
     </section>
 
@@ -488,11 +465,10 @@
 
 	<section id="classifications">
 		<h2>Classifications and classification schemes</h2>
-
 		<section id="class-representation">
 			<h3>Representation</h3>
 			<p>In order to represent classifications and classification schemes, XKOS does not define specific classes but uses directly SKOS classes, adding to them different properties that specifically apply to classifications or classification schemes.</p>
-			
+
 			<p>Each major version of a classification is represented in XKOS by a <code>skos:ConceptScheme</code>. All the versions of the same classification are grouped under a single resource identifying the classification itself by the <code>xkos:belongsTo</code> property. XKOS does not declare a formal range for <code>xkos:belongsTo</code>, and does not define a class to represent the classification itself; it is recommended to model it as an instance of <code>skos:Concept</code> that will serve as an entry in statistical classification registries, but another class could be used as well.</p>
 
 			<p>For example, in the diagram below, the european Statistical Classification of Economic Activities (NACE) is a <code>skos:Concept</code>, and each version of the NACE (the original 1970 version, the 1990 NACE rev. 1, the 2003 NACE Rev. 1.1 and the 2008 NACE Rev. 2) is a <code>skos:ConceptScheme</code>s linking to the NACE by the <code>xkos:belongsTo</code> property.</p>
@@ -507,15 +483,10 @@
 			<p>Readers should also be aware that the Provenance Ontology [[!PROV-O]], which was not available at the time of writing of this specification, introduces the related notion of "entity specialization" (<a href="https://www.w3.org/TR/2013/REC-prov-o-20130430/#specializationOf">prov:specializationOf</a>). This can be an alternative approach for describing the versioning of classifications.</p>
 		</section>
 
-		<section id="items-modeling">
-			<h3>Modeling of classifications items</h3>
-			<p>In order to model classifications items, XKOS does not define a specific class; classification items are simply declared as instances of the <code>skos:Concept</code> class.</p>
-		</section>
-
 		<section id="class-versioning">
 			<h3>Versioning &#8211; managing information over time</h3>
-			<p>The precise definition of what constitutes a version of a <code>skos:ConceptScheme</code>, <code>skos:Collection</code> or <code>skos:Concept</code> is out of scope for this model, but validity and version information can be modeled in simple ways.</p>
-			<p>The property <code>dcterms:valid</code> can express the temporal validity of a concept, classification scheme, etc. In the case of classification, the major versioning activity takes place at the classification scheme level, so that is where the property will normally be attached. When no validity information is attached to a <code>skos:Concept</code> identifying a classification item, it is usual to assume that the validity of the item is the same as the validity of the classification scheme it belongs to.</p>
+			<p>The precise definition of what constitutes a version of a <code>skos:ConceptScheme</code>, <code>skos:Collection</code> or <code>skos:Concept</code> is out of scope for this model, but validity and version information can be represented in simple ways.</p>
+			<p>The property <code>dcterms:valid</code> can express the temporal validity of a concept, classification scheme, etc. In the case of classification, the major versioning activity takes place at the classification scheme level, so that is where the property will normally be attached. When no validity information is attached to a <code>skos:Concept</code> representing a classification item, it is usual to assume that the validity of the item is the same as the validity of the classification scheme it belongs to.</p>
 
 			<p>The succession in time of classifications and classification schemes is expressed by the <code>xkos:follows</code> property, which is defined at the <code>skos:ConceptScheme</code> level. For example, NACE rev. 2 followed NACE rev. 1.1. In this particular case, the new revision also obsoleted the previous one: the <code>xkos:supersedes</code> property conveys this additional meaning. <code>xkos:supersedes</code> is a sub-property of <code>xkos:follows</code>.</p>
 
@@ -524,17 +495,17 @@
 
 		<section id="class-variants">
 			<h3>Variants</h3>
-			<p>In certain circumstances, statisticians need to "customize" a classification scheme for a specific use, by restricting the coverage, merging or splitting certain items at a given level, etc. In particular, when a new version of a classification scheme is being elaborated, it is useful to test different variants. The <code>xkos:variant</code> property can be used to express the relation between the base classification scheme and its variant(s). <code>skos:ConceptScheme</code> is the domain and range of this property.</p>
+			<p>In certain circumstances, statisticians need to "customize" a classification scheme for a specific use, by restricting the coverage, merging or splitting certain items at a given level, etc. In particular, when a new version of a classification scheme is being elaborated, it is useful to test different variants. The <code>xkos:variant</code> property can be used to represent the relation between the base classification scheme and its variant(s). <code>skos:ConceptScheme</code> is the domain and range of this property.</p>
 		</section>
 
 		<section id="class-coverage">
 			<h3>Coverage</h3>
-			<p>A classification covers a defined field: economic activity, occupations, living organisms, etc. XKOS specifies the <code>xkos:covers</code> property to express this relation. The field covered should be identified by a <code>skos:Concept</code>, for example a term from a well-knowned thesaurus like EuroVoc ([[EUROVOC]]) or the Library of Congress Subject Headings ([[LOCSH]]). If the coverage of the given field is complete (i.e. all notions in the field can potentially be classified under the classification), we say that the coverage is exhaustive. If there is no overlap between the classification items at a given level of the classification, we say that the <code>skos:Concept</code>s identifying the items are mutually exclusive. The <code>xkos:coversExhaustively</code> and <code>xkos:coversMutuallyExclusively</code> sub-properties of <code>xkos:covers</code> are introduced to capture these notions. Well-defined classifications usually cover their field in a exhaustive and mutually exclusive way (they form a partition of the field): in this case, <code>xkos:coversExhaustively</code> and <code>xkos:coversMutuallyExclusively</code> will be used together.</p>
+			<p>A classification covers a defined field: economic activity, occupations, living organisms, etc. XKOS specifies the <code>xkos:covers</code> property to express this relation. The field covered should be represented by a <code>skos:Concept</code>, for example a term from a well-knowned thesaurus like EuroVoc ([[EUROVOC]]) or the Library of Congress Subject Headings ([[LOCSH]]). If the coverage of the given field is complete (i.e. all notions in the field can potentially be classified under the classification), we say that the coverage is exhaustive. If there is no overlap between the classification items at a given level of the classification, we say that the <code>skos:Concept</code>s representing the items are mutually exclusive. The <code>xkos:coversExhaustively</code> and <code>xkos:coversMutuallyExclusively</code> sub-properties of <code>xkos:covers</code> are introduced to represent these notions. Well-defined classifications usually cover their field in a exhaustive and mutually exclusive way (they form a partition of the field): in this case, <code>xkos:coversExhaustively</code> and <code>xkos:coversMutuallyExclusively</code> will be used together.</p>
 		</section>
 
 		<section id="class-classifying">
 			<h3>Classifying resources</h3>
-			<p>The main purpose of a classification is to classify the entities that belong to or operate in the field that it covers. In linked data terms, classifying results in the creation of a RDF statement where the IRI identifying the entity is the subject and the IRI identifying the the classification item is the object. XKOS defines a generic property, <code>xkos:classifiedUnder</code>, that can be used in such statements, but classification criteria are often quite complex: for example, a same enterprise could be classified in different items of a classification of activities, depending on the rules that are used to measure its main economic activity. Thus, it is expected that <code>xkos:classifiedUnder</code> will be specialized for different classification systems.</p>
+			<p>The main purpose of a classification is to classify the entities that belong to or operate in the field that it covers. In linked data terms, classifying results in the creation of a RDF statement where the resource representing the entity is the subject and the concept representing the classification item is the object. XKOS defines a generic property, <code>xkos:classifiedUnder</code>, that can be used in such statements, but classification criteria are often quite complex: for example, a same enterprise could be classified in different items of a classification of activities, depending on the rules that are used to measure its main economic activity. Thus, it is expected that <code>xkos:classifiedUnder</code> will be specialized for different classification systems.</p>
 		</section>
 	</section>
 
@@ -544,12 +515,12 @@
 
 		<p>In XKOS, a classification level is defined as a specialization of <code>skos:Collection</code> named <code>xkos:ClassificationLevel</code>. A classification level can bear an integer property, <code>xkos:depth</code>, that indicates its distance from the (abstract) root node of the hierarchy. In the ISCO case, the level of sub-major groups will have a <code>xkos:depth</code> of 2, whereas the level of unit groups will have a <code>xkos:depth</code> of 4. The unique level of a flat classification would have a <code>xkos:depth</code> of 1. In addition, a <code>xkos:numberOfLevels</code> property is defined for the classification schemes to document the number of levels they include: ISCO-08 would have an <code>xkos:numberOfLevels</code> of 4.</p>
 
-		<p>The levels of a classification scheme are organized as an <code>rdf:List</code> (implying order), starting with the most aggregated level. The <code>skos:ConceptScheme</code> identifying the classification scheme points to the <code>rdf:List</code> of its <code>xkos:ClassificationLevel</code>s with the <code>xkos:levels</code> property.
+		<p>The levels of a classification scheme are organized as an <code>rdf:List</code> (implying order), starting with the most aggregated level. The <code>skos:ConceptScheme</code> representing the classification scheme points to the <code>rdf:List</code> of its <code>xkos:ClassificationLevel</code>s with the <code>xkos:levels</code> property.
 		<a href="#anzsic-example">Example 10.1</a> below gives a good representation of this construction.</p>
 
 		<p>Individual <code>skos:Concept</code> objects are related to the <code>xkos:ClassificationLevel</code> to which they belong by the usual <code>skos:member</code> property (going from the level to the classification item).</p>
 
-		<p>A classification level is often characterized by a generic name for the classification items that it regroups. The ISCO names "major groups" the items of the first level, "sub-major groups" the items of the second level, etc. The NACE uses the terms "sections", "divisions", "groups" and "classes"; the NAICS has "sectors", "subsectors", "groups", etc. This information can be rendered in XKOS by the property <code>xkos:organizedBy</code> that links the <code>xkos:ClassificationLevel</code> object to a <code>skos:Concept</code> identifying the generic item for this level (<i>e.g.</i> the concept of an ISCO major group, of a NACE section, etc.).</p>
+		<p>A classification level is often characterized by a generic name for the classification items that it regroups. The ISCO names "major groups" the items of the first level, "sub-major groups" the items of the second level, etc. The NACE uses the terms "sections", "divisions", "groups" and "classes"; the NAICS has "sectors", "subsectors", "groups", etc. This information can be rendered in XKOS by the property <code>xkos:organizedBy</code> that links the <code>xkos:ClassificationLevel</code> object to a <code>skos:Concept</code> representing the generic item for this level (<i>e.g.</i> the concept of an ISCO major group, of a NACE section, etc.).</p>
 
 		<p>Also, classification items of a given levels usually have a code (expressed by the <code>skos:notation</code> property) that conforms to a specific structure. For example, the NACE sections are identified by a capital letter between A and U; NACE divisions are identified by two-digits codes, etc. In order to capture this information, XKOS defines the <code>xkos:notationPattern</code> property. This property is attached to a classification level and should contain a regular expression refecting the code structure of the items of this level.</p>
 
@@ -561,14 +532,14 @@
 
 		<p>A much more complex example of relations between classifications or classification schemes is given by the international system of economic classifications maintained by the United Nations Statistical Division. The European view of this system is well described in the <a href="http://ec.europa.eu/eurostat/product?code=KS-RA-07-015&mode=view">online publication of the NACE Rev. 2</a> (chapter 1.1). The economic classifications forming this system are linked either by a common structure which is more and more detailed from international to  European and then national levels, or by semantic correspondences between the economic fields covered: activities, products and goods (<i>e.g.</i> activities create products). Here again, the high-level links established between classifications result in more fine-grained correspondences between items: one defined activity will create one or more specific products.</p>
 
-		<p>Since classification items are modeled as SKOS Concepts, we could use the usual SKOS associative properties to express correspondences between them. However, this simple approach has some limitations:</p>
+		<p>Since classification items are represented as SKOS Concepts, we could use the usual SKOS associative properties to represent correspondences between them. However, this simple approach has some limitations:</p>
 		<ul>
 			<li>As mentioned above, relations between items in correspondences are often m to n, whereas SKOS properties relate one unique concept to another unique concept. It is always possible to decompose an m to n relation into several 1 to 1 relations, but it is better to have a global vision of a given correspondence. We also want to be able to represent 0 to n relations, for example when an item is created or disappears in a new version of a classification.</li>
 			<li>More globally, we want to be able to group all the fine-grained item associations that compose a given high-level relation between two classification schemes, such as the ones that exist in the international system of economic classifications. Such a collection of item associations is called a correspondence or conversion table, or sometimes a concordance. Further synonyms are correlation table and mapping.</li>
 			<li>Lastly, it is often useful to be able to attach additional information (for example notes) to items associations, for example to describe what proportion of the different items are linked in the association.</li>
 		</ul>
 
-		<p>For these reasons, XKOS defines the <code>xkos:ConceptAssociation</code> class that can be used to model correspondences between classification items when the SKOS properties are not sufficient. Each <code>xkos:ConceptAssociation</code> may have input or source <code>skos:Concept</code>(s) and output or target <code>skos:Concept</code>(s). The complete collection of such associations for all the concepts in two SKOS Concept Schemes forms a correspondence and is expressed as an instance of the <code>xkos:Correspondence</code> class. The <code>xkos:madeOf</code> property is used to link the <code>xkos:Correspondence</code> to its <code>xkos:ConceptAssociation</code> components. The <code>xkos:compares</code> property may be used to link directly the <code>xkos:Correspondence</code> to the classification schemes that it puts in relation.</p>
+		<p>For these reasons, XKOS defines the <code>xkos:ConceptAssociation</code> class that can be used to represent correspondences between classification items when the SKOS properties are not sufficient. Each <code>xkos:ConceptAssociation</code> may have input or source <code>skos:Concept</code>(s) and output or target <code>skos:Concept</code>(s). The complete collection of such associations for all the concepts in two SKOS Concept Schemes forms a correspondence and is expressed as an instance of the <code>xkos:Correspondence</code> class. The <code>xkos:madeOf</code> property is used to link the <code>xkos:Correspondence</code> to its <code>xkos:ConceptAssociation</code> components. The <code>xkos:compares</code> property may be used to link directly the <code>xkos:Correspondence</code> to the classification schemes that it puts in relation.</p>
 
 		<p>The following figures illustrate two examples of concept associations between classification items. <a href="#concept-association-example">Example 10.3</a> below gives a more complex real-life example.</p>
 		<table class="image">
@@ -733,9 +704,9 @@
 			<p>The following figure gives an example inspired by the ANZSIC (Australian and New Zealand Industry Classification [[!ANZSIC]]), which is a classification covering the field of economic activity. A small excerpt is shown here, limited to the classification object itself and its levels, as well as one item of the most detailed level (Class 6720 &#8211; Real Estate Services) and its parent items. Note that the URI employed in this example are entirely fictitious, since the ANZSIC has not yet been published as RDF.</p>
 			<table class="image">
 				<caption align="bottom">Figure 6 &#8211; Statistical classification &#8211; ANZSIC</caption>
-				<tr><td><img src="img/anzsic.png" alt="Classification example - ANZSIC" title="Classification example - ANZSIC"></td></tr>
+				<tr><td><img src="img/anzsic.png" alt="Classification example - ANZSIC" title="Classification example - ANZSIC" width="973" height="653"></td></tr>
 			</table>
-			<p>On the left of the figure is the <code>skos:ConceptScheme</code> instance that corresponds to the ANZIC 2006 classification scheme, with its various SKOS and Dublin Core properties. Additionnal XKOS properties indicate that the classification has four levels and covers the field of economic activity, identified here as a concept from the EuroVoc thesaurus. In this case, the coverage is intended to be exhaustive and without overlap, so <code>xkos:coversExhaustively</code> and <code>xkos:coversMutuallyExclusively</code> could have been used together instead of <code>xkos:covers</code>.</p>
+			<p>On the left of the figure is the <code>skos:ConceptScheme</code> instance that corresponds to the ANZIC 2006 classification scheme, with its various SKOS and Dublin Core properties. Additionnal XKOS properties indicate that the classification has four levels and covers the field of economic activity, represented here as a concept from the EuroVoc thesaurus. In this case, the coverage is intended to be exhaustive and without overlap, so <code>xkos:coversExhaustively</code> and <code>xkos:coversMutuallyExclusively</code> could have been used together instead of <code>xkos:covers</code>.</p>
 			<p>The four levels are instances of <code>xkos:ClassificationLevel</code>; they are organized as a <code>rdf:List</code> which is attached to the classification by the <code>xkos:levels</code> property. Some level information has been represented on the top level, for example its depth in the classification (<code>xkos:depth</code>) and the concept that characterizes the items it is composed of (<code>xkos:organizedBy</code>). In the same fashion, concepts of subdivision, group and class could be created to describe the items of the lower levels.</p>
 			<p>The usual SKOS properties are used to connect the classification items to their respective level (<code>skos:member</code>) and to the classification (<code>skos:inScheme</code> or its specialization <code>skos:topConceptOf</code>) for the items of the first level). Similarly, <code>skos:narrower</code> is used to express the hierarchical relations between the items, but the subproperties defined in this specification could also be used. For example, <code>xkos:hasPart</code> could express the partitive relation between subdivision 67 ("Property Operators and Real Estate Services") and group 672 ("Real Estate Services").</p>
 			<p>For clarity, the properties of the classification items (code, labels, notes) have not been included in the figure.</p>
@@ -957,11 +928,18 @@
 			<li>Benjamin Zapilko (GESIS, Leibniz Institute for the Social Sciences, Germany)</li>
 			<li>Matthäus Zloch (GESIS, Leibniz Institute for the Social Sciences, Germany))</li>
 		</ul>
+		<p>The editor would like to thank the people who contributed during the public review, as well as the following persons who helped to integrate these contributions:</p>
+		<ul>
+			<li>Thomas Francart (Sparna, Tours, France)</li>
+			<li>Guillaume Duffes (Insee, Paris, France)</li>
+		</ul>
+		<p>This document uses a modified version of <a href="https://github.com/w3c/respec">ReSpec</a>.</p>
+
 	</section>
 
 	<section class="appendix">
 		<h2>Full copyright</h2>
-		<p>Copyright © 2016 The DDI Alliance, <i>All Rights Reserved</i><br/><a href="http://www.ddialliance.org/">http://www.ddialliance.org/</a></p>
+		<p>Copyright © 2014-2019 The DDI Alliance, <i>All Rights Reserved</i><br/><a href="http://www.ddialliance.org/">http://www.ddialliance.org/</a></p>
 		<p>Content of this document is licensed under a Creative Commons License:<br/>Attribution 4.0 International (CC BY 4.0)</p>
 		<p>This is a human-readable summary of the Legal Code (the full license).<br/><a href="http://creativecommons.org/licenses/by/4.0/">http://creativecommons.org/licenses/by/4.0/</a></p>
 		<p>You are free to:</p>
