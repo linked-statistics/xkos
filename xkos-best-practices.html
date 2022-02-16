@@ -209,10 +209,19 @@
 
 	<section id='summary'>
 	    <h2>Best practices summary</h2>
-		<div class="issue" title="TF Complete summary">
-			<p>TF: write this section</p>
-			<p>Insert quick-list of best practices with hyperlinks</p>
-		</div>
+	    This document contains best practices organized in the following sections:
+	    <ul>
+      		<li>Best practices for the <a href="#bp-classification">description of statistical classifications</a>, giving a list of mandatory, recommended and optional properties.</li>
+      		<li>Best practices pertaining to the <a href="#bp-labels">labels of classification items</a>.</li>
+      		<li>Best practices pertaining to the <a href="#bp-notes">notes attached to classification items</a>, including the difference between versioned notes and timestamp notes, and clarification of the difference between inclusion notes and case laws.</li>
+      		<li>Best practices pertaining to the <a href="#bp-levels">levels of a statistical classification</a>.</li>
+      		<li>Best practices on how to <a href="#bp-types">assign types to the classification items</a> of a classification.</li>
+      		<li>Best practices pertaining to the <a href="#bp-correspondences">correspondence tables between classifications</a>, including the way to describe them with a list of mandatory, recommended and optional properties; the way to document concept associations; examples of concept associations; and description of correspondence table matrix.</li>
+      		<li>Best practices on how to deal with the <a href="#bp-evolution">evolution of statistical classification over time</a>, including the consequences of a new revision; the combination of XKOS and PROV-O; and an example of statistical classification revisions.</li>
+      		<li>Best practices on the <a href="#bp-relations">relation between national and international classifications</a>.</li>
+      		<li>Best practices on the <a href="#bp-publishing">publishing of statistical classification data</a> using DCAT.</li>
+      		<li>Best practices on the <a href="#bp-uri-patterns">URI patterns</a> for all statistical classification entities.</li>
+      	</ul>
     </section>
 
     <section id="namespaces">
@@ -418,7 +427,7 @@
     <section id="best-practices">
     	<h2>The Best Practices</h2>
 		<section id="bp-classification">
-		    <h3>Description of a statistical classification</h3>
+		    <h3>Description of statistical classifications</h3>
 			<p><a href="https://rdf-vocabulary.ddialliance.org/xkos.html#class-representation">§5.1 of the XKOS specification</a> states that <blockquote><em>“In order to represent classifications and classification schemes, XKOS does not define specific classes but uses directly SKOS classes, adding to them different properties that specifically apply to classifications or classification schemes. Each major version of a classification is represented in XKOS by a `skos:ConceptScheme`.”</em></blockquote>.</p>
 			<p>This best practices document gives further recommendations on how best to describe a `skos:ConceptScheme` that identifies a statistical classification, with mandatory, recommended and optional properties. Note that some constraints impose the presence of a property in English, hence the "lang" column with value "en" for certain properties</p>
 
@@ -626,7 +635,7 @@
 			<p>This best practices document gives further recommendations and examples on how best to deal with fixed-length labels, translations, or labels in a specific context/usage.</p>
 
 			<section id="bp-labels-length">
-				<h4>Dealing with fixed-length labels</h4>
+				<h4>Fixed-length labels</h4>
 				<p><a href="https://rdf-vocabulary.ddialliance.org/xkos.html#add-labels">§ 8.1 of the XKOS specification</a> describes how to use SKOS labels in combination with `xkos:maxLength` to render fixed-length labels. Another example taken from the NAF rév. 2 (“Nomenclature d'activités française”) is given below:</p>
 
 				<aside class="example" title="Example of fixed-length labels">
@@ -645,7 +654,7 @@
 			</section>
 
 			<section id="bp-labels-types">
-				<h4>Dealing with different types of labels</h4>
+				<h4>Labels of different types</h4>
 				<p>The “official” label and a “usual” from the PCS2020 (“Nomenclature des professions et catégories socioprofessionnelles”) can be rendered using the base elements from SKOS:
 				<aside class="example" title="Example of labels of different types with different values">
 					<pre class="nohighlight">
@@ -655,17 +664,19 @@
 					</pre>
 				</aside>
 				<p>Official labels should always be represented by the `skos:prefLabel` property. For usual labels, should be used, but only when they are different from the official ones, due to the SKOS integrity rules:</p>
+				<div class="issue" title="FC missing a word in previous sentence ?"></div>
 				<aside class="example" title="Example of labels of different types with the same value">
 					<pre class="nohighlight">
 &lt;http://id.insee.fr/codes/pcs2020/1/4&gt;
     skos:prefLabel "Professions intermédiaires"@fr .
 					</pre>
 				</aside>
+				<div class="issue" title="FC Example is strange as it has only one label, no usual label. Add explanation."></div>
 				<p>If more than one type of “unofficial” labels exist, SKOS-XL constructs can be used, in the same way than for the fixed-length labels example. In this case, the `skos-xl:Label` can be qualified by a custom property listing the different types of labels. The current version of XKOS does not define this kind of property.</p>
 			</section>
 
 			<section id="bp-labels-languages">
-				<h4>Dealing with translations</h4>
+				<h4>Translations</h4>
 				<p>Classification publishers should always provide textual material (labels and notes) in their original language. Additionally, it is recommended to publish English versions of at least the official labels and if possible of other labels and of all notes.</p>
 				<p>RDF native support of multilingualism should always be used:</p>
 				<aside class="example" title="Example of labels in different languages">
@@ -896,15 +907,15 @@ ex:isco2008-9611
 		</section>
 		<section id="bp-levels">
 		    <h3>Levels</h3>
-			<p><a href="https://rdf-vocabulary.ddialliance.org/xkos.html#levels">§6 of the XKOS specification</a> specifies how to describe the levels in a classification, and how the property `xkos:organizedBy` can be used to link a level in a (specific revision of a) classification to the generic `skos:Concept` describing the generic kind of entries that this level regroups (e.g. the concept of an ISCO major group, of a NACE section, etc.).</p>
+			<p><a href="https://rdf-vocabulary.ddialliance.org/xkos.html#levels">§6 of the XKOS specification</a> specifies how to describe the levels in a classification, and how the property `xkos:organizedBy` can be used to link a level in a (specific revision of a) classification to the generic `skos:Concept` describing the generic kind of items that this level regroups (e.g. the concept of an ISCO major group, of a NACE section, etc.).</p>
 			<p>We emphasize what XKOS already specifies:</p>
 			<ul>
 				<li>the `skos:ConceptScheme` uses the property `xkos:levels` to point to an `rdf:List` that contains an ordered list of instances of `xkos:ClassificationLevels` in this classification. The list is ordered from the highest level to the lowest. These classification levels represent the grouping of the concepts in this particular revision of the classification.</li>
-				<li>Each instance of `xkos:ClassificationLevel` uses `xkos:organizedBy` to refer to a `skos:Concept` describing the “abstract” kind of entries at this level of the classification, independently of the revision of the classification.</li>
+				<li>Each instance of `xkos:ClassificationLevel` uses `xkos:organizedBy` to refer to a `skos:Concept` describing the “abstract” kind of items at this level of the classification, independently of the revision of the classification.</li>
 			</ul>
 			<p>We give additional best practices:</p>
 			<ol>
-				<li>the `skos:Concept`s describing the “abstract” kind of entries should be organized hierarchically using `skos:broader` / `skos:narrower` relationships.</li>
+				<li>the `skos:Concept`s describing the “abstract” kind of items should be organized hierarchically using `skos:broader` / `skos:narrower` relationships.</li>
 				<li>they should not be blank nodes.</li>
 				<li>these `skos:Concept` should belong to a `skos:ConceptScheme` that is the list of levels in this classification, in general (not a particular revision of the classification).</li>
 				<li>these `skos:Concept` can be declared in the same file as the `skos:ConceptScheme` of the classification, and thus will be repeated with each major revision of the classification.</li>
@@ -973,7 +984,7 @@ ex:NACE_ItemTypes
 			</aside>
 		</section>
 		<section id="bp-types">
-		    <h3>Types of the classification entries</h3>
+		    <h3>Classification items</h3>
 		    <p>The XKOS specification does not define a specific class to represent classification items but rather directly relies on `skos:Concept`.  This best practices document gives further recommendations on how the classification items can be typed according to their levels.</p>
 		    <section id="bp-types-per-entry">
 		    	<h4>Type the classification items of a given classification</h4>
@@ -997,7 +1008,7 @@ Class: ex:NACE-R2_Item
 				<p>While the first option is more direct and readable, the second one is more formal.</p>
 				<p>This new class is expected to be declared in the same file as the `skos:ConceptScheme` representing the classification.</p>
 				<p>Both these options are illustrated in the example below.</p>
-				<aside class="example" title="Example of declaring a class for all entries in a classification">
+				<aside class="example" title="Example of declaring a class for all items in a classification">
 					<pre class="nohighlight">
 # The ConceptScheme
 ex:NACE-R2
@@ -1079,7 +1090,7 @@ ex:NACE-R2_Class
     rdfs:subClassOf ex:NACE-R2_Item ;
     xkos:organizedBy ex:NACE_Class .
 
-# The common parent class that represents the sets of all entries of the classification
+# The common parent class that represents the sets of all items of the classification
 # linked to the ConceptScheme with an rdfs:seeAlso and a formal OWL equivalence
 
 ex:NACE-R2_Item
@@ -1132,10 +1143,10 @@ ex:NACE_ItemTypes
 		</section>
 		<section id="bp-correspondences">
 		    <h3>Correspondences</h3>
-			<p><a href="https://rdf-vocabulary.ddialliance.org/xkos.html#correspondences">§7 of the XKOS specification</a> introduces `xkos:Correspondence` and `xkos:ConceptAssociation`, amongst other terms, to model correspondences, conversion tables, mapping, concordance tables. This best practice document gives further details on how to document correspondences and concept associations, gives examples of how to describe a split or a merge of a concept, or more complicated cases (n concepts to m concepts), and gives precisions on how to deal with deleted or new entries in the case a `xkos:Correspondence` is used to document the mapping between 2 revisions of a classification.</p>
+			<p><a href="https://rdf-vocabulary.ddialliance.org/xkos.html#correspondences">§7 of the XKOS specification</a> introduces `xkos:Correspondence` and `xkos:ConceptAssociation`, amongst other terms, to model correspondences, conversion tables, mapping, concordance tables. This best practice document gives further details on how to document correspondences and concept associations, gives examples of how to describe a split or a merge of a concept, or more complicated cases (n concepts to m concepts), and gives precisions on how to deal with deleted or new items in the case a `xkos:Correspondence` is used to document the mapping between 2 revisions of a classification.</p>
 			<section id="bp-correspondences-direction">
 				<h4>Correspondences direction</h4>
-				<p>By convention, the source Classification in a correspondence is the ‘former’ one, and the target Classification is the ‘new’ one. Or in other words, the source is the classification whose entries compose the domain of the correspondence relation and the target is the classification whose entries correspond to the range of this correspondence relation.</p>
+				<p>By convention, the source Classification in a correspondence is the ‘former’ one, and the target Classification is the ‘new’ one. Or in other words, the source is the classification whose items compose the domain of the correspondence relation and the target is the classification whose items correspond to the range of this correspondence relation.</p>
 				<p>As an additionnal information, it is also possible to use properties given by the [[PROV-O]] vocabulary, for instance `prov:wasDerivedFrom` to convey the fact that one classification is based on a previous one and have with it a common content (see below).</p>
 			</section>
 			<section id="bp-correspondences-documenting-correspondences">
@@ -1252,7 +1263,7 @@ ex:NACE_ItemTypes
 						</tr>
 					</tbody>
 				</table>
-				<p>It is possible to further describe concept associations with custom properties. <a href="https://www.insee.fr">INSEE</a> for example uses `insee:differenceNote` and `insee:similarityNote` to capture respectively how the related entries differs and how they are similar, as in the following example:</p>
+				<p>It is possible to further describe concept associations with custom properties. <a href="https://www.insee.fr">INSEE</a> for example uses `insee:differenceNote` and `insee:similarityNote` to capture respectively how the related items differs and how they are similar, as in the following example:</p>
 				<aside class="example" title="Example of further description of a xkos:ConceptAssociation with custom properties">
 					<pre class="nohighlight">
 # A xkos:ConceptAssociation with custom properties to describe the similarity and differences of related concepts
@@ -1281,7 +1292,7 @@ ex:NACE_ItemTypes
 				</aside>
 			</section>
 			<section id="bp-correspondences-example">
-				<h4>Examples of using xkos:ConceptAssociation</h4>
+				<h4>Examples of xkos:ConceptAssociation</h4>
 				<p>Examples below are taken from the correspondence table between two successive versions of the french classification of occupations.</p>
 				<p>In the RDF snippet below, the two classifications pcsese1982 and pcsese2003 are typed as two `skos:ConceptScheme` and the correspondence table pcsese1982 - pcsese2003 is typed as a `xkos:Correspondence`.</p>
 				<aside class="example" title="Declaration of the correspondence table between pcsese1982 and pcsese2003">
@@ -1341,7 +1352,7 @@ ex:NACE_ItemTypes
 				</section>
 				<section id="bp-correspondences-example-split">
 					<h5>Split example (1 > 2)</h5>
-					<p>In this case the `skos:Concept` 6742 from pcsese1982 gives two new entries in the pcsese2003, the concepts indexed 671a and 671c. Note how a single `xkos:ConceptAssociation` is used, with one source and two target. The link between the `xkos:Correspondence` and `xkos:ConceptAssociation` is beared by the `xkos:madeOf` property.</p>
+					<p>In this case the `skos:Concept` 6742 from pcsese1982 gives two new items in the pcsese2003, the concepts indexed 671a and 671c. Note how a single `xkos:ConceptAssociation` is used, with one source and two target. The link between the `xkos:Correspondence` and `xkos:ConceptAssociation` is beared by the `xkos:madeOf` property.</p>
 					<aside class="example" title="Using a xkos:ConceptAssociation in case of a split of entry">
 						<pre class="nohighlight">
 # Source concept in 1982 revision
@@ -1381,7 +1392,7 @@ ex:NACE_ItemTypes
 				<section id="bp-correspondences-example-merge">
 					<h5>Merge example (2 > 1)</h5>
 					<p>Inversely, this example illustrates a merge of two concepts from the pcsese1982 into one concept in the pcsese2003. A single `xkos:ConceptAssociation` is used, with two sources and one target.</p>
-					<aside class="example" title="Using a xkos:ConceptAssociation in case of a merge of entries">
+					<aside class="example" title="Using a xkos:ConceptAssociation in case of a merge of items">
 						<pre class="nohighlight">
 # First source concept in 1982 revision
 &lt;http://id.insee.fr/codes/pcsese1982/rubrique/3412&gt;
@@ -1621,36 +1632,17 @@ ex:obs2
 
 			And it would be better to also include the xkos:ConceptAssociation in the example (although admitedly they are not described in the first example)
 		</div>
-		<section id="bp-relations">
-		    <h3>Describing the relation between an international and a national classification</h3>
-			<p>The relationship between a classification and its derivation is partly described by the correspondence table which, for a given level, maps the items of the two nomenclatures.</p>
-			<p>Specific information can also be expressed on the levels to characterise them in relation to each other. Thus, for some derivations an additional level is defined or the granularity of the level is finer, for example to provide more precision at national level. It is suggected that the relationship between the finer level of the derived classification and the more aggregated level of the reference classification be expressed with a `skos:broadMatch` predicate.</p>
-			<p>Below is an example where the level is thinner in the NACE compare to ISIC (NACE being an EU-level extension of the world-level ISIC classification).</p>
-			<aside class="example" title="Example of declaring a class for all entries in a classification">
-					<pre class="nohighlight">
-ex:NACE-2-Group a xkos:ClassificationLevel ;
-  xkos:organizedBy ex:NACE_Group .
- 
-ex:NACE_Group a skos:Concept ;
-skos:prefLabel "NACE Group"@en ;
-skos:broadMatch ex:ISIC_Group .
- 
-ex:ISIC_Group a skos:Concept ;
-skos:prefLabel "ISIC Group"@en .
-						</pre>
-			</aside>
-			<p>XKOS does not propose a property to indicate that a (national) classification refines another (international) one. However, it would be possible to state a `prov:wasDerivedFrom` property on the concept scheme of the derived classification.</p>
-		</section>
 		<section id="bp-evolution">
 		    <h3>Evolution of classifications over time</h3>
 			<section id="bp-evolution-major-versions">
 				<h4>Major versions of classifications</h4>
-				<p>When a complete revision of a classification happens, a new major version of a classification is produced. The recommendation is that all the URIs of the concepts and levels are recreated and the relation between the classification items is given by a correspondence table as presented in the <a href="#bp-correspondences">corresponding section of this document</a>. The former classification should have the property `owl:deprecated` set to “true” and its period of validity updated in a `dcat:temporal` property.</p>
+				<p>When a complete revision of a classification happens, a new major version of a classification is produced.</p>
+
+				<p>It is recommended that all concepts and levels are recreated with new URIs in the new revision. The relation between the classification items of the two revisions is given by a correspondence table as presented in the <a href="#bp-correspondences">corresponding section of this document</a>.</p>
+
+				<p>As for the classification themselves, the `skos:ConceptScheme` of the former revision should have the property `owl:deprecated` set to “true” and its period of validity updated in a `dcat:temporal` property. Links between successive revisions can be asserted between the `skos:ConceptScheme`s by using `xkos:supersedes`; this property conveys the idea that the classification being referred to is deprecated.</p>
+
 				<div class="issue" title="dcat:temporal or dcterms:valid ?"></div>
-			</section>
-			<section id="bp-evolution-linking">
-				<h4>Linking major versions of classifications</h4>
-				<p>In the situation of managing classifications over time, links between successive major versions of classifications can be created at the `skos:ConceptScheme` level by using `xkos:supersedes` that conveys the idea that the value of this property is a deprecated classification.</p>
 			</section>
 			<section id="bp-evolution-prov">
 				<h4>Use of PROV-O</h4>
@@ -1700,7 +1692,7 @@ skos:prefLabel "ISIC Group"@en .
 				<p>Note that in the case of a `xkos:variant`, the corresponding [[PROV-O]] property is `prov:wasDerivedFrom` instead of `prov:wasRevisionOf`. The existence of a variant does not imply the original version is deprecated. There will be an overlap between the validity time period of the variant version and the reference one.</p>
 			</section>
 			<section id="bp-evolution-series">
-				<h4>Series of classification</h4>
+				<h4>Example of statistical classification serie</h4>
 				<p>The figure below presents the succession of two revisions of the NAF classification. The temporal periods of validity of each revision are given through the `dcterms:temporal` property that has as value a `dcat:PeriodOfTime` using the `dcat:startDate` and `dcat:endDate` properties. A possibility to clearly identify that the NAFRev1 is the obsolete version is to use the `owl:deprecated` property set to `true`.</p>
 				<img src="img/bp-series-example.png" alt="Example of a classification serie" />
 				<div class="issue" title="dcterms:temporal or dcterms:valid or something else ?"></div>
@@ -1717,6 +1709,26 @@ skos:prefLabel "ISIC Group"@en .
 				</div>
 				<p>In the `xkos:ConceptAssociation` the `xkos:sourceConcept` makes a reference to a `skos:Concept` belonging to the `skos:ConceptScheme` of the former classification while the `xkos:targetConcept` references a `skos:Concept` belonging to the (`skos:ConceptScheme` of) the new revision of the classification.</p>				
 			</section>
+		</section>
+		<section id="bp-relations">
+		    <h3>Describing the relation between an international and a national classification</h3>
+			<p>The relationship between a classification and its derivation is partly described by the correspondence table which, for a given level, maps the items of the two nomenclatures.</p>
+			<p>Specific information can also be expressed on the levels to characterise them in relation to each other. Thus, for some derivations an additional level is defined or the granularity of the level is finer, for example to provide more precision at national level. It is suggected that the relationship between the finer level of the derived classification and the more aggregated level of the reference classification be expressed with a `skos:broadMatch` predicate.</p>
+			<p>Below is an example where the level is thinner in the NACE compare to ISIC (NACE being an EU-level extension of the world-level ISIC classification).</p>
+			<aside class="example" title="Example of declaring a class for all items in a classification">
+					<pre class="nohighlight">
+ex:NACE-2-Group a xkos:ClassificationLevel ;
+  xkos:organizedBy ex:NACE_Group .
+ 
+ex:NACE_Group a skos:Concept ;
+skos:prefLabel "NACE Group"@en ;
+skos:broadMatch ex:ISIC_Group .
+ 
+ex:ISIC_Group a skos:Concept ;
+skos:prefLabel "ISIC Group"@en .
+						</pre>
+			</aside>
+			<p>XKOS does not propose a property to indicate that a (national) classification refines another (international) one. However, it would be possible to state a `prov:wasDerivedFrom` property on the concept scheme of the derived classification.</p>
 		</section>
 		<section id="bp-publishing">
 		    <h3>Publishing statistical classification data</h3>
@@ -1902,7 +1914,7 @@ ex:NafRev2Dataset
 			</section>
 		</section>
 		<section id="bp-uri-patterns">
-		    <h3>URI patterns Best Practices</h3>
+		    <h3>Proposed URI patterns</h3>
 			<section id="bp-uri-patterns-classifications">
 				<h4>Proposed URI pattern for classifications</h4>
 				<div class="uri-pattern">
@@ -1949,7 +1961,7 @@ ex:NafRev2Dataset
 
 			</section>
 			<section id="bp-uri-patterns-concepts">
-				<h4>Proposed URI pattern for classification entries (Concepts)</h4>
+				<h4>Proposed URI pattern for classification items (Concepts)</h4>
 				<div class="uri-pattern">
 					<p>{scheme}://{authority}/{all_classifications}/{classification_naming_context}/{level}/{concept_id}</p>
 				</div>
