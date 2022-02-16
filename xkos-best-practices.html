@@ -599,12 +599,6 @@
 			<div class="issue" title="complete example of description of a statistical classification">
 				Provide a Turtle example applying the best practices above. Use ISIC by building the example by hand. @FC: Build from existing description of the classification.
 			</div>
-			<div class="issue" title="Should SHACL contain sh:class constraints ?">
-				Do we encode the range constraint with sh:class as these will probably always fail if
-				one points to an external skos:Concept
-
-				26/01/2022 : keep sh:class constraint, with additional documentation
-			</div>
 		</section>
 
 		<section id="bp-labels">
@@ -1034,6 +1028,10 @@ ex:NACE-R2_Item
 
 				<p>This best practice document suggests to go one step further, and to actually consider the classification levels also as OWL classes (hence with 2 types: `xkos:ClassificationLevel` and `owl:Class`), declared as subclass of the dedicated class that represent the set of all items of the classification, as described in previous section.</p>
 
+				<p>Declaring OWL classes corresponding to classification levels allows to refer to these classes in the signature (domain or range) of properties. A typical use-case is to indicate that a certain property can refer only to the entries at one (or more) level of a classification.</p>
+
+				<div class="issue" title="FC : validate if the above paragraphe is correct"></div>
+
 				<p>Following the example given above, the following levels of the NACE-R2, in addition to being `xkos:ClassificationLevel`, would be typed as `owl:Class` and declared subclasses of `ex:NACE-R2_Item`:</p>
 				<ul>
 					<li>ex:NACE-R2_Section</li>
@@ -1124,7 +1122,7 @@ ex:NACE_ItemTypes
     skos:prefLabel "NACE Item Types"@en .
 						</pre>
 				</aside>
-				<div class="issue" title="Describe how this is used as the range of a property"></div>
+				
 			</section>
 
 		</section>
