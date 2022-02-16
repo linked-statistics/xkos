@@ -20,17 +20,17 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://rdf-vocabulary.ddialliance.org/xkos#> a owl:Ontology;
-  rdfs:label "XKOS Best practices Shapes" .
-
+  rdfs:label "XKOS Best practices Shapes" ;
+  skos:scopeNote """The shapes described here use sh:class to encode some ranges, for example to enforce that the value of xkos:belongsTo is a skos:Concept.
+    However that type information might not be available in the data graph that is being validated if a reference is made to a 'remote' URI.
+    Users of these shapes should then interpret the validation report accordingly and ignore the related messages,
+    or comment out these constraints from this file before validation."""@en;
+  .
+  
 # Classification Shape
 
 xkos:ClassificationShape a sh:NodeShape;
   rdfs:label "Classification"@en;
-  skos:scopeNote """
-    The shapes described here use sh:class to encode some ranges, for example to enforce that the value of xkos:belongsTo is a skos:Concept.
-    However that type information might not be available in the data graph that is being validated if a reference is made to a 'remote' URI.
-    Users of these shapes should then interpret the validation report accordingly and ignore the related messages,
-    or comment out these constraints from this file before validation."""@en;
   sh:targetClass skos:ConceptScheme;
   sh:nodeKind sh:IRI;
   sh:order 1;
