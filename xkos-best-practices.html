@@ -484,8 +484,8 @@
 						<td>`skos:scopeNote`</td>
 						<td>en</td>
 						<td>0..1</td>
-						<td>`xkos:ExplanatoryNote`</td>
-						<td>The explanatory note MUST have a `xkos:plainText` property which value is a long descriptive text about the classification scheme in English, with a language tag set at ‘@en’</td>
+						<td><a href= "http://rdf-vocabulary.ddialliance.org/xkos#ExplanatoryNote">`xkos:ExplanatoryNote`</a></td>
+						<td>The explanatory note MUST have a <a href= "http://rdf-vocabulary.ddialliance.org/xkos#plainText">`xkos:plainText`</a> property which value is a long descriptive text about the classification scheme in English, with a language tag set at ‘@en’</td>
 					</tr>
 					<tr>
 						<td>`dcterms:modified`</td>
@@ -502,56 +502,56 @@
 						<td>An agent responsible for creating the classification scheme.</td>
 					</tr>
 					<tr>
-						<td>`xkos:belongsTo`</td>
+						<td><a href= "http://rdf-vocabulary.ddialliance.org/xkos#belongsTo">`xkos:belongsTo`</a></td>
 						<td></td>
 						<td>0..1</td>
 						<td>`skos:Concept`</td>
 						<td>Connects a major version of a classification to a concept representing the overall classification.</td>
 					</tr>
 					<tr>
-						<td>`xkos:levels`</td>
+						<td><a href= "http://rdf-vocabulary.ddialliance.org/xkos#levels">`xkos:levels`</a></td>
 						<td></td>
 						<td>0..1</td>
 						<td>`rdf:List`</td>
-						<td>Lists the classification levels represented as an RDF list of ordered levels (instances of `xkos:ClassificationLevel`).</td>
+						<td>Lists the classification levels represented as an RDF list of ordered levels (instances of <a href= "http://rdf-vocabulary.ddialliance.org/xkos#ClassificationLevel">`xkos:ClassificationLevel`</a>).</td>
 					</tr>
 					<tr>
-						<td>`xkos:covers`</td>
+						<td><a href= "http://rdf-vocabulary.ddialliance.org/xkos#covers">`xkos:covers`</a></td>
 						<td></td>
 						<td>0..1</td>
 						<td>`skos:Concept`</td>
-						<td>The domain covered by the classification or its levels (eg. activities, products, etc.). Subproperties `xkos:coversExhaustively` and `xkos:coversMutuallyExclusively` can also be used.</td>
+						<td>The domain covered by the classification or its levels (eg. activities, products, etc.). Subproperties <a href= "http://rdf-vocabulary.ddialliance.org/xkos#coversExhaustively">`xkos:coversExhaustively`</a> and <a href= "http://rdf-vocabulary.ddialliance.org/xkos#coversMutuallyExclusively">`xkos:coversMutuallyExclusively`</a> can also be used.</td>
 					</tr>
 					<tr>
-						<td>`xkos:coversExhaustively`</td>
+						<td><a href= "http://rdf-vocabulary.ddialliance.org/xkos#coversExhaustively">`xkos:coversExhaustively`</a></td>
 						<td></td>
 						<td>0..1</td>
 						<td>`skos:Concept`</td>
 						<td>The domain covered by the classification (exhaustive coverage).</td>
 					</tr>
 					<tr>
-						<td>`xkos:coversMutuallyExclusively`</td>
+						<td><a href= "http://rdf-vocabulary.ddialliance.org/xkos#coversMutuallyExclusively">`xkos:coversMutuallyExclusively`</a></td>
 						<td></td>
 						<td>0..1</td>
 						<td>`skos:Concept`</td>
 						<td>The domain covered by the classification (mutually exclusive coverage).</td>
 					</tr>
 					<tr>
-						<td>`xkos:numberOfLevels`</td>
+						<td><a href= "http://rdf-vocabulary.ddialliance.org/xkos#numberOfLevels">`xkos:numberOfLevels`</a></td>
 						<td></td>
 						<td>0..1</td>
 						<td>`xsd:integer`</td>
 						<td>Depth of a classification (number of hierarchically imbricated levels) ; 1 for a flat classification.</td>
 					</tr>
 					<tr>
-						<td>`xkos:follows`</td>
+						<td><a href= "http://rdf-vocabulary.ddialliance.org/xkos#follows">`xkos:follows`</a></td>
 						<td></td>
 						<td>0..1</td>
 						<td>`skos:ConceptScheme`</td>
 						<td>Links major revisions of classifications.</td>
 					</tr>
 					<tr>
-						<td>`xkos:supersedes`</td>
+						<td><a href= "http://rdf-vocabulary.ddialliance.org/xkos#supersedes">`xkos:supersedes`</a></td>
 						<td></td>
 						<td>0..1</td>
 						<td>`skos:ConceptScheme`</td>
@@ -559,7 +559,7 @@
 					</tr>
 					<tr><td colspan="5" class="table-section">Optional properties</td></tr>
 					<tr>
-						<td>`xkos:variant`</td>
+						<td><a href= "http://rdf-vocabulary.ddialliance.org/xkos#variant">`xkos:variant`</a></td>
 						<td></td>
 						<td>0..n</td>
 						<td>`skos:ConceptScheme`</td>
@@ -569,8 +569,8 @@
 						<td>`skos:scopeNote`</td>
 						<td>any language</td>
 						<td>0..n</td>
-						<td>`xkos:ExplanatoryNote`</td>
-						<td>Each explanatory note MUST have a xkos:plainText property which value is a long descriptive text about the classification scheme in another langage than english, with the langage tag set appropriately</td>
+						<td><a href= "http://rdf-vocabulary.ddialliance.org/xkos#ExplanatoryNote">`xkos:ExplanatoryNote`</a></td>
+						<td>Each explanatory note MUST have a <a href= "http://rdf-vocabulary.ddialliance.org/xkos#plainText">`xkos:plainText`</a> property which value is a long descriptive text about the classification scheme in another langage than english, with the langage tag set appropriately</td>
 					</tr>
 					<tr>
 						<td>`dcterms:language`</td>
@@ -596,9 +596,6 @@
 				</tbody>
 			</table>
 
-			<div class="issue" title="FC No namespace document for XKOS">
-				It would be nice to add hyperlinks in the table above. It would be nice if those hyperlinks would be the URI of the properties themselves, e.g. <a href="http://rdf-vocabulary.ddialliance.org/xkos#belongsTo">`xkos:belongsTo`</a>. Problem: such an hyperlink returns the XKOS specification document, at no particular anchor, because no anchor corresponds to property names. A solution could be to add anchors to the table at <a href="https://rdf-vocabulary.ddialliance.org/xkos.html#nsvoc">https://rdf-vocabulary.ddialliance.org/xkos.html#nsvoc</a>
-			</div>
 			<div class="issue" title="missing dcterms:valid">
 				We are missing dcterms:valid to express the temporal coverage of the classification, as indicated in XKOS
 			</div>
