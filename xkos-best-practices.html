@@ -134,16 +134,20 @@
 
 	<p style="font-size:80%"><em>(Authors affiliations were recorded at the beginning of the writing of this document and might have changed since.)</em></p>
 
-	<section id='abstract'>
-    	<h2>Abstract</h2>
-		<p>Abstract goes here</p>
-		<div class="issue" title="FC Write Abstract"></div>
+		<div class="issue" title="FC Improve Abstract"></div>
 		<div class="issue" title="TF High-level structure">
 			<p>Should we group all introductive sections inside one section?</p>
 		</div>
 		<div class="issue" title="TF RFC2119 keywords">
 			<p>ReSpec warning: Document uses RFC2119 keywords but lacks a conformance section.<br/>How to fix: Please add a &lt;section id="conformance"&gt;.</p>
 		</div>
+	<section id='abstract'>
+    	<h2>Abstract</h2>
+		<p>XKOS (An SKOS extension for representing statistical classifications) is a <a href="https://ddialliance.org/">DDI Alliance</a> Standard that defines terms that can be used for publishing statistical classifications as linked data. The <a href="https://rdf-vocabulary.ddialliance.org/xkos.html">XKOS specification</a> provides some guidance on how to use the vocabulary, but it does not specify every implementation detail, so it was useful to complement it with a "best practices" guide.</p>
+
+		<p>The guide contains advice on how to use XKOS for maximum interoperability and reusability, and cover topics like the description of classifications (labels, explanatory notes, levels), the different types of correspondences, how to represent evolution over time of the different elements, how to publish statistical classifications as XKOS, what kind of descriptive metadata to attach in order to maximize findability, etc.</p>
+
+		<p>Where appropriate, best practice rules are formalized in the [[SHACL]] validation language, so that publishers can check if their classifications conform to the guidance. These shapes are available as separate files.</p>
     </section>
 
 	<section class="appendix" id="issue-summary">
