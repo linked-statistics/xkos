@@ -4,80 +4,47 @@
 		<title>XKOS Best Practices</title>
 		<meta http-equiv='Content-Type' content='text/html;charset=utf-8'/>
 
-		<script src='http://www.w3.org/Tools/respec/respec-w3c' class='remove'></script>
+		<script src='https://www.w3.org/Tools/respec/respec-w3c' class='remove'></script>
 		<script class='remove'>
 			var respecConfig = {
 			  // specification status (e.g. WD, LCWD, NOTE, etc.). If in doubt use ED.
-			  specStatus:           "unofficial",
-			  
+			  specStatus: "base",
+			  noRecTrack: true,
 			  // the specification's short name, as in http://www.w3.org/TR/short-name/
-			  shortName:            "xkos-best-practices",
-
-			  // if your specification has a subtitle that goes below the main
-			  // formal title, define it here
+			  shortName: "xkos-best-practices",
 			  subtitle:  "Best Practices for describing statistical classifications with XKOS",
-
-			  // if you wish the publication date to be other than today, set this
-			  // publishDate:  "2009-08-06",
-
-			  // if the specification's copyright date is a range of years, specify
-			  // the start date here:
-			  // copyrightStart: "2005"
-
-			  // if there is a previously published draft, uncomment this and set its YYYY-MM-DD date
-			  // and its maturity status
-			  // previousPublishDate:  "1977-03-15",
-			  // previousMaturity:  "WD",
-
-			  // if there a publicly available Editor's Draft, this is the link
-			  // edDraftURI:           "http://dev.w3.org/2009/dap/ReSpec.js/documentation.html",
-
-			  // if this is a LCWD, uncomment and set the end of its review period
-			  // lcEnd: "2009-08-05",
-
-			  // if you want to have extra CSS, append them to this list
-			  // it is recommended that the respec.css stylesheet be kept
-			  // extraCSS:             ["http://dev.w3.org/2009/dap/ReSpec.js/css/respec.css"],
-
-			  // editors, add as many as you like
-			  // only "name" is required
+			  latestVersion: "http://linked-statistics.github.io/xkos/xkos-best-practices.html",
+			  // overrideCopyright: "<p class='copyright'>Copyright © 2022 <a href='https://www.ddialliance.org/'>The DDI Alliance</a>, All Rights Reserved</p >",
+			  // publishDate:  "2022-06-15",
 			  editors:  [
 				  { name: "Thomas Francart", company: "Sparna", companyURL: "http://www.sparna.fr/" }
 			  ],
-
-			  // authors, add as many as you like. 
-			  // This is optional, uncomment if you have authors as well as editors.
-			  // only "name" is required. Same format as editors.
-
 			  authors:  [
 				  { name: "Christophe Dzikowski", company: "Insee", companyURL: "http://www.insee.fr/" },
 				  { name: "Franck Cotton", company: "Insee", companyURL: "http://www.insee.fr/" }
 			  ],
-			  
 			  // name of the WG
-			  wg:           "XKOS working group",
+			  wg: "DDI XKOS Working Group",
 			  
 			  // URI of the public WG page
-			  wgURI:        "https://ddialliance.org/Specification/RDF/XKOS",
+			  wgURI: "https://ddi-alliance.atlassian.net/wiki/spaces/DDI4/pages/826408976/XKOS+-+Extended+Knowledge+Organization+System",
 			  
 			  // name (without the @w3c.org) of the public mailing to which comments are due
 			  wgPublicList: "https://groups.google.com/forum/?fromgroups#!forum/ddi-rdf-vocabulary",
 			  
-			  // URI of the patent status for this WG, for Rec-track documents
-			  // !!!! IMPORTANT !!!!
-			  // This is important for Rec-track documents, do not copy a patent URI from a random
-			  // document unless you know what you're doing. If in doubt ask your friendly neighbourhood
-			  // Team Contact.
 			  wgPatentURI:  "https://creativecommons.org/licenses/by/4.0/",
+
 			  github: {
 				  repoURL: "https://github.com/linked-statistics/xkos",
 				  branch: " ", // avoids default 'gh-pages' 
 			  },
 			  logos: [{
 				  src: "https://www.ddialliance.org/sites/default/files/ddi-logo-r.png",
+				  url: "https://www.ddialliance.org/",
 				  alt: "DDI Alliance",
-				  height: 48,
 				  width: 200,
+				  height: 48,
+				  id: "ddi-alliance-logo",
 				  url: "https://www.ddialliance.org/"
 			  }],
 			  localBiblio: {
@@ -163,6 +130,8 @@
 		</style>
 	</head>
 	<body>
+	<p class='copyright'>Copyright © 2022 <a href='https://www.ddialliance.org/'>The DDI Alliance</a>, All Rights Reserved</p >
+
 	<p style="font-size:80%"><em>(Authors affiliations were recorded at the beginning of the writing of this document and might have changed since.)</em></p>
 
 	<section class="appendix" id="issue-summary">
