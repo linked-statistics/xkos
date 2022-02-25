@@ -138,10 +138,7 @@
 		<div class="issue" title="TF High-level structure">
 			<p>Should we group all introductive sections inside one section?</p>
 		</div>
-		<div class="issue" title="TF RFC2119 keywords">
-			<p>ReSpec warning: Document uses RFC2119 keywords but lacks a conformance section.<br/>How to fix: Please add a &lt;section id="conformance"&gt;.</p>
-		</div>
-	<section id='abstract'>
+	<section id='abstract' class="introductory" property="dc:abstract">
     	<h2>Abstract</h2>
 		<p>XKOS (An [[SKOS]] extension for representing statistical classifications) is a <a href="https://ddialliance.org/">DDI Alliance</a> Standard that defines terms that can be used for publishing statistical classifications as linked data. XKOS defines a vocabulary for representing classifications, as well as a general model based on SKOS and statistical business models. The <a href="https://rdf-vocabulary.ddialliance.org/xkos.html">XKOS specification</a> provides some guidance on how to use the vocabulary, but it does not specify every implementation detail, so it was useful to complement it with a "best practices" guide.</p>
 
@@ -150,14 +147,15 @@
 		<p>Where appropriate, best practice rules are formalized in the [[SHACL]] validation language, so that publishers can check if their classifications conform to the guidance. These shapes are available as separate files.</p>
     </section>
 
-	<section class="appendix" id="issue-summary">
-	  <!-- A list of issues will magically appear here -->
-	</section>
-
-	<section id='acknowledgements'>
+	<section id='acknowledgements' class="introductory">
 	    <h2>Acknowledgements</h2>
 		<p>The authors would like to thank the persons who provided suggestions and content through the <a href="https://github.com/linked-statistics/xkos/issues">XKOS GitHub issues</a>, in particular Danny Delcambre from Eurostat (now retired).</p>
     </section>
+
+
+	<section class="appendix" class="introductory" id="issue-summary">
+	  <!-- A list of issues will magically appear here -->
+	</section>
 
 	<section id='introduction'>
 	    <h2>Introduction</h2>
