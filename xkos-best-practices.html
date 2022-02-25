@@ -469,7 +469,7 @@
 						<td>en</td>
 						<td>0..1</td>
 						<td><a href= "http://rdf-vocabulary.ddialliance.org/xkos#ExplanatoryNote">`xkos:ExplanatoryNote`</a></td>
-						<td>The explanatory note MUST have a <a href= "http://rdf-vocabulary.ddialliance.org/xkos#plainText">`xkos:plainText`</a> property which value is a long descriptive text about the classification scheme in English, with a language tag set at ‘@en’</td>
+						<td>The explanatory note must have a <a href= "http://rdf-vocabulary.ddialliance.org/xkos#plainText">`xkos:plainText`</a> property which value is a long descriptive text about the classification scheme in English, with a language tag set at ‘@en’</td>
 					</tr>
 					<tr>
 						<td>`dcterms:modified`</td>
@@ -554,7 +554,7 @@
 						<td>any language</td>
 						<td>0..n</td>
 						<td><a href= "http://rdf-vocabulary.ddialliance.org/xkos#ExplanatoryNote">`xkos:ExplanatoryNote`</a></td>
-						<td>Each explanatory note MUST have a <a href= "http://rdf-vocabulary.ddialliance.org/xkos#plainText">`xkos:plainText`</a> property which value is a long descriptive text about the classification scheme in another langage than english, with the langage tag set appropriately</td>
+						<td>Each explanatory note must have a <a href= "http://rdf-vocabulary.ddialliance.org/xkos#plainText">`xkos:plainText`</a> property which value is a long descriptive text about the classification scheme in another langage than english, with the langage tag set appropriately</td>
 					</tr>
 					<tr>
 						<td>`dcterms:language`</td>
@@ -644,8 +644,7 @@
     skos:altLabel "Commerçants et assimilées"@fr .
 					</pre>
 				</aside>
-				<p>Official labels should always be represented by the `skos:prefLabel` property. For usual labels, should be used, but only when they are different from the official ones, due to the SKOS integrity rules:</p>
-				<div class="issue" title="FC missing a word in previous sentence ?"></div>
+				<p>Official labels should always be represented by the `skos:prefLabel` property. For usual labels, `skos:altLabel` should be used, but only when they are different from the official ones, due to the SKOS integrity rules:</p>
 				<aside class="example" title="Example of labels of different types with the same value">
 					<pre class="nohighlight">
 &lt;http://id.insee.fr/codes/pcs2020/1/4&gt;
@@ -1173,7 +1172,7 @@ ex:NACE_ItemTypes
 							<td>en</td>
 							<td>0..1</td>
 							<td>`xkos:ExplanatoryNote`</td>
-							<td>A note concerning the type of use of this correspondence table, typically in the case where the correspondence covers only part of the classification. The explanatory note MUST have a `xkos:plainText` property with a language tag set at ‘@en’</td>
+							<td>A note concerning the type of use of this correspondence table, typically in the case where the correspondence covers only part of the classification. The explanatory note must have a `xkos:plainText` property with a language tag set at ‘@en’</td>
 						</tr>
 						<tr>
 							<td>`dcterms:creator`</td>
@@ -1188,7 +1187,7 @@ ex:NACE_ItemTypes
 							<td><em>Any language</em></td>
 							<td>0..n</td>
 							<td>`xkos:ExplanatoryNote`</td>
-							<td>A short descriptive text about the correspondance table in another language than english. The explanatory note MUST have a `xkos:plainText` property with a language tag set appropriately.</td>
+							<td>A short descriptive text about the correspondance table in another language than english. The explanatory note must have a `xkos:plainText` property with a language tag set appropriately.</td>
 						</tr>
 						<tr>
 							<td>`dcterms:license`</td>
@@ -1535,7 +1534,7 @@ ex:obs2
 									<aside class="example" title="Real example of a correspondence table matrix">
 						<pre class="nohighlight">
 # Defines classification version NAF with 5 levels, sections, sousSections, divisions, groupes, classes
-&lt;http://id.insee.fr/codes/nafr1/naf&gt;
+&lt;http://id.insee.fr/codes/naf/naf&gt;
     a skos:ConceptScheme ;
     xkos:levels ( &lt;http://id.insee.fr/codes/naf/sections&gt; &lt;http://id.insee.fr/codes/naf/sousSections&gt; &lt;http://id.insee.fr/codes/naf/divisions&gt;
     &lt;http://id.insee.fr/codes/naf/groupes&gt; &lt;http://id.insee.fr/codes/naf/classes&gt; ) .
@@ -1552,7 +1551,7 @@ ex:obs2
     a xkos:ClassificationLevel .
 
 # Defines classification version NAFrev1 with 5 levels: sections, sousSections, divisions, groupes and classes
-&lt;http://id.insee.fr/codes/nafr2/naf&gt;
+&lt;http://id.insee.fr/codes/nafr1/naf&gt;
     a skos:ConceptScheme ;
     xkos:levels ( &lt;http://id.insee.fr/codes/nafr1/sections&gt; &lt;http://id.insee.fr/codes/nafr1/sousSections&gt; &lt;http://id.insee.fr/codes/nafr1/divisions&gt;
     &lt;http://id.insee.fr/codes/nafr1/groupes&gt; &lt;http://id.insee.fr/codes/nafr1/classes&gt; ) .
@@ -1616,13 +1615,6 @@ ex:obs2
 					</aside>
 			</section>
 		</section>
-		<div class="issue" title="DC Issue with classification URIs">
-			In the example above we have "xkos:compares &lt;http://id.insee.fr/codes/naf/naf&gt; , &lt;http://id.insee.fr/codes/nafr1/naf&gt; ;" but http://id.insee.fr/codes/naf/naf is not declared. Can you double check the URIs of the examples ?
-
-			And by the way, will the URI of the correspondence table really be in the "/codes" path ?
-
-			And it would be better to also include the xkos:ConceptAssociation in the example (although admitedly they are not described in the first example)
-		</div>
 		<section id="bp-evolution">
 		    <h3>Evolution of classifications over time</h3>
 			<section id="bp-evolution-major-versions">
@@ -1908,6 +1900,10 @@ ex:NafRev2Dataset
 		    <h3>Proposed URI patterns</h3>
 			<section id="bp-uri-patterns-classifications">
 				<h4>Proposed URI pattern for classifications</h4>
+				<div class="issue" title="Missing patterns correspondences tables and concept associations">.../codes/nom1-nom2
+
+				.../codes/association/idsource-idcible
+				</div>
 				<div class="uri-pattern">
 					<p>{scheme}://{authority}/{all_classifications}/{classification_naming_context}/{concept_scheme_id}</p>
 				</div>
