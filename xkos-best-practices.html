@@ -1906,10 +1906,6 @@ ex:NafRev2Dataset
 		    <h3>Proposed URI patterns</h3>
 			<section id="bp-uri-patterns-classifications">
 				<h4>Proposed URI pattern for classifications</h4>
-				<div class="issue" title="Missing patterns correspondences tables and concept associations">.../codes/nom1-nom2
-
-				.../codes/association/idsource-idcible
-				</div>
 				<div class="uri-pattern">
 					<p>{scheme}://{authority}/{all_classifications}/{classification_naming_context}/{concept_scheme_id}</p>
 				</div>
@@ -2037,6 +2033,35 @@ ex:NafRev2Dataset
 						<li>http://id.insee.fr/codes/cpfr2/sousCategorie/08.12.21/noteChangement/2010-02-01/fr</li>
 					</ul>
 				</aside>
+			</section>
+			<section id="bp-uri-patterns-correspondences">
+				<h4>Proposed URI pattern for Correspondences</h4>
+				<div class="uri-pattern">
+					<p>{scheme}://{authority}/{all_correspondences}/{source_concept_scheme_id}-{target_concept_scheme_id}</p>
+				</div>
+				<p>
+					Where:
+					<ul>
+						<li>`{scheme}` and `{authority}` have the same meaning as in the URI pattern for classifications;</li>
+						<li>`{all_correspondences}`: is a fixed component in the URI indicating that what follows pertains to the identification of an entity in the scope of a correspondence table. Typical examples are “correspondences”, “mappings”, etc.</li>
+						<li>`{source_concept_scheme_id}-{target_concept_scheme_id}`: the identifiers for respectively the source and target concepts schemes mapped in this correspondence.</li>
+					</ul>
+				</p>
+			</section>
+			<section id="bp-uri-patterns-concept-association">
+				<h4>Proposed URI pattern for Concept associations</h4>
+				<div class="uri-pattern">
+					<p>{correspondence_URI}/{all_associations}/{source_concept_id}-{target_concept_id}</p>
+				</div>
+				<p>
+					Where:
+					<ul>
+						<li>`{correspondence_URI}` : the correspondence URI, as described above. The URI for an association is hierarchically below the URI of the correspondence in which this association is, since a concept association is attached to a single correspondence.</li>
+						<li>`{all_associations}`: is a fixed component in the URI indicating that what follows identify a concept association. Typical example is "association".</li>
+						<li>`{source_concept_id}-{target_concept_id}`: the identifiers for respectively the source and target concepts linked through this concept association.</li>
+					</ul>
+				</p>
+				<div class="issue" title="Should we use INSEE examples event if wrong with /codes ?"></div>
 			</section>
 		</section>
     </section>
