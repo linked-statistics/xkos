@@ -1436,6 +1436,16 @@ ex:NACE_ItemTypes
 					<p>Between two classifications revisions, classification items can appear or be deleted to better represent the evolution of the field of interest covered by the classification. In this situation, the practice would be to use a `xkos:ConceptAssociation` without the source or the target to reflect respectively the creation or the deletion of a classification item between the revisions.</p>
 					<aside class="example" title="Using a xkos:ConceptAssociation in case of the deletion or creation of an entry">
 						<pre class="nohighlight">
+&lt;http://id.insee.fr/codes/cj/association/-2700&gt;
+    a xkos:ConceptAssociation ;
+    # The new classification item is "Individual entrepreneur" 
+    xkos:targetConcept &lt;http://id.insee.fr/codes/cj/niveauIII/1000&gt; .
+
+# A xkos:ConceptAssociation with a deletion of a classification item
+&lt;http://id.insee.fr/codes/cj/association/6588/2007-&gt;
+    a xkos:ConceptAssociation ;
+    # The deleted classification item is "Civil Dairy Company" 
+    xkos:sourceConcept &lt;http://id.insee.fr/codes/cj/niveauIII/6588/2007&gt; .
 
 						</pre>
 					</aside>
