@@ -569,6 +569,13 @@
 						<td>The URI to the legal document giving official permission to do something with the classification.</td>
 					</tr>
 					<tr>
+						<td>`owl:deprecated`</td>
+						<td></td>
+						<td>0..1</td>
+						<td>`xsd:boolean`</td>
+						<td>Indicates the classification is no longer active and has been superseded by a new revision.</td>
+					</tr>
+					<tr>
 						<td>`insee:legalMaterial`</td>
 						<td></td>
 						<td>0..n</td>
@@ -580,8 +587,6 @@
 
 			<div class="issue" title="missing dcterms:valid">
 				We are missing dcterms:valid to express the temporal coverage of the classification, as indicated in XKOS
-			</div>
-			<div class="issue" title="TF add owl:deprecated">
 			</div>
 			<aside class="example" title="Example of a statistical classification description">
 					<pre class="nohighlight">
