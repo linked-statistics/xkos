@@ -2066,6 +2066,9 @@ ex:NafRev2Dataset
 
 	<section class="appendix" id="isic-example">
 		<h2>Example of the ISIC classification</h2>
+		<div class="ednote">
+			Example will change to be inline with URI recommendations and mandatory properties - see issue below
+		</div>
 		<p>This appendix provides an XKOS example of the high-level structure of a classification, here ISIC.</p>
 		<p>Only two ISIC versions are shown: the latest (fourth revision, or Rev.4) and the previous one (update to the third revision, or Rev.3.1). They are represented as SKOS concept schemes and attached through the `xkos:belongTo` property to the ISIC classification itself represented as a `skos:Concept`, and Rev.4 `xkos:supersedes` Rev.3.1. Another concept scheme contains the different categories of items defined in the successive versions of ISIC (“major group” was used until the second revision). An `rdf:List` of levels (`xkos:ClassificationLevel`) is attached to each revision, and each level is linked to the relevant item category through the `xkos:organizedBy` property.</p>
 		<div class="issue" title="not in line with URI recommendation">
