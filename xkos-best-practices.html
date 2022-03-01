@@ -590,9 +590,7 @@
 						TODO
 					</pre>
 			</aside>
-			<div class="issue" title="FC complete example of description of a statistical classification">
-				Provide a Turtle example applying the best practices above. Use ISIC by building the example by hand. @FC: Build from existing description of the classification.
-			</div>
+			<p>An example of high-level description of a classification is given in <a href="#isic-example">annex</a>.</p>
 		</section>
 
 		<section id="bp-labels">
@@ -2032,6 +2030,7 @@ ex:NafRev2Dataset
 	<section class="appendix" id="isic-example">
 		<h2>Example of the ISIC classification</h2>
 		<p>This appendix provides an XKOS example of the high-level structure of a classification, here ISIC.</p>
+		<p>Only two ISIC versions are shown: the latest (fourth revision, or Rev.4) and the previous one (update to the third revision, or Rev.3.1). They are represented as SKOS concept schemes and attached through the `xkos:belongTo` property to the ISIC classification itself represented as a `skos:Concept`, and Rev.4 `xkos:supersedes` Rev.3.1. Another concept scheme contains the different categories of items defined in the successive versions of ISIC (“major group” was used until the second revision). A `rdf:List` of levels (`xkos:ClassificationLevel`) is attached to each revision, and each level is linked to the relevant item category through the `xkos:organizedBy` property.</p>
 		<pre>
 @prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
@@ -2051,7 +2050,7 @@ ex:NafRev2Dataset
 &lt;http://example.org/isic/categoryTypes&gt;
    a skos:ConceptScheme ;
    skos:prefLabel "Types of categories used in ISIC"@en ;
-   skos:hasTopConcept &lt;http://example.org/isic/categoryType/Section&gt; ,  &lt;http://example.org/isic/categoryType/Division&gt; ,  &lt;http://example.org/isic/categoryType/Group&gt; ,  &lt;http://example.org/isic/categoryType/Class&gt; .
+   skos:hasTopConcept &lt;http://example.org/isic/categoryType/Section&gt; ,  &lt;http://example.org/isic/categoryType/Division&gt; ,  &lt;http://example.org/isic/categoryType/Group&gt; ,  &lt;http://example.org/isic/categoryType/MajorGroup&gt; ,  &lt;http://example.org/isic/categoryType/Class&gt; .
 
 ####################
 # ISIC, Revision 4 #
