@@ -598,9 +598,7 @@
 						TODO
 					</pre>
 			</aside>
-			<div class="issue" title="FC complete example of description of a statistical classification">
-				Provide a Turtle example applying the best practices above. Use ISIC by building the example by hand. @FC: Build from existing description of the classification.
-			</div>
+			<p>An example of high-level description of a classification is given in <a href="#isic-example">annex</a>.</p>
 		</section>
 
 		<section id="bp-labels">
@@ -2067,6 +2065,145 @@ ex:NafRev2Dataset
 			</section>
 		</section>
     </section>
+
+	<section class="appendix" id="isic-example">
+		<h2>Example of the ISIC classification</h2>
+		<p>This appendix provides an XKOS example of the high-level structure of a classification, here ISIC.</p>
+		<p>Only two ISIC versions are shown: the latest (fourth revision, or Rev.4) and the previous one (update to the third revision, or Rev.3.1). They are represented as SKOS concept schemes and attached through the `xkos:belongTo` property to the ISIC classification itself represented as a `skos:Concept`, and Rev.4 `xkos:supersedes` Rev.3.1. Another concept scheme contains the different categories of items defined in the successive versions of ISIC (“major group” was used until the second revision). An `rdf:List` of levels (`xkos:ClassificationLevel`) is attached to each revision, and each level is linked to the relevant item category through the `xkos:organizedBy` property.</p>
+		<div class="issue" title="not in line with URI recommendation">
+			<ol>
+				<li>Missing {all_classifications} component to be conformant with URI patterns	</li>
+				<li>URIs should not be isic/4 to be conformant with URI patterns, but isic4 : http://example.org/codes/isic4/conceptScheme, and http://example.org/codes/isic4/sections for a level</li>
+				<li>Missing skos:notation and dcterms:issued on the ConceptScheme to be conformant with mandatory properties</li>
+				<li>we don't have skos:altLabel in list of optional properties</li>
+				<li>numberOfLevel must have range xsd:positiveInteger - to be modified in table above and in SHACL</li>
+				<li>enhance with additionnal properties : the idea is to illustrate the use of a large number of properties from the list above, can we enhance with e.g. dcterms:language, licence, definition, covers, creator, etc. ?</li>
+				<li>I would limit the example to only the description of isic4, and no try to illustrate the relation with preceding version as this is illustrated in another section of the best practices. The focus of the example should be a complete and sound description of one ConceptScheme with illustration of a maximum of properties from the table.</li>
+			</ol>
+		</div>
+		<aside class="example">
+		<pre class="nohighlight">
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+@prefix skos: &lt;http://www.w3.org/2004/02/skos/core#&gt; .
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+@prefix xkos: &lt;http://rdf-vocabulary.ddialliance.org/xkos#&gt; .
+
+##########################################
+# ISIC classification and category types #
+##########################################
+
+&lt;http://example.org/isic&gt;
+   a skos:Concept ;
+   skos:prefLabel "International Standard Industrial Classification 
+     of All Economic Activities (ISIC)"@en ;
+   skos:historyNote  "The first revision of ISIC (ISIC, Rev.1) was issued in 1958, 
+   after having been considered by the Statistical Commission at its tenth session.
+   The second revision (ISIC, Rev.2) was issued in 1968 after proposals for the
+   revision had been considered and approved by the Commission at its fifteenth session,
+   in 1968. The third revision of ISIC (ISIC, Rev.3) was considered and approved by
+   the Commission at its twenty-fifth session, in 1989, and issued in 1990. The update
+   to the third revision (ISIC, Rev.3.1) was considered and approved by the Commission
+   at its thirty-third session, in 2002, and issued in 2004. The structure of the
+   fourth revision of ISIC (ISIC, Rev.1) was considered and approved by the
+   Statistical Commission at its thirty-seventh session, in March 2006."@en .
+
+&lt;http://example.org/isic/categoryTypes&gt;
+   a skos:ConceptScheme ;
+   skos:prefLabel "Types of categories used in ISIC"@en ;
+   skos:hasTopConcept 
+   	&lt;http://example.org/isic/categoryType/Section&gt; ,
+   	&lt;http://example.org/isic/categoryType/Division&gt; ,
+   	&lt;http://example.org/isic/categoryType/Group&gt; ,
+   	&lt;http://example.org/isic/categoryType/MajorGroup&gt; ,
+   	&lt;http://example.org/isic/categoryType/Class&gt; .
+
+####################
+# ISIC, Revision 4 #
+####################
+
+&lt;http://example.org/isic/4&gt;
+   a skos:ConceptScheme ;
+   skos:prefLabel "International Standard Industrial Classification
+   of All Economic Activities (ISIC), Revision 4"@en ;
+   skos:altLabel "ISIC, Rev.4"@en ;
+   xkos:belongsTo &lt;http://example.org/isic&gt; ;
+   xkos:supersedes &lt;http://example.org/isic/31&gt; ;
+   xkos:numberOfLevels "4"^^xsd:int ;
+   xkos:levels ( 
+      &lt;http://example.org/isic/4/sections&gt;
+      &lt;http://example.org/isic/4/divisions&gt;
+      &lt;http://example.org/isic/4/groups&gt;
+      &lt;http://example.org/isic/4/classes&gt;
+   )
+   .
+
+# ISIC 4 levels
+
+&lt;http://example.org/isic/4/sections&gt;
+   a xkos:ClassificationLevel ;
+   skos:prefLabel "Sections of ISIC 4"@en ;
+   xkos:organizedBy &lt;http://example.org/isic/categoryType/Section&gt; .
+
+&lt;http://example.org/isic/4/divisions&gt;
+   a xkos:ClassificationLevel ;
+   skos:prefLabel "Divisions of ISIC 4"@en ;
+   xkos:organizedBy &lt;http://example.org/isic/categoryType/Division&gt; .
+
+&lt;http://example.org/isic/4/groups&gt;
+   a xkos:ClassificationLevel ;
+   skos:prefLabel "Groups of ISIC 4"@en ;
+   xkos:organizedBy &lt;http://example.org/isic/categoryType/Group&gt; .
+
+&lt;http://example.org/isic/4/classes&gt;
+   a xkos:ClassificationLevel ;
+   skos:prefLabel "Classes of ISIC 4"@en ;
+   xkos:organizedBy &lt;http://example.org/isic/categoryType/Class&gt; .
+
+
+##############################
+# ISIC, Revision 3, Update 1 #
+##############################
+
+
+<http://example.org/isic/31>
+   a skos:ConceptScheme ;
+   skos:prefLabel "International Standard Industrial Classification
+   of All Economic Activities (ISIC), Revision 3.1"@en ;
+   xkos:belongsTo <http://example.org/isic> ;
+   xkos:numberOfLevels "4"^^xsd:int ;
+   xkos:levels ( 
+      <http://example.org/isic/3.1/sections>
+      <http://example.org/isic/3.1/divisions>
+      <http://example.org/isic/3.1/groups>
+      <http://example.org/isic/3.1/classes>
+   )
+   .
+
+&lt;http://example.org/isic/3.1/sections&gt;
+   a xkos:ClassificationLevel ;
+   skos:prefLabel "Sections of ISIC 3.1"@en ;
+   xkos:organizedBy &lt;http://example.org/isic/categoryType/Section&gt; .
+
+&lt;http://example.org/isic/3.1/divisions&gt;
+   a xkos:ClassificationLevel ;
+   skos:prefLabel "Divisions of ISIC 3.1"@en ;
+   xkos:organizedBy &lt;http://example.org/isic/categoryType/Division&gt; .
+
+&lt;http://example.org/isic/3.1/groups&gt;
+   a xkos:ClassificationLevel ;
+   skos:prefLabel "Groups of ISIC 3.1"@en ;
+   xkos:organizedBy &lt;http://example.org/isic/categoryType/Group&gt; .
+
+&lt;http://example.org/isic/3.1/classes&gt;
+   a xkos:ClassificationLevel ;
+   skos:prefLabel "Classes of ISIC 3.1"@en ;
+   xkos:organizedBy &lt;http://example.org/isic/categoryType/Class&gt; .
+
+
+		</pre>
+		</aside>
+	</section>
 
 	<section class="appendix">
 		<h2>Full copyright</h2>
