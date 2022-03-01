@@ -889,7 +889,7 @@ ex:isco2008-9611
 
 				<div class="issue" title="CD: add an RDF example of caseLaw vs. inclusionNote"></div>
 
-				<div class="issue" title="CD: Improve by clarifying the difference with inclusionNote"></div>
+				<div class="issue" title="caseLaw vs. inclusionNote clarification">Should we clarify even further the difference between caseLaw and inclusionNote or is it clear enough ?</div>
 
 			</section>
 		</section>
@@ -1025,7 +1025,14 @@ ex:NACE-R2_Item
 			<section id="bp-types-per-level">
 				<h4>Type classification items according to their level</h4>
 
-				<div class="issue" title="FC rediscuss if this works">17/11/2021 : FC to review</div>
+				<aside class="ednote">
+					This paragraph and the proposed solution described here may be subject to change after discussion.
+				</aside>
+
+				<div class="issue" title="FC - rediscuss if this works">
+					<p>17/11/2021 : FC to review</p>
+					<p>EDITOR</p>
+				</div>
 
 				<p><a href="https://rdf-vocabulary.ddialliance.org/xkos.html#levels">§6 of the XKOS specification</a> describing classification levels states the following: <blockquote><em>"In XKOS, a classification level is defined as a specialization of `skos:Collection` named `xkos:ClassificationLevel`. (...) Individual `skos:Concept` objects are related to the `xkos:ClassificationLevel` to which they belong by the usual `skos:member` property (going from the level to the classification item)."</em></blockquote></p>
 
@@ -1456,7 +1463,6 @@ ex:NACE_ItemTypes
 
 						</pre>
 					</aside>
-					<div class="issue" title="CD Missing example of ConceptAssociation for creation or deletion"></div>
 					<p>However, if the fields of two classifications partially overlap, e.g. if the field of one classification is a sub-field of the other, it is not recommended to use this technique. Although it is recommended that the mapping table exhaustively covers both classifications, in this case it is more relevant to use a correspondence table adapted to the current subfield.</p>
 				</section>
 			</section>
@@ -1637,6 +1643,9 @@ ex:obs2
 			</section>
 			<section id="bp-evolution-prov">
 				<h4>Use of PROV-O</h4>
+				<aside class="ednote">
+					This paragraph and the proposed solution described here may be subject to change after discussion.
+				</aside>
 				<p><a href="https://rdf-vocabulary.ddialliance.org/xkos.html#class-representation">§5.1 of the XKOS Specification</a> states <blockquote><em>“Readers should also be aware that the Provenance Ontology, which was not available at the time of writing of this specification, introduces the related notion of "entity specialization" (`prov:specializationOf`). This can be an alternative approach for describing the versioning of classifications.”</em></blockquote></p>
 				<p>The following table gives more details on how XKOS properties are related to [[PROV-O]]. The use of [[PROV-O]] properties in combination with XKOS properties is encouraged to promote wider interoperability of links between classifications.</p>
 				<table class="simple stickyTableHead">
@@ -1687,17 +1696,6 @@ ex:obs2
 				<p>The figure below presents the succession of two revisions of the NAF classification. The temporal periods of validity of each revision are given through the `dcterms:temporal` property that has as value a `dcat:PeriodOfTime` using the `dcat:startDate` and `dcat:endDate` properties. A possibility to clearly identify that the NAFRev1 is the obsolete version is to use the `owl:deprecated` property set to `true`.</p>
 				<img src="img/bp-series-example-Diagram V2.drawio.png" alt="Example of a classification serie" />
 				<div class="issue" title="dcterms:temporal or dcterms:valid or something else ?"></div>
-				<div class="issue" title="TF improve diagram">
-					<p>I think we need to review the formalism of this diagram, which mixes an entity/relation graph formalism with a UML class diagram formalism. I think that everything should be in the entity/relationship formalism (= drawing the graph of RDF triples, with instance URIs).
-
-
-					Look at templates of "chowlk" : https://chowlk.linkeddata.es/notation.html
-					</p>
-
-					<p>See example of diagrams on open annotation vocab : <a href="https://www.w3.org/TR/annotation-vocab/">https://www.w3.org/TR/annotation-vocab/</a></p>
-
-					<p>Furthermore, we need to go all the way to the end of the diagram for the ConceptAssociation, we need to exemplify source and target concepts. For that, we need a second, different diagram, otherwise there will be too many elements on a single diagram.</p>
-				</div>
 				<p>In the `xkos:ConceptAssociation` the `xkos:sourceConcept` makes a reference to a `skos:Concept` belonging to the `skos:ConceptScheme` of the former classification while the `xkos:targetConcept` references a `skos:Concept` belonging to the (`skos:ConceptScheme` of) the new revision of the classification.</p>				
 			</section>
 		</section>
@@ -2063,7 +2061,7 @@ ex:NafRev2Dataset
 						<li>`{source_concept_id}-{target_concept_id}`: the identifiers for respectively the source and target concepts linked through this concept association.</li>
 					</ul>
 				</p>
-				<div class="issue" title="Should we use INSEE examples event if wrong with /codes ?"></div>
+				<div class="issue" title="Exemplify with fictitious examples"></div>
 			</section>
 		</section>
     </section>
