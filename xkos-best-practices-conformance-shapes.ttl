@@ -1,10 +1,10 @@
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dct: <http://purl.org/dc/terms/> .
+@prefix eli: <http://data.europa.eu/eli/ontology#> .
 @prefix euvoc: <http://publications.europa.eu/ontology/euvoc#> .
 @prefix evoc: <http://eurovoc.europa.eu/schema#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
-@prefix insee: <http://rdf.insee.fr/def/base#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
@@ -59,7 +59,7 @@ xkos:ClassificationShape a sh:NodeShape;
     xkos:P_classification_dctlanguage,
     xkos:P_classification_dctlicense,
     xkos:P_classification_owldeprecated,
-    xkos:P_classification_inseelegalMaterial
+    xkos:P_classification_elibased_on
     ;
 .
 
@@ -295,12 +295,12 @@ xkos:P_classification_owldeprecated
   sh:datatype xsd:boolean;
   sh:severity sh:Violation .
 
-xkos:P_classification_inseelegalMaterial
+xkos:P_classification_elibased_on
   sh:order 22;
-  sh:path insee:legalMaterial;
-  sh:description "Legislation related to the nomenclaure. Use of an ELI (European Legislation Identifier) URI is preferred, if one is available.";
+  sh:path eli:based_on;
+  sh:description "Legislation on which the nomenclature is based. Use of an ELI (European Legislation Identifier) URI is preferred, if one is available.";
   sh:maxCount 1;
-  sh:name "legal material"@en;
+  sh:name "based on legislation"@en;
   sh:nodeKind sh:IRI;  
   sh:severity sh:Violation .
 

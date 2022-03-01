@@ -1,10 +1,10 @@
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dct: <http://purl.org/dc/terms/> .
+@prefix eli: <http://data.europa.eu/eli/ontology#> .
 @prefix euvoc: <http://publications.europa.eu/ontology/euvoc#> .
 @prefix evoc: <http://eurovoc.europa.eu/schema#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
-@prefix insee: <http://rdf.insee.fr/def/base#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
@@ -41,7 +41,7 @@ xkos:ClassificationShape a sh:NodeShape;
     # xkos:P_classification_skosscopeNote,
     xkos:P_classification_dctlanguage_optional,
     xkos:P_classification_dctlicense_optional,
-    xkos:P_classification_inseelegalMaterial_optional;
+    xkos:P_classification_elibased_on_optional;
   .
 
 
@@ -153,8 +153,8 @@ xkos:P_classification_dctlicense_optional
   sh:minCount 1; 
   sh:severity sh:Info .
 
-xkos:P_classification_inseelegalMaterial_optional
-  sh:path insee:legalMaterial;
+xkos:P_classification_elibased_on_optional
+  sh:path eli:based_on;
   sh:minCount 1;
   sh:severity sh:Info .
 
