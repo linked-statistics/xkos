@@ -644,8 +644,8 @@
 
 			<section id="bp-labels-types">
 				<h4>Labels of different types</h4>
-				<p>Official labels should always be represented by the `skos:prefLabel` property. For usual labels, `skos:altLabel` should be used, but only when they are different from the official ones, due to the <a href="https://www.w3.org/TR/skos-reference/#L1567">SKOS integrity rules</a>:</p>				
-				<p>In some cases, different types of item labels are used in a classification. For example, the French “Nomenclature des professions et catégories socioprofessionnelles 2020” (PCS2020) distinguishes “official” and “usual” labels. This can be rendered using the base elements from SKOS. Official labels should always be represented by the `skos:prefLabel` property. For usual or other types of labels, `skos:altLabel` should be used, but only when they are different from the official ones, due to the <a href="https://www.w3.org/TR/skos-reference/#L1567>SKOS integrity rules</a></p>
+				<p>Official labels should always be represented by the `skos:prefLabel` property. For usual labels, `skos:altLabel` should be used, but only when they are different from the official ones, due to the <a href="https://www.w3.org/TR/skos-reference/#L1567">SKOS integrity rules</a>.</p>				
+				<p>For example, the French “Nomenclature des professions et catégories socioprofessionnelles 2020” (PCS2020) distinguishes “official” and “usual” labels:</p>
 				<aside class="example" title="Example of labels of different types with different values">
 					<pre class="nohighlight">
 &lt;http://id.insee.fr/codes/pcs2020/2/22&gt;
@@ -653,14 +653,13 @@
     skos:altLabel "Commerçants et assimilées"@fr .
 					</pre>
 				</aside>
-				<p>:</p>
 				<aside class="example" title="Example of labels of different types with the same value">
 					<pre class="nohighlight">
 &lt;http://id.insee.fr/codes/pcs2020/1/4&gt;
     skos:prefLabel "Professions intermédiaires"@fr .
 					</pre>
 				</aside>
-				<p>In the first example above, the official and usage labels are different, so `skos:altLabel` can be used to express the usage label. In the second example, the usage label is the same as the official one, so `skos:altLabel` cannot be used since `skos:prefLabel` and `skos:altLabel` are disjoint properties. skos:prefLabel represents both the official and usage labels.</p>
+				<p>In the first example above, the official and usage labels are different, so `skos:altLabel` can be used to express the usage label. In the second example, the usage label is the same as the official one, so `skos:altLabel` cannot be used since `skos:prefLabel` and `skos:altLabel` are disjoint properties. `skos:prefLabel` represents both the official and usage labels.</p>
 				<p>If more than one type of “unofficial” labels exist, SKOS-XL constructs can be used, in the same way than for the fixed-length labels example. In this case, the `skos-xl:Label` can be qualified by a custom property listing the different types of labels. The current version of XKOS does not define this kind of property.</p>
 			</section>
 
