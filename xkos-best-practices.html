@@ -1179,9 +1179,73 @@ ex:NACE-R2_Group_Class
 				</aside>
 			</section>
 			<section id="bp-types-per-branch">
-				<h4>Type classification items according to a branch or a collection</h4>
-				<div class="issue" title="TF : describe pattern with 2 ConceptSchemes"></div>
+				<h4>Type classification items according to a branch or a subset of items</h4>
 				
+				<p>It is sometimes desirable to restrict the range of a property not to items of a particular classification, nor to items at a certain level in a certain classification, but either to a "branch" of the classification, or to a subset of the elements taken anywhere in the classification.</p>
+				<p>For the cases where it is known that the classification is "partitioned" in subsets that can be used independantly, the following modelling pattern can be applied : each "partition" is declared as a `skos:ConceptScheme`, linked to the main `skos:ConceptScheme` of the classification with a `dct:isPartOf`; and the `skos:Concept`s of the classification items have 2 `skos:inScheme` properties : one that refer to the main `skos:ConceptScheme`, and one that refer to the `skos:ConceptScheme` of their "partition". This pattern is typically applied for the modeling of micro-thesauri in large thesaurus.</p>
+				<p>The pattern described above of declaring an OWL class corresponding to the skos:ConceptScheme can be applied, but for the skos:ConceptScheme corresponding to a "partition". This is illustrated in the example below:</p>
+				<aside class="example" title="Example of partitioning a classification with multiple skos:ConceptScheme">
+					<pre class="nohighlight">
+# The classification
+ex:MyProductClassification
+    a skos:ConceptScheme;
+    skos:prefLabel "My product classification"@en .
+
+# Partition of the larger classification for "Goods"
+ex:GoodsPartition
+    a skos:ConceptScheme;
+    skos:prefLabel "Goods partition in my product classification"@en ;
+    dct:isPartOf ex:MyProductClassification .
+
+# Partition of the larger classification for "Services"
+ex:ServicesPartition
+    a skos:ConceptScheme;
+    skos:prefLabel "Services partition in my product classification"@en ;
+    dct:isPartOf ex:MyProductClassification .
+
+# Items in the classification have 2 skos:inScheme
+ex:item_1 a skos:Concept ;
+	skos:prefLabel "Clothing"@en .
+	skos:inScheme ex:MyProductClassification, ex:GoodsPartition ;
+.
+
+ex:item_2 a skos:Concept ;
+	skos:prefLabel "Consulting Services"@en .
+	skos:inScheme ex:MyProductClassification, ex:ServicesPartition ;
+.
+
+# Set of all items of the classification
+ex:MyProductClassification_Item
+    a owl:Class;
+    rdfs:subClassOf skos:Concept ;
+    skos:prefLabel "My product classification Item"@en ;
+    rdfs:seeAlso ex:MyProductClassification ;
+    owl:equivalentClass [
+      a owl:Restriction ;
+      owl:onProperty skos:inScheme ;
+      owl:hasValue ex:MyProductClassification ;
+    ] .
+
+# Set of items in the Services branch
+ex:MyProductClassification_Item_Services
+    a owl:Class;
+    rdfs:subClassOf ex:MyProductClassification_Item ;
+    skos:prefLabel "My product classification Services Item"@en ;
+    rdfs:seeAlso ex:ServicesPartition ;
+    owl:equivalentClass [
+      a owl:Restriction ;
+      owl:onProperty skos:inScheme ;
+      owl:hasValue ex:ServicesPartition ;
+    ] .
+
+# a property restricted to the values in the "services" partition
+ex:myProperty a owl:ObjectProperty ;
+	rdfs:range ex:MyProductClassification_Item_Services ;
+.
+
+					</pre>
+				</aside>
+				<div class="issue" title="All : improve description with better example"></div>
 			</section>
 
 		</section>
