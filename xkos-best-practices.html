@@ -561,11 +561,18 @@
 						<td>Each explanatory note must have a <a href= "http://rdf-vocabulary.ddialliance.org/xkos#plainText">`xkos:plainText`</a> property which value is a long descriptive text about the classification scheme in another langage than english, with the langage tag set appropriately</td>
 					</tr>
 					<tr>
+						<td>`skos:altLabel`</td>
+						<td>any language</td>
+						<td>0..n</td>
+						<td>`rdf:langString`</td>
+						<td>An alternative appelation to refer to the classification scheme.</td>
+					</tr>
+					<tr>
 						<td>`dcterms:language`</td>
 						<td></td>
 						<td>0..n</td>
 						<td>`xsd:language`</td>
-						<td>Indicates the langage coverage of the classificaiton scheme. Each value must correspond to a possible langage of labels within that classification.</td>
+						<td>Indicates the langage coverage of the classification scheme. Each value must correspond to a possible langage of labels within that classification.</td>
 					</tr>
 					<tr>
 						<td>`dcterms:license`</td>
@@ -1039,7 +1046,6 @@ ex:NACE-R2_Item
 					    a skos:ConceptScheme;
 					    skos:prefLabel "NACE-r2"@en ;
 					    xkos:levels ( ex:NACE-R2_Section , ex:NACE-R2_Division , ex:NACE-R2_Group , ex:NACE-R2_Class ) .
-
 					 
 					ex:NACE-R2_Section
 					    a xkos:ClassificationLevel ;
@@ -1052,13 +1058,48 @@ ex:NACE-R2_Item
 					    skos:prefLabel "NACE R2 Section"@en ;
 					    # See also the ClassificationLevel
 					    rdfs:seeAlso ex:NACE-R2_Section ;
-					    # Formal OWL equivalence to the set of Concepts belonging to the ClassificationLevel
-					    owl:equivalentClass [
-					      a owl:Restriction ;
-					      # here we are missing something to indicate "inverse of skos:member"
-					      # owl:onProperty ^skos:member ;
-					      owl:hasValue ex:NACE-R2_Section ;
-					    ] .
+					    # This would be equal to the set of skos:Concepts that are being referred
+					    # to by a skos:member predicate from the classification level ex:NACE-R2_Section
+					    # To do it formally in OWL this would require to have an inverse of the property
+					    # skos:member
+					    # owl:equivalentClass [
+					    #  a owl:Restriction ;
+					    #  # the inverse of skos:member is needed if we want to express this formal equivalence
+					    #  # owl:onProperty ^skos:member ;
+					    #  owl:hasValue ex:NACE-R2_Section ;
+					    # ] .
+
+					# Description of abstract levels of the NACE
+					# Organized hierarchically, and all belonging to a ConceptScheme
+					 
+					ex:NACE_Section
+					    a skos:Concept ;
+					    skos:inScheme ex:NACE_ItemTypes ;
+					    skos:topConceptOf ex:NACE_ItemTypes ;
+					    skos:prefLabel "NACE Section"@en .
+					 
+					ex:NACE_Division
+					    a skos:Concept ;
+					    skos:inScheme ex:NACE_ItemTypes ;
+					    skos:prefLabel "NACE Division"@en ;
+					    skos:broader ex:NACE_Section .
+					 
+					ex:NACE_Group
+					    a skos:Concept ;
+					    skos:inScheme ex:NACE_ItemTypes ;
+					    skos:prefLabel "NACE Group"@en ;
+					    skos:broader ex:NACE_Division .
+					 
+					ex:NACE_Class
+					    a skos:Concept ;
+					    skos:inScheme ex:NACE_ItemTypes ;
+					    skos:prefLabel "NACE Class"@en ;
+					    skos:broader ex:NACE_Group .
+					 
+					ex:NACE_ItemTypes
+					    a skos:ConceptScheme ;
+					    skos:hasTopConcept ex:NACE_Section ;
+					    skos:prefLabel "NACE Item Types"@en .
 					</pre>
 					</aside>
 				</div>
@@ -1068,8 +1109,6 @@ ex:NACE-R2_Item
 				<p>This best practice document suggests to go one step further, and to actually consider the classification levels also as OWL classes (hence with 2 types: `xkos:ClassificationLevel` and `owl:Class`), declared as subclass of the dedicated class that represent the set of all items of the classification, as described in previous section.</p>
 
 				<p>Declaring OWL classes corresponding to classification levels allows to refer to these classes in the signature (domain or range) of properties. A typical use-case is to indicate that a certain property can refer only to the items at one or more levels of a classification.</p>
-
-				<div class="issue" title="CD See if INSEE can find an specific example of this (in Toucan ?)"></div>
 
 				<p>Following the example given above, the following levels of the NACE-R2, in addition to being `xkos:ClassificationLevel`, would be typed as `owl:Class` and declared subclasses of `ex:NACE-R2_Item`:</p>
 				<ul>
@@ -1162,6 +1201,11 @@ ex:NACE_ItemTypes
 						</pre>
 				</aside>
 				
+			</section>
+			<section id="bp-types-per-branch">
+				<h4>Type classification items according to a branch or a collection</h4>
+				<div class="issue" title="TF : describe pattern with 2 ConceptSchemes"></div>
+
 			</section>
 
 		</section>
@@ -2111,7 +2155,7 @@ ex:NafRev2Dataset
 		</div>
 		<p>This appendix provides an XKOS example of the high-level structure of a classification, here ISIC.</p>
 		<p>Only two ISIC versions are shown: the latest (fourth revision, or Rev.4) and the previous one (update to the third revision, or Rev.3.1). They are represented as SKOS concept schemes and attached through the `xkos:belongTo` property to the ISIC classification itself represented as a `skos:Concept`, and Rev.4 `xkos:supersedes` Rev.3.1. Another concept scheme contains the different categories of items defined in the successive versions of ISIC (“major group” was used until the second revision). An `rdf:List` of levels (`xkos:ClassificationLevel`) is attached to each revision, and each level is linked to the relevant item category through the `xkos:organizedBy` property.</p>
-		<div class="issue" title="not in line with URI recommendation">
+		<div class="issue" title="FC : rework classification example (see details in issue)">
 			<ol>
 				<li>Missing {all_classifications} component to be conformant with URI patterns	</li>
 				<li>URIs should not be isic/4 to be conformant with URI patterns, but isic4 : http://example.org/codes/isic4/conceptScheme, and http://example.org/codes/isic4/sections for a level</li>

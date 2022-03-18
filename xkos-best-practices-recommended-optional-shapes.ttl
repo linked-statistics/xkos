@@ -39,6 +39,7 @@ xkos:ClassificationShape a sh:NodeShape;
     # optional
     xkos:P_classification_xkosvariant_optional,
     # xkos:P_classification_skosscopeNote,
+    xkos:P_classification_skosaltLabel_optional,
     xkos:P_classification_dctlanguage_optional,
     xkos:P_classification_dctlicense_optional,
     xkos:P_classification_elibased_on_optional;
@@ -141,6 +142,11 @@ xkos:P_classification_skosscopeNote_optional
   sh:qualifiedValueShape [
     sh:node xkos:ExplanatoryNoteNotInEnglishShape;
   ] ;
+  sh:severity sh:Info .
+
+xkos:P_classification_skosaltLabel_optional
+  sh:path skos:altLabel;
+  sh:minCount 1;
   sh:severity sh:Info .
 
 xkos:P_classification_dctlanguage_optional
