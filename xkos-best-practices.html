@@ -1031,79 +1031,6 @@ ex:NACE-R2_Item
 			<section id="bp-types-per-level">
 				<h4>Type classification items according to their level</h4>
 
-				<aside class="ednote">
-					This paragraph and the proposed solution described here may be subject to change after discussion.
-				</aside>
-
-				<div class="issue" title="FC - rediscuss if this works">
-
-					<p>17/11/2021 : FC to review</p>
-					<p>EDITOR</p>
-					<p>Do we want something like this ?</p>
-					<aside class="example" title="">
-					<pre class="nohighlight">
-					ex:NACE-R2
-					    a skos:ConceptScheme;
-					    skos:prefLabel "NACE-r2"@en ;
-					    xkos:levels ( ex:NACE-R2_Section , ex:NACE-R2_Division , ex:NACE-R2_Group , ex:NACE-R2_Class ) .
-					 
-					ex:NACE-R2_Section
-					    a xkos:ClassificationLevel ;
-					    xkos:organizedBy ex:NACE_Section .
-
-					# The Class, subClassOf skos:Concept
-					ex:NACE-R2_Section_Class
-					    a owl:Class;
-					    rdfs:subClassOf ex:NACE-R2_Item ;
-					    skos:prefLabel "NACE R2 Section"@en ;
-					    # See also the ClassificationLevel
-					    rdfs:seeAlso ex:NACE-R2_Section ;
-					    # This would be equal to the set of skos:Concepts that are being referred
-					    # to by a skos:member predicate from the classification level ex:NACE-R2_Section
-					    # To do it formally in OWL this would require to have an inverse of the property
-					    # skos:member
-					    # owl:equivalentClass [
-					    #  a owl:Restriction ;
-					    #  # the inverse of skos:member is needed if we want to express this formal equivalence
-					    #  # owl:onProperty ^skos:member ;
-					    #  owl:hasValue ex:NACE-R2_Section ;
-					    # ] .
-
-					# Description of abstract levels of the NACE
-					# Organized hierarchically, and all belonging to a ConceptScheme
-					 
-					ex:NACE_Section
-					    a skos:Concept ;
-					    skos:inScheme ex:NACE_ItemTypes ;
-					    skos:topConceptOf ex:NACE_ItemTypes ;
-					    skos:prefLabel "NACE Section"@en .
-					 
-					ex:NACE_Division
-					    a skos:Concept ;
-					    skos:inScheme ex:NACE_ItemTypes ;
-					    skos:prefLabel "NACE Division"@en ;
-					    skos:broader ex:NACE_Section .
-					 
-					ex:NACE_Group
-					    a skos:Concept ;
-					    skos:inScheme ex:NACE_ItemTypes ;
-					    skos:prefLabel "NACE Group"@en ;
-					    skos:broader ex:NACE_Division .
-					 
-					ex:NACE_Class
-					    a skos:Concept ;
-					    skos:inScheme ex:NACE_ItemTypes ;
-					    skos:prefLabel "NACE Class"@en ;
-					    skos:broader ex:NACE_Group .
-					 
-					ex:NACE_ItemTypes
-					    a skos:ConceptScheme ;
-					    skos:hasTopConcept ex:NACE_Section ;
-					    skos:prefLabel "NACE Item Types"@en .
-					</pre>
-					</aside>
-				</div>
-
 				<p><a href="https://rdf-vocabulary.ddialliance.org/xkos.html#levels">§6 of the XKOS specification</a> describing classification levels states the following: <blockquote><em>"In XKOS, a classification level is defined as a specialization of `skos:Collection` named `xkos:ClassificationLevel`. (...) Individual `skos:Concept` objects are related to the `xkos:ClassificationLevel` to which they belong by the usual `skos:member` property (going from the level to the classification item)."</em></blockquote></p>
 
 				<p>In this best practice document we describe how to declare OWL classes that correspond to the set of items of the classification at each particular level. These classes are subclasses of the class that represent the set of all items of the classification, as described in previous section. The OWL classes link to the corresponding classification level with `rdfs:seeAlso`.</p>
@@ -1254,7 +1181,7 @@ ex:NACE-R2_Group_Class
 			<section id="bp-types-per-branch">
 				<h4>Type classification items according to a branch or a collection</h4>
 				<div class="issue" title="TF : describe pattern with 2 ConceptSchemes"></div>
-
+				
 			</section>
 
 		</section>
