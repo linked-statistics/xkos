@@ -1106,20 +1106,20 @@ ex:NACE-R2_Item
 
 				<p><a href="https://rdf-vocabulary.ddialliance.org/xkos.html#levels">§6 of the XKOS specification</a> describing classification levels states the following: <blockquote><em>"In XKOS, a classification level is defined as a specialization of `skos:Collection` named `xkos:ClassificationLevel`. (...) Individual `skos:Concept` objects are related to the `xkos:ClassificationLevel` to which they belong by the usual `skos:member` property (going from the level to the classification item)."</em></blockquote></p>
 
-				<p>This best practice document suggests to go one step further, and to actually consider the classification levels also as OWL classes (hence with 2 types: `xkos:ClassificationLevel` and `owl:Class`), declared as subclass of the dedicated class that represent the set of all items of the classification, as described in previous section.</p>
+				<p>In this best practice document we describe how to declare OWL classes that correspond to the set of items of the classification at each particular level. These classes are subclasses of the class that represent the set of all items of the classification, as described in previous section.</p>
 
 				<p>Declaring OWL classes corresponding to classification levels allows to refer to these classes in the signature (domain or range) of properties. A typical use-case is to indicate that a certain property can refer only to the items at one or more levels of a classification.</p>
 
-				<p>Following the example given above, the following levels of the NACE-R2, in addition to being `xkos:ClassificationLevel`, would be typed as `owl:Class` and declared subclasses of `ex:NACE-R2_Item`:</p>
+				<p>Following the example given above, the following levels of the NACE-R2 would each have a corresponding `owl:Class` declared as subclass of `ex:NACE-R2_Item`:</p>
 				<ul>
-					<li>ex:NACE-R2_Section</li>
-					<li>ex:NACE-R2_Division</li>
-					<li>ex:NACE-R2_Group</li>
-					<li>ex:NACE-R2_Class</li>
+					<li>ex:NACE-R2_Section / corresponding class : ex:NACE-R2_Section_Class</li>
+					<li>ex:NACE-R2_Division / corresponding class : ex:NACE-R2_Division_Class</li>
+					<li>ex:NACE-R2_Group / corresponding class : ex:NACE-R2_Group_Class</li>
+					<li>ex:NACE-R2_Class / corresponding class : ex:NACE-R2_Class_Class</li>
 				</ul>
 
 				<p>These classes would be declared as direct subclasses of `ex:NACE-R2_Item`, as the set of e.g. NACE sections is a subset of the set of all NACE items. However these classes would <em>not</em> be declared as subclasses of each other, as it is not true to state that e.g. the set of all NACE R2 divisions is a subset of all NACE R2 sections.</p>
-				<p>To capture the intent that instances of NACE R2 divisions are expected to be narrower concepts of instances NACE R2 sections, these entries are referenced in an ordered list by the `xkos:levels` property on the `skos:ConceptScheme`.</p>
+				<p>To capture the intent that instances of NACE R2 divisions are expected to be narrower concepts of instances NACE R2 sections, the classification levels are referenced in an ordered list by the `xkos:levels` property on the `skos:ConceptScheme`.</p>
 				<p>This is illustrated in the following example.</p>
 				<aside class="example" title="Example of declaring classes for each level in a classification">
 					<pre class="nohighlight">
@@ -1134,23 +1134,19 @@ ex:NACE-R2
 # Independantly of the revision
  
 ex:NACE-R2_Section
-    a xkos:ClassificationLevel, owl:Class ;
-    rdfs:subClassOf ex:NACE-R2_Item ;
+    a xkos:ClassificationLevel ;
     xkos:organizedBy ex:NACE_Section .
  
 ex:NACE-R2_Division
-    a xkos:ClassificationLevel, owl:Class ;
-    rdfs:subClassOf ex:NACE-R2_Item ;
+    a xkos:ClassificationLevel ;
     xkos:organizedBy ex:NACE_Division .
  
 ex:NACE-R2_Group
-    a xkos:ClassificationLevel, owl:Class ;
-    rdfs:subClassOf ex:NACE-R2_Item ;
+    a xkos:ClassificationLevel ;
     xkos:organizedBy ex:NACE_Group .
  
 ex:NACE-R2_Class
-    a xkos:ClassificationLevel, owl:Class ;
-    rdfs:subClassOf ex:NACE-R2_Item ;
+    a xkos:ClassificationLevel ;
     xkos:organizedBy ex:NACE_Class .
 
 # The common parent class that represents the sets of all items of the classification
@@ -1166,6 +1162,37 @@ ex:NACE-R2_Item
       owl:onProperty skos:inScheme ;
       owl:hasValue ex:NACE-R2 ;
     ] .
+
+# The OWL classes corresponding to each classification levels
+
+ex:NACE-R2_Section_Class
+    a owl:Class ;
+    rdfs:subClassOf ex:NACE-R2_Item ;
+    skos:prefLabel "NACE R2 Section"@en ;
+    rdfs:seeAlso ex:NACE-R2_Section .
+
+ex:NACE-R2_Division_Class
+    a owl:Class ;
+    rdfs:subClassOf ex:NACE-R2_Item ;
+    skos:prefLabel "NACE R2 Division"@en ;
+    rdfs:seeAlso ex:NACE-R2_Division .
+
+ex:NACE-R2_Group_Class
+    a owl:Class ;
+    rdfs:subClassOf ex:NACE-R2_Item ;
+    skos:prefLabel "NACE R2 Group"@en ;
+    rdfs:seeAlso ex:NACE-R2_Group .
+
+ex:NACE-R2_Class_Class
+    a owl:Class ;
+    rdfs:subClassOf ex:NACE-R2_Class ;
+    skos:prefLabel "NACE R2 Class"@en ;
+    rdfs:seeAlso ex:NACE-R2_Class .
+
+# This allows to declare a property that takes its values in only e.g. the Groups of the NACE
+
+ex:myProperty a owl:ObjectProperty ;
+    rdfs:range ex:NACE-R2_Group_Class .
  
 # Description of abstract levels of the NACE
 # Organized hierarchically, and all belonging to a ConceptScheme
