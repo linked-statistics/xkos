@@ -2194,8 +2194,10 @@ ex:NafRev2Dataset
    skos:prefLabel "International Standard Industrial Classification
    of All Economic Activities (ISIC), Revision 4"@en ;
    skos:altLabel "ISIC, Rev.4"@en ;
+   skos:notation "ISIC4" ;
    xkos:belongsTo &lt;http://example.org/codes/isic&gt; ;
    xkos:supersedes &lt;http://example.org/codes/isic31&gt; ;
+   dcterms:issued "2008" ;
    xkos:numberOfLevels "4"^^xsd:int ;
    xkos:levels ( 
       &lt;http://example.org/codes/isic4/sections&gt;
@@ -2237,7 +2239,11 @@ ex:NafRev2Dataset
    a skos:ConceptScheme ;
    skos:prefLabel "International Standard Industrial Classification
    of All Economic Activities (ISIC), Revision 3.1"@en ;
+   skos:altLabel "ISIC, Rev.3.1"@en ;
+   skos:notation "ISIC31" ;
    xkos:belongsTo <http://example.org/codes/isic> ;
+   xkos:supersedes &lt;http://example.org/codes/isic3&gt; ;
+   dcterms:issued "2002" ;
    xkos:numberOfLevels "4"^^xsd:int ;
    xkos:levels ( 
       &lt;http://example.org/codes/isic31/sections&gt;
