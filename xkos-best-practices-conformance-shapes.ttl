@@ -20,7 +20,11 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://rdf-vocabulary.ddialliance.org/xkos#> a owl:Ontology;
-  rdfs:label "XKOS Best practices Shapes" ;
+  rdfs:label "XKOS Best Practices conformance shapes"@en ;
+  rdfs:comment """The XKOS Best Practices shapes are splitted in 2 files : shapes to check for (strict) XKOS conformance,
+  and shapes to check for recommended practices. This file provides the rules to check for conformance,
+  and as such contains shapes with sh:severity of sh:Violation. Users can use either the strict XKOS conformance rules
+  or the strict conformance rules in conjunction with the recommended practices depending on their objective."""@en ;
   skos:scopeNote """The shapes described here use sh:class to encode some ranges, for example to enforce that the value of xkos:belongsTo is a skos:Concept.
     However that type information might not be available in the data graph that is being validated if a reference is made to a 'remote' URI.
     Users of these shapes should then interpret the validation report accordingly and ignore the related messages,
