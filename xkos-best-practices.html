@@ -142,6 +142,8 @@
 
 		<p>The guide contains advice on how to use XKOS for maximum interoperability and reusability, and cover topics like the description of classifications (labels, explanatory notes, levels), the different types of correspondences, how to represent evolution over time of the different elements, how to publish statistical classifications as XKOS, what kind of descriptive metadata to attach in order to maximize findability, etc.</p>
 
+		<p>After a short reminder on statistical classifications, the guide proposes best practices regarding the representation of different elements: labels and notes, classification items, correspondence tables and concepts associations, etc. Then, guidelines are suggested on specific aspects like the evolution of classifications in time and URI patterns for the identification of components. A number of examples are provided throughout the document to illustrate the best practices, including a comprehensive final example based on the ISIC classification.</p>
+
 		<p>Where appropriate, best practice rules are formalized in the [[SHACL]] validation language, so that publishers can check if their classifications conform to the guidance. These shapes are available as separate files.</p>
     </section>
 
@@ -155,8 +157,8 @@
 	  <!-- A list of issues will magically appear here -->
 	</section>
 
-	<section id='introduction'>
-	    <h2>Introduction</h2>
+	<section id='introduction-goals'>
+	    <h2>Introduction and goals</h2>
 		<div class="issue" title="FC Improve introduction">
 			<p>FC: Improve the introduction</p>
 		</div>
@@ -165,19 +167,17 @@
 		</div>
 		<p>The XKOS Best Practices provide a set of recommendations that are applicable to the publication of statistical classifications on the Web using XKOS. The publication of statistical data is out of scope of this document.</p>
 		<p>Interoperability is especially important because classifications are often organized in global systems with articulation between worldwide classifications (e.g. UN) and national classifications, with sometimes intermediate levels (e.g. Europe). Also, classifications of different domains can be connected (e.g. activities and products, see for example the international system of classifications on economic activities, products and goods mentioned below). Finally, temporal interoperability is also primordial.</p>
-    </section>
 
-	<section id='goals'>
-	    <h2>Goals of this document</h2>
 		<div class="issue" title="FC Improve goals section">
 			<p>FC: Improve this section. Add sentence like : "Enable the publication at international level of interlinked, reusablen statistical classifications"</p>
 		</div>
-		<p>This document attempts to provide implementation guidelines for the practical use of XKOS. Our main goals are:</p>
+		<p>By providing implementation guidelines for the practical use of XKOS, our main goals are:</p>
 		<ul>
-      		<li>to address the feedback received since the publication of XKOS;</p>
-      		<li>to foster the creation of a community of XKOS users;</p>
-      		<li>to concretely support classification owners and maintainers who want to model their classification in a standard and interoperable way;</p>
-      		<li>and more generally to enable statistical classifications to be integrated within the wider Web of data.</p>
+      		<li>to address the feedback received since the publication of XKOS;</li>
+      		<li>to foster the creation of a community of XKOS users;</li>
+      		<li>to concretely support classification owners and maintainers who want to model their classification in a standard and interoperable way;</li>
+      		<li>to enable statistical classifications to be integrated within the wider Web of data;</li>
+			<li>and more generally to foster the publication at international level of a network of interoperable statistical classifications.</li>
       	</ul>
 
     </section>
@@ -2160,7 +2160,7 @@ ex:NafRev2Dataset
 # ISIC classification and category types #
 ##########################################
 
-&lt;http://example.org/isic&gt;
+&lt;http://example.org/codes/isic&gt;
    a skos:Concept ;
    skos:prefLabel "International Standard Industrial Classification 
      of All Economic Activities (ISIC)"@en ;
@@ -2175,57 +2175,59 @@ ex:NafRev2Dataset
    fourth revision of ISIC (ISIC, Rev.1) was considered and approved by the
    Statistical Commission at its thirty-seventh session, in March 2006."@en .
 
-&lt;http://example.org/isic/categoryTypes&gt;
+&lt;http://example.org/codes/isic/categoryTypes&gt;
    a skos:ConceptScheme ;
    skos:prefLabel "Types of categories used in ISIC"@en ;
    skos:hasTopConcept 
-   	&lt;http://example.org/isic/categoryType/Section&gt; ,
-   	&lt;http://example.org/isic/categoryType/Division&gt; ,
-   	&lt;http://example.org/isic/categoryType/Group&gt; ,
-   	&lt;http://example.org/isic/categoryType/MajorGroup&gt; ,
-   	&lt;http://example.org/isic/categoryType/Class&gt; .
+   	&lt;http://example.org/codes/isic/categoryType/Section&gt; ,
+   	&lt;http://example.org/codes/isic/categoryType/Division&gt; ,
+   	&lt;http://example.org/codes/isic/categoryType/Group&gt; ,
+   	&lt;http://example.org/codes/isic/categoryType/MajorGroup&gt; ,
+   	&lt;http://example.org/codes/isic/categoryType/Class&gt; .
 
 ####################
 # ISIC, Revision 4 #
 ####################
 
-&lt;http://example.org/isic/4&gt;
+&lt;http://example.org/codes/isic4&gt;
    a skos:ConceptScheme ;
    skos:prefLabel "International Standard Industrial Classification
    of All Economic Activities (ISIC), Revision 4"@en ;
    skos:altLabel "ISIC, Rev.4"@en ;
-   xkos:belongsTo &lt;http://example.org/isic&gt; ;
-   xkos:supersedes &lt;http://example.org/isic/31&gt; ;
-   xkos:numberOfLevels "4"^^xsd:int ;
+   skos:notation "ISIC4" ;
+   xkos:belongsTo &lt;http://example.org/codes/isic&gt; ;
+   xkos:supersedes &lt;http://example.org/codes/isic31&gt; ;
+   dcterms:issued "2008" ;
+   xkos:numberOfLevels "4"^^xsd:positiveInteger ;
    xkos:levels ( 
-      &lt;http://example.org/isic/4/sections&gt;
-      &lt;http://example.org/isic/4/divisions&gt;
-      &lt;http://example.org/isic/4/groups&gt;
-      &lt;http://example.org/isic/4/classes&gt;
+      &lt;http://example.org/codes/isic4/sections&gt;
+      &lt;http://example.org/codes/isic4/divisions&gt;
+      &lt;http://example.org/codes/isic4/groups&gt;
+      &lt;http://example.org/codes/isic4/classes&gt;
    )
    .
 
 # ISIC 4 levels
 
-&lt;http://example.org/isic/4/sections&gt;
+&lt;http://example.org/codes/isic4/sections&gt;
    a xkos:ClassificationLevel ;
    skos:prefLabel "Sections of ISIC 4"@en ;
-   xkos:organizedBy &lt;http://example.org/isic/categoryType/Section&gt; .
+   xkos:organizedBy &lt;http://example.org/codes/isic/categoryType/Section&gt; .
 
-&lt;http://example.org/isic/4/divisions&gt;
+&lt;http://example.org/codes/isic4/divisions&gt;
    a xkos:ClassificationLevel ;
    skos:prefLabel "Divisions of ISIC 4"@en ;
-   xkos:organizedBy &lt;http://example.org/isic/categoryType/Division&gt; .
+   xkos:organizedBy &lt;http://example.org/codes/isic/categoryType/Division&gt; .
 
-&lt;http://example.org/isic/4/groups&gt;
+&lt;http://example.org/codes/isic4/groups&gt;
    a xkos:ClassificationLevel ;
    skos:prefLabel "Groups of ISIC 4"@en ;
-   xkos:organizedBy &lt;http://example.org/isic/categoryType/Group&gt; .
+   xkos:organizedBy &lt;http://example.org/codes/isic/categoryType/Group&gt; .
 
-&lt;http://example.org/isic/4/classes&gt;
+&lt;http://example.org/codes/isic4/classes&gt;
    a xkos:ClassificationLevel ;
    skos:prefLabel "Classes of ISIC 4"@en ;
-   xkos:organizedBy &lt;http://example.org/isic/categoryType/Class&gt; .
+   xkos:organizedBy &lt;http://example.org/codes/isic/categoryType/Class&gt; .
 
 
 ##############################
@@ -2233,39 +2235,43 @@ ex:NafRev2Dataset
 ##############################
 
 
-<http://example.org/isic/31>
+<http://example.org/codes/isic31>
    a skos:ConceptScheme ;
    skos:prefLabel "International Standard Industrial Classification
    of All Economic Activities (ISIC), Revision 3.1"@en ;
-   xkos:belongsTo <http://example.org/isic> ;
-   xkos:numberOfLevels "4"^^xsd:int ;
+   skos:altLabel "ISIC, Rev.3.1"@en ;
+   skos:notation "ISIC31" ;
+   xkos:belongsTo <http://example.org/codes/isic> ;
+   xkos:supersedes &lt;http://example.org/codes/isic3&gt; ;
+   dcterms:issued "2002" ;
+   xkos:numberOfLevels "4"^^xsd:positiveInteger ;
    xkos:levels ( 
-      &lt;http://example.org/isic/3.1/sections&gt;
-      &lt;http://example.org/isic/3.1/divisions&gt;
-      &lt;http://example.org/isic/3.1/groups&gt;
-      &lt;http://example.org/isic/3.1/classes&gt;
+      &lt;http://example.org/codes/isic31/sections&gt;
+      &lt;http://example.org/codes/isic31/divisions&gt;
+      &lt;http://example.org/codes/isic31/groups&gt;
+      &lt;http://example.org/codes/isic31/classes&gt;
    )
    .
 
-&lt;http://example.org/isic/3.1/sections&gt;
+&lt;http://example.org/codes/isic31/sections&gt;
    a xkos:ClassificationLevel ;
    skos:prefLabel "Sections of ISIC 3.1"@en ;
-   xkos:organizedBy &lt;http://example.org/isic/categoryType/Section&gt; .
+   xkos:organizedBy &lt;http://example.org/codes/isic/categoryType/Section&gt; .
 
-&lt;http://example.org/isic/3.1/divisions&gt;
+&lt;http://example.org/codes/isic31/divisions&gt;
    a xkos:ClassificationLevel ;
    skos:prefLabel "Divisions of ISIC 3.1"@en ;
-   xkos:organizedBy &lt;http://example.org/isic/categoryType/Division&gt; .
+   xkos:organizedBy &lt;http://example.org/codes/isic/categoryType/Division&gt; .
 
-&lt;http://example.org/isic/3.1/groups&gt;
+&lt;http://example.org/codes/isic31/groups&gt;
    a xkos:ClassificationLevel ;
    skos:prefLabel "Groups of ISIC 3.1"@en ;
-   xkos:organizedBy &lt;http://example.org/isic/categoryType/Group&gt; .
+   xkos:organizedBy &lt;http://example.org/codes/isic/categoryType/Group&gt; .
 
-&lt;http://example.org/isic/3.1/classes&gt;
+&lt;http://example.org/codes/isic31/classes&gt;
    a xkos:ClassificationLevel ;
    skos:prefLabel "Classes of ISIC 3.1"@en ;
-   xkos:organizedBy &lt;http://example.org/isic/categoryType/Class&gt; .
+   xkos:organizedBy &lt;http://example.org/codes/isic/categoryType/Class&gt; .
 
 
 		</pre>
