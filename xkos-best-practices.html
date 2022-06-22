@@ -2160,7 +2160,7 @@ ex:NafRev2Dataset
 # ISIC classification and category types #
 ##########################################
 
-&lt;http://example.org/isic&gt;
+&lt;http://example.org/codes/isic&gt;
    a skos:Concept ;
    skos:prefLabel "International Standard Industrial Classification 
      of All Economic Activities (ISIC)"@en ;
@@ -2175,57 +2175,57 @@ ex:NafRev2Dataset
    fourth revision of ISIC (ISIC, Rev.1) was considered and approved by the
    Statistical Commission at its thirty-seventh session, in March 2006."@en .
 
-&lt;http://example.org/isic/categoryTypes&gt;
+&lt;http://example.org/codes/isic/categoryTypes&gt;
    a skos:ConceptScheme ;
    skos:prefLabel "Types of categories used in ISIC"@en ;
    skos:hasTopConcept 
-   	&lt;http://example.org/isic/categoryType/Section&gt; ,
-   	&lt;http://example.org/isic/categoryType/Division&gt; ,
-   	&lt;http://example.org/isic/categoryType/Group&gt; ,
-   	&lt;http://example.org/isic/categoryType/MajorGroup&gt; ,
-   	&lt;http://example.org/isic/categoryType/Class&gt; .
+   	&lt;http://example.org/codes/isic/categoryType/Section&gt; ,
+   	&lt;http://example.org/codes/isic/categoryType/Division&gt; ,
+   	&lt;http://example.org/codes/isic/categoryType/Group&gt; ,
+   	&lt;http://example.org/codes/isic/categoryType/MajorGroup&gt; ,
+   	&lt;http://example.org/codes/isic/categoryType/Class&gt; .
 
 ####################
 # ISIC, Revision 4 #
 ####################
 
-&lt;http://example.org/isic/4&gt;
+&lt;http://example.org/codes/isic/4&gt;
    a skos:ConceptScheme ;
    skos:prefLabel "International Standard Industrial Classification
    of All Economic Activities (ISIC), Revision 4"@en ;
    skos:altLabel "ISIC, Rev.4"@en ;
-   xkos:belongsTo &lt;http://example.org/isic&gt; ;
-   xkos:supersedes &lt;http://example.org/isic/31&gt; ;
+   xkos:belongsTo &lt;http://example.org/codes/isic&gt; ;
+   xkos:supersedes &lt;http://example.org/codes/isic/31&gt; ;
    xkos:numberOfLevels "4"^^xsd:int ;
    xkos:levels ( 
-      &lt;http://example.org/isic/4/sections&gt;
-      &lt;http://example.org/isic/4/divisions&gt;
-      &lt;http://example.org/isic/4/groups&gt;
-      &lt;http://example.org/isic/4/classes&gt;
+      &lt;http://example.org/codes/isic/4/sections&gt;
+      &lt;http://example.org/codes/isic/4/divisions&gt;
+      &lt;http://example.org/codes/isic/4/groups&gt;
+      &lt;http://example.org/codes/isic/4/classes&gt;
    )
    .
 
 # ISIC 4 levels
 
-&lt;http://example.org/isic/4/sections&gt;
+&lt;http://example.org/codes/isic/4/sections&gt;
    a xkos:ClassificationLevel ;
    skos:prefLabel "Sections of ISIC 4"@en ;
-   xkos:organizedBy &lt;http://example.org/isic/categoryType/Section&gt; .
+   xkos:organizedBy &lt;http://example.org/codes/isic/categoryType/Section&gt; .
 
-&lt;http://example.org/isic/4/divisions&gt;
+&lt;http://example.org/codes/isic/4/divisions&gt;
    a xkos:ClassificationLevel ;
    skos:prefLabel "Divisions of ISIC 4"@en ;
-   xkos:organizedBy &lt;http://example.org/isic/categoryType/Division&gt; .
+   xkos:organizedBy &lt;http://example.org/codes/isic/categoryType/Division&gt; .
 
-&lt;http://example.org/isic/4/groups&gt;
+&lt;http://example.org/codes/isic/4/groups&gt;
    a xkos:ClassificationLevel ;
    skos:prefLabel "Groups of ISIC 4"@en ;
-   xkos:organizedBy &lt;http://example.org/isic/categoryType/Group&gt; .
+   xkos:organizedBy &lt;http://example.org/codes/isic/categoryType/Group&gt; .
 
-&lt;http://example.org/isic/4/classes&gt;
+&lt;http://example.org/codes/isic/4/classes&gt;
    a xkos:ClassificationLevel ;
    skos:prefLabel "Classes of ISIC 4"@en ;
-   xkos:organizedBy &lt;http://example.org/isic/categoryType/Class&gt; .
+   xkos:organizedBy &lt;http://example.org/codes/isic/categoryType/Class&gt; .
 
 
 ##############################
@@ -2233,39 +2233,39 @@ ex:NafRev2Dataset
 ##############################
 
 
-<http://example.org/isic/31>
+<http://example.org/codes/isic/31>
    a skos:ConceptScheme ;
    skos:prefLabel "International Standard Industrial Classification
    of All Economic Activities (ISIC), Revision 3.1"@en ;
-   xkos:belongsTo <http://example.org/isic> ;
+   xkos:belongsTo <http://example.org/codes/isic> ;
    xkos:numberOfLevels "4"^^xsd:int ;
    xkos:levels ( 
-      &lt;http://example.org/isic/3.1/sections&gt;
-      &lt;http://example.org/isic/3.1/divisions&gt;
-      &lt;http://example.org/isic/3.1/groups&gt;
-      &lt;http://example.org/isic/3.1/classes&gt;
+      &lt;http://example.org/codes/isic/3.1/sections&gt;
+      &lt;http://example.org/codes/isic/3.1/divisions&gt;
+      &lt;http://example.org/codes/isic/3.1/groups&gt;
+      &lt;http://example.org/codes/isic/3.1/classes&gt;
    )
    .
 
-&lt;http://example.org/isic/3.1/sections&gt;
+&lt;http://example.org/codes/isic/3.1/sections&gt;
    a xkos:ClassificationLevel ;
    skos:prefLabel "Sections of ISIC 3.1"@en ;
-   xkos:organizedBy &lt;http://example.org/isic/categoryType/Section&gt; .
+   xkos:organizedBy &lt;http://example.org/codes/isic/categoryType/Section&gt; .
 
-&lt;http://example.org/isic/3.1/divisions&gt;
+&lt;http://example.org/codes/isic/3.1/divisions&gt;
    a xkos:ClassificationLevel ;
    skos:prefLabel "Divisions of ISIC 3.1"@en ;
-   xkos:organizedBy &lt;http://example.org/isic/categoryType/Division&gt; .
+   xkos:organizedBy &lt;http://example.org/codes/isic/categoryType/Division&gt; .
 
-&lt;http://example.org/isic/3.1/groups&gt;
+&lt;http://example.org/codes/isic/3.1/groups&gt;
    a xkos:ClassificationLevel ;
    skos:prefLabel "Groups of ISIC 3.1"@en ;
-   xkos:organizedBy &lt;http://example.org/isic/categoryType/Group&gt; .
+   xkos:organizedBy &lt;http://example.org/codes/isic/categoryType/Group&gt; .
 
-&lt;http://example.org/isic/3.1/classes&gt;
+&lt;http://example.org/codes/isic/3.1/classes&gt;
    a xkos:ClassificationLevel ;
    skos:prefLabel "Classes of ISIC 3.1"@en ;
-   xkos:organizedBy &lt;http://example.org/isic/categoryType/Class&gt; .
+   xkos:organizedBy &lt;http://example.org/codes/isic/categoryType/Class&gt; .
 
 
 		</pre>
