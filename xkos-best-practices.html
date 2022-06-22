@@ -886,6 +886,36 @@ ex:isco2008-9611
 					<p>Below is an example of a caselaw relating to the NACE Rev. 2 classification. Rulings are displayed after `xkos:coreContentNote` and `xkos:additionalContentNote` properties but before `xkos:exclusionNote` property because such explanatory texts are labelled as inclusions and not as exclusions.</p>
 
 					<img src="img/bp-caseLaw-example.png" alt="Case Law Example from NACE Rev. 2" />
+					
+				ex:SupportActivities a skos:Concept ;
+	skos:notation "01.62" .
+	xkos:coreContentNote ex:SupportActivitiesCoreContent .
+	xkos:additionalContentNote ex:SupportActivitiesAdditionalContent .
+	xkos:caseLaw ex:SupportActivitiesCaseLaw .
+	xkos:exclusionNote ex:SupportActivitiesExclusionNote .
+
+
+ex:SupportActivitiesCoreContent a xkos:ExplanatoryNote ;
+  dcterms:language "en"^^xsd:language ;
+  xkos:plainText "-agricultural activities on a fee or contract basis; activities to promote propagation, growth and output of animals [...]"@en .
+
+ 
+ex:SupportActivitiesAdditionalContent a xkos:ExplanatoryNote ;
+  dcterms:language "en"^^xsd:language ;
+  xkos:plainText "-activities for farriers"@en .
+
+
+ex:SupportActivitiesCaseLaw a xkos:ExplanatoryNote ;
+  dcterms:language "en"^^xsd:language ;
+  xkos:plainText "-automated egg hatching for poultry; operation of livestock management systems"@en .
+
+ex:SupportActivitiesExclusionNote a xkos:ExplanatoryNote ;
+  dcterms:language "en"^^xsd:language ;
+  xkos:plainText "-provision of space for animal boarding only, see 68.20; -veterinary activities, see 75.00 [...] "@en .	
+					
+					
+					
+					
 				</aside>
 
 				<div class="issue" title="CD: add an RDF example of caseLaw vs. inclusionNote"></div>
