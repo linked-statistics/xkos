@@ -42,7 +42,8 @@ xkos:ClassificationShape a sh:NodeShape;
     xkos:P_classification_skosaltLabel_optional,
     xkos:P_classification_dctlanguage_optional,
     xkos:P_classification_dctlicense_optional,
-    xkos:P_classification_elibased_on_optional;
+    xkos:P_classification_elibased_on_optional,
+    xkos:P_classification_rdfs_seeAlso_optional;
   .
 
 
@@ -164,6 +165,10 @@ xkos:P_classification_elibased_on_optional
   sh:minCount 1;
   sh:severity sh:Info .
 
+xkos:P_classification_rdfs_seeAlso_optional
+  sh:path rdfs:seeAlso;
+  sh:maxCount 1;
+  sh:severity sh:Info .
 
 
 xkos:CorrespondenceShape a sh:NodeShape;
