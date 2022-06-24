@@ -179,6 +179,7 @@ xkos:P_classification_xkoslevels
   sh:description "Lists the classification levels represented as an RDF list of ordered levels (instances of xkos:ClassificationLevel)."@en;
   sh:maxCount 1;
   sh:name "classification levels"@en;
+  sh:nodeKind sh:BlankNode;
   sh:node [
     sh:property [
       sh:path rdf:rest ;
@@ -207,7 +208,6 @@ xkos:P_classification_xkoscoversExhaustively
   sh:class skos:Concept;
   sh:description "The domain covered by the classification (exhaustive coverage)."@en;
   sh:maxCount 1;
-  sh:minCount 1;
   sh:name "domain covered exhaustively"@en;
   sh:nodeKind sh:IRI;
   sh:severity sh:Violation .
