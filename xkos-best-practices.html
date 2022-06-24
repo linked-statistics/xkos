@@ -760,7 +760,7 @@ ex:isco2008-9611
 
 					<p>Note: the ISO-8601 does not define open-ended ranges; this is extended by an LC extension that suggest "2012-09-10/.." for open ended ranges; this is used by schema.org</p>
 
-					<p>2 actions : 1. Escalate to DDI scientific board 2. Search for issues inside DCAT and get in touch with DCAT people about dct:PeriodOfTime + dcat:startDate/endDate</p>
+					<p>2 actions : 1. Escalate to DDI scientific board 2. Search for issues inside DCAT and get in touch with DCAT people about dcterms:PeriodOfTime + dcat:startDate/endDate</p>
 				</div>
 				<p>Given the versioning history of such notes, a client accessing a particular version of the classification might not be interested to know about the versioning history of all notes, and is only interested in the current state of each note.</p>
 				<aside class="example" title="Concept with a versioned note">
@@ -1179,7 +1179,7 @@ ex:NACE-R2_Group_Class
 				<h4>Type classification items according to a branch or a subset of items</h4>
 				
 				<p>It is sometimes desirable to restrict the range of a property not to items of a particular classification, nor to items at a certain level in a certain classification, but either to a "branch" of the classification, or to a subset of the elements taken anywhere in the classification.</p>
-				<p>For the cases where it is known that the classification is "partitioned" in subsets that can be used independantly, the following modelling pattern can be applied : each "partition" is declared as a `skos:ConceptScheme`, linked to the main `skos:ConceptScheme` of the classification with a `dct:isPartOf`; and the `skos:Concept`s of the classification items have 2 `skos:inScheme` properties : one that refer to the main `skos:ConceptScheme`, and one that refer to the `skos:ConceptScheme` of their "partition". This pattern is typically applied for the modeling of micro-thesauri in large thesaurus.</p>
+				<p>For the cases where it is known that the classification is "partitioned" in subsets that can be used independantly, the following modelling pattern can be applied : each "partition" is declared as a `skos:ConceptScheme`, linked to the main `skos:ConceptScheme` of the classification with a `dcterms:isPartOf`; and the `skos:Concept`s of the classification items have 2 `skos:inScheme` properties : one that refer to the main `skos:ConceptScheme`, and one that refer to the `skos:ConceptScheme` of their "partition". This pattern is typically applied for the modeling of micro-thesauri in large thesaurus.</p>
 				<p>The pattern described above of declaring an OWL class corresponding to the skos:ConceptScheme can be applied, but for the skos:ConceptScheme corresponding to a "partition". This is illustrated in the example below:</p>
 				<aside class="example" title="Example of partitioning a classification with multiple skos:ConceptScheme">
 					<pre class="nohighlight">
@@ -1192,13 +1192,13 @@ ex:MyProductClassification
 ex:GoodsPartition
     a skos:ConceptScheme;
     skos:prefLabel "Goods partition in my product classification"@en ;
-    dct:isPartOf ex:MyProductClassification .
+    dcterms:isPartOf ex:MyProductClassification .
 
 # Partition of the larger classification for "Services"
 ex:ServicesPartition
     a skos:ConceptScheme;
     skos:prefLabel "Services partition in my product classification"@en ;
-    dct:isPartOf ex:MyProductClassification .
+    dcterms:isPartOf ex:MyProductClassification .
 
 # Items in the classification have 2 skos:inScheme
 ex:item_1 a skos:Concept ;
