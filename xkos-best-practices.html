@@ -298,11 +298,15 @@
 
 			<p>As can be seen in the diagram in Figure 1, classifications should ideally be interoperable between domains and between geographical scales. Therefore, revisions can be coordinated to ensure that all classifications can remain consistent.</p>
 
-			<p>We make a distinction between revisions of statistical classifications and the versioning of the descriptive notes within a major revision.</p>
+			<p>We make a distinction between <em>revisions</em> of statistical classifications and the <em>versioning</em> of the descriptive notes within a major revision.</p>
 
 			<p>Revisions of a classification include major changes resulting from upstream expertise in order to provide an updated analysis grid to better reflect the reality of the domain of interest.</p>
 
 			<p>Between revisions, although classifications are relatively stable resources, changes can be made to the elements, and typically to their definitions. To this end, the versioning of statistical classification is targeting the various notes that define the items. At the level of the classification itself, these minor changes do not result in a version number increment.</p>
+
+			<p class="note" title="New revision means new URIs">
+			  As a consequence of the considerations above, this best practice document and the examples given assume that, when a new revision of a statistical classification is created, it is a totally different "artifact" than the previous revision, hence with a different URI; and all classification items inside it will be assigned new URIs. This is reflected in section "<a href="#bp-evolution-major-versions">Major versions of classifications</a>" below, in the examples of correspondence tables in section "<a href="#bp-correspondences-example">Examples of xkos:ConceptAssociation</a>", and in the <a href="#bp-uri-patterns">proposed URI patterns</a>.
+			</p>
 
 		</section>
 
@@ -717,7 +721,7 @@ ex:isco2008-9611
 			</section>
 			<section id="bp-notes-versioning-timestamping">
 				<h4>Versioning notes and timestamping notes</h4>
-				<p>As indicated in the introductory paragraph about classification major revisions and versions, the notes are the information that have fine-grained versions between each major revision of a classification.</p>
+				<p>As indicated in the introductory paragraph about classification major revisions and versions, the notes are the information that have fine-grained versions between each major revision of a classification (any changes other than on the notes - moving a concept, renaming a concept, etc. - is supposed to happen in a new major revision, hence applies to a new Concept URI. See section <a href="bp-evolution-major-versions">Major versions of classifications</a>).</p>
 				<p>We propose 2 different patterns of versioning for notes: versioning notes with a version number and a date range, and keeping the history of notes with a timestamp.</p>
 				<p>The first pattern to version notes implies that each new version of the note is given a version number and a date range. All notes, except `skos:changeNote` should follow this pattern: `skos:scopeNote`, `skos:definition`, `xkos:coreContentNote`, `xkos:additionalContentNote`, `xkos:exclusionNote`, `xkos:inclusionNote`, `xkos:caseLaw`. These notes should uses the properties listed in the table below.</p>
 				<table class="simple stickyTableHead">
@@ -803,7 +807,7 @@ ex:isco2008-9611
     xkos:plainText "- argiles kaoliniques brutes et pâtes céramiques"@fr;
     insee:validFrom "2010-02-01T00:00:00.000+01:00"^^xsd:dateTime .
 					</pre>
-					<p>The complete history of that Concept is the following:</p>
+					<p>The complete history of that Concept is given above. Note that, as we take the hypothesis that each new revision of the classification will give birth to new Concept URIs, this is indeed the <em>complete</em> history of that Concept URI, as any changes other than the notes (a move of the concept, a rename of the concept, etc.) has to be made in a new revision, hence applies to a new Concept URI.</p>
 					<pre class="nohighlight">
 &lt;http://id.insee.fr/codes/cpfr2/sousCategorie/08.12.21&gt;
     a skos:Concept;
@@ -836,7 +840,7 @@ ex:isco2008-9611
 					<p>The modification of the core content note is documented by a (timestamped) `skos:changeNote` - see example below.</p>
 				</aside>
 
-				<p>The second pattern implies that the note is associated with a publication date, but no version number.This pattern applies to `skos:changeNote` only. It will use the properties listed in the table below.</p>
+				<p>The second pattern implies that the note is associated with a publication date, but no version number. This pattern applies to `skos:changeNote` only. It will use the properties listed in the table below.</p>
 
 				<table class="simple stickyTableHead">
 					<caption>Additional properties for an `xkos:ExplanatoryNote` when timestamped</caption>
@@ -1775,7 +1779,9 @@ ex:obs2
 				<h4>Major versions of classifications</h4>
 				<p>When a complete revision of a classification happens, a new major version of a classification is produced.</p>
 
-				<p>It is recommended that all concepts and levels are recreated with new URIs in the new revision. The relation between the classification items of the two revisions is given by a correspondence table as presented in the <a href="#bp-correspondences">corresponding section of this document</a>.</p>
+				<p>It is recommended that all concepts and levels are recreated with new URIs in the new revision. Only the changes of notes should be allowed in fine-grained versions between each major revision of a classification, as described in section <a href="#bp-notes-versioning-timestamping">Versioning notes and timestamping notes</a>.</p>
+
+				<p>The relation between the classification items of the two revisions is given by a correspondence table as presented in the <a href="#bp-correspondences">corresponding section of this document</a>.</p>
 
 				<p>As for the classification themselves, the `skos:ConceptScheme` of the former revision should have the property `owl:deprecated` set to “true” and its period of validity updated in a `dcat:temporal` property. Links between successive revisions can be asserted between the `skos:ConceptScheme`s by using `xkos:supersedes`; this property conveys the idea that the classification being referred to is deprecated.</p>
 
