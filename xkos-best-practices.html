@@ -142,7 +142,7 @@
 
 		<p>After a short reminder on statistical classifications, the guide proposes best practices regarding the representation of different elements: classifications and levels, labels and notes, classification items, correspondence tables and concepts associations, etc. Then, guidelines are suggested on specific aspects like the evolution of classifications in time and URI patterns for the identification of components. A number of examples are provided throughout the document to illustrate the best practices, including a comprehensive final example based on the ISIC classification.</p>
 
-		<p>Where appropriate, best practice rules are formalized in the [[SHACL]] validation language, so that publishers can check if their classifications conform to the guidance. These shapes are available as separate files.</p>
+		<p>Where appropriate, best practice rules are formalized in the [[SHACL]] validation language, so that publishers can check if their classifications conform to the guidance. These shapes are available as separate files (see <a href="#shacl-howto">the appendix</a>).</p>
     </section>
 
 	<section id='acknowledgements' class="introductory">
@@ -268,6 +268,11 @@
 					<td>RDF 1.1 Concepts Vocabulary ([[RDF11-CONCEPTS]])</td>
 				</tr>
 				<tr>
+					<td>sh</td>
+					<td>http://www.w3.org/ns/shacl#</td>
+					<td>Shapes Constraint Language ([[SHACL]])</a></td>
+				</tr>
+				<tr>
 					<td>skos</td>
 					<td>http://www.w3.org/2004/02/skos/core#</td>
 					<td>Simple Knowledge Organization System ([[SKOS]])</a></td>
@@ -298,11 +303,15 @@
 
 			<p>As can be seen in the diagram in Figure 1, classifications should ideally be interoperable between domains and between geographical scales. Therefore, revisions can be coordinated to ensure that all classifications can remain consistent.</p>
 
-			<p>We make a distinction between revisions of statistical classifications and the versioning of the descriptive notes within a major revision.</p>
+			<p>We make a distinction between <em>revisions</em> of statistical classifications and the <em>versioning</em> of the descriptive notes within a major revision.</p>
 
 			<p>Revisions of a classification include major changes resulting from upstream expertise in order to provide an updated analysis grid to better reflect the reality of the domain of interest.</p>
 
 			<p>Between revisions, although classifications are relatively stable resources, changes can be made to the elements, and typically to their definitions. To this end, the versioning of statistical classification is targeting the various notes that define the items. At the level of the classification itself, these minor changes do not result in a version number increment.</p>
+
+			<p class="note" title="New revision means new URIs">
+			  As a consequence of the considerations above, this best practice document and the examples given assume that, when a new revision of a statistical classification is created, it is a totally different "artifact" than the previous revision, hence with a different URI; and all classification items inside it will be assigned new URIs. This is reflected in section "<a href="#bp-evolution-major-versions">Major versions of classifications</a>" below, in the examples of correspondence tables in section "<a href="#bp-correspondences-example">Examples of xkos:ConceptAssociation</a>", and in the <a href="#bp-uri-patterns">proposed URI patterns</a>.
+			</p>
 
 		</section>
 
@@ -596,6 +605,8 @@
 				</tbody>
 			</table>
 
+			<p>The above table is formally encoded in a set of [[SHACL]] constraints, documented in <a href="#shacl-howto">the appendix</a>.</p>
+
 			<div class="issue" title="TF missing dcterms:valid">
 				We are missing dcterms:valid to express the temporal coverage of the classification, as indicated in XKOS - 
 			</div>
@@ -686,6 +697,7 @@ ex:isco2008-9611
 		<section id="bp-notes">
 		    <h3>Notes</h3>
 			<p><a href="https://rdf-vocabulary.ddialliance.org/xkos.html#note-ext">§8.2 of the XKOS specification</a> describes the different types of content notes introduced in XKOS and mentions the `xkos:plainText` property as a way to capture the raw content of the note. This best practice document gives additional recommendations on how best to describe the note entity, how to handle note versioning and timestamps, and clarifies the difference between `xkos:inclusionNote` and `xkos:caseLaw`.</p>
+			<p>The tables given in this section are formally encoded in a set of [[SHACL]] constraints, documented in <a href="#shacl-howto">the appendix</a>.</p>
 			<section id="bp-notes-structure">
 				<h4>Note structure</h4>
 				<p>As indicated in the XKOS specification, and as a prerequisite for the versioning and timestamping of notes, instances of `xkos:ExplanatoryNote` should be used as value for the SKOS and XKOS note properties, and not literal values.</p>
@@ -724,7 +736,7 @@ ex:isco2008-9611
 			</section>
 			<section id="bp-notes-versioning-timestamping">
 				<h4>Versioning notes and timestamping notes</h4>
-				<p>As indicated in the introductory paragraph about classification major revisions and versions, the notes are the information that have fine-grained versions between each major revision of a classification.</p>
+				<p>As indicated in the introductory paragraph about classification major revisions and versions, the notes are the information that have fine-grained versions between each major revision of a classification (any changes other than on the notes - moving a concept, renaming a concept, etc. - is supposed to happen in a new major revision, hence applies to a new Concept URI. See section <a href="bp-evolution-major-versions">Major versions of classifications</a>).</p>
 				<p>We propose 2 different patterns of versioning for notes: versioning notes with a version number and a date range, and keeping the history of notes with a timestamp.</p>
 				<p>The first pattern to version notes implies that each new version of the note is given a version number and a date range. All notes, except `skos:changeNote` should follow this pattern: `skos:scopeNote`, `skos:definition`, `xkos:coreContentNote`, `xkos:additionalContentNote`, `xkos:exclusionNote`, `xkos:inclusionNote`, `xkos:caseLaw`. These notes should uses the properties listed in the table below.</p>
 				<table class="simple stickyTableHead">
@@ -767,7 +779,7 @@ ex:isco2008-9611
 
 					<p>Note: the ISO-8601 does not define open-ended ranges; this is extended by an LC extension that suggest "2012-09-10/.." for open ended ranges; this is used by schema.org</p>
 
-					<p>2 actions : 1. Escalate to DDI scientific board 2. Search for issues inside DCAT and get in touch with DCAT people about dct:PeriodOfTime + dcat:startDate/endDate</p>
+					<p>2 actions : 1. Escalate to DDI scientific board 2. Search for issues inside DCAT and get in touch with DCAT people about dcterms:PeriodOfTime + dcat:startDate/endDate</p>
 				</div>
 				<p>Given the versioning history of such notes, a client accessing a particular version of the classification might not be interested to know about the versioning history of all notes, and is only interested in the current state of each note.</p>
 				<aside class="example" title="Concept with a versioned note">
@@ -810,7 +822,7 @@ ex:isco2008-9611
     xkos:plainText "- argiles kaoliniques brutes et pâtes céramiques"@fr;
     insee:validFrom "2010-02-01T00:00:00.000+01:00"^^xsd:dateTime .
 					</pre>
-					<p>The complete history of that Concept is the following:</p>
+					<p>The complete history of that Concept is given above. Note that, as we take the hypothesis that each new revision of the classification will give birth to new Concept URIs, this is indeed the <em>complete</em> history of that Concept URI, as any changes other than the notes (a move of the concept, a rename of the concept, etc.) has to be made in a new revision, hence applies to a new Concept URI.</p>
 					<pre class="nohighlight">
 &lt;http://id.insee.fr/codes/cpfr2/sousCategorie/08.12.21&gt;
     a skos:Concept;
@@ -843,7 +855,7 @@ ex:isco2008-9611
 					<p>The modification of the core content note is documented by a (timestamped) `skos:changeNote` - see example below.</p>
 				</aside>
 
-				<p>The second pattern implies that the note is associated with a publication date, but no version number.This pattern applies to `skos:changeNote` only. It will use the properties listed in the table below.</p>
+				<p>The second pattern implies that the note is associated with a publication date, but no version number. This pattern applies to `skos:changeNote` only. It will use the properties listed in the table below.</p>
 
 				<table class="simple stickyTableHead">
 					<caption>Additional properties for an `xkos:ExplanatoryNote` when timestamped</caption>
@@ -893,6 +905,36 @@ ex:isco2008-9611
 					<p>Below is an example of a caselaw relating to the NACE Rev. 2 classification. Rulings are displayed after `xkos:coreContentNote` and `xkos:additionalContentNote` properties but before `xkos:exclusionNote` property because such explanatory texts are labelled as inclusions and not as exclusions.</p>
 
 					<img src="img/bp-caseLaw-example.png" alt="Case Law Example from NACE Rev. 2" />
+					
+				ex:SupportActivities a skos:Concept ;
+	skos:notation "01.62" .
+	xkos:coreContentNote ex:SupportActivitiesCoreContent .
+	xkos:additionalContentNote ex:SupportActivitiesAdditionalContent .
+	xkos:caseLaw ex:SupportActivitiesCaseLaw .
+	xkos:exclusionNote ex:SupportActivitiesExclusionNote .
+
+
+ex:SupportActivitiesCoreContent a xkos:ExplanatoryNote ;
+  dcterms:language "en"^^xsd:language ;
+  xkos:plainText "-agricultural activities on a fee or contract basis; activities to promote propagation, growth and output of animals [...]"@en .
+
+ 
+ex:SupportActivitiesAdditionalContent a xkos:ExplanatoryNote ;
+  dcterms:language "en"^^xsd:language ;
+  xkos:plainText "-activities for farriers"@en .
+
+
+ex:SupportActivitiesCaseLaw a xkos:ExplanatoryNote ;
+  dcterms:language "en"^^xsd:language ;
+  xkos:plainText "-automated egg hatching for poultry; operation of livestock management systems"@en .
+
+ex:SupportActivitiesExclusionNote a xkos:ExplanatoryNote ;
+  dcterms:language "en"^^xsd:language ;
+  xkos:plainText "-provision of space for animal boarding only, see 68.20; -veterinary activities, see 75.00 [...] "@en .	
+					
+					
+					
+					
 				</aside>
 
 				<div class="issue" title="CD: add an RDF example of caseLaw vs. inclusionNote"></div>
@@ -1203,7 +1245,7 @@ ex:NACE-R2_Group_Class
 				<h4>Type classification items according to a branch or a subset of items</h4>
 				
 				<p>It is sometimes desirable to restrict the range of a property not to items of a particular classification, nor to items at a certain level in a certain classification, but either to a "branch" of the classification, or to a subset of the elements taken anywhere in the classification.</p>
-				<p>For the cases where it is known that the classification is "partitioned" in subsets that can be used independantly, the following modelling pattern can be applied : each "partition" is declared as a `skos:ConceptScheme`, linked to the main `skos:ConceptScheme` of the classification with a `dct:isPartOf`; and the `skos:Concept`s of the classification items have 2 `skos:inScheme` properties : one that refer to the main `skos:ConceptScheme`, and one that refer to the `skos:ConceptScheme` of their "partition". This pattern is typically applied for the modeling of micro-thesauri in large thesaurus.</p>
+				<p>For the cases where it is known that the classification is "partitioned" in subsets that can be used independantly, the following modelling pattern can be applied : each "partition" is declared as a `skos:ConceptScheme`, linked to the main `skos:ConceptScheme` of the classification with a `dcterms:isPartOf`; and the `skos:Concept`s of the classification items have 2 `skos:inScheme` properties : one that refer to the main `skos:ConceptScheme`, and one that refer to the `skos:ConceptScheme` of their "partition". This pattern is typically applied for the modeling of micro-thesauri in large thesaurus.</p>
 				<p>The pattern described above of declaring an OWL class corresponding to the skos:ConceptScheme can be applied, but for the skos:ConceptScheme corresponding to a "partition". This is illustrated in the example below:</p>
 				<aside class="example" title="Example of partitioning a classification with multiple skos:ConceptScheme">
 					<pre class="nohighlight">
@@ -1216,13 +1258,13 @@ ex:MyProductClassification
 ex:GoodsPartition
     a skos:ConceptScheme;
     skos:prefLabel "Goods partition in my product classification"@en ;
-    dct:isPartOf ex:MyProductClassification .
+    dcterms:isPartOf ex:MyProductClassification .
 
 # Partition of the larger classification for "Services"
 ex:ServicesPartition
     a skos:ConceptScheme;
     skos:prefLabel "Services partition in my product classification"@en ;
-    dct:isPartOf ex:MyProductClassification ;
+    dcterms:isPartOf ex:MyProductClassification ;
     # pointer to the corresponding OWL class
     rdfs:seeAlso ex:MyProductClassification_Item_Services ;
 .
@@ -1367,6 +1409,7 @@ ex:myProperty a owl:ObjectProperty ;
 						</tr>
 					</tbody>
 				</table>
+				<p>The above table is formally encoded in a set of [[SHACL]] constraints, documented in <a href="#shacl-howto">the appendix</a>.</p>
 				<p>It is possible to have several correspondence tables based on the same source and target classifications that are created with different methodologies and thus give different views of the relation between the two classifications (e.g. if links are constructed automatically or if they are determined by expert judgement). It may therefore be necessary to store this information by associating with the mapping table a `prov:Activity` encompassing the creation steps followed.</p>
 			</section>
 			<section id="bp-correspondences-documenting-associations">
@@ -1398,6 +1441,7 @@ ex:myProperty a owl:ObjectProperty ;
 						</tr>
 					</tbody>
 				</table>
+				<p>The above table is formally encoded in a set of [[SHACL]] constraints, documented in <a href="#shacl-howto">the appendix</a>.</p>
 				<p>It is possible to further describe concept associations with custom properties. <a href="https://www.insee.fr">INSEE</a> for example uses `insee:differenceNote` and `insee:similarityNote` to capture respectively how the related items differs and how they are similar, as in the following example:</p>
 				<aside class="example" title="Example of further description of a xkos:ConceptAssociation with custom properties">
 					<pre class="nohighlight">
@@ -1775,7 +1819,9 @@ ex:obs2
 				<h4>Major versions of classifications</h4>
 				<p>When a complete revision of a classification happens, a new major version of a classification is produced.</p>
 
-				<p>It is recommended that all concepts and levels are recreated with new URIs in the new revision. The relation between the classification items of the two revisions is given by a correspondence table as presented in the <a href="#bp-correspondences">corresponding section of this document</a>.</p>
+				<p>It is recommended that all concepts and levels are recreated with new URIs in the new revision. Only the changes of notes should be allowed in fine-grained versions between each major revision of a classification, as described in section <a href="#bp-notes-versioning-timestamping">Versioning notes and timestamping notes</a>.</p>
+
+				<p>The relation between the classification items of the two revisions is given by a correspondence table as presented in the <a href="#bp-correspondences">corresponding section of this document</a>.</p>
 
 				<p>As for the classification themselves, the `skos:ConceptScheme` of the former revision should have the property `owl:deprecated` set to “true” and its period of validity updated in a `dcat:temporal` property. Links between successive revisions can be asserted between the `skos:ConceptScheme`s by using `xkos:supersedes`; this property conveys the idea that the classification being referred to is deprecated.</p>
 
@@ -2390,9 +2436,21 @@ ex:NafRev2Dataset
 
 
 	<section class="appendix" id="shacl-howto">
-		<h2>Appenddix : How-to use the XKOS SHACL files</h2>
+		<h2>Appendix : XKOS SHACL files and how to use them</h2>
 
-		<div class="issue" title="TF add paragraph on how-to use the SHACL files, reference to online SHACL Play validator and others"></div>
+		<p>This document recommends properties to <a href="bp-classification">describe statistical classifications</a>, <a href="bp-correspondences-documenting-correspondences">their correspondence tables</a>, or <a href="bp-notes-structure">the notes within statistical classifications</a>. These recommendations are formally encoded in two [[SHACL]] files :</p>
+		<ul>
+			<li>The <a href="xkos-best-practices-conformance-shapes.ttl">XKOS Best Practices conformance shapes file</a> includes the set of "strong" constraints to validate the conformance of a graph against these recommendations. For example these constraints check that a `skos:ConceptScheme` describing a statistical classification has a maximum of one value for the property  `dcterms:modified`, and that the value is a literal. These constraints use the SHACL severity level `sh:Violation`. Any file that whishes to be conformant with this best practice document must validate against these shapes.</li>
+			<li>The <a href="xkos-best-practices-conformance-shapes.ttl">XKOS Best Practices recommended and optional shapes file</a> includes all other "weaker" recommended and optional constraints. For example thse constraints check that a `skos:ConceptScheme` describing a statistical classification has at least one value for `dcterms:modified`, as it is a recommended property, but not a required one. These constraints use the weaker SHACL severity levels `sh:Warning` (for recommended properties) and `sh:Info` (for optional ones). A user that wishes to be informed about the recommended and optional properties should use these constraints to validate its data.</li>
+		</ul>
+		<p>It is suggested that users of the <a href="xkos-best-practices-conformance-shapes.ttl">recommended and optional shapes file</a> first merge it with the <a href="xkos-best-practices-conformance-shapes.ttl">conformance shapes file</a> to get a complete and consistent set of constraints.</p>
+		<p>We give pointers to possible SHACL validators in order to make use of these SHACL files:</p>
+		<ul>
+			<li><a href="https://shacl-play.sparna.fr/play/">SHACL Play</a>, an online SHACL validator with human-readable reports. This service also includes also the ability to generate documentation pages from SHACL constraints, allowing to view the <a href="https://shacl-play.sparna.fr/play/doc?url=http%3A%2F%2Flinked-statistics.github.io%2Fxkos%2Fxkos-best-practices-conformance-shapes.ttl&includeDiagram=false">conformance shapes file as HTML document</a>. Note that the generated documentation is partial and does not show all the constraints details.</li>
+			<li>The European Commission <a href="https://www.itb.ec.europa.eu/shacl/shacl/upload">interoperability test bed SHACL validator</a>, another online SHACL validator.</li>
+			<li>The <a href="https://jena.apache.org/documentation/shacl/index.html">Jena SHACL validation feature</a>, available as command-line and Java API.</li>
+			<li>TopQuadrant historical <a href="https://github.com/TopQuadrant/shacl">SHACL Java validation API</a>.</li>
+		</ul>
 		
 	</section>
 
