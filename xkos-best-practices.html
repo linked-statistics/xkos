@@ -142,7 +142,7 @@
 
 		<p>After a short reminder on statistical classifications, the guide proposes best practices regarding the representation of different elements: classifications and levels, labels and notes, classification items, correspondence tables and concepts associations, etc. Then, guidelines are suggested on specific aspects like the evolution of classifications in time and URI patterns for the identification of components. A number of examples are provided throughout the document to illustrate the best practices, including a comprehensive final example based on the ISIC classification.</p>
 
-		<p>Where appropriate, best practice rules are formalized in the [[SHACL]] validation language, so that publishers can check if their classifications conform to the guidance. These shapes are available as separate files.</p>
+		<p>Where appropriate, best practice rules are formalized in the [[SHACL]] validation language, so that publishers can check if their classifications conform to the guidance. These shapes are available as separate files (see <a href="#shacl-howto">the appendix</a>).</p>
     </section>
 
 	<section id='acknowledgements' class="introductory">
@@ -266,6 +266,11 @@
 					<td>rdf</td>
 					<td>http://www.w3.org/1999/02/22-rdf-syntax-ns#</td>
 					<td>RDF 1.1 Concepts Vocabulary ([[RDF11-CONCEPTS]])</td>
+				</tr>
+				<tr>
+					<td>sh</td>
+					<td>http://www.w3.org/ns/shacl#</td>
+					<td>Shapes Constraint Language ([[SHACL]])</a></td>
 				</tr>
 				<tr>
 					<td>skos</td>
@@ -589,6 +594,8 @@
 				</tbody>
 			</table>
 
+			<p>The above table is formally encoded in a set of [[SHACL]] constraints, documented in <a href="#shacl-howto">the appendix</a>.</p>
+
 			<div class="issue" title="TF missing dcterms:valid">
 				We are missing dcterms:valid to express the temporal coverage of the classification, as indicated in XKOS - 
 			</div>
@@ -679,6 +686,7 @@ ex:isco2008-9611
 		<section id="bp-notes">
 		    <h3>Notes</h3>
 			<p><a href="https://rdf-vocabulary.ddialliance.org/xkos.html#note-ext">§8.2 of the XKOS specification</a> describes the different types of content notes introduced in XKOS and mentions the `xkos:plainText` property as a way to capture the raw content of the note. This best practice document gives additional recommendations on how best to describe the note entity, how to handle note versioning and timestamps, and clarifies the difference between `xkos:inclusionNote` and `xkos:caseLaw`.</p>
+			<p>The tables given in this section are formally encoded in a set of [[SHACL]] constraints, documented in <a href="#shacl-howto">the appendix</a>.</p>
 			<section id="bp-notes-structure">
 				<h4>Note structure</h4>
 				<p>As indicated in the XKOS specification, and as a prerequisite for the versioning and timestamping of notes, instances of `xkos:ExplanatoryNote` should be used as value for the SKOS and XKOS note properties, and not literal values.</p>
@@ -1367,6 +1375,7 @@ ex:myProperty a owl:ObjectProperty ;
 						</tr>
 					</tbody>
 				</table>
+				<p>The above table is formally encoded in a set of [[SHACL]] constraints, documented in <a href="#shacl-howto">the appendix</a>.</p>
 				<p>It is possible to have several correspondence tables based on the same source and target classifications that are created with different methodologies and thus give different views of the relation between the two classifications (e.g. if links are constructed automatically or if they are determined by expert judgement). It may therefore be necessary to store this information by associating with the mapping table a `prov:Activity` encompassing the creation steps followed.</p>
 			</section>
 			<section id="bp-correspondences-documenting-associations">
@@ -1398,6 +1407,7 @@ ex:myProperty a owl:ObjectProperty ;
 						</tr>
 					</tbody>
 				</table>
+				<p>The above table is formally encoded in a set of [[SHACL]] constraints, documented in <a href="#shacl-howto">the appendix</a>.</p>
 				<p>It is possible to further describe concept associations with custom properties. <a href="https://www.insee.fr">INSEE</a> for example uses `insee:differenceNote` and `insee:similarityNote` to capture respectively how the related items differs and how they are similar, as in the following example:</p>
 				<aside class="example" title="Example of further description of a xkos:ConceptAssociation with custom properties">
 					<pre class="nohighlight">
@@ -2390,9 +2400,21 @@ ex:NafRev2Dataset
 
 
 	<section class="appendix" id="shacl-howto">
-		<h2>Appenddix : How-to use the XKOS SHACL files</h2>
+		<h2>Appendix : XKOS SHACL files and how to use them</h2>
 
-		<div class="issue" title="TF add paragraph on how-to use the SHACL files, reference to online SHACL Play validator and others"></div>
+		<p>This document recommends properties to <a href="bp-classification">describe statistical classifications</a>, <a href="bp-correspondences-documenting-correspondences">their correspondence tables</a>, or <a href="bp-notes-structure">the notes within statistical classifications</a>. These recommendations are formally encoded in two [[SHACL]] files :</p>
+		<ul>
+			<li>The <a href="xkos-best-practices-conformance-shapes.ttl">XKOS Best Practices conformance shapes file</a> includes the set of "strong" constraints to validate the conformance of a graph against these recommendations. For example these constraints check that a `skos:ConceptScheme` describing a statistical classification has a maximum of one value for the property  `dcterms:modified`, and that the value is a literal. These constraints use the SHACL severity level `sh:Violation`. Any file that whishes to be conformant with this best practice document must validate against these shapes.</li>
+			<li>The <a href="xkos-best-practices-conformance-shapes.ttl">XKOS Best Practices recommended and optional shapes file</a> includes all other "weaker" recommended and optional constraints. For example thse constraints check that a `skos:ConceptScheme` describing a statistical classification has at least one value for `dcterms:modified`, as it is a recommended property, but not a required one. These constraints use the weaker SHACL severity levels `sh:Warning` (for recommended properties) and `sh:Info` (for optional ones). A user that wishes to be informed about the recommended and optional properties should use these constraints to validate its data.</li>
+		</ul>
+		<p>It is suggested that users of the <a href="xkos-best-practices-conformance-shapes.ttl">recommended and optional shapes file</a> first merge it with the <a href="xkos-best-practices-conformance-shapes.ttl">conformance shapes file</a> to get a complete and consistent set of constraints.</p>
+		<p>We give pointers to possible SHACL validators in order to make use of these SHACL files:</p>
+		<ul>
+			<li><a href="https://shacl-play.sparna.fr/play/">SHACL Play</a>, an online SHACL validator with human-readable reports. This service also includes also the ability to generate documentation pages from SHACL constraints, allowing to view the <a href="https://shacl-play.sparna.fr/play/doc?url=http%3A%2F%2Flinked-statistics.github.io%2Fxkos%2Fxkos-best-practices-conformance-shapes.ttl&includeDiagram=false">conformance shapes file as HTML document</a>. Note that the generated documentation is partial and does not show all the constraints details.</li>
+			<li>The European Commission <a href="https://www.itb.ec.europa.eu/shacl/shacl/upload">interoperability test bed SHACL validator</a>, another online SHACL validator.</li>
+			<li>The <a href="https://jena.apache.org/documentation/shacl/index.html">Jena SHACL validation feature</a>, available as command-line and Java API.</li>
+			<li>TopQuadrant historical <a href="https://github.com/TopQuadrant/shacl">SHACL Java validation API</a>.</li>
+		</ul>
 		
 	</section>
 

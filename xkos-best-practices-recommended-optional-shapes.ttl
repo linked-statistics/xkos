@@ -19,6 +19,13 @@
 @prefix xkos: <http://rdf-vocabulary.ddialliance.org/xkos#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
+<> rdfs:label "XKOS Best Practices recommended shapes"@en ;
+  rdfs:comment """The XKOS Best Practices shapes are splitted in 2 files : shapes to check for (strict) XKOS conformance,
+  and shapes to check for recommended practices. This file provides the rules to check for recommended practices,
+  and as such contains shapes with sh:severity of sh:Warning."""@en ;
+.
+
+
 xkos:ClassificationShape a sh:NodeShape;
   sh:property
     # mandatory 
