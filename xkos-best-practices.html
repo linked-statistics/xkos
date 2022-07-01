@@ -416,7 +416,7 @@
     	<h2>The Best Practices</h2>
 		<section id="bp-classification">
 		    <h3>Description of statistical classifications</h3>
-			<p><a href="https://rdf-vocabulary.ddialliance.org/xkos.html#class-representation">§5.1 of the XKOS specification</a> states that <blockquote><em>“In order to represent classifications and classification schemes, XKOS does not define specific classes but uses directly SKOS classes, adding to them different properties that specifically apply to classifications or classification schemes. Each major version of a classification is represented in XKOS by a `skos:ConceptScheme`.”</em></blockquote>.</p>
+			<p><a href="https://rdf-vocabulary.ddialliance.org/xkos.html#class-representation">§5.1 of the XKOS specification</a> states that <blockquote><em>“In order to represent classifications and classification schemes, XKOS does not define specific classes but uses directly SKOS classes, adding to them different properties that specifically apply to classifications or classification schemes. Each major version of a classification is represented in XKOS by a `skos:ConceptScheme`.”</em></blockquote></p>
 			<p>This best practices document gives further recommendations on how best to describe a `skos:ConceptScheme` that identifies a statistical classification, with mandatory, recommended and optional properties. Note that some constraints impose the presence of a property in English, hence the "lang" column with value "en" for certain properties</p>
 
 			<table class="simple stickyTableHead">
@@ -594,6 +594,13 @@
 						<td>0..n</td>
 						<td>`rdf:Resource`</td>
 						<td>Legislation on which the nomenclature is based. Use of an <a href="https://eur-lex.europa.eu/eli-register/about.html">ELI URI</a> is preferred, if one is available ([[ELI]])</td>
+					</tr>
+					<tr>
+						<td>`rdfs:seeAlso`</td>
+						<td></td>
+						<td>0..1</td>
+						<td>`owl:Class`</td>
+						<td>A reference to a subclass of `skos:Concept` that is used as the class of all classification items in this classification (see below the best practice <a href="#bp-types-per-entry">Type the classification items of a given classification</a>)</td>
 					</tr>
 				</tbody>
 			</table>
@@ -1045,7 +1052,7 @@ Class: ex:NACE-R2_Item
 ex:NACE-R2
     a skos:ConceptScheme;
     skos:prefLabel "NACE-r2"@en ;
-  # See also the Class
+    # See also the OWL Class
     rdfs:seeAlso ex:NACE-R2_Item .
  
 # The Class, subClassOf skos:Concept
@@ -1053,7 +1060,7 @@ ex:NACE-R2_Item
     a owl:Class;
     rdfs:subClassOf skos:Concept ;
     skos:prefLabel "NACE R2 Item"@en ;
-    # See also the ConceptScheme
+    # See also the SKOS ConceptScheme
     rdfs:seeAlso ex:NACE-R2 ;
     # Formal OWL equivalence to the set of Concepts belonging to the ConceptScheme
     owl:equivalentClass [
@@ -1072,7 +1079,7 @@ ex:NACE-R2_Item
 
 				<p><a href="https://rdf-vocabulary.ddialliance.org/xkos.html#levels">§6 of the XKOS specification</a> describing classification levels states the following: <blockquote><em>"In XKOS, a classification level is defined as a specialization of `skos:Collection` named `xkos:ClassificationLevel`. (...) Individual `skos:Concept` objects are related to the `xkos:ClassificationLevel` to which they belong by the usual `skos:member` property (going from the level to the classification item)."</em></blockquote></p>
 
-				<p>In this best practice document we describe how to declare OWL classes that correspond to the set of items of the classification at each particular level. These classes are subclasses of the class that represent the set of all items of the classification, as described in previous section. The OWL classes link to the corresponding classification level with `rdfs:seeAlso`.</p>
+				<p>In this best practice document we describe how to declare OWL classes that correspond to the set of items of the classification at each particular level. These classes are subclasses of the class that represent the set of all items of the classification, as described in previous section. The OWL classes link to their corresponding classification level with `rdfs:seeAlso`, and vice-versa : a classification level points to the corresponding class with the same predicate.</p>
 
 				<p>Declaring OWL classes corresponding to classification levels allows to refer to these classes in the signature (domain or range) of properties. A typical use-case is to indicate that a certain property can refer only to the items at one or more levels of a classification.</p>
 
@@ -1093,27 +1100,43 @@ ex:NACE-R2_Item
 ex:NACE-R2
     a skos:ConceptScheme;
     skos:prefLabel "NACE-r2"@en ;
-    xkos:levels ( ex:NACE-R2_Section , ex:NACE-R2_Division , ex:NACE-R2_Group , ex:NACE-R2_Class ) .
+    xkos:levels ( 
+    	ex:NACE-R2_Section 
+    	ex:NACE-R2_Division 
+    	ex:NACE-R2_Group 
+    	ex:NACE-R2_Class 
+    ) ;
+    # link to corresponding class of all classification items
+    rdfs:seeAlso ex:NACE-R2_Item .
 
 # Description of classification levels in this particular revision
 # Each having an xkos:organizedBy that points to levels of the NACE
-# Independantly of the revision
+# Independantly of the revision.
+# Each classification level has a rdfs:seeAlso to its corresponding class declared below
  
 ex:NACE-R2_Section
     a xkos:ClassificationLevel ;
-    xkos:organizedBy ex:NACE_Section .
+    xkos:organizedBy ex:NACE_Section ;
+    rdfs:seeAlso ex:NACE-R2_Section_Class ;
+.
  
 ex:NACE-R2_Division
     a xkos:ClassificationLevel ;
-    xkos:organizedBy ex:NACE_Division .
+    xkos:organizedBy ex:NACE_Division ;
+    rdfs:seeAlso ex:NACE-R2_Division_Class ;
+.
  
 ex:NACE-R2_Group
     a xkos:ClassificationLevel ;
-    xkos:organizedBy ex:NACE_Group .
+    xkos:organizedBy ex:NACE_Group ;
+    rdfs:seeAlso ex:NACE-R2_Group_Class ;
+.
  
 ex:NACE-R2_Class
     a xkos:ClassificationLevel ;
-    xkos:organizedBy ex:NACE_Class .
+    xkos:organizedBy ex:NACE_Class ;
+    rdfs:seeAlso ex:NACE-R2_Class_Class ;
+.
 
 # The common parent class that represents the sets of all items of the classification
 # linked to the ConceptScheme with an rdfs:seeAlso and a formal OWL equivalence
@@ -1122,6 +1145,7 @@ ex:NACE-R2_Item
     a owl:Class;
     rdfs:subClassOf skos:Concept ;
     skos:prefLabel "NACE R2 Item"@en ;
+    # link to corresponding SKOS ConceptScheme of the classification
     rdfs:seeAlso ex:NACE-R2 ;
     owl:equivalentClass [
       a owl:Restriction ;
@@ -1240,7 +1264,10 @@ ex:GoodsPartition
 ex:ServicesPartition
     a skos:ConceptScheme;
     skos:prefLabel "Services partition in my product classification"@en ;
-    dcterms:isPartOf ex:MyProductClassification .
+    dcterms:isPartOf ex:MyProductClassification ;
+    # pointer to the corresponding OWL class
+    rdfs:seeAlso ex:MyProductClassification_Item_Services ;
+.
 
 # Items in the classification have 2 skos:inScheme
 ex:item_1 a skos:Concept ;
@@ -1266,10 +1293,13 @@ ex:MyProductClassification_Item
     ] .
 
 # Set of items in the Services branch
+# Note that in this particular example we don't declare a class for the set of
+# items in the "Goods" branch;
 ex:MyProductClassification_Item_Services
     a owl:Class;
     rdfs:subClassOf ex:MyProductClassification_Item ;
     skos:prefLabel "My product classification Services Item"@en ;
+    # pointer to the corresponding SKOS ConceptScheme
     rdfs:seeAlso ex:ServicesPartition ;
     owl:equivalentClass [
       a owl:Restriction ;
