@@ -604,8 +604,7 @@
 
 			<p>The above table is formally encoded in a set of [[SHACL]] constraints, documented in <a href="#shacl-howto">the appendix</a>.</p>
 
-			<div class="issue" title="TF missing dcterms:valid">
-				We are missing dcterms:valid to express the temporal coverage of the classification, as indicated in XKOS - 
+			<div class="issue" title="TF : add schema:startDate & endDate">
 			</div>
 			<div class="issue" title="FC : insert or link to the ISIC full example">
 			</div>
@@ -767,7 +766,7 @@ ex:isco2008-9611
 						</tr>
 					</tbody>
 				</table>
-				<div class="issue" title="How to express date ranges">
+				<div class="issue" title="TF : add annex on explanation of why schema.org, and consider different alternattives">
 					<p>to be discussed: use of schema.org or dcterms:valid, which is less convenient, but more reliable in terms of standard. Or we recommend insee:validFrom and insee:validUntil ? Also adjust examples !!</p>
 
 					<p>Or use time Ontology</p>
@@ -777,9 +776,8 @@ ex:isco2008-9611
 					<p>Note: the ISO-8601 does not define open-ended ranges; this is extended by an LC extension that suggest "2012-09-10/.." for open ended ranges; this is used by schema.org</p>
 
 					<p>2 actions : 1. Escalate to DDI scientific board 2. Search for issues inside DCAT and get in touch with DCAT people about dcterms:PeriodOfTime + dcat:startDate/endDate</p>
-				</div>
-				<div class="issue" title="TF : add annex on explanation of why schema.org, and consider different alternattives">
-					+ review all
+
+					<p>2022-09-19 : we choose schema.org, add annex § on why and other alternatives with examples in Turtle</p>
 				</div>
 				<p>Given the versioning history of such notes, a client accessing a particular version of the classification might not be interested to know about the versioning history of all notes, and is only interested in the current state of each note.</p>
 				<aside class="example" title="Concept with a versioned note">
@@ -947,7 +945,7 @@ ex:SupportActivitiesExclusionNote a xkos:ExplanatoryNote ;
 
 				</div>
 
-				<div class="issue" title="caseLaw vs. inclusionNote clarification">CD : clarify the use-case of caseLaw vs. inclusionNote with classification experts</div>
+				<div class="issue" title="CD : caseLaw vs. inclusionNote clarification">clarify the use-case of caseLaw vs. inclusionNote with classification experts</div>
 
 			</section>
 		</section>
