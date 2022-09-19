@@ -1882,9 +1882,8 @@ ex:obs2
 			</section>
 			<section id="bp-evolution-series">
 				<h4>Example of statistical classification serie</h4>
-				<p>The figure below presents the succession of two revisions of the NAF classification. The temporal periods of validity of each revision are given through the `dcterms:temporal` property that has as value a `dcat:PeriodOfTime` using the `dcat:startDate` and `dcat:endDate` properties. A possibility to clearly identify that the NAFRev1 is the obsolete version is to use the `owl:deprecated` property set to `true`.</p>
-				<img src="img/bp-series-example-Diagram V2.drawio.png" alt="Example of a classification serie" />
-				<div class="issue" title="TF : modify diagram to use schema:startDate and endDate"></div>
+				<p>The figure below presents the succession of two revisions of the NAF classification. The temporal periods of validity of each revision are given through the `schema:startDate` and `schema:endDate` properties. A possibility to clearly identify that the NAFRev1 is the obsolete version is to use the `owl:deprecated` property set to `true`.</p>
+				<img src="img/bp-series-example.png" alt="Example of a classification serie" />
 				<p>In the `xkos:ConceptAssociation` the `xkos:sourceConcept` makes a reference to a `skos:Concept` belonging to the `skos:ConceptScheme` of the former classification while the `xkos:targetConcept` references a `skos:Concept` belonging to the (`skos:ConceptScheme` of) the new revision of the classification.</p>				
 			</section>
 		</section>
