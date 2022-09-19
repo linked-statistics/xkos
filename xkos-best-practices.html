@@ -734,7 +734,7 @@ ex:isco2008-9611
 				<h4>Versioning notes and timestamping notes</h4>
 				<p>As indicated in the introductory paragraph about classification major revisions and versions, the notes are the information that have fine-grained versions between each major revision of a classification (any changes other than on the notes - moving a concept, renaming a concept, etc. - is supposed to happen in a new major revision, hence applies to a new Concept URI. See section <a href="bp-evolution-major-versions">Major versions of classifications</a>).</p>
 				<p>We propose 2 different patterns of versioning for notes: versioning notes with a version number and a date range, and keeping the history of notes with a timestamp.</p>
-				<p>The first pattern to version notes implies that each new version of the note is given a version number and a date range. All notes, except `skos:changeNote` should follow this pattern: `skos:scopeNote`, `skos:definition`, `xkos:coreContentNote`, `xkos:additionalContentNote`, `xkos:exclusionNote`, `xkos:inclusionNote`, `xkos:caseLaw`. These notes should uses the properties listed in the table below.</p>
+				<p>The first pattern to version notes implies that each new version of the note is given a version number and a date range. All notes, except `skos:changeNote` and `xkos:caseLaw` should follow this pattern: `skos:scopeNote`, `skos:definition`, `xkos:coreContentNote`, `xkos:additionalContentNote`, `xkos:exclusionNote`, `xkos:inclusionNote`. These notes should uses the properties listed in the table below.</p>
 				<table class="simple stickyTableHead">
 					<caption>Additional properties for an `xkos:ExplanatoryNote` when versioned</caption>
 					<thead>
@@ -820,7 +820,7 @@ ex:isco2008-9611
     xkos:plainText "- argiles kaoliniques brutes et pâtes céramiques"@fr;
     insee:validFrom "2010-02-01T00:00:00.000+01:00"^^xsd:dateTime .
 					</pre>
-					<p>The complete history of that Concept is given above. Note that, as we take the hypothesis that each new revision of the classification will give birth to new Concept URIs, this is indeed the <em>complete</em> history of that Concept URI, as any changes other than the notes (a move of the concept, a rename of the concept, etc.) has to be made in a new revision, hence applies to a new Concept URI.</p>
+					<p>The complete history of that Concept is given below. Note that, as we take the hypothesis that each new revision of the classification will give birth to new Concept URIs, this is indeed the <em>complete</em> history of that Concept URI, as any changes other than the notes (a move of the concept, a rename of the concept, etc.) has to be made in a new revision, hence applies to a new Concept URI.</p>
 					<pre class="nohighlight">
 &lt;http://id.insee.fr/codes/cpfr2/sousCategorie/08.12.21&gt;
     a skos:Concept;
@@ -853,7 +853,7 @@ ex:isco2008-9611
 					<p>The modification of the core content note is documented by a (timestamped) `skos:changeNote` - see example below.</p>
 				</aside>
 
-				<p>The second pattern implies that the note is associated with a publication date, but no version number. This pattern applies to `skos:changeNote` only. It will use the properties listed in the table below.</p>
+				<p>The second pattern implies that the note is associated with a publication date, but no version number. This pattern applies to `skos:changeNote` and `xkos:caseLaw`. It will use the properties listed in the table below.</p>
 
 				<table class="simple stickyTableHead">
 					<caption>Additional properties for an `xkos:ExplanatoryNote` when timestamped</caption>
@@ -1823,8 +1823,6 @@ ex:obs2
 				<p>When a complete revision of a classification happens, a new major version of a classification is produced.</p>
 
 				<p>It is recommended that all concepts and levels are recreated with new URIs in the new revision. Only the changes of notes should be allowed in fine-grained versions between each major revision of a classification, as described in section <a href="#bp-notes-versioning-timestamping">Versioning notes and timestamping notes</a>.</p>
-
-				<div class="issue" title="TF : not caseLaw">should have dcterms:issued, adjust example of caseLaw below</div>
 
 				<p>The relation between the classification items of the two revisions is given by a correspondence table as presented in the <a href="#bp-correspondences">corresponding section of this document</a>.</p>
 
