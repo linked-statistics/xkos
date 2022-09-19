@@ -778,6 +778,9 @@ ex:isco2008-9611
 
 					<p>2 actions : 1. Escalate to DDI scientific board 2. Search for issues inside DCAT and get in touch with DCAT people about dcterms:PeriodOfTime + dcat:startDate/endDate</p>
 				</div>
+				<div class="issue" title="TF : add annex on explanation of why schema.org, and consider different alternattives">
+					+ review all
+				</div>
 				<p>Given the versioning history of such notes, a client accessing a particular version of the classification might not be interested to know about the versioning history of all notes, and is only interested in the current state of each note.</p>
 				<aside class="example" title="Concept with a versioned note">
 					<p>Before 2010-02-01, the Concept description is the following:</p>
@@ -903,40 +906,48 @@ ex:isco2008-9611
 
 					<img src="img/bp-caseLaw-example.png" alt="Case Law Example from NACE Rev. 2" />
 					
-				ex:SupportActivities a skos:Concept ;
+					<pre>
+ex:SupportActivities a skos:Concept ;
 	skos:notation "01.62" .
 	xkos:coreContentNote ex:SupportActivitiesCoreContent .
 	xkos:additionalContentNote ex:SupportActivitiesAdditionalContent .
 	xkos:caseLaw ex:SupportActivitiesCaseLaw .
 	xkos:exclusionNote ex:SupportActivitiesExclusionNote .
 
-
 ex:SupportActivitiesCoreContent a xkos:ExplanatoryNote ;
   dcterms:language "en"^^xsd:language ;
-  xkos:plainText "-agricultural activities on a fee or contract basis; activities to promote propagation, growth and output of animals [...]"@en .
+  xkos:plainText "-agricultural activities on a fee or contract basis; activities to promote propagation, growth and output of animals [...]"@en ;
+  # same date as the start date of the classification
+  schema:startDate "2012-06-21"^^xsd:date;
+  dcat:version "1"^^xsd:int .
 
- 
 ex:SupportActivitiesAdditionalContent a xkos:ExplanatoryNote ;
   dcterms:language "en"^^xsd:language ;
-  xkos:plainText "-activities for farriers"@en .
-
+  xkos:plainText "-activities for farriers"@en ;
+  # same date as the start date of the classification
+  schema:startDate "2012-06-21"^^xsd:date;
+  dcat:version "1"^^xsd:int .
 
 ex:SupportActivitiesCaseLaw a xkos:ExplanatoryNote ;
   dcterms:language "en"^^xsd:language ;
-  xkos:plainText "-automated egg hatching for poultry; operation of livestock management systems"@en .
+  xkos:plainText "-automated egg hatching for poultry; operation of livestock management systems"@en ;
+  # Date at which the caseLaw was added. Case laws are published and enforced
+  # at a date after the initial publication date of the classification.
+  dcterms:issued "2014-09-22"^^xsd:date.
 
 ex:SupportActivitiesExclusionNote a xkos:ExplanatoryNote ;
   dcterms:language "en"^^xsd:language ;
-  xkos:plainText "-provision of space for animal boarding only, see 68.20; -veterinary activities, see 75.00 [...] "@en .	
-					
-					
-					
-					
+  xkos:plainText "-provision of space for animal boarding only, see 68.20; -veterinary activities, see 75.00 [...] "@en ;
+  # same date as the start date of the classification
+  schema:startDate "2012-06-21"^^xsd:date;
+  dcat:version "1"^^xsd:int.
+
+				</pre>
 				</aside>
 
-				<div class="issue" title="CD: add an RDF example of caseLaw vs. inclusionNote"></div>
+				</div>
 
-				<div class="issue" title="caseLaw vs. inclusionNote clarification">Should we clarify even further the difference between caseLaw and inclusionNote or is it clear enough ?</div>
+				<div class="issue" title="caseLaw vs. inclusionNote clarification">CD : clarify the use-case of caseLaw vs. inclusionNote with classification experts</div>
 
 			</section>
 		</section>
@@ -1815,6 +1826,8 @@ ex:obs2
 				<p>When a complete revision of a classification happens, a new major version of a classification is produced.</p>
 
 				<p>It is recommended that all concepts and levels are recreated with new URIs in the new revision. Only the changes of notes should be allowed in fine-grained versions between each major revision of a classification, as described in section <a href="#bp-notes-versioning-timestamping">Versioning notes and timestamping notes</a>.</p>
+
+				<div class="issue" title="TF : not caseLaw">should have dcterms:issued, adjust example of caseLaw below</div>
 
 				<p>The relation between the classification items of the two revisions is given by a correspondence table as presented in the <a href="#bp-correspondences">corresponding section of this document</a>.</p>
 
