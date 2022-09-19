@@ -500,14 +500,14 @@
 						<td></td>
 						<td>0..1</td>
 						<td>`xsd:date`</td>
-						<td>Begin date of the temporal validity of the classification.</td>
+						<td>Begin date of the temporal validity of the classification. Readers interested in the rationale for the choice of schema.org properties can read the <a href="#date-ranges-modeling">appendix</a>.</td>
 					</tr>
 					<tr>
 						<td>`schema:endDate`</td>
 						<td></td>
 						<td>0..1</td>
 						<td>`xsd:date`</td>
-						<td>End date of the temporal validity of the classification.</td>
+						<td>End date of the temporal validity of the classification. Readers interested in the rationale for the choice of schema.org properties can read the <a href="#date-ranges-modeling">appendix</a>.</td>
 					</tr>
 					<tr>
 						<td><a href= "http://rdf-vocabulary.ddialliance.org/xkos#belongsTo">`xkos:belongsTo`</a></td>
@@ -777,29 +777,16 @@ ex:isco2008-9611
 							<td>`schema:startDate`</td>
 							<td>1..1</td>
 							<td>xsd:dateTime</td>
-							<td>The date from which this note content is valid.</td>
+							<td>The date from which this note content is valid. Readers interested in the rationale for the choice of schema.org properties can read the <a href="#date-ranges-modeling">appendix</a>.</td>
 						</tr>
 						<tr>
 							<td>`schema:endDate`</td>
 							<td>0..1</td>
 							<td>xsd:dateTime</td>
-							<td>The date until which this note content was (or will be) valid, indicating it was (or will be) replaced with another note with a different text, and its version number increased by 1. This property is not set in the case if there is no known end date.</td>
+							<td>The date until which this note content was (or will be) valid, indicating it was (or will be) replaced with another note with a different text, and its version number increased by 1. This property is not set in the case if there is no known end date. Readers interested in the rationale for the choice of schema.org properties can read the <a href="#date-ranges-modeling">appendix</a>.</td>
 						</tr>
 					</tbody>
 				</table>
-				<div class="issue" title="TF : add annex on explanation of why schema.org, and consider different alternattives">
-					<p>to be discussed: use of schema.org or dcterms:valid, which is less convenient, but more reliable in terms of standard. Or we recommend insee:validFrom and insee:validUntil ? Also adjust examples !!</p>
-
-					<p>Or use time Ontology</p>
-
-					<p>Or use DCAT V3</p>
-
-					<p>Note: the ISO-8601 does not define open-ended ranges; this is extended by an LC extension that suggest "2012-09-10/.." for open ended ranges; this is used by schema.org</p>
-
-					<p>2 actions : 1. Escalate to DDI scientific board 2. Search for issues inside DCAT and get in touch with DCAT people about dcterms:PeriodOfTime + dcat:startDate/endDate</p>
-
-					<p>2022-09-19 : we choose schema.org, add annex § on why and other alternatives with examples in Turtle</p>
-				</div>
 				<p>Given the versioning history of such notes, a client accessing a particular version of the classification might not be interested to know about the versioning history of all notes, and is only interested in the current state of each note.</p>
 				<aside class="example" title="Concept with a versioned note">
 					<p>Before 2010-02-01, the Concept description is the following:</p>
@@ -2464,6 +2451,68 @@ ex:NafRev2Dataset
 			<li>The <a href="https://jena.apache.org/documentation/shacl/index.html">Jena SHACL validation feature</a>, available as command-line and Java API.</li>
 			<li>TopQuadrant historical <a href="https://github.com/TopQuadrant/shacl">SHACL Java validation API</a>.</li>
 		</ul>
+		
+	</section>
+
+
+	<section class="appendix" id="date-ranges-modeling">
+		<h2>Appendix : Date ranges modeling alternatives</h2>
+
+		<p>This best practices document indicates that `schema:startDate` and `schema:endDate` should be used to express the temporal validity range of classifications
+		and notes inside the classifications. In the course of its writing, we did however consider other modeling alternatives that we describe here, as well as why we rejected them:</p>
+		<ol>
+			<li>`dcterms:valid` is the property <a href="https://rdf-vocabulary.ddialliance.org/xkos.html#class-versioning">mentionned in the original XKOS specification</a>. Its drawback is that, <a href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/valid">being a literal property</a>, it cannot be queried against a user-provided date range. Besides, ISO-8601 does not define open-ended ranges; this is extended by an LC extension that suggest "2012-09-10/.." for open ended ranges (which is a solution adopted in schema.org).
+				<aside class="example" title="dcterms:valid example">
+				<pre class="nohighlight">
+					ex:myNote_1 a xkos:ExplanatoryNote ;
+						dcterms:valid "2012-09-10/2014-03-21";
+					.
+				</pre>
+				</aside>
+			</li>
+			<li>`dcterms:temporal` + `dcterms:PeriodOfTime` + `dcat:startDate` & `dcat:endDate` : DCAT V3 defines <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:period_start_date">`dcat:startDate`</a> and <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:period_end_date">`dcat:endDate`</a> with a domain of `dcterms:PeriodOfTime`, that can be used as a value of the `dcterms:temporal` property. This is well-aligned with standards, but DCAT V3 is in working draft stage at the time of this writing, and it adds quite a bit of complexity, as it requires the declaration of a `dcterms:PeriodOfTime` for each individual versioned note. This is a valid approach when the entity being described can be linked to multiple time intervals, which is not our case.
+				<aside class="example" title="dcterms:temporal + dcat:startDate + dcat:endDate example">
+				<pre class="nohighlight">
+					ex:myNote_1 a xkos:ExplanatoryNote ;
+						dcterms:temporal [
+							# a dcterms:PeriodOfTime ;
+							dcat:startDate "2012-09-10"^^xsd:date ;
+							dcat:endDate "2014-03-21"^^xsd:date ;
+						]
+					.
+
+					ex:myNote_2 a xkos:ExplanatoryNote ;
+						dcterms:temporal [
+							# a dcterms:PeriodOfTime ;
+							dcat:startDate "2017-08-09"^^xsd:date ;
+							dcat:endDate "2019-12-21"^^xsd:date ;
+						]
+					.
+				</pre>
+				</aside>
+			</li>
+			<li><a href="https://www.w3.org/TR/owl-time/#dcat-example">OWL Time ontology can express intervals</a>. This is too sophisticated for our use-case as it multiplies the number of triples.
+				<aside class="example" title="OWL Time example">
+				<pre class="nohighlight">
+					ex:myNote_1 a xkos:ExplanatoryNote ;
+						dcterms:temporal [
+							# a dcterms:PeriodOfTime ;
+							:hasBeginning [
+								# rdf:type :Instant ;
+								:inXSDDate "2012-09-10"^^xsd:date ;
+							] ;
+							:hasEnd [
+								# rdf:type :Instant ;
+								:inXSDDate "2014-03-21"^^xsd:date ;
+							] ;
+						]
+					.
+				</pre>
+				</aside>
+			</li>
+			<li>Custom properties in one own namespace e.g. `insee:validFrom` + `insee:validUntil` can of course be defined, but they defeat the purpose of semantic interoperability.</li>
+			<li>`schema:startDate` and `schema:endDate`, while not defined in an ontology originating from a standard body, provide a solution to express date ranges that is simple to understand and adequate when only a single validity range needs to be expressed on the described entity. Hence we settled for this solution.</li>
+		</ol>
 		
 	</section>
 
