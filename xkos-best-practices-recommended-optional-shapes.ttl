@@ -35,6 +35,8 @@ xkos:ClassificationShape a sh:NodeShape;
     xkos:P_classification_skosscopeNote_recommended,
     xkos:P_classification_dctmodified_recommended,
     xkos:P_classification_dctcreator_recommended,
+    xkos:P_classification_schemastartDate_recommended,
+    xkos:P_classification_schemaendDate_recommended,
     xkos:P_classification_xkosbelongsTo_recommended,
     xkos:P_classification_xkoslevels_recommended,
     xkos:P_classification_xkoscovers_recommended,
@@ -94,6 +96,16 @@ xkos:P_classification_dctmodified_recommended
 
 xkos:P_classification_dctcreator_recommended
   sh:path dct:creator;
+  sh:minCount 1;
+  sh:severity sh:Warning .
+
+xkos:P_classification_schemastartDate_recommended
+  sh:path schema:startDate;
+  sh:minCount 1;
+  sh:severity sh:Warning .
+
+xkos:P_classification_schemaendDate_recommended
+  sh:path schema:endDate;
   sh:minCount 1;
   sh:severity sh:Warning .
 

@@ -496,6 +496,20 @@
 						<td>An agent responsible for creating the classification scheme.</td>
 					</tr>
 					<tr>
+						<td>`schema:startDate`</td>
+						<td></td>
+						<td>0..1</td>
+						<td>`xsd:date`</td>
+						<td>Begin date of the temporal validity of the classification.</td>
+					</tr>
+					<tr>
+						<td>`schema:endDate`</td>
+						<td></td>
+						<td>0..1</td>
+						<td>`xsd:date`</td>
+						<td>End date of the temporal validity of the classification.</td>
+					</tr>
+					<tr>
 						<td><a href= "http://rdf-vocabulary.ddialliance.org/xkos#belongsTo">`xkos:belongsTo`</a></td>
 						<td></td>
 						<td>0..1</td>
@@ -613,8 +627,6 @@
 
 			<p>The above table is formally encoded in a set of [[SHACL]] constraints, documented in <a href="#shacl-howto">the appendix</a>.</p>
 
-			<div class="issue" title="TF : add schema:startDate & endDate">
-			</div>
 			<div class="issue" title="FC : insert or link to the ISIC full example">
 			</div>
 			<aside class="example" title="Example of a statistical classification description">
@@ -807,8 +819,8 @@ ex:isco2008-9611
     dcterms:language "fr"^^xsd:language ;
     dcat:version "1"^^xsd:int ;
     xkos:plainText "- argiles kaoliniques brutes ou calcinées et pâtes céramiques"@fr ;
-    insee:validFrom "2008-01-01T00:00:00.000+01:00"^^xsd:dateTime ;
-    insee:validUntil "2010-02-01T00:00:00.000+01:00"^^xsd:dateTime .
+    schema:startDate "2008-01-01"^^xsd:date ;
+    schema:endDate "2010-02-01"^^xsd:date .
 					</pre>
 					<p>On the 2010-02-01, the note is modified, and a second version is created. The current state of the Concept then becomes the following:</p>
 					<pre class="nohighlight">
@@ -827,7 +839,7 @@ ex:isco2008-9611
     dcterms:language "fr"^^xsd:language;
     dcat:version "2"^^xsd:int;
     xkos:plainText "- argiles kaoliniques brutes et pâtes céramiques"@fr;
-    insee:validFrom "2010-02-01T00:00:00.000+01:00"^^xsd:dateTime .
+    schema:startDate "2010-02-01"^^xsd:date .
 					</pre>
 					<p>The complete history of that Concept is given below. Note that, as we take the hypothesis that each new revision of the classification will give birth to new Concept URIs, this is indeed the <em>complete</em> history of that Concept URI, as any changes other than the notes (a move of the concept, a rename of the concept, etc.) has to be made in a new revision, hence applies to a new Concept URI.</p>
 					<pre class="nohighlight">
@@ -847,8 +859,8 @@ ex:isco2008-9611
     dcterms:language "fr"^^xsd:language;
     dcat:version "1"^^xsd:int;
     xkos:plainText "- argiles kaoliniques brutes ou calcinées et pâtes céramiques"@fr;
-    insee:validFrom "2008-01-01T00:00:00.000+01:00"^^xsd:dateTime;
-    insee:validUntil "2010-02-01T00:00:00.000+01:00"^^xsd:dateTime .
+    schema:startDate "2008-01-01"^^xsd:date;
+    schema:endDate "2010-02-01"^^xsd:date .
 
 &lt;http://id.insee.fr/codes/cpfr2/sousCategorie/08.12.21/noteContenuCentral/v2/fr&gt;
     a xkos:ExplanatoryNote;
@@ -857,7 +869,7 @@ ex:isco2008-9611
     dcterms:language "fr"^^xsd:language;
     dcat:version "2"^^xsd:int;
     xkos:plainText "- argiles kaoliniques brutes et pâtes céramiques"@fr;
-    insee:validFrom "2010-02-01T00:00:00.000+01:00"^^xsd:dateTime .
+    schema:startDate "2010-02-01"^^xsd:date .
 					</pre>
 					<p>The modification of the core content note is documented by a (timestamped) `skos:changeNote` - see example below.</p>
 				</aside>
@@ -1835,9 +1847,8 @@ ex:obs2
 
 				<p>The relation between the classification items of the two revisions is given by a correspondence table as presented in the <a href="#bp-correspondences">corresponding section of this document</a>.</p>
 
-				<p>As for the classification themselves, the `skos:ConceptScheme` of the former revision should have the property `owl:deprecated` set to “true” and its period of validity updated in a `dcat:temporal` property. Links between successive revisions can be asserted between the `skos:ConceptScheme`s by using `xkos:supersedes`; this property conveys the idea that the classification being referred to is deprecated.</p>
+				<p>As for the classification themselves, the `skos:ConceptScheme` of the former revision should have the property `owl:deprecated` set to “true” and its end of validity period set in the `schema:endDate` property. Links between successive revisions can be asserted between the `skos:ConceptScheme`s by using `xkos:supersedes`; this property conveys the idea that the classification being referred to is deprecated.</p>
 
-				<div class="issue" title="dcat:temporal or dcterms:valid ?"></div>
 			</section>
 			<section id="bp-evolution-prov">
 				<h4>Use of PROV-O</h4>
