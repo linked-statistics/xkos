@@ -1869,18 +1869,10 @@ ex:obs2
 							<td>`rdfs:subPropertyOf`</td>
 							<td><a href="http://www.w3.org/ns/prov#wasDerivedFrom">`prov:wasDerivedFrom`</a></td>
 						</tr>						
-						<tr>
-							<td>`^xkos:belongsTo`</td>
-							<td>`rdfs:subPropertyOf`</td>
-							<td><a href="http://www.w3.org/ns/prov#specializationOf">`prov:specializationOf`</a></td>
-						</tr>
 					</tbody>
 				</table>
-				<div class="issue" title="FC : Discuss xkos:belongsTo and xkos:variant here">
-					xkos:belongsTo points to a skos:Concept so mapping it to prov:specializationOf is abusive as the PROV property implies the entities are of the same nature
-
-				</div>
 				<p>Note that in the case of a `xkos:variant`, the corresponding [[PROV-O]] property is `prov:wasDerivedFrom` instead of `prov:wasRevisionOf`. The existence of a variant does not imply the original version is deprecated. There will be an overlap between the validity time period of the variant version and the reference one.</p>
+				<p>Note also that no mapping is made between `xkos:belongsTo` and `prov:specializationOf` since the PROV property implies the entities are of the same nature, whereas the classification is a `skos:Concept` and the level a `skos:ClassificationLevel`.</p>
 			</section>
 			<section id="bp-evolution-series">
 				<h4>Example of statistical classification serie</h4>
