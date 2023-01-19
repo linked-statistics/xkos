@@ -2282,10 +2282,11 @@ ex:NafRev2Dataset
 		<aside class="example">
 		<pre class="nohighlight">
 @prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 @prefix skos: &lt;http://www.w3.org/2004/02/skos/core#&gt; .
-@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
 @prefix xkos: &lt;http://rdf-vocabulary.ddialliance.org/xkos#&gt; .
+@prefix schema: &lt;http://schema.org/&gt; .
 
 ##########################################
 # ISIC classification and category types #
@@ -2322,13 +2323,21 @@ ex:NafRev2Dataset
 
 &lt;http://example.org/codes/isic4&gt;
    a skos:ConceptScheme ;
-   skos:prefLabel "International Standard Industrial Classification
-   of All Economic Activities (ISIC), Revision 4"@en ;
+   skos:prefLabel "International Standard Industrial Classification of All Economic
+   Activities (ISIC), Revision 4"@en ,
+   "Classification internationale type, par industrie, de toutes les branches 
+   d’activité économique (CITI), Révision 4"@fr ;
    skos:altLabel "ISIC, Rev.4"@en ;
    skos:notation "ISIC4" ;
+   dcterms:creator [ a dcterms:Agent ; rdfs:label "United Nations Statistics Division"@en ] ;
    xkos:belongsTo &lt;http://example.org/codes/isic&gt; ;
    xkos:supersedes &lt;http://example.org/codes/isic31&gt; ;
    dcterms:issued "2008" ;
+   schema:startDate "2008-01-01"^^xsd:date ;
+   skos:scopeNote "The International Standard Industrial Classification of All Economic
+   Activities (ISIC) consists of a coherent and consistent classification structure of economic
+activities based on a set of internationally agreed concepts, definitions, principles and
+classification rules..."@en ;
    xkos:numberOfLevels "4"^^xsd:positiveInteger ;
    xkos:levels ( 
       &lt;http://example.org/codes/isic4/sections&gt;
@@ -2372,6 +2381,7 @@ ex:NafRev2Dataset
    of All Economic Activities (ISIC), Revision 3.1"@en ;
    skos:altLabel "ISIC, Rev.3.1"@en ;
    skos:notation "ISIC31" ;
+   dcterms:creator [ a dcterms:Agent ; rdfs:label "United Nations Statistics Division"@en ] ;
    xkos:belongsTo <http://example.org/codes/isic> ;
    xkos:supersedes &lt;http://example.org/codes/isic3&gt; ;
    dcterms:issued "2002" ;
