@@ -493,7 +493,7 @@
 						<td></td>
 						<td>0..n</td>
 						<td>`dcterms:Agent`</td>
-						<td>An agent responsible for creating the classification scheme.</td>
+						<td>An agent responsible for creating the classification scheme. Note that the property can also be attached on the classification resource, as all versions of a classification are usually created by the same agent.</td>
 					</tr>
 					<tr>
 						<td>`schema:startDate`</td>
@@ -627,16 +627,16 @@
 
 			<p>The above table is formally encoded in a set of [[SHACL]] constraints, documented in <a href="#shacl-howto">the appendix</a>.</p>
 
+<<<<<<< HEAD
 			<div class="issue" title="FC : add a side note in dcterms:creator to indicate it can be expressed on the skos:Concept of the classification itself">
 			</div>
 			<div class="issue" title="FC : insert or link to the ISIC full example">
 			</div>
+=======
+>>>>>>> bb30880500f3463c170db743f09676551d133156
 			<aside class="example" title="Example of a statistical classification description">
-					<pre class="nohighlight">
-						TODO
-					</pre>
+				<p>An example of high-level description of a classification is given in <a href="#isic-example">annex</a>.</p>
 			</aside>
-			<p>An example of high-level description of a classification is given in <a href="#isic-example">annex</a>.</p>
 		</section>
 
 		<section id="bp-labels">
@@ -1876,18 +1876,10 @@ ex:obs2
 							<td>`rdfs:subPropertyOf`</td>
 							<td><a href="http://www.w3.org/ns/prov#wasDerivedFrom">`prov:wasDerivedFrom`</a></td>
 						</tr>						
-						<tr>
-							<td>`^xkos:belongsTo`</td>
-							<td>`rdfs:subPropertyOf`</td>
-							<td><a href="http://www.w3.org/ns/prov#specializationOf">`prov:specializationOf`</a></td>
-						</tr>
 					</tbody>
 				</table>
-				<div class="issue" title="FC : Discuss xkos:belongsTo and xkos:variant here">
-					xkos:belongsTo points to a skos:Concept so mapping it to prov:specializationOf is abusive as the PROV property implies the entities are of the same nature
-
-				</div>
 				<p>Note that in the case of a `xkos:variant`, the corresponding [[PROV-O]] property is `prov:wasDerivedFrom` instead of `prov:wasRevisionOf`. The existence of a variant does not imply the original version is deprecated. There will be an overlap between the validity time period of the variant version and the reference one.</p>
+				<p>Note also that no mapping is made between `xkos:belongsTo` and `prov:specializationOf` since the PROV property implies the entities are of the same nature, whereas the classification is a `skos:Concept` and the level a `skos:ClassificationLevel`.</p>
 			</section>
 			<section id="bp-evolution-series">
 				<h4>Example of statistical classification serie</h4>
@@ -2266,28 +2258,17 @@ ex:NafRev2Dataset
 
 	<section class="appendix" id="isic-example">
 		<h2>Example of the ISIC classification</h2>
-		<div class="ednote">
-			Example will change to be inline with URI recommendations and mandatory properties - see issue below
-		</div>
+
 		<p>This appendix provides an XKOS example of the high-level structure of a classification, here ISIC.</p>
 		<p>Only two ISIC versions are shown: the latest (fourth revision, or Rev.4) and the previous one (update to the third revision, or Rev.3.1). They are represented as SKOS concept schemes and attached through the `xkos:belongTo` property to the ISIC classification itself represented as a `skos:Concept`, and Rev.4 `xkos:supersedes` Rev.3.1. Another concept scheme contains the different categories of items defined in the successive versions of ISIC (“major group” was used until the second revision). An `rdf:List` of levels (`xkos:ClassificationLevel`) is attached to each revision, and each level is linked to the relevant item category through the `xkos:organizedBy` property.</p>
-		<div class="issue" title="FC : rework classification example (see details in issue)">
-			<ol>
-				<li>Missing {all_classifications} component to be conformant with URI patterns	(done)</li>
-				<li>URIs should not be isic/4 to be conformant with URI patterns, but isic4 : http://example.org/codes/isic4/conceptScheme, and http://example.org/codes/isic4/sections for a level (done)</li>
-				<li>Missing skos:notation and dcterms:issued on the ConceptScheme to be conformant with mandatory properties (done)</li>
-				<li>numberOfLevel must have range xsd:positiveInteger - to be modified in table above and in SHACL (done)</li>
-				<li>enhance with additionnal properties : the idea is to illustrate the use of a large number of properties from the list above, can we enhance with e.g. dcterms:language, licence, definition, covers, creator, etc. ?</li>
-				<li>I would limit the example to only the description of isic4, and no try to illustrate the relation with preceding version as this is illustrated in another section of the best practices. The focus of the example should be a complete and sound description of one ConceptScheme with illustration of a maximum of properties from the table.</li>
-			</ol>
-		</div>
 		<aside class="example">
 		<pre class="nohighlight">
 @prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 @prefix skos: &lt;http://www.w3.org/2004/02/skos/core#&gt; .
-@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
 @prefix xkos: &lt;http://rdf-vocabulary.ddialliance.org/xkos#&gt; .
+@prefix schema: &lt;http://schema.org/&gt; .
 
 ##########################################
 # ISIC classification and category types #
@@ -2324,13 +2305,22 @@ ex:NafRev2Dataset
 
 &lt;http://example.org/codes/isic4&gt;
    a skos:ConceptScheme ;
-   skos:prefLabel "International Standard Industrial Classification
-   of All Economic Activities (ISIC), Revision 4"@en ;
+   skos:prefLabel "International Standard Industrial Classification of All Economic
+   Activities (ISIC), Revision 4"@en ,
+   "Classification internationale type, par industrie, de toutes les branches 
+   d’activité économique (CITI), Révision 4"@fr ;
    skos:altLabel "ISIC, Rev.4"@en ;
    skos:notation "ISIC4" ;
+   dcterms:creator "United Nations Statistics Division"@en ;
+   dcterms:language "ar", "zh", "en", "fr", "ru", "es" ;
    xkos:belongsTo &lt;http://example.org/codes/isic&gt; ;
    xkos:supersedes &lt;http://example.org/codes/isic31&gt; ;
    dcterms:issued "2008" ;
+   schema:startDate "2008-01-01"^^xsd:date ;
+   skos:scopeNote "The International Standard Industrial Classification of All Economic
+   Activities (ISIC) consists of a coherent and consistent classification structure of economic
+activities based on a set of internationally agreed concepts, definitions, principles and
+classification rules..."@en ;
    xkos:numberOfLevels "4"^^xsd:positiveInteger ;
    xkos:levels ( 
       &lt;http://example.org/codes/isic4/sections&gt;
@@ -2374,6 +2364,7 @@ ex:NafRev2Dataset
    of All Economic Activities (ISIC), Revision 3.1"@en ;
    skos:altLabel "ISIC, Rev.3.1"@en ;
    skos:notation "ISIC31" ;
+   dcterms:creator "United Nations Statistics Division"@en ;
    xkos:belongsTo <http://example.org/codes/isic> ;
    xkos:supersedes &lt;http://example.org/codes/isic3&gt; ;
    dcterms:issued "2002" ;
