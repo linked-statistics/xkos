@@ -33,6 +33,7 @@ xkos:ClassificationShape a sh:NodeShape;
     xkos:P_classification_skosprefLabel_other_recommended,
     xkos:P_classification_dcdescription_recommended,
     xkos:P_classification_skosscopeNote_recommended,
+    xkos:P_classification_skoshasTopConcept_recommended,
     xkos:P_classification_dctmodified_recommended,
     xkos:P_classification_dctcreator_recommended,
     xkos:P_classification_schemastartDate_recommended,
@@ -87,6 +88,11 @@ xkos:P_classification_skosscopeNote_recommended
   sh:qualifiedValueShape [
     sh:node xkos:ExplanatoryNoteInEnglishShape;
   ] ;
+  sh:severity sh:Warning .
+
+xkos:P_classification_skoshasTopConcept_recommended
+  sh:path skos:hasTopConcept;
+  sh:minCount 1;
   sh:severity sh:Warning .
 
 xkos:P_classification_dctmodified_recommended 
