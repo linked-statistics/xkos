@@ -91,7 +91,7 @@ xkos:P_classification_skosscopeNote_recommended
   sh:severity sh:Warning .
 
 xkos:P_classification_skoshasTopConcept_recommended
-  sh:path skos:hasTopConcept;
+  sh:path [ sh:alternativePath ( skos:hasTopConcept [ sh:inversePath skos:topConceptOf ] ) ];
   sh:minCount 1;
   sh:severity sh:Warning .
 

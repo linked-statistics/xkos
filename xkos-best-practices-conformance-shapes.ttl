@@ -47,6 +47,7 @@ xkos:ClassificationShape a sh:NodeShape;
     xkos:P_classification_skosprefLabel_other,
     xkos:P_classification_dcdescription,
     xkos:P_classification_skosscopeNote,
+    xkos:P_classification_skoshasTopConcept,
     xkos:P_classification_dctmodified,
     xkos:P_classification_dctcreator,
     xkos:P_classification_schemastartDate,
@@ -147,8 +148,17 @@ xkos:P_classification_skosscopeNote
   ] ;
   sh:severity sh:Violation .
 
-xkos:P_classification_dctmodified 
+xkos:P_classification_skoshasTopConcept 
   sh:order 7;
+  sh:path [ sh:alternativePath ( skos:hasTopConcept [ sh:inversePath skos:topConceptOf ] ) ] ;
+  sh:class skos:Concept;
+  sh:description "Reference to a top-level classification entry of this classification. Top level entries can be indicated either from ConceptScheme to root Concepts, using `skos:hasTopConcept`, or from root Concepts to ConceptScheme, using `skos:topConceptOf`."@en;
+  sh:name "top concept"@en;
+  sh:nodeKind sh:IRI;
+  sh:severity sh:Violation .
+
+xkos:P_classification_dctmodified 
+  sh:order 8;
   sh:path dct:modified;
   sh:datatype xsd:date;
   sh:description "The value must be the last modification date of the classification scheme."@en;
@@ -158,7 +168,7 @@ xkos:P_classification_dctmodified
   sh:severity sh:Violation .
 
 xkos:P_classification_dctcreator 
-  sh:order 8;
+  sh:order 9;
   sh:path dct:creator;
   sh:nodeKind sh:IRI;
   sh:description "An agent responsible for creating the classification scheme."@en; 
@@ -166,7 +176,7 @@ xkos:P_classification_dctcreator
   sh:severity sh:Violation .
 
 xkos:P_classification_schemastartDate 
-  sh:order 9;
+  sh:order 10;
   sh:path schema:startDate;
   sh:description "Begin date of the temporal validity of the classification."@en;
   sh:maxCount 1;
@@ -175,7 +185,7 @@ xkos:P_classification_schemastartDate
   sh:severity sh:Violation .
 
 xkos:P_classification_schemaendDate 
-  sh:order 10;
+  sh:order 11;
   sh:path schema:startDate;
   sh:description "End date of the temporal validity of the classification."@en;
   sh:maxCount 1;
@@ -184,7 +194,7 @@ xkos:P_classification_schemaendDate
   sh:severity sh:Violation .
 
 xkos:P_classification_xkosbelongsTo 
-  sh:order 11;
+  sh:order 12;
   sh:path xkos:belongsTo;
   sh:class skos:Concept;
   sh:description "Connects a major version of a classification to a concept representing the overall classification."@en;
@@ -194,7 +204,7 @@ xkos:P_classification_xkosbelongsTo
   sh:severity sh:Violation .
 
 xkos:P_classification_xkoslevels
-  sh:order 12;
+  sh:order 13;
   sh:path xkos:levels;
   sh:description "Lists the classification levels represented as an RDF list of ordered levels (instances of xkos:ClassificationLevel)."@en;
   sh:maxCount 1;
@@ -213,7 +223,7 @@ xkos:P_classification_xkoslevels
   sh:severity sh:Violation .
 
 xkos:P_classification_xkoscovers 
-  sh:order 13;
+  sh:order 14;
   sh:path xkos:covers;
   sh:class skos:Concept;
   sh:description "The domain covered by the classification or its levels (eg. activities, products, etc.). Subproperties xkos:coversExhaustively and xkos:coversMutuallyExclusively can also be used."@en;
@@ -223,7 +233,7 @@ xkos:P_classification_xkoscovers
   sh:severity sh:Violation .
 
 xkos:P_classification_xkoscoversExhaustively 
-  sh:order 14;
+  sh:order 15;
   sh:path xkos:coversExhaustively;
   sh:class skos:Concept;
   sh:description "The domain covered by the classification (exhaustive coverage)."@en;
@@ -233,7 +243,7 @@ xkos:P_classification_xkoscoversExhaustively
   sh:severity sh:Violation .
 
 xkos:P_classification_xkoscoversMutuallyExclusively
-  sh:order 15;
+  sh:order 16;
   sh:path xkos:coversMutuallyExclusively; 
   sh:class skos:Concept;
   sh:description "The domain covered by the classification (mutually exclusive coverage)."@en;
@@ -243,7 +253,7 @@ xkos:P_classification_xkoscoversMutuallyExclusively
   sh:severity sh:Violation .
 
 xkos:P_classification_xkosnumberOfLevels
-  sh:order 16;
+  sh:order 17;
   sh:path xkos:numberOfLevels;
   sh:datatype xsd:integer;
   sh:description "Depth of a classification (number of hierarchically imbricated levels) ; 1 for a flat classification."@en;
@@ -253,7 +263,7 @@ xkos:P_classification_xkosnumberOfLevels
   sh:severity sh:Violation .
 
 xkos:P_classification_xkosfollows 
-  sh:order 17;
+  sh:order 18;
   sh:path xkos:follows;
   sh:class skos:ConceptScheme;
   sh:description "Links major revisions of classifications."@en;
@@ -263,7 +273,7 @@ xkos:P_classification_xkosfollows
   sh:severity sh:Violation .
 
 xkos:P_classification_xkossupersedes
-  sh:order 18;
+  sh:order 19;
   sh:path xkos:supersedes;
   sh:class skos:ConceptScheme;
   sh:description "Links major revisions of classifications, when the new one obsoletes the old one."@en;
@@ -275,7 +285,7 @@ xkos:P_classification_xkossupersedes
 ## optional properties
 
 xkos:P_classification_xkosvariant
-  sh:order 19;
+  sh:order 20;
   sh:path xkos:variant;
   sh:class skos:ConceptScheme;
   sh:description "Connects a classification scheme to its variant(s)"@en;  
@@ -284,7 +294,7 @@ xkos:P_classification_xkosvariant
   sh:severity sh:Violation .
 
 xkos:P_classification_skosscopeNote_other 
- sh:order 20;
+ sh:order 21;
  sh:path skos:scopeNote;
  sh:description "Each explanatory note MUST have a xkos:plainText property which value is a long descriptive text about the classification scheme in another langage than english, with the langage tag set appropriately"@en;
  sh:name "long description not in english"@en;
@@ -293,7 +303,7 @@ xkos:P_classification_skosscopeNote_other
  sh:severity sh:Violation .
 
 xkos:P_classification_skosaltLabel
-  sh:order 21;
+  sh:order 22;
   sh:path skos:altLabel;
   sh:datatype rdf:langString;
   sh:description "An alternative appelation to refer to the classification scheme."@en;
@@ -302,7 +312,7 @@ xkos:P_classification_skosaltLabel
   sh:severity sh:Violation .
 
 xkos:P_classification_dctlanguage
-  sh:order 22;
+  sh:order 23;
   sh:path dct:language;
   sh:datatype xsd:language;
   sh:description "Indicates the langage coverage of the classificaiton scheme. Each value must correspond to a possible langage of labels within that classification."@en;
@@ -311,7 +321,7 @@ xkos:P_classification_dctlanguage
   sh:severity sh:Violation .
 
 xkos:P_classification_dctlicense
-  sh:order 23;
+  sh:order 24;
   sh:path dct:license;
   sh:description "The URI to the legal document giving official permission to do something with the classification."@en;
   sh:maxCount 1;
@@ -320,7 +330,7 @@ xkos:P_classification_dctlicense
   sh:severity sh:Violation .
 
 xkos:P_classification_owldeprecated
-  sh:order 24;
+  sh:order 25;
   sh:path owl:deprecated;
   sh:description "Indicates the classification is no longer active and has been superseded by a new revision."@en;
   sh:maxCount 1;
@@ -330,7 +340,7 @@ xkos:P_classification_owldeprecated
   sh:severity sh:Violation .
 
 xkos:P_classification_elibased_on
-  sh:order 25;
+  sh:order 26;
   sh:path eli:based_on;
   sh:description "Legislation on which the nomenclature is based. Use of an ELI (European Legislation Identifier) URI is preferred, if one is available."@en;
   sh:maxCount 1;
