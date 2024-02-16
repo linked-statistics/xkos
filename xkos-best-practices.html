@@ -1492,13 +1492,13 @@ ex:myProperty a owl:ObjectProperty ;
 &lt;http://id.insee.fr/codes/pcsese1982/pcsese&gt;
     a skos:ConceptScheme ;
     skos:prefLabel "Nomenclature des Professions et Catégories Socioprofessionnelles des Emplois Salariés d'Entreprise (PCS-ESE) 1982"@fr ;
-    skos:notation "PCS-ESE 1982"@fr .
+    skos:notation "PCS-ESE 1982" .
 
 # 2003 Classification
 &lt;http://id.insee.fr/codes/pcsese2003/pcsese&gt;
     a skos:ConceptScheme ;
     skos:prefLabel "Nomenclature des Professions et Catégories Socioprofessionnelles des Emplois Salariés d'Entreprise (PCS-ESE) 2003"@fr ;
-    skos:notation "PCS-ESE 2003"@fr ;
+    skos:notation "PCS-ESE 2003" ;
     xkos:after &lt;http://id.insee.fr/codes/pcsese1982/pcsese&gt; .
 
 # Correspondance table
@@ -1519,14 +1519,14 @@ ex:myProperty a owl:ObjectProperty ;
     a skos:Concept ;
     skos:inScheme &lt;http://id.insee.fr/codes/pcsese1982/pcsese&gt; ;
     skos:prefLabel "Contrôleurs laitiers, inséminateurs et autres agents techniques agricoles"@fr ;
-    skos:notation "4702"@fr .
+    skos:notation "4702" .
 
 # target concept in 2003 revision
 &lt;http://id.insee.fr/codes/pcsese2003/rubrique/471b&gt;
     a skos:Concept ;
     skos:inScheme &lt;http://id.insee.fr/codes/pcsese2003/pcsese&gt; ;
     skos:prefLabel "Techniciens d'exploitation et de contrôle de la production en agriculture, eaux et forêts"@fr ;
-    skos:notation "471b"@fr .
+    skos:notation "471b" .
 
 # A concept association links the single source concept to the single target concept
 &lt;http://id.insee.fr/codes/pcsese1982-pcsese2003/association/4702-471b&gt;
@@ -1551,21 +1551,21 @@ ex:myProperty a owl:ObjectProperty ;
     a skos:Concept ;
     skos:inScheme &lt;http://id.insee.fr/codes/pcsese1982/pcsese&gt; ;
     skos:prefLabel "Ouvriers non qualifiés du travail du béton et du génie civil"@fr ;
-    skos:notation "6741"@fr .
+    skos:notation "6741" .
 
 # First target concept in 2003 revision
 &lt;http://id.insee.fr/codes/pcsese2003/rubrique/671a&gt;
     a skos:Concept ;
     skos:inScheme &lt;http://id.insee.fr/codes/pcsese2003/pcsese&gt; ;
     skos:prefLabel "Ouvriers non qualifiés des travaux publics de l'Etat et des collectivités locales"@fr ;
-    skos:notation "671a"@fr .
+    skos:notation "671a" .
 
 # Second target concept in 2003 revision
 &lt;http://id.insee.fr/codes/pcsese2003/rubrique/671c&gt;
     a skos:Concept ;
     skos:inScheme &lt;http://id.insee.fr/codes/pcsese2003/pcsese&gt; ;
     skos:prefLabel "Ouvriers non qualifiés des travaux publics et du travail du béton"@fr ;
-    skos:notation "671c"@fr .
+    skos:notation "671c" .
 
 # A single ConceptAssociation describes the split, it has one source and two targets
 &lt;http://id.insee.fr/codes/pcsese1982-pcsese2003/association/6741-671a&gt;
@@ -1590,21 +1590,21 @@ ex:myProperty a owl:ObjectProperty ;
     a skos:Concept ;
     skos:inScheme &lt;http://id.insee.fr/codes/pcsese1982/pcsese&gt; ;
     skos:prefLabel "Professeurs agrégés et certifiés d'enseignement général"@fr ;
-    skos:notation "3412"@fr .
+    skos:notation "3412" .
 
 # Second source concept in 1982 revision
 &lt;http://id.insee.fr/codes/pcsese1982/rubrique/3413&gt;
     a skos:Concept ;
     skos:inScheme &lt;http://id.insee.fr/codes/pcsese1982/pcsese&gt; ;
     skos:prefLabel "Professeurs techniques de lycée"@fr ;
-    skos:notation "3413"@fr .
+    skos:notation "3413" .
 
 # Target concept in 2003 revision
 &lt;http://id.insee.fr/codes/pcsese2003/rubrique/341a&gt;
     a skos:Concept ;
     skos:inScheme &lt;http://id.insee.fr/codes/pcsese2003/pcsese&gt; ;
     skos:prefLabel "Professeurs agrégés et certifiés de l'enseignement secondaire"@fr ;
-    skos:notation "341a"@fr .
+    skos:notation "341a" .
 
 # A single ConceptAssociation describes a merge, it has 2 sources and a single target
 &lt;http://id.insee.fr/codes/pcsese1982-pcsese2003/association/3412-341a&gt; a xkos:ConceptAssociation ;
