@@ -380,7 +380,7 @@
 
 			<p><a href=" https://www.ilo.org/public/english/bureau/stat/isco/docs/publication08.pdf">ISCO-08</a> is a four-level hierarchically structured classification that allows all jobs in the world to be classified into 436 unit groups. These groups form the most detailed level of the classification structure and are aggregated into 130 minor groups, 43 sub-major groups and 10 major groups, based on their similarity in terms of the skill level and skill specialization required for the jobs. This allows the production of relatively detailed internationally comparable data as well as summary information for only 10 groups at the highest level of aggregation.</p>
 
-			<p><a href="https://ec.europa.eu/esco/portal/home">ESCO</a>, that stands for European Skills Competencies, qualifications and Occupations, is linked to the ISCO classification, one occupation of ESCO corresponds to only one poste of ISCO. ISCO provides the top four levels of the occupation classification. The occupations are linked to only one unit group of ISCO classification.</p>
+			<p><a href="https://ec.europa.eu/esco/portal/home">ESCO</a>, that stands for European Skills Competencies, qualifications and Occupations, is linked to the ISCO classification, one occupation of ESCO corresponds to only one item of ISCO. ISCO provides the top four levels of the occupation classification. The occupations are linked to only one unit group of ISCO classification.</p>
 
 			<p>In this case the european classification is an extension of the international classification by adding a new level specific for the european union. As a consequence, it is possible that some ISCO’s unit group stay without link to ESCO occupations for job that doesn’t exist in Europe.</p>
 
@@ -411,7 +411,7 @@
 
 			<h4>Different revisions of the same classification (NAFrev1 / NAFrev2)</h4>
 
-			<p>Since its creation, the NAF has been revised twice. The current version of the nomenclature is NAF rev.2, in force since 1 January 2008. It succeeded NAF rev.1, in force from 1 January 2003 to 31 December 2007.</p>
+			<p>Since its creation, the NAF (Nomenclature d'Activités Française - French classification of activities) has been revised twice. The current version of the nomenclature is NAF rev.2, in force since 1 January 2008. It succeeded NAF rev.1, in force from 1 January 2003 to 31 December 2007.</p>
 
 			<p>The objectives of the revision were to modernise, in order to better reflect the economic developments of the last twenty years, and to improve the comparability of the major classification systems used worldwide, in order to facilitate international comparisons of economic data. Two correspondence tables have been produced, one for the transition from NAFrev1 to NAFrev2, the other for the reverse path. The links are documented in this correspondence table, so that partial links are used when an association to an item in the new nomenclature concerns only a part of this item. The link documentation also highlights whether the link relates to the core content of the item or the additional content. In addition, exclusion links are created to indicate which parts of the item are not retained. Finally, additional information is provided to show whether the item remains unchanged between the two classifications or, on the contrary, whether it has been split into n items in the new classification.</p>
 
@@ -556,7 +556,7 @@
 						<td></td>
 						<td>0..1</td>
 						<td>`xsd:integer`</td>
-						<td>Depth of a classification (number of hierarchically imbricated levels) ; 1 for a flat classification.</td>
+						<td>Depth of a classification (number of hierarchically nested levels) ; 1 for a flat classification.</td>
 					</tr>
 					<tr>
 						<td><a href= "http://rdf-vocabulary.ddialliance.org/xkos#follows">`xkos:follows`</a></td>
@@ -1259,7 +1259,7 @@ ex:NACE-R2_Group_Class
 				
 				<p>It is sometimes desirable to restrict the range of a property not to items of a particular classification, nor to items at a certain level in a certain classification, but either to a "branch" of the classification, or to a subset of the elements taken anywhere in the classification.</p>
 				<p>For the cases where it is known that the classification is "partitioned" in subsets that can be used independantly, the following modelling pattern can be applied : each "partition" is declared as a `skos:ConceptScheme`, linked to the main `skos:ConceptScheme` of the classification with a `dcterms:isPartOf`; and the `skos:Concept`s of the classification items have 2 `skos:inScheme` properties : one that refer to the main `skos:ConceptScheme`, and one that refer to the `skos:ConceptScheme` of their "partition". This pattern is typically applied for the modeling of micro-thesauri in large thesaurus.</p>
-				<p>The pattern described above of declaring an OWL class corresponding to the skos:ConceptScheme can be applied, but for the skos:ConceptScheme corresponding to a "partition". This is illustrated in the example below:</p>
+				<p>The pattern described above of declaring an OWL class corresponding to the skos:ConceptScheme can be applied, this time with a skos:ConceptScheme corresponding to a "partition". This is illustrated in the example below:</p>
 				<aside class="example" title="Example of partitioning a classification with multiple skos:ConceptScheme">
 					<pre class="nohighlight">
 # The classification
@@ -1332,7 +1332,7 @@ ex:myProperty a owl:ObjectProperty ;
 		</section>
 		<section id="bp-correspondences">
 		    <h3>Correspondences</h3>
-			<p><a href="https://rdf-vocabulary.ddialliance.org/xkos.html#correspondences">§7 of the XKOS specification</a> introduces `xkos:Correspondence` and `xkos:ConceptAssociation`, amongst other terms, to model correspondences, conversion tables, mapping, concordance tables. This best practice document gives further details on how to document correspondences and concept associations, gives examples of how to describe a split or a merge of a concept, or more complicated cases (n concepts to m concepts), and gives precisions on how to deal with deleted or new items in the case a `xkos:Correspondence` is used to document the mapping between 2 revisions of a classification.</p>
+			<p><a href="https://rdf-vocabulary.ddialliance.org/xkos.html#correspondences">§7 of the XKOS specification</a> introduces `xkos:Correspondence` and `xkos:ConceptAssociation`, amongst other terms, to model correspondences, conversion tables, mappings, concordance tables. This best practice document gives further details on how to document correspondences and concept associations, gives examples of how to describe a split or a merge of a concept, or more complicated cases (n concepts to m concepts), and gives precisions on how to deal with deleted or new items in the case a `xkos:Correspondence` is used to document the mapping between 2 revisions of a classification.</p>
 			<section id="bp-correspondences-direction">
 				<h4>Correspondences direction</h4>
 				<p>By convention, the source Classification in a correspondence is the ‘former’ one, and the target Classification is the ‘new’ one. Or in other words, the source is the classification whose items compose the domain of the correspondence relation and the target is the classification whose items correspond to the range of this correspondence relation.</p>
