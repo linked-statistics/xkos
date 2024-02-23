@@ -139,7 +139,7 @@
     	<h2>Abstract</h2>
 		<p>XKOS (An [[SKOS]] extension for representing statistical classifications) is a <a href="https://ddialliance.org/">DDI Alliance</a> Standard that defines terms that can be used for publishing statistical classifications as linked data. XKOS defines a vocabulary for representing classifications, as well as a general model based on SKOS and statistical business models. The <a href="https://rdf-vocabulary.ddialliance.org/xkos.html">XKOS specification</a> provides some guidance on how to use the vocabulary, but it does not specify every implementation detail, so it was useful to complement it with a "best practices" guide.</p>
 
-		<p>The guide contains advice on how to use XKOS for maximum interoperability and reusability, and cover topics like the description of classifications (labels, explanatory notes, levels), the different types of correspondences, how to represent evolution over time of the different elements, how to publish statistical classifications as XKOS, what kind of descriptive metadata to attach in order to maximize findability, etc.</p>
+		<p>The guide contains advice on how to use XKOS for maximum interoperability and reusability, and covers topics like the description of classifications (labels, explanatory notes, levels), the different types of correspondences, how to represent evolution over time of the different elements, how to publish statistical classifications as XKOS, what kind of descriptive metadata to attach in order to maximize findability, etc.</p>
 
 		<p>After a short reminder on statistical classifications, the guide proposes best practices regarding the representation of different elements: classifications and levels, labels and notes, classification items, correspondence tables and concepts associations, etc. Then, guidelines are suggested on specific aspects like the evolution of classifications in time and URI patterns for the identification of components. A number of examples are provided throughout the document to illustrate the best practices, including a comprehensive final example based on the ISIC classification.</p>
 
@@ -241,7 +241,7 @@
 				<tr>
 					<td>ex</td>
 					<td>http://example.com/ns#</td>
-					<td>Fictitious namespace used for exemples in this document.</td>
+					<td>Fictitious namespace used for examples in this document.</td>
 				</tr>
 				<tr>
 					<td>insee</td>
@@ -405,7 +405,7 @@
 
 			<h4>Different point of view on the same domain area (ProdCom / CPC, or HS / CN)</h4>
 
-			<p>Prodcom stands for "PRODuction COMmunautaire". This classification provides statistics on the production of manufactured goods by enterprises on the national territory of reporting countries. Prodcom . It covers mining and manufacturing: sections B and C of the statistical classification of economic activities in the European Union (NACE Rev. 2). Prodcom statistics aim to provide a comprehensive picture at EU level of the development of industrial production for a given product or sector, so that comparisons can be made between countries.</p>
+			<p>Prodcom stands for "PRODuction COMmunautaire". This classification provides statistics on the production of manufactured goods by enterprises on the national territory of reporting countries. Prodcom covers mining and manufacturing: sections B and C of the statistical classification of economic activities in the European Union (NACE Rev. 2). Prodcom statistics aim to provide a comprehensive picture at EU level of the development of industrial production for a given product or sector, so that comparisons can be made between countries.</p>
 
 			<p>The scope of ProdCom is thus different, and smaller, from the one of CPC, and there is a correspondence table to that subpart of the CPC.</p>
 
@@ -507,7 +507,7 @@
 						<td></td>
 						<td>0..1</td>
 						<td>`xsd:date`</td>
-						<td>Begin date of the temporal validity of the classification. Readers interested in the rationale for the choice of schema.org properties can read the <a href="#date-ranges-modeling">appendix</a>.</td>
+						<td>Start date of the temporal validity of the classification. Readers interested in the rationale for the choice of schema.org properties can read the <a href="#date-ranges-modeling">appendix</a>.</td>
 					</tr>
 					<tr>
 						<td>`schema:endDate`</td>
@@ -641,7 +641,7 @@
 
 		<section id="bp-labels">
 		    <h3>Labels</h3>
-			<p>Statistical classification often make use of different types of labels for their items. Two examples taken from French classifications can be mentioned:</p>
+			<p>Statistical classifications often make use of different types of labels for their items. Two examples taken from French classifications can be mentioned:</p>
 			<ul>
 				<li>The classification of activities (NAF rev.2) makes “standard” shortened labels available for use in certain cases where space is constrained (e.g. table headers in a paper publication).</li>
 				<li>The classification of professions (PCS 2020) defines an “official” label and a “usual” label.</li>
@@ -757,7 +757,7 @@ ex:isco2008-9611
 				<h4>Versioning notes and timestamping notes</h4>
 				<p>As indicated in the introductory paragraph about classification major revisions and versions, the notes are the information that have fine-grained versions between each major revision of a classification (any changes other than on the notes - moving a concept, renaming a concept, etc. - is supposed to happen in a new major revision, hence applies to a new Concept URI. See section <a href="bp-evolution-major-versions">Major versions of classifications</a>).</p>
 				<p>We propose 2 different patterns of versioning for notes: versioning notes with a version number and a date range, and keeping the history of notes with a timestamp.</p>
-				<p>The first pattern to version notes implies that each new version of the note is given a version number and a date range. All notes, except `skos:changeNote` and `xkos:caseLaw` should follow this pattern: `skos:scopeNote`, `skos:definition`, `xkos:coreContentNote`, `xkos:additionalContentNote`, `xkos:exclusionNote`, `xkos:inclusionNote`. These notes should uses the properties listed in the table below.</p>
+				<p>The first pattern to version notes implies that each new version of the note is given a version number and a date range. All notes, except `skos:changeNote` and `xkos:caseLaw` should follow this pattern: `skos:scopeNote`, `skos:definition`, `xkos:coreContentNote`, `xkos:additionalContentNote`, `xkos:exclusionNote`, `xkos:inclusionNote`. These notes should use the properties listed in the table below.</p>
 				<table class="simple stickyTableHead">
 					<caption>Additional properties for an `xkos:ExplanatoryNote` when versioned</caption>
 					<thead>
@@ -1230,7 +1230,7 @@ ex:NACE_ItemTypes
     skos:prefLabel "NACE Item Types"@en .
 						</pre>
 				</aside>
-				<p>We note however one limitation to this approach : contrary to the class that represent the set of all items of the classification (`ex:NACE-R2_Item` in the example above), it is not easily possible to declare a formal OWL equivalence between the class that represent the set of items of a level and the corresponding `xkos:ClassificationLevel`. This is due to the fact that the `skos:member` link is expressed on the classification level and refers to the classification items, contrary to `skos:inScheme` that is expressed on the items and points to the classification. For this to be possible, an inverse of `skos:member` should be declared.</p>
+				<p>We note however one limitation to this approach : contrary to the class that represents the set of all items of the classification (`ex:NACE-R2_Item` in the example above), it is not easily possible to declare a formal OWL equivalence between the classes that represent the set of items of a level and the corresponding `xkos:ClassificationLevel`. This is due to the fact that the `skos:member` link is expressed on the classification level and refers to the classification items, contrary to `skos:inScheme` that is expressed on the items and points to the classification. For this to be possible, an inverse of `skos:member` should be declared.</p>
 				<aside class="example" title="Impossibility to declare a formal equivalence between the class representing the set of items at a given level and the corresponding classification level">
 					<pre class="nohighlight">
 ex:NACE-R2_Group
@@ -1258,7 +1258,7 @@ ex:NACE-R2_Group_Class
 				<h4>Type classification items according to a branch or a subset of items</h4>
 				
 				<p>It is sometimes desirable to restrict the range of a property not to items of a particular classification, nor to items at a certain level in a certain classification, but either to a "branch" of the classification, or to a subset of the elements taken anywhere in the classification.</p>
-				<p>For the cases where it is known that the classification is "partitioned" in subsets that can be used independantly, the following modelling pattern can be applied : each "partition" is declared as a `skos:ConceptScheme`, linked to the main `skos:ConceptScheme` of the classification with a `dcterms:isPartOf`; and the `skos:Concept`s of the classification items have 2 `skos:inScheme` properties : one that refer to the main `skos:ConceptScheme`, and one that refer to the `skos:ConceptScheme` of their "partition". This pattern is typically applied for the modeling of micro-thesauri in large thesaurus.</p>
+				<p>For the cases where it is known that the classification is "partitioned" in subsets that can be used independantly, the following modelling pattern can be applied : each "partition" is declared as a `skos:ConceptScheme`, linked to the main `skos:ConceptScheme` of the classification with a `dcterms:isPartOf`; and the `skos:Concept`s of the classification items have 2 `skos:inScheme` properties : one that refers to the main `skos:ConceptScheme`, and one that refers to the `skos:ConceptScheme` of their "partition". This pattern is typically applied for the modeling of micro-thesauri in large thesaurus.</p>
 				<p>The pattern described above of declaring an OWL class corresponding to the skos:ConceptScheme can be applied, this time with a skos:ConceptScheme corresponding to a "partition". This is illustrated in the example below:</p>
 				<aside class="example" title="Example of partitioning a classification with multiple skos:ConceptScheme">
 					<pre class="nohighlight">
@@ -1336,7 +1336,7 @@ ex:myProperty a owl:ObjectProperty ;
 			<section id="bp-correspondences-direction">
 				<h4>Correspondences direction</h4>
 				<p>By convention, the source Classification in a correspondence is the ‘former’ one, and the target Classification is the ‘new’ one. Or in other words, the source is the classification whose items compose the domain of the correspondence relation and the target is the classification whose items correspond to the range of this correspondence relation.</p>
-				<p>As an additionnal information, it is also possible to use properties given by the [[PROV-O]] vocabulary, for instance `prov:wasDerivedFrom` to convey the fact that one classification is based on a previous one and have with it a common content (see below).</p>
+				<p>As an additionnal information, it is also possible to use properties given by the [[PROV-O]] vocabulary, for instance `prov:wasDerivedFrom` to convey the fact that one classification is based on a previous one and has with it a common content (see below).</p>
 			</section>
 			<section id="bp-correspondences-documenting-correspondences">
 				<h4>Documenting correspondences</h4>
@@ -1668,7 +1668,7 @@ ex:myProperty a owl:ObjectProperty ;
 				<p>To cope with this use case, as well as the use-case of the n-to-m concept association described above, it is possible to link the correspondence table with a matrix, expressed with the RDF Data Cube vocabulary [[QB]], that associates some values to each pair of associated source-target concepts. These values could be a percentage, a price, or a boolean to indicate whether the concepts are actually linked or not. These values are actually the measures of the observations in the data cube.<br />
 				Note that multiple values can be associated with a single observation in this data cube matrix, to give for exemple values both in terms of number of employees and in terms of revenues.
 				</p>
-				<p>One could see this matrix as a redundancy with the correspondence table. It is actually a different, complimentary point of view: while the correspondence table gives a “documentary” view, and an easy way to traverse from the source concept to the target concept, the matrix provides the statistical point of view, with the numbers or weights associated to each pair of related source-target concept.</p><p>It is suggested that a new property is introduced in XKOS to capture the link between a Correspondence table and its corresponding `qb:DataSet` that captures the weights. The suggested property is `xkos:weightedBy`, but it is not part of XKOS at the time of this writing. A more generic property like `dcterms:relation` can also be used by default.</p>
+				<p>One could see this matrix as a redundancy with the correspondence table. It is actually a different, complimentary point of view: while the correspondence table gives a “documentary” view, and an easy way to traverse from the source concept to the target concept, the matrix provides the statistical point of view, with the numbers or weights associated to each pair of related source-target concepts.</p><p>It is suggested that a new property is introduced in XKOS to capture the link between a Correspondence table and its corresponding `qb:DataSet` that captures the weights. The suggested property is `xkos:weightedBy`, but it is not part of XKOS at the time of this writing. A more generic property like `dcterms:relation` can also be used by default.</p>
 				<p>The following example illustrates this suggested mechanism. Note how the correspondence table in this example, and the associated matrix, are defined only for a given `xkos:ClassificationLevel` in each of the compared classifications.</p>
 				<aside class="example" title="Example of a correspondence table matrix">
 						<pre class="nohighlight">
@@ -1881,7 +1881,7 @@ ex:obs2
 				<p>Note also that no mapping is made between `xkos:belongsTo` and `prov:specializationOf` since the PROV property implies the entities are of the same nature, whereas the classification is a `skos:Concept` and the level a `skos:ClassificationLevel`.</p>
 			</section>
 			<section id="bp-evolution-series">
-				<h4>Example of statistical classification serie</h4>
+				<h4>Example of statistical classification series</h4>
 				<p>The figure below presents the succession of two revisions of the NAF classification. The temporal periods of validity of each revision are given through the `schema:startDate` and `schema:endDate` properties. A possibility to clearly identify that the NAFRev1 is the obsolete version is to use the `owl:deprecated` property set to `true`.</p>
 				<img src="img/bp-series-example.png" alt="Example of a classification serie" />
 				<p>In the `xkos:ConceptAssociation` the `xkos:sourceConcept` makes a reference to a `skos:Concept` belonging to the `skos:ConceptScheme` of the former classification while the `xkos:targetConcept` references a `skos:Concept` belonging to the (`skos:ConceptScheme` of) the new revision of the classification.</p>				
