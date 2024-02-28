@@ -453,7 +453,7 @@ xkos:P_note_schema_endDate
   sh:path schema:endDate;
   sh:datatype xsd:dateTime;
   sh:description "The date until which this note content was (or will be) valid, indicating it was (or will be) replaced with another note with a different text, and its version number increased by 1. This property is not set in the case if there is no known end date."@en;
-  sh:minCount 1;
+  sh:maxCount 1;
   sh:name "end date"@en;
   sh:nodeKind sh:Literal;  
   sh:severity sh:Violation .
