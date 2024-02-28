@@ -407,7 +407,7 @@ xkos:VersionedNoteShape a sh:NodeShape;
 xkos:P_note_xkos_plainText
   sh:order 30;
   sh:path xkos:plainText;
-  sh:datatype xsd:string;
+  sh:datatype rdf:langString;
   sh:description "The value of the note, in plain text (no HTML / XML markup). The literal is tagged with a proper language tag."@en;
   sh:minCount 1;
   sh:maxCount 1;
