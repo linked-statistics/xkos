@@ -128,6 +128,36 @@
 		      top: 0;
 		    }
 
+		/* --- TABLE --- */
+		table.simple {
+		  border-spacing: 0;
+		  border-collapse: collapse;
+		  border-bottom: 3px solid #005a9c;
+		}
+		.simple th {
+		  background: #005a9c;
+		  color: #fff;
+		  padding: 3px 5px;
+		  text-align: left;
+		}
+		.simple th a {
+		  color: #fff;
+		  padding: 3px 5px;
+		  text-align: left;
+		}
+		.simple th[scope="row"] {
+		  background: inherit;
+		  color: inherit;
+		  border-top: 1px solid #ddd;
+		}
+		.simple td {
+		  padding: 3px 10px;
+		  border-top: 1px solid #ddd;
+		}
+		.simple tr:nth-child(even) {
+		  background: #f0f6ff;
+		}
+
 		</style>
 	</head>
 	<body>
